@@ -1,0 +1,4722 @@
+{
+  "metadata": {
+    "total_samples": 50,
+    "purpose": "수동 검증용 - LLM GT 품질 확인",
+    "created_at": "2026-01-27T23:25:53.989822"
+  },
+  "verification_guide": {
+    "task": "각 쿼리에 대해 embedding_top10의 항목들이 실제로 유사한 문항인지 확인",
+    "check_points": [
+      "LLM GT 항목이 실제로 유사한 문항인가?",
+      "Embedding Top-10 중 LLM GT에 없지만 유사한 항목이 있는가?",
+      "False Positive/Negative 비율은 적절한가?"
+    ]
+  },
+  "samples": [
+    {
+      "query_id": "E8A959E017454D1A83E17ED3064C282F",
+      "query_content": "강의 폭 ${\\overline{AB}}$의 길이를 구하기 위해 다음 그림과 같이 ${\\overline{AB}}$의 연장선 위에 점 $C$를 잡고 $∠DBC = 84° , ~∠ADB = 42°$가 되는 지점을 점 $D$로 놓았더니 ${\\overline{DB}} = 13 ` m$이었다. 이때 강의 폭 ${\\overline{AB}}$의 길이는 몇 $m$인가? [...",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 3,
+          "reasoning": "각도 이등분선과 관련된 문제로, 각도 계산이 필요."
+        },
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "relevance": 4,
+          "reasoning": "평행사변형의 각도를 이용한 문제로, 유사한 개념."
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 5,
+          "reasoning": "도형의 성질을 이용하여 길이를 구하는 문제."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.8731,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 2,
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "similarity": 0.8711,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림에서 ${\\overline{AB}} = {\\overline{AC}} = {\\overline{CD}}$이고 $∠DCE = 114°$일 때, $∠ABC$의 크기는? [이미지]"
+        },
+        {
+          "rank": 3,
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "similarity": 0.8522,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 ${\\overline{AB}} = {\\overline{AC}}$인 이등변삼각형 $ABC$에서 ${\\overline{BD}} = {\\overline{DE}} = {"
+        },
+        {
+          "rank": 4,
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "similarity": 0.8465,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 점 $B$는 원 $O$ 위의 점이고, $□ OABC$가 직사각형일 때, ${\\overline{AC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 5,
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "similarity": 0.8417,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $E$는 ${\\overline{AB}}$ 위의 한 점이고 $∠EDC = 50°$, $∠B = 80°$, $∠ECB = 15°$일 때"
+        },
+        {
+          "rank": 6,
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "similarity": 0.8415,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림은 평행사변형 $ABCD$에서 점 $D$가 점 $A$에 오도록 ${\\overline{EF}}$를 접는 선으로 하여 접은 것이다. $△ABC '$의 넓이가 $□ AC ' F"
+        },
+        {
+          "rank": 7,
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "similarity": 0.8404,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$에서 $∠A$의 이등분선과 ${\\overline{DC}}$의 연장선과의 교점을 $E$라고 하자. $∠AEC = 56°$일 때, $\\angle"
+        },
+        {
+          "rank": 8,
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "similarity": 0.8365,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $O$는 두 대각선의 교점이고, ${\\overline{CD}} = 8 ` ` cm$, ${\\overline{AC}} = 10 ` `"
+        },
+        {
+          "rank": 9,
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "similarity": 0.8272,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AB}} = 4 , ~ {\\overline{AC}} = 6$일 때, ${{{\\overline{"
+        },
+        {
+          "rank": 10,
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "similarity": 0.8239,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$의 두 꼭짓점 $B$, $D$에서 대각선 $AC$에 내린 수선의 발을 각각 $P$, $Q$라고 하자. $∠DPC = 55°$일 때, $\\an"
+        }
+      ]
+    },
+    {
+      "query_id": "46ACB9139B444F578F9A7DC9B54175CB",
+      "query_content": "오른쪽 그림의 $△ABC$에서 $∠A = 90°$이고 ${\\overline{BE}} = 7 ~cm ,$${\\overline{CD}} = 9 ~cm$, ${\\overline{BC}} = 10 ~cm$일 때, ${\\overline{DE}}$의 길이는? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 3,
+          "reasoning": "직각을 포함한 도형에서 변의 길이를 구하는 문제로, 유사한 개념을 다룬다."
+        },
+        {
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "relevance": 4,
+          "reasoning": "직사각형 내부의 점과 변의 길이를 다루는 문제로, 도형의 성질을 이용한 접근이 유사하다."
+        },
+        {
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "relevance": 5,
+          "reasoning": "직사각형의 변의 길이를 다루는 문제로, 도형의 성질을 이해하는 데 유사한 접근이 필요하다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "similarity": 0.9155,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 ${\\overline{AC}} \\bot{\\overline{BD}}$인 $□ ABCD$에서 ${\\overline{BC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 2,
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "similarity": 0.9051,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AB}} = 4 , ~ {\\overline{AC}} = 6$일 때, ${{{\\overline{"
+        },
+        {
+          "rank": 3,
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "similarity": 0.8932,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AH}} \\bot{\\overline{BC}}$이고 ${\\overline{AB}} = 12 cm"
+        },
+        {
+          "rank": 4,
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "similarity": 0.8629,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 직사각형 ABCD의 내부에 한 점 P를 잡았을 때, ${\\overline{AP}} = 8$ cm, ${\\overline{BP}} = 5 {\\sqrt{2}}$ c"
+        },
+        {
+          "rank": 5,
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "similarity": 0.8586,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림에서 ${\\overline{AB}} = {\\overline{AC}} = {\\overline{CD}}$이고 $∠DCE = 114°$일 때, $∠ABC$의 크기는? [이미지]"
+        },
+        {
+          "rank": 6,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.8561,
+          "in_llm_gt": true,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 7,
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "similarity": 0.8551,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 ${\\overline{AB}} = {\\overline{AC}}$인 이등변삼각형 $ABC$에서 ${\\overline{BD}} = {\\overline{DE}} = {"
+        },
+        {
+          "rank": 8,
+          "id": "B58161E49AC641CAAC6C4E8259122859",
+          "similarity": 0.8265,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 ${\\overline{AC}}$와 ${\\overline{BD}}$의 교점이 $E$이고 ${\\overline{AB}} / / {\\overline{EF}} / / {"
+        },
+        {
+          "rank": 9,
+          "id": "BBEBEF54DE6E4C04BAACE9E6E89D1308",
+          "similarity": 0.8259,
+          "in_llm_gt": false,
+          "content_preview": "세 변의 길이가 각각 다음과 같은 삼각형 중에서 예각삼각형인 것은?"
+        },
+        {
+          "rank": 10,
+          "id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "similarity": 0.825,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림에서 $△BFG$에 대해 ${\\overline{DE}} = 3 ` ` cm$, ${\\overline{BD}} = {\\overline{DF}}$, ${\\overline{BE"
+        }
+      ]
+    },
+    {
+      "query_id": "B433ED8101A14DF88CADA9116F0CDB97",
+      "query_content": "다음 그림과 같이 평행사변형 $ABCD$에서 $∠A$의 이등분선과 ${\\overline{DC}}$의 연장선과의 교점을 $E$라고 하자. $∠AEC = 56°$일 때, $\\anglex$의 크기는? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 3,
+          "reasoning": "평행사변형의 각의 비율을 다루고 있어 관련성이 있음."
+        },
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "relevance": 4,
+          "reasoning": "평행사변형의 각을 구하는 문제로, 기본적인 개념이 유사함."
+        },
+        {
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "relevance": 5,
+          "reasoning": "평행사변형의 넓이와 관련된 문제로, 개념적으로 연결됨."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "similarity": 0.9362,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $E$는 ${\\overline{AB}}$ 위의 한 점이고 $∠EDC = 50°$, $∠B = 80°$, $∠ECB = 15°$일 때"
+        },
+        {
+          "rank": 2,
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "similarity": 0.9134,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$의 두 꼭짓점 $B$, $D$에서 대각선 $AC$에 내린 수선의 발을 각각 $P$, $Q$라고 하자. $∠DPC = 55°$일 때, $\\an"
+        },
+        {
+          "rank": 3,
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "similarity": 0.9047,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 ${\\overline{AB}} = {\\overline{AC}}$인 이등변삼각형 $ABC$에서 ${\\overline{BD}} = {\\overline{DE}} = {"
+        },
+        {
+          "rank": 4,
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "similarity": 0.8899,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림에서 ${\\overline{AB}} = {\\overline{AC}} = {\\overline{CD}}$이고 $∠DCE = 114°$일 때, $∠ABC$의 크기는? [이미지]"
+        },
+        {
+          "rank": 5,
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "similarity": 0.8848,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 $∠A ~ : ~∠B = 3 ~ : ~ 2$일 때, $∠C$와 $∠D$의 크기를 각각 구하시오. [이미지] $∠C = {\\boxed} "
+        },
+        {
+          "rank": 6,
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "similarity": 0.8813,
+          "in_llm_gt": true,
+          "content_preview": "[이미지] 오른쪽 그림과 같은 평행사변형 $ABCD$에서 $\\anglex$의 크기는?"
+        },
+        {
+          "rank": 7,
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "similarity": 0.8404,
+          "in_llm_gt": false,
+          "content_preview": "강의 폭 ${\\overline{AB}}$의 길이를 구하기 위해 다음 그림과 같이 ${\\overline{AB}}$의 연장선 위에 점 $C$를 잡고 $∠DBC = 84° , ~∠ADB"
+        },
+        {
+          "rank": 8,
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "similarity": 0.8378,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 넓이가 $48 ` ` {{cm}^{2}}$인 평행사변형 $ABCD$에서 변 $AB$ 위에 ${\\overline{AE}} = {\\overline{DG}}$인 점 $"
+        },
+        {
+          "rank": 9,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.8318,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 10,
+          "id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "similarity": 0.8317,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 $□ ABCD$가 평행사변형이 되는 것은? (단, 점 $O$는 두 대각선의 교점이다.)"
+        }
+      ]
+    },
+    {
+      "query_id": "AD550B4E409F4EC097E610BB3615C98B",
+      "query_content": "다음 그림에서 ${\\overline{AB}} = {\\overline{AC}} = {\\overline{CD}}$이고 $∠DCE = 114°$일 때, $∠ABC$의 크기는? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 3,
+          "reasoning": "평행사변형에서 각의 이등분선과 관련된 문제로, 비슷한 실수를 할 가능성이 있다."
+        },
+        {
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "relevance": 4,
+          "reasoning": "각의 크기를 구하는 문제지만, 삼각형과는 다른 접근 방식이 필요하다."
+        },
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 5,
+          "reasoning": "평행사변형의 각의 비율을 구하는 문제로, 유사한 개념을 포함하고 있다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "similarity": 0.9426,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 ${\\overline{AB}} = {\\overline{AC}}$인 이등변삼각형 $ABC$에서 ${\\overline{BD}} = {\\overline{DE}} = {"
+        },
+        {
+          "rank": 2,
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "similarity": 0.9097,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $E$는 ${\\overline{AB}}$ 위의 한 점이고 $∠EDC = 50°$, $∠B = 80°$, $∠ECB = 15°$일 때"
+        },
+        {
+          "rank": 3,
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "similarity": 0.8899,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$에서 $∠A$의 이등분선과 ${\\overline{DC}}$의 연장선과의 교점을 $E$라고 하자. $∠AEC = 56°$일 때, $\\angle"
+        },
+        {
+          "rank": 4,
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "similarity": 0.8711,
+          "in_llm_gt": true,
+          "content_preview": "강의 폭 ${\\overline{AB}}$의 길이를 구하기 위해 다음 그림과 같이 ${\\overline{AB}}$의 연장선 위에 점 $C$를 잡고 $∠DBC = 84° , ~∠ADB"
+        },
+        {
+          "rank": 5,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.8683,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 6,
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "similarity": 0.8673,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AB}} = 4 , ~ {\\overline{AC}} = 6$일 때, ${{{\\overline{"
+        },
+        {
+          "rank": 7,
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "similarity": 0.8586,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림의 $△ABC$에서 $∠A = 90°$이고 ${\\overline{BE}} = 7 ~cm ,$${\\overline{CD}} = 9 ~cm$, ${\\overline{BC}}"
+        },
+        {
+          "rank": 8,
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "similarity": 0.8556,
+          "in_llm_gt": false,
+          "content_preview": "[이미지] 오른쪽 그림과 같은 평행사변형 $ABCD$에서 $\\anglex$의 크기는?"
+        },
+        {
+          "rank": 9,
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "similarity": 0.8524,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 $∠A ~ : ~∠B = 3 ~ : ~ 2$일 때, $∠C$와 $∠D$의 크기를 각각 구하시오. [이미지] $∠C = {\\boxed} "
+        },
+        {
+          "rank": 10,
+          "id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "similarity": 0.846,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 $□ ABCD$가 평행사변형이 되는 것은? (단, 점 $O$는 두 대각선의 교점이다.)"
+        }
+      ]
+    },
+    {
+      "query_id": "1001AC6A482E4383B34E5476DFA3A9C2",
+      "query_content": "다음 그림과 같이 점 $B$는 원 $O$ 위의 점이고, $□ OABC$가 직사각형일 때, ${\\overline{AC}}$의 길이는? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 3,
+          "reasoning": "직사각형의 변과 관련된 문제로, 길이를 구하는 방식이 비슷하다."
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 4,
+          "reasoning": "대각선과 관련된 문제로, 기하학적 성질을 이용해 길이를 구하는 접근이 유사하다."
+        },
+        {
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "relevance": 5,
+          "reasoning": "직사각형 내부의 점과 관련된 문제로, 길이를 구하는 방식이 비슷하다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.9146,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 2,
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "similarity": 0.9041,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $O$는 두 대각선의 교점이고, ${\\overline{CD}} = 8 ` ` cm$, ${\\overline{AC}} = 10 ` `"
+        },
+        {
+          "rank": 3,
+          "id": "51EFF604353C41E8A0AE820C04A25DD7",
+          "similarity": 0.8678,
+          "in_llm_gt": false,
+          "content_preview": "[이미지] 다음 그림과 같이 두 원 $O$, $O}^{\\prime$가 각각 직사각형 ABCD의 두 변에 접하고 $\\overline{AB}$ = 8cm, $\\overline{BC}$"
+        },
+        {
+          "rank": 4,
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "similarity": 0.8539,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 □ABCD의 대각선이 직교할 때, ${{{\\overline{CD}}}^{2}}$의 값은? [이미지]"
+        },
+        {
+          "rank": 5,
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "similarity": 0.8465,
+          "in_llm_gt": false,
+          "content_preview": "강의 폭 ${\\overline{AB}}$의 길이를 구하기 위해 다음 그림과 같이 ${\\overline{AB}}$의 연장선 위에 점 $C$를 잡고 $∠DBC = 84° , ~∠ADB"
+        },
+        {
+          "rank": 6,
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "similarity": 0.8461,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AB}} = 4 , ~ {\\overline{AC}} = 6$일 때, ${{{\\overline{"
+        },
+        {
+          "rank": 7,
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "similarity": 0.8445,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 ${\\overline{AC}} \\bot{\\overline{BD}}$인 $□ ABCD$에서 ${\\overline{BC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 8,
+          "id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "similarity": 0.844,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 $□ ABCD$가 평행사변형이 되는 것은? (단, 점 $O$는 두 대각선의 교점이다.)"
+        },
+        {
+          "rank": 9,
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "similarity": 0.8321,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 직사각형 ABCD의 내부에 한 점 P를 잡았을 때, ${\\overline{AP}} = 8$ cm, ${\\overline{BP}} = 5 {\\sqrt{2}}$ c"
+        },
+        {
+          "rank": 10,
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "similarity": 0.8206,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $M$은 ${\\overline{BC}}$의 중점이고, 점 $P$는 ${\\overline{BD}}$와 ${\\overline{AM}}$"
+        }
+      ]
+    },
+    {
+      "query_id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+      "query_content": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AH}} \\bot{\\overline{BC}}$이고 ${\\overline{AB}} = 12 cm$, ${\\overline{BH}} = 8 cm$일 때, ${\\overline{CH}}$의 길이는? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "relevance": 3,
+          "reasoning": "직사각형 내부의 점과 변의 길이를 구하는 문제로 유사한 개념을 다룬다."
+        },
+        {
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "relevance": 4,
+          "reasoning": "직사각형의 변과 관련된 문제로, 변의 길이를 구하는 접근 방식이 비슷하다."
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 5,
+          "reasoning": "직각을 포함한 도형에서 변의 길이를 구하는 문제로 관련성이 있다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "similarity": 0.8954,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AB}} = 4 , ~ {\\overline{AC}} = 6$일 때, ${{{\\overline{"
+        },
+        {
+          "rank": 2,
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "similarity": 0.8932,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림의 $△ABC$에서 $∠A = 90°$이고 ${\\overline{BE}} = 7 ~cm ,$${\\overline{CD}} = 9 ~cm$, ${\\overline{BC}}"
+        },
+        {
+          "rank": 3,
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "similarity": 0.8512,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 ${\\overline{AC}} \\bot{\\overline{BD}}$인 $□ ABCD$에서 ${\\overline{BC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 4,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.8505,
+          "in_llm_gt": true,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 5,
+          "id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "similarity": 0.8156,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림에서 $△BFG$에 대해 ${\\overline{DE}} = 3 ` ` cm$, ${\\overline{BD}} = {\\overline{DF}}$, ${\\overline{BE"
+        },
+        {
+          "rank": 6,
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "similarity": 0.8129,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 ${\\overline{AB}} = {\\overline{AC}}$인 이등변삼각형 $ABC$에서 ${\\overline{BD}} = {\\overline{DE}} = {"
+        },
+        {
+          "rank": 7,
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "similarity": 0.8122,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림에서 ${\\overline{AB}} = {\\overline{AC}} = {\\overline{CD}}$이고 $∠DCE = 114°$일 때, $∠ABC$의 크기는? [이미지]"
+        },
+        {
+          "rank": 8,
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "similarity": 0.8054,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $O$는 두 대각선의 교점이고, ${\\overline{CD}} = 8 ` ` cm$, ${\\overline{AC}} = 10 ` `"
+        },
+        {
+          "rank": 9,
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "similarity": 0.7984,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 직사각형 ABCD의 내부에 한 점 P를 잡았을 때, ${\\overline{AP}} = 8$ cm, ${\\overline{BP}} = 5 {\\sqrt{2}}$ c"
+        },
+        {
+          "rank": 10,
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "similarity": 0.7968,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 점 $B$는 원 $O$ 위의 점이고, $□ OABC$가 직사각형일 때, ${\\overline{AC}}$의 길이는? [이미지]"
+        }
+      ]
+    },
+    {
+      "query_id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+      "query_content": "다음 그림과 같이 ${\\overline{AB}} = {\\overline{AC}}$인 이등변삼각형 $ABC$에서 ${\\overline{BD}} = {\\overline{DE}} = {\\overline{EC}}$이고 $∠ADE = 76°$일 때, $∠DAE$의 크기는? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "relevance": 3,
+          "reasoning": "평행사변형에서 각도 계산을 요구하며, 유사한 접근 방식을 가진다."
+        },
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 4,
+          "reasoning": "각도 이등분선과 관련된 문제로, 유사한 풀이 접근 방식을 가진다."
+        },
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "relevance": 5,
+          "reasoning": "각도와 관련된 문제로, 학생들이 비슷한 실수를 할 가능성이 있다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "similarity": 0.9426,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림에서 ${\\overline{AB}} = {\\overline{AC}} = {\\overline{CD}}$이고 $∠DCE = 114°$일 때, $∠ABC$의 크기는? [이미지]"
+        },
+        {
+          "rank": 2,
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "similarity": 0.9047,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$에서 $∠A$의 이등분선과 ${\\overline{DC}}$의 연장선과의 교점을 $E$라고 하자. $∠AEC = 56°$일 때, $\\angle"
+        },
+        {
+          "rank": 3,
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "similarity": 0.9017,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $E$는 ${\\overline{AB}}$ 위의 한 점이고 $∠EDC = 50°$, $∠B = 80°$, $∠ECB = 15°$일 때"
+        },
+        {
+          "rank": 4,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.8559,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 5,
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "similarity": 0.8551,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림의 $△ABC$에서 $∠A = 90°$이고 ${\\overline{BE}} = 7 ~cm ,$${\\overline{CD}} = 9 ~cm$, ${\\overline{BC}}"
+        },
+        {
+          "rank": 6,
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "similarity": 0.8522,
+          "in_llm_gt": false,
+          "content_preview": "강의 폭 ${\\overline{AB}}$의 길이를 구하기 위해 다음 그림과 같이 ${\\overline{AB}}$의 연장선 위에 점 $C$를 잡고 $∠DBC = 84° , ~∠ADB"
+        },
+        {
+          "rank": 7,
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "similarity": 0.8424,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$의 두 꼭짓점 $B$, $D$에서 대각선 $AC$에 내린 수선의 발을 각각 $P$, $Q$라고 하자. $∠DPC = 55°$일 때, $\\an"
+        },
+        {
+          "rank": 8,
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "similarity": 0.8397,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AB}} = 4 , ~ {\\overline{AC}} = 6$일 때, ${{{\\overline{"
+        },
+        {
+          "rank": 9,
+          "id": "027A1DBAAD4B4715B86256B9F614F840",
+          "similarity": 0.8396,
+          "in_llm_gt": false,
+          "content_preview": "다음은 ‘이등변삼각형의 꼭지각의 이등분선은 밑변을 수직이등분한다.’를 설명하는 과정이다. (가)~(다)에 알맞은 것을 써넣으시오. [이미지] ${\\overline{AB}} = {\\"
+        },
+        {
+          "rank": 10,
+          "id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "similarity": 0.8287,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림에서 $△BFG$에 대해 ${\\overline{DE}} = 3 ` ` cm$, ${\\overline{BD}} = {\\overline{DF}}$, ${\\overline{BE"
+        }
+      ]
+    },
+    {
+      "query_id": "6C3E301AFD69401FAA960C8C55361238",
+      "query_content": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AB}} = 4 , ~ {\\overline{AC}} = 6$일 때, ${{{\\overline{BC}}}^{2}}$의 값은? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 3,
+          "reasoning": "직각이등변삼각형의 성질을 이용하여 길이를 구하는 문제로, 유사한 개념을 포함한다."
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 4,
+          "reasoning": "대각선이 직교하는 도형에서 길이를 구하는 문제로, 직각과 관련된 개념을 포함한다."
+        },
+        {
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "relevance": 5,
+          "reasoning": "직사각형 내부의 점과 관련된 문제로, 직각삼각형의 성질을 활용할 수 있다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "similarity": 0.9051,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림의 $△ABC$에서 $∠A = 90°$이고 ${\\overline{BE}} = 7 ~cm ,$${\\overline{CD}} = 9 ~cm$, ${\\overline{BC}}"
+        },
+        {
+          "rank": 2,
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "similarity": 0.8954,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AH}} \\bot{\\overline{BC}}$이고 ${\\overline{AB}} = 12 cm"
+        },
+        {
+          "rank": 3,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.8797,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 4,
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "similarity": 0.8732,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 ${\\overline{AC}} \\bot{\\overline{BD}}$인 $□ ABCD$에서 ${\\overline{BC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 5,
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "similarity": 0.8679,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 □ABCD의 대각선이 직교할 때, ${{{\\overline{CD}}}^{2}}$의 값은? [이미지]"
+        },
+        {
+          "rank": 6,
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "similarity": 0.8673,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림에서 ${\\overline{AB}} = {\\overline{AC}} = {\\overline{CD}}$이고 $∠DCE = 114°$일 때, $∠ABC$의 크기는? [이미지]"
+        },
+        {
+          "rank": 7,
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "similarity": 0.8461,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 점 $B$는 원 $O$ 위의 점이고, $□ OABC$가 직사각형일 때, ${\\overline{AC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 8,
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "similarity": 0.8412,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 직사각형 ABCD의 내부에 한 점 P를 잡았을 때, ${\\overline{AP}} = 8$ cm, ${\\overline{BP}} = 5 {\\sqrt{2}}$ c"
+        },
+        {
+          "rank": 9,
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "similarity": 0.8397,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 ${\\overline{AB}} = {\\overline{AC}}$인 이등변삼각형 $ABC$에서 ${\\overline{BD}} = {\\overline{DE}} = {"
+        },
+        {
+          "rank": 10,
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "similarity": 0.8278,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $O$는 두 대각선의 교점이고, ${\\overline{CD}} = 8 ` ` cm$, ${\\overline{AC}} = 10 ` `"
+        }
+      ]
+    },
+    {
+      "query_id": "E3D336A89BAD46F0A5E9034E243F5D92",
+      "query_content": "[이미지] 오른쪽 그림과 같은 평행사변형 $ABCD$에서 $\\anglex$의 크기는?",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "relevance": 3,
+          "reasoning": "평행사변형에서 각도를 구하는 문제로, 주어진 각을 활용하는 접근 방식이 유사하다."
+        },
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 4,
+          "reasoning": "평행사변형의 각도 관계를 이용하는 문제로, 개념적으로 유사하다."
+        },
+        {
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "relevance": 5,
+          "reasoning": "각도를 구하는 문제로, 평행사변형의 성질을 활용하지만 접근 방식은 다소 다르다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "similarity": 0.8841,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $E$는 ${\\overline{AB}}$ 위의 한 점이고 $∠EDC = 50°$, $∠B = 80°$, $∠ECB = 15°$일 때"
+        },
+        {
+          "rank": 2,
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "similarity": 0.8813,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$에서 $∠A$의 이등분선과 ${\\overline{DC}}$의 연장선과의 교점을 $E$라고 하자. $∠AEC = 56°$일 때, $\\angle"
+        },
+        {
+          "rank": 3,
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "similarity": 0.8806,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 $∠A ~ : ~∠B = 3 ~ : ~ 2$일 때, $∠C$와 $∠D$의 크기를 각각 구하시오. [이미지] $∠C = {\\boxed} "
+        },
+        {
+          "rank": 4,
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "similarity": 0.8694,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$의 두 꼭짓점 $B$, $D$에서 대각선 $AC$에 내린 수선의 발을 각각 $P$, $Q$라고 하자. $∠DPC = 55°$일 때, $\\an"
+        },
+        {
+          "rank": 5,
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "similarity": 0.8556,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림에서 ${\\overline{AB}} = {\\overline{AC}} = {\\overline{CD}}$이고 $∠DCE = 114°$일 때, $∠ABC$의 크기는? [이미지]"
+        },
+        {
+          "rank": 6,
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "similarity": 0.8234,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 □ABCD의 대각선이 직교할 때, ${{{\\overline{CD}}}^{2}}$의 값은? [이미지]"
+        },
+        {
+          "rank": 7,
+          "id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "similarity": 0.7945,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 $□ ABCD$가 평행사변형이 되는 것은? (단, 점 $O$는 두 대각선의 교점이다.)"
+        },
+        {
+          "rank": 8,
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "similarity": 0.7912,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 ${\\overline{AB}} = {\\overline{AC}}$인 이등변삼각형 $ABC$에서 ${\\overline{BD}} = {\\overline{DE}} = {"
+        },
+        {
+          "rank": 9,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.7898,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 10,
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "similarity": 0.7832,
+          "in_llm_gt": false,
+          "content_preview": "강의 폭 ${\\overline{AB}}$의 길이를 구하기 위해 다음 그림과 같이 ${\\overline{AB}}$의 연장선 위에 점 $C$를 잡고 $∠DBC = 84° , ~∠ADB"
+        }
+      ]
+    },
+    {
+      "query_id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+      "query_content": "$x + 2≤5$ [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "5F8D37AB72804C418FFAD219CA29DD52",
+          "relevance": 3,
+          "reasoning": "일차부등식의 정의를 묻는 문제로, 기본 개념을 다룸."
+        },
+        {
+          "id": "9786B12616DF41F5B614B49078961AD4",
+          "relevance": 4,
+          "reasoning": "일차부등식의 해를 구하는 문제로, 쿼리와 유사한 접근 방식."
+        },
+        {
+          "id": "72D59B348C22410AB71A08CA16EA24CD",
+          "relevance": 5,
+          "reasoning": "일차방정식과 관련된 문제로, 미지수의 개수를 다루지만 개념적으로 유사함."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "5F8D37AB72804C418FFAD219CA29DD52",
+          "similarity": 0.8811,
+          "in_llm_gt": true,
+          "content_preview": "다음 중 일차부등식인 것은?"
+        },
+        {
+          "rank": 2,
+          "id": "410C0A8C87D74B78A66C8DBBC6802E4C",
+          "similarity": 0.8225,
+          "in_llm_gt": false,
+          "content_preview": "다음 일차부등식 중 해가 $x `≥` - 1$인 것은?"
+        },
+        {
+          "rank": 3,
+          "id": "66EB2F912E2B46E080CA1DC478580B36",
+          "similarity": 0.8135,
+          "in_llm_gt": false,
+          "content_preview": "함수 $f (x) = {\\cfrac{24}{x}}$에 대하여 $f (- 2) + f (3) + f (12)$의값을 구하시오."
+        },
+        {
+          "rank": 4,
+          "id": "8C3A46CACBA44483B99486CA39238C7A",
+          "similarity": 0.8034,
+          "in_llm_gt": false,
+          "content_preview": "$3a - 5 ` {\\boxed{\\boxed{~ ~ ~}}} ` 3b - 5$"
+        },
+        {
+          "rank": 5,
+          "id": "9786B12616DF41F5B614B49078961AD4",
+          "similarity": 0.7951,
+          "in_llm_gt": true,
+          "content_preview": "모든 자연수 $x$가 일차부등식 $5 (x - 2a) \\geqx - 12$의 해가 될 때, $a$의 값의 범위를 구하시오."
+        },
+        {
+          "rank": 6,
+          "id": "E91BA85F84D84C0892780CDDB19C2DA6",
+          "similarity": 0.7866,
+          "in_llm_gt": false,
+          "content_preview": "세 점 $(- 4 , ~ 1) , ~ {\\left ({\\cfrac{a}{2}} , ~ - 5 \\right)} , ~ (1 , ~ - 3)$이 한 직선 위에 있을 때, $a$의 값을"
+        },
+        {
+          "rank": 7,
+          "id": "53B97CBEFC1B45E6B344D433AA485DBF",
+          "similarity": 0.7818,
+          "in_llm_gt": false,
+          "content_preview": "$({{x}^{2}} + 3x + 5) {{- (2x}^{2}} - x - 1)$을 간단히 하였을 때, $x$의 계수와 상수항의 합은?"
+        },
+        {
+          "rank": 8,
+          "id": "72D59B348C22410AB71A08CA16EA24CD",
+          "similarity": 0.7707,
+          "in_llm_gt": true,
+          "content_preview": "다음 중 문장을 미지수가 $2$개인 일차방정식으로 나타낸 것으로 옳지 것은?"
+        },
+        {
+          "rank": 9,
+          "id": "DE1E9E4943D641B1BDA68EE63BE82D60",
+          "similarity": 0.7674,
+          "in_llm_gt": false,
+          "content_preview": "$x$에 대한 일차부등식 $5x + 4a > 9x$를 만족시키는 자연수 $x$가 $5$개일 때, 상수 $a$의 값의 범위는?"
+        },
+        {
+          "rank": 10,
+          "id": "66EB70674E174FCAB2942F840B5442EF",
+          "similarity": 0.7657,
+          "in_llm_gt": false,
+          "content_preview": "$10$ 이하의 두 자연수 $x , ~y$에 대하여 일차방정식 $x + 3y = 15$의 $3$개의 해를 $(a , ~b) , ~ (c , ~d) , ~ (e , ~f)$라 할 때"
+        }
+      ]
+    },
+    {
+      "query_id": "4D72036FB3CF437B86D4C658D032D854",
+      "query_content": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $O$는 두 대각선의 교점이고, ${\\overline{CD}} = 8 ` ` cm$, ${\\overline{AC}} = 10 ` ` cm$, ${\\overline{BD}} = 12 ` ` cm$이다. 이때 $△OAB$의 둘레의 길이는? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 3,
+          "reasoning": "직사각형에서 대각선의 길이를 구하는 문제로, 도형의 성질을 활용하는 접근 방식이 유사하다."
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 4,
+          "reasoning": "대각선의 성질을 다루는 문제로, 평행사변형과 관련된 개념을 포함하고 있다."
+        },
+        {
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "relevance": 5,
+          "reasoning": "직사각형의 성질을 이용하여 길이를 구하는 문제로, 도형의 성질을 이해하는 데 유사하다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.914,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 2,
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "similarity": 0.9041,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 점 $B$는 원 $O$ 위의 점이고, $□ OABC$가 직사각형일 때, ${\\overline{AC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 3,
+          "id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "similarity": 0.8982,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 $□ ABCD$가 평행사변형이 되는 것은? (단, 점 $O$는 두 대각선의 교점이다.)"
+        },
+        {
+          "rank": 4,
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "similarity": 0.8764,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $M$은 ${\\overline{BC}}$의 중점이고, 점 $P$는 ${\\overline{BD}}$와 ${\\overline{AM}}$"
+        },
+        {
+          "rank": 5,
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "similarity": 0.865,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 ${\\overline{AC}} \\bot{\\overline{BD}}$인 $□ ABCD$에서 ${\\overline{BC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 6,
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "similarity": 0.8457,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 □ABCD의 대각선이 직교할 때, ${{{\\overline{CD}}}^{2}}$의 값은? [이미지]"
+        },
+        {
+          "rank": 7,
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "similarity": 0.8425,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 직사각형 ABCD의 내부에 한 점 P를 잡았을 때, ${\\overline{AP}} = 8$ cm, ${\\overline{BP}} = 5 {\\sqrt{2}}$ c"
+        },
+        {
+          "rank": 8,
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "similarity": 0.8365,
+          "in_llm_gt": false,
+          "content_preview": "강의 폭 ${\\overline{AB}}$의 길이를 구하기 위해 다음 그림과 같이 ${\\overline{AB}}$의 연장선 위에 점 $C$를 잡고 $∠DBC = 84° , ~∠ADB"
+        },
+        {
+          "rank": 9,
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "similarity": 0.8278,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AB}} = 4 , ~ {\\overline{AC}} = 6$일 때, ${{{\\overline{"
+        },
+        {
+          "rank": 10,
+          "id": "51EFF604353C41E8A0AE820C04A25DD7",
+          "similarity": 0.8259,
+          "in_llm_gt": false,
+          "content_preview": "[이미지] 다음 그림과 같이 두 원 $O$, $O}^{\\prime$가 각각 직사각형 ABCD의 두 변에 접하고 $\\overline{AB}$ = 8cm, $\\overline{BC}$"
+        }
+      ]
+    },
+    {
+      "query_id": "3128064044C64F4A8F9296D235F94ACB",
+      "query_content": "오른쪽 그림과 같이 직사각형 ABCD의 내부에 한 점 P를 잡았을 때, ${\\overline{AP}} = 8$ cm, ${\\overline{BP}} = 5 {\\sqrt{2}}$ cm, ${\\overline{CP}} = 4$ cm이다. $\\overline{DP}$의 길이는? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 3,
+          "reasoning": "직각삼각형에서 거리와 관련된 문제로, 유사한 접근 방식이 필요하다."
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 4,
+          "reasoning": "대각선의 성질을 다루고 있어, 직사각형의 성질과 연결된다."
+        },
+        {
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "relevance": 5,
+          "reasoning": "직사각형의 성질을 이용한 문제로, 길이를 구하는 방식이 유사하다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "similarity": 0.8884,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 ${\\overline{AC}} \\bot{\\overline{BD}}$인 $□ ABCD$에서 ${\\overline{BC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 2,
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "similarity": 0.8629,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림의 $△ABC$에서 $∠A = 90°$이고 ${\\overline{BE}} = 7 ~cm ,$${\\overline{CD}} = 9 ~cm$, ${\\overline{BC}}"
+        },
+        {
+          "rank": 3,
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "similarity": 0.8604,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $M$은 ${\\overline{BC}}$의 중점이고, 점 $P$는 ${\\overline{BD}}$와 ${\\overline{AM}}$"
+        },
+        {
+          "rank": 4,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.8551,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 5,
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "similarity": 0.8425,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $O$는 두 대각선의 교점이고, ${\\overline{CD}} = 8 ` ` cm$, ${\\overline{AC}} = 10 ` `"
+        },
+        {
+          "rank": 6,
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "similarity": 0.8412,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AB}} = 4 , ~ {\\overline{AC}} = 6$일 때, ${{{\\overline{"
+        },
+        {
+          "rank": 7,
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "similarity": 0.8339,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 □ABCD의 대각선이 직교할 때, ${{{\\overline{CD}}}^{2}}$의 값은? [이미지]"
+        },
+        {
+          "rank": 8,
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "similarity": 0.8321,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 점 $B$는 원 $O$ 위의 점이고, $□ OABC$가 직사각형일 때, ${\\overline{AC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 9,
+          "id": "75D6A18B7A664FC0B35942B943FD16FC",
+          "similarity": 0.8189,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 넓이가 $64 ` {{cm}^{2}}$인 평행사변형 $` ABCD$의 내부에 한 점 $P$를 잡았다. $△PCD$의 넓이가 $13 ` {{cm}^{2}}$일 때,"
+        },
+        {
+          "rank": 10,
+          "id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+          "similarity": 0.8166,
+          "in_llm_gt": false,
+          "content_preview": "좌표평면 위의 네 점 $A (2 , ~ 4)$, $B (4 , ~ 2)$, $C (5 , ~ 2)$, $D (5 , ~ 4)$를 꼭짓점으로 하는 사각형이 아래 그림과 같이 있다. "
+        }
+      ]
+    },
+    {
+      "query_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "query_content": "오른쪽 그림과 같이 ${\\overline{AC}} \\bot{\\overline{BD}}$인 $□ ABCD$에서 ${\\overline{BC}}$의 길이는? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "relevance": 3,
+          "reasoning": "직사각형의 내부 점과 관련된 길이를 구하는 문제로, 유사한 기하학적 개념을 포함."
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 4,
+          "reasoning": "직사각형의 대각선이 직교하는 경우의 길이를 다루어, 유사한 기하학적 성질을 포함."
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 5,
+          "reasoning": "평행사변형의 성질을 이용하여 길이를 구하는 문제로, 유사한 기하학적 개념을 다룸."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "similarity": 0.9155,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림의 $△ABC$에서 $∠A = 90°$이고 ${\\overline{BE}} = 7 ~cm ,$${\\overline{CD}} = 9 ~cm$, ${\\overline{BC}}"
+        },
+        {
+          "rank": 2,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.8887,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 3,
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "similarity": 0.8884,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 직사각형 ABCD의 내부에 한 점 P를 잡았을 때, ${\\overline{AP}} = 8$ cm, ${\\overline{BP}} = 5 {\\sqrt{2}}$ c"
+        },
+        {
+          "rank": 4,
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "similarity": 0.8732,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AB}} = 4 , ~ {\\overline{AC}} = 6$일 때, ${{{\\overline{"
+        },
+        {
+          "rank": 5,
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "similarity": 0.869,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 □ABCD의 대각선이 직교할 때, ${{{\\overline{CD}}}^{2}}$의 값은? [이미지]"
+        },
+        {
+          "rank": 6,
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "similarity": 0.865,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $O$는 두 대각선의 교점이고, ${\\overline{CD}} = 8 ` ` cm$, ${\\overline{AC}} = 10 ` `"
+        },
+        {
+          "rank": 7,
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "similarity": 0.8512,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AH}} \\bot{\\overline{BC}}$이고 ${\\overline{AB}} = 12 cm"
+        },
+        {
+          "rank": 8,
+          "id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "similarity": 0.8505,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 $□ ABCD$가 평행사변형이 되는 것은? (단, 점 $O$는 두 대각선의 교점이다.)"
+        },
+        {
+          "rank": 9,
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "similarity": 0.8445,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 점 $B$는 원 $O$ 위의 점이고, $□ OABC$가 직사각형일 때, ${\\overline{AC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 10,
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "similarity": 0.8436,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $M$은 ${\\overline{BC}}$의 중점이고, 점 $P$는 ${\\overline{BD}}$와 ${\\overline{AM}}$"
+        }
+      ]
+    },
+    {
+      "query_id": "66063A66864042448368E291FDCF44D5",
+      "query_content": "일차함수 $y = ax + b$의 그래프가 오른쪽 그림과 같을 때, 다음 중 $y = bx + a$의 그래프 위에 있는 점은? (단, $a$, $b$는 상수) [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "7D58A391CEDB4BDF88E36C79847B4EBA",
+          "relevance": 3,
+          "reasoning": "연립방정식의 해를 다루며, 상수의 관계를 이해하는 것이 중요하다."
+        },
+        {
+          "id": "EEFB41E903DA41C7A8B5F3B1BBB8A2B1",
+          "relevance": 4,
+          "reasoning": "세 점이 한 직선 위에 있을 때의 조건을 다루며, 일차함수의 개념과 관련이 있다."
+        },
+        {
+          "id": "E91BA85F84D84C0892780CDDB19C2DA6",
+          "relevance": 5,
+          "reasoning": "세 점이 한 직선 위에 있을 때의 조건을 다루며, 일차함수의 개념과 관련이 있다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "7D58A391CEDB4BDF88E36C79847B4EBA",
+          "similarity": 0.864,
+          "in_llm_gt": true,
+          "content_preview": "연립방정식 ${\\left \\lbrace{\\begin{matrix}{3y = x + a} \\\\ {- 7x + by = 14} \\end{matrix}} \\right .}$의 해가 무수"
+        },
+        {
+          "rank": 2,
+          "id": "EEFB41E903DA41C7A8B5F3B1BBB8A2B1",
+          "similarity": 0.8466,
+          "in_llm_gt": true,
+          "content_preview": "세 점 $(0 , ~a) , ~ (1 , ~ 0) , ~ (6 , ~ 5)$가 한 직선 위에 있을 때, $a$의 값을 구하시오."
+        },
+        {
+          "rank": 3,
+          "id": "45A8E2DF4C4A4205A59ACB33A0C9DB65",
+          "similarity": 0.8458,
+          "in_llm_gt": false,
+          "content_preview": "일차함수 $y = - ax + b$에 대하여 $ab < 0$일 때, 이 일차함수의 그래프가 반드시 지나는 사분면은?"
+        },
+        {
+          "rank": 4,
+          "id": "66EB70674E174FCAB2942F840B5442EF",
+          "similarity": 0.844,
+          "in_llm_gt": false,
+          "content_preview": "$10$ 이하의 두 자연수 $x , ~y$에 대하여 일차방정식 $x + 3y = 15$의 $3$개의 해를 $(a , ~b) , ~ (c , ~d) , ~ (e , ~f)$라 할 때"
+        },
+        {
+          "rank": 5,
+          "id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+          "similarity": 0.8435,
+          "in_llm_gt": false,
+          "content_preview": "좌표평면 위의 네 점 $A (2 , ~ 4)$, $B (4 , ~ 2)$, $C (5 , ~ 2)$, $D (5 , ~ 4)$를 꼭짓점으로 하는 사각형이 아래 그림과 같이 있다. "
+        },
+        {
+          "rank": 6,
+          "id": "E91BA85F84D84C0892780CDDB19C2DA6",
+          "similarity": 0.8405,
+          "in_llm_gt": true,
+          "content_preview": "세 점 $(- 4 , ~ 1) , ~ {\\left ({\\cfrac{a}{2}} , ~ - 5 \\right)} , ~ (1 , ~ - 3)$이 한 직선 위에 있을 때, $a$의 값을"
+        },
+        {
+          "rank": 7,
+          "id": "5AD1D60463134A7AA56AA545EB347533",
+          "similarity": 0.8267,
+          "in_llm_gt": false,
+          "content_preview": "두 일차방정식 $4x + y - 6 = 0$, $4x - 5y + 30 = 0$의 그래프와 $x$축으로 둘러싸인 삼각형의 넓이를 <조건>에 따라 차례로 구하시오.(가) $4x + "
+        },
+        {
+          "rank": 8,
+          "id": "9786B12616DF41F5B614B49078961AD4",
+          "similarity": 0.8158,
+          "in_llm_gt": false,
+          "content_preview": "모든 자연수 $x$가 일차부등식 $5 (x - 2a) \\geqx - 12$의 해가 될 때, $a$의 값의 범위를 구하시오."
+        },
+        {
+          "rank": 9,
+          "id": "DE1E9E4943D641B1BDA68EE63BE82D60",
+          "similarity": 0.8153,
+          "in_llm_gt": false,
+          "content_preview": "$x$에 대한 일차부등식 $5x + 4a > 9x$를 만족시키는 자연수 $x$가 $5$개일 때, 상수 $a$의 값의 범위는?"
+        },
+        {
+          "rank": 10,
+          "id": "410C0A8C87D74B78A66C8DBBC6802E4C",
+          "similarity": 0.8093,
+          "in_llm_gt": false,
+          "content_preview": "다음 일차부등식 중 해가 $x `≥` - 1$인 것은?"
+        }
+      ]
+    },
+    {
+      "query_id": "2CC59E14574C4F0094BC50DDFC326734",
+      "query_content": "다음 그림은 평행사변형 $ABCD$에서 점 $D$가 점 $A$에 오도록 ${\\overline{EF}}$를 접는 선으로 하여 접은 것이다. $△ABC '$의 넓이가 $□ AC ' FE$의 넓이의 ${\\cfrac{3}{4}}$배일 때, ${\\overline{AD}} ` ` : ` ` {\\overline{C ' F}} = m : n$이다. 서로소인 두 자연수 $...",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "75D6A18B7A664FC0B35942B943FD16FC",
+          "relevance": 3,
+          "reasoning": "평행사변형 내부의 삼각형 넓이를 구하는 문제로, 넓이 비율을 다룬다."
+        },
+        {
+          "id": "B58161E49AC641CAAC6C4E8259122859",
+          "relevance": 4,
+          "reasoning": "평행사변형에서 비율을 구하는 문제로, 유사한 수학적 개념을 포함한다."
+        },
+        {
+          "id": "AB202E4A636A4DA288A841F393E51704",
+          "relevance": 5,
+          "reasoning": "평행사변형의 성질을 이용한 문제로, 넓이와 비율을 다룬다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "similarity": 0.906,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 넓이가 $48 ` ` {{cm}^{2}}$인 평행사변형 $ABCD$에서 변 $AB$ 위에 ${\\overline{AE}} = {\\overline{DG}}$인 점 $"
+        },
+        {
+          "rank": 2,
+          "id": "75D6A18B7A664FC0B35942B943FD16FC",
+          "similarity": 0.8438,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 넓이가 $64 ` {{cm}^{2}}$인 평행사변형 $` ABCD$의 내부에 한 점 $P$를 잡았다. $△PCD$의 넓이가 $13 ` {{cm}^{2}}$일 때,"
+        },
+        {
+          "rank": 3,
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "similarity": 0.8415,
+          "in_llm_gt": false,
+          "content_preview": "강의 폭 ${\\overline{AB}}$의 길이를 구하기 위해 다음 그림과 같이 ${\\overline{AB}}$의 연장선 위에 점 $C$를 잡고 $∠DBC = 84° , ~∠ADB"
+        },
+        {
+          "rank": 4,
+          "id": "B58161E49AC641CAAC6C4E8259122859",
+          "similarity": 0.8372,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 ${\\overline{AC}}$와 ${\\overline{BD}}$의 교점이 $E$이고 ${\\overline{AB}} / / {\\overline{EF}} / / {"
+        },
+        {
+          "rank": 5,
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "similarity": 0.8329,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $M$은 ${\\overline{BC}}$의 중점이고, 점 $P$는 ${\\overline{BD}}$와 ${\\overline{AM}}$"
+        },
+        {
+          "rank": 6,
+          "id": "AB202E4A636A4DA288A841F393E51704",
+          "similarity": 0.8297,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 $□ ABCD$에서 ${\\overline{AE}} = {\\overline{EF}} = {\\overline{FB}}$, ${\\overline{DH}} = {\\ove"
+        },
+        {
+          "rank": 7,
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "similarity": 0.8282,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 $∠A ~ : ~∠B = 3 ~ : ~ 2$일 때, $∠C$와 $∠D$의 크기를 각각 구하시오. [이미지] $∠C = {\\boxed} "
+        },
+        {
+          "rank": 8,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.825,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 9,
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "similarity": 0.817,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$에서 $∠A$의 이등분선과 ${\\overline{DC}}$의 연장선과의 교점을 $E$라고 하자. $∠AEC = 56°$일 때, $\\angle"
+        },
+        {
+          "rank": 10,
+          "id": "027A1DBAAD4B4715B86256B9F614F840",
+          "similarity": 0.8158,
+          "in_llm_gt": false,
+          "content_preview": "다음은 ‘이등변삼각형의 꼭지각의 이등분선은 밑변을 수직이등분한다.’를 설명하는 과정이다. (가)~(다)에 알맞은 것을 써넣으시오. [이미지] ${\\overline{AB}} = {\\"
+        }
+      ]
+    },
+    {
+      "query_id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+      "query_content": "다음 그림과 같이 넓이가 $48 ` ` {{cm}^{2}}$인 평행사변형 $ABCD$에서 변 $AB$ 위에 ${\\overline{AE}} = {\\overline{DG}}$인 점 $E$를 잡았다. 이때 ${\\overline{EF}}$와 평행한 직선이 변 $AD$와 $BC$ 와 만나는 점을 각각 $H$, $G$라 할 때, $□ HEFG$의 넓이를 구하시오.□ ...",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "relevance": 3,
+          "reasoning": "평행사변형의 넓이와 관련된 비율 문제로, 비슷한 실수를 할 가능성이 있음."
+        },
+        {
+          "id": "AB202E4A636A4DA288A841F393E51704",
+          "relevance": 4,
+          "reasoning": "평행사변형의 넓이와 관련된 문제로, 대각선과의 관계를 다룸."
+        },
+        {
+          "id": "B58161E49AC641CAAC6C4E8259122859",
+          "relevance": 5,
+          "reasoning": "평행사변형의 변과 비율을 다루는 문제로, 유사한 개념을 포함."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "similarity": 0.906,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림은 평행사변형 $ABCD$에서 점 $D$가 점 $A$에 오도록 ${\\overline{EF}}$를 접는 선으로 하여 접은 것이다. $△ABC '$의 넓이가 $□ AC ' F"
+        },
+        {
+          "rank": 2,
+          "id": "AB202E4A636A4DA288A841F393E51704",
+          "similarity": 0.897,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 $□ ABCD$에서 ${\\overline{AE}} = {\\overline{EF}} = {\\overline{FB}}$, ${\\overline{DH}} = {\\ove"
+        },
+        {
+          "rank": 3,
+          "id": "B58161E49AC641CAAC6C4E8259122859",
+          "similarity": 0.855,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 ${\\overline{AC}}$와 ${\\overline{BD}}$의 교점이 $E$이고 ${\\overline{AB}} / / {\\overline{EF}} / / {"
+        },
+        {
+          "rank": 4,
+          "id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "similarity": 0.8414,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림에서 $△BFG$에 대해 ${\\overline{DE}} = 3 ` ` cm$, ${\\overline{BD}} = {\\overline{DF}}$, ${\\overline{BE"
+        },
+        {
+          "rank": 5,
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "similarity": 0.8378,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$에서 $∠A$의 이등분선과 ${\\overline{DC}}$의 연장선과의 교점을 $E$라고 하자. $∠AEC = 56°$일 때, $\\angle"
+        },
+        {
+          "rank": 6,
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "similarity": 0.8328,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $M$은 ${\\overline{BC}}$의 중점이고, 점 $P$는 ${\\overline{BD}}$와 ${\\overline{AM}}$"
+        },
+        {
+          "rank": 7,
+          "id": "75D6A18B7A664FC0B35942B943FD16FC",
+          "similarity": 0.8252,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 넓이가 $64 ` {{cm}^{2}}$인 평행사변형 $` ABCD$의 내부에 한 점 $P$를 잡았다. $△PCD$의 넓이가 $13 ` {{cm}^{2}}$일 때,"
+        },
+        {
+          "rank": 8,
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "similarity": 0.8222,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$의 두 꼭짓점 $B$, $D$에서 대각선 $AC$에 내린 수선의 발을 각각 $P$, $Q$라고 하자. $∠DPC = 55°$일 때, $\\an"
+        },
+        {
+          "rank": 9,
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "similarity": 0.8171,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $E$는 ${\\overline{AB}}$ 위의 한 점이고 $∠EDC = 50°$, $∠B = 80°$, $∠ECB = 15°$일 때"
+        },
+        {
+          "rank": 10,
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "similarity": 0.8109,
+          "in_llm_gt": false,
+          "content_preview": "강의 폭 ${\\overline{AB}}$의 길이를 구하기 위해 다음 그림과 같이 ${\\overline{AB}}$의 연장선 위에 점 $C$를 잡고 $∠DBC = 84° , ~∠ADB"
+        }
+      ]
+    },
+    {
+      "query_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "query_content": "다음 그림에서 $△BFG$에 대해 ${\\overline{DE}} = 3 ` ` cm$, ${\\overline{BD}} = {\\overline{DF}}$, ${\\overline{BE}} = {\\overline{EG}}$이고, $△AGH$에 대해 ${\\overline{AB}} = {\\overline{BG}}$, ${\\overline{AC}} = {\\overli...",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "relevance": 3,
+          "reasoning": "직각삼각형에서 길이를 구하는 문제로, 유사한 접근 방식이 필요하다."
+        },
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 4,
+          "reasoning": "직각삼각형에서 길이를 구하는 문제로, 비슷한 실수를 할 가능성이 있다."
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 5,
+          "reasoning": "사각형의 성질을 이용한 문제로, 길이와 관련된 계산이 유사하다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "AB202E4A636A4DA288A841F393E51704",
+          "similarity": 0.896,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 $□ ABCD$에서 ${\\overline{AE}} = {\\overline{EF}} = {\\overline{FB}}$, ${\\overline{DH}} = {\\ove"
+        },
+        {
+          "rank": 2,
+          "id": "B58161E49AC641CAAC6C4E8259122859",
+          "similarity": 0.8562,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 ${\\overline{AC}}$와 ${\\overline{BD}}$의 교점이 $E$이고 ${\\overline{AB}} / / {\\overline{EF}} / / {"
+        },
+        {
+          "rank": 3,
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "similarity": 0.8414,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 넓이가 $48 ` ` {{cm}^{2}}$인 평행사변형 $ABCD$에서 변 $AB$ 위에 ${\\overline{AE}} = {\\overline{DG}}$인 점 $"
+        },
+        {
+          "rank": 4,
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "similarity": 0.8287,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 ${\\overline{AB}} = {\\overline{AC}}$인 이등변삼각형 $ABC$에서 ${\\overline{BD}} = {\\overline{DE}} = {"
+        },
+        {
+          "rank": 5,
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "similarity": 0.825,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림의 $△ABC$에서 $∠A = 90°$이고 ${\\overline{BE}} = 7 ~cm ,$${\\overline{CD}} = 9 ~cm$, ${\\overline{BC}}"
+        },
+        {
+          "rank": 6,
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "similarity": 0.8156,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AH}} \\bot{\\overline{BC}}$이고 ${\\overline{AB}} = 12 cm"
+        },
+        {
+          "rank": 7,
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "similarity": 0.7945,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 ${\\overline{AC}} \\bot{\\overline{BD}}$인 $□ ABCD$에서 ${\\overline{BC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 8,
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "similarity": 0.7928,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림은 평행사변형 $ABCD$에서 점 $D$가 점 $A$에 오도록 ${\\overline{EF}}$를 접는 선으로 하여 접은 것이다. $△ABC '$의 넓이가 $□ AC ' F"
+        },
+        {
+          "rank": 9,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.7838,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 10,
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "similarity": 0.7837,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림에서 ${\\overline{AB}} = {\\overline{AC}} = {\\overline{CD}}$이고 $∠DCE = 114°$일 때, $∠ABC$의 크기는? [이미지]"
+        }
+      ]
+    },
+    {
+      "query_id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+      "query_content": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $M$은 ${\\overline{BC}}$의 중점이고, 점 $P$는 ${\\overline{BD}}$와 ${\\overline{AM}}$의 교점이다. $□ ABCD$의 넓이가 $42 ` ` {{cm}^{2}}$일 때, $△ABP$의 넓이는? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "relevance": 3,
+          "reasoning": "평행사변형의 넓이와 관련된 문제로, 비슷한 실수를 할 가능성이 있다."
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 4,
+          "reasoning": "평행사변형의 성질을 이용한 문제로, 개념적으로 유사하다."
+        },
+        {
+          "id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "relevance": 5,
+          "reasoning": "평행사변형의 성질을 다루고 있어 관련성이 있다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "75D6A18B7A664FC0B35942B943FD16FC",
+          "similarity": 0.8811,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 넓이가 $64 ` {{cm}^{2}}$인 평행사변형 $` ABCD$의 내부에 한 점 $P$를 잡았다. $△PCD$의 넓이가 $13 ` {{cm}^{2}}$일 때,"
+        },
+        {
+          "rank": 2,
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "similarity": 0.8764,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $O$는 두 대각선의 교점이고, ${\\overline{CD}} = 8 ` ` cm$, ${\\overline{AC}} = 10 ` `"
+        },
+        {
+          "rank": 3,
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "similarity": 0.8604,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 직사각형 ABCD의 내부에 한 점 P를 잡았을 때, ${\\overline{AP}} = 8$ cm, ${\\overline{BP}} = 5 {\\sqrt{2}}$ c"
+        },
+        {
+          "rank": 4,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.849,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 5,
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "similarity": 0.8436,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 ${\\overline{AC}} \\bot{\\overline{BD}}$인 $□ ABCD$에서 ${\\overline{BC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 6,
+          "id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "similarity": 0.8367,
+          "in_llm_gt": true,
+          "content_preview": "다음 중 $□ ABCD$가 평행사변형이 되는 것은? (단, 점 $O$는 두 대각선의 교점이다.)"
+        },
+        {
+          "rank": 7,
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "similarity": 0.8329,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림은 평행사변형 $ABCD$에서 점 $D$가 점 $A$에 오도록 ${\\overline{EF}}$를 접는 선으로 하여 접은 것이다. $△ABC '$의 넓이가 $□ AC ' F"
+        },
+        {
+          "rank": 8,
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "similarity": 0.8328,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 넓이가 $48 ` ` {{cm}^{2}}$인 평행사변형 $ABCD$에서 변 $AB$ 위에 ${\\overline{AE}} = {\\overline{DG}}$인 점 $"
+        },
+        {
+          "rank": 9,
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "similarity": 0.8206,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 점 $B$는 원 $O$ 위의 점이고, $□ OABC$가 직사각형일 때, ${\\overline{AC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 10,
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "similarity": 0.8157,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$의 두 꼭짓점 $B$, $D$에서 대각선 $AC$에 내린 수선의 발을 각각 $P$, $Q$라고 하자. $∠DPC = 55°$일 때, $\\an"
+        }
+      ]
+    },
+    {
+      "query_id": "51EFF604353C41E8A0AE820C04A25DD7",
+      "query_content": "[이미지] 다음 그림과 같이 두 원 $O$, $O}^{\\prime$가 각각 직사각형 ABCD의 두 변에 접하고 $\\overline{AB}$ = 8cm, $\\overline{BC}$ = 9cm, 원 $O$와 $O}^{\\prime$의 반지름의 비는 3 : 1이다. 원 $O$의 반지름의 길이를 $\\cfrac{a}{b}$이라고 할 때, $a - b$의 값은?",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "relevance": 3,
+          "reasoning": "직사각형의 대각선과 관련된 문제로, 기하학적 개념이 유사하다."
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 4,
+          "reasoning": "직사각형의 변과 관련된 문제로, 기하학적 접근이 비슷하다."
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 5,
+          "reasoning": "직사각형의 대각선이 직교하는 상황을 다루고 있어 유사성이 있다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "similarity": 0.8678,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 점 $B$는 원 $O$ 위의 점이고, $□ OABC$가 직사각형일 때, ${\\overline{AC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 2,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.8334,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 3,
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "similarity": 0.8259,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $O$는 두 대각선의 교점이고, ${\\overline{CD}} = 8 ` ` cm$, ${\\overline{AC}} = 10 ` `"
+        },
+        {
+          "rank": 4,
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "similarity": 0.8066,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림은 평행사변형 $ABCD$에서 점 $D$가 점 $A$에 오도록 ${\\overline{EF}}$를 접는 선으로 하여 접은 것이다. $△ABC '$의 넓이가 $□ AC ' F"
+        },
+        {
+          "rank": 5,
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "similarity": 0.801,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 ${\\overline{AC}} \\bot{\\overline{BD}}$인 $□ ABCD$에서 ${\\overline{BC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 6,
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "similarity": 0.795,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 직사각형 ABCD의 내부에 한 점 P를 잡았을 때, ${\\overline{AP}} = 8$ cm, ${\\overline{BP}} = 5 {\\sqrt{2}}$ c"
+        },
+        {
+          "rank": 7,
+          "id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "similarity": 0.7918,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 $□ ABCD$가 평행사변형이 되는 것은? (단, 점 $O$는 두 대각선의 교점이다.)"
+        },
+        {
+          "rank": 8,
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "similarity": 0.787,
+          "in_llm_gt": false,
+          "content_preview": "강의 폭 ${\\overline{AB}}$의 길이를 구하기 위해 다음 그림과 같이 ${\\overline{AB}}$의 연장선 위에 점 $C$를 잡고 $∠DBC = 84° , ~∠ADB"
+        },
+        {
+          "rank": 9,
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "similarity": 0.7857,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AB}} = 4 , ~ {\\overline{AC}} = 6$일 때, ${{{\\overline{"
+        },
+        {
+          "rank": 10,
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "similarity": 0.7807,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 □ABCD의 대각선이 직교할 때, ${{{\\overline{CD}}}^{2}}$의 값은? [이미지]"
+        }
+      ]
+    },
+    {
+      "query_id": "AB202E4A636A4DA288A841F393E51704",
+      "query_content": "다음 그림과 같이 $□ ABCD$에서 ${\\overline{AE}} = {\\overline{EF}} = {\\overline{FB}}$, ${\\overline{DH}} = {\\overline{HG}} = {\\overline{GC}}$이고, ${\\overline{AD}}$$/ /$${\\overline{EH}}$$/ /$${\\overline{FG}}$$/ /$$...",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "B58161E49AC641CAAC6C4E8259122859",
+          "relevance": 3,
+          "reasoning": "선분의 비율을 구하는 문제로, 기하학적 성질을 활용한다."
+        },
+        {
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "relevance": 4,
+          "reasoning": "평행사변형의 넓이와 관련된 문제로, 기하학적 성질을 이용한다."
+        },
+        {
+          "id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "relevance": 5,
+          "reasoning": "삼각형의 비율을 다루고 있으며, 기하학적 성질을 활용하는 점에서 유사하다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "B58161E49AC641CAAC6C4E8259122859",
+          "similarity": 0.9114,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 ${\\overline{AC}}$와 ${\\overline{BD}}$의 교점이 $E$이고 ${\\overline{AB}} / / {\\overline{EF}} / / {"
+        },
+        {
+          "rank": 2,
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "similarity": 0.897,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 넓이가 $48 ` ` {{cm}^{2}}$인 평행사변형 $ABCD$에서 변 $AB$ 위에 ${\\overline{AE}} = {\\overline{DG}}$인 점 $"
+        },
+        {
+          "rank": 3,
+          "id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "similarity": 0.896,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림에서 $△BFG$에 대해 ${\\overline{DE}} = 3 ` ` cm$, ${\\overline{BD}} = {\\overline{DF}}$, ${\\overline{BE"
+        },
+        {
+          "rank": 4,
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "similarity": 0.8297,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림은 평행사변형 $ABCD$에서 점 $D$가 점 $A$에 오도록 ${\\overline{EF}}$를 접는 선으로 하여 접은 것이다. $△ABC '$의 넓이가 $□ AC ' F"
+        },
+        {
+          "rank": 5,
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "similarity": 0.8153,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 ${\\overline{AC}} \\bot{\\overline{BD}}$인 $□ ABCD$에서 ${\\overline{BC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 6,
+          "id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "similarity": 0.8048,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 $□ ABCD$가 평행사변형이 되는 것은? (단, 점 $O$는 두 대각선의 교점이다.)"
+        },
+        {
+          "rank": 7,
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "similarity": 0.7985,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림의 $△ABC$에서 $∠A = 90°$이고 ${\\overline{BE}} = 7 ~cm ,$${\\overline{CD}} = 9 ~cm$, ${\\overline{BC}}"
+        },
+        {
+          "rank": 8,
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "similarity": 0.7955,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 ${\\overline{AB}} = {\\overline{AC}}$인 이등변삼각형 $ABC$에서 ${\\overline{BD}} = {\\overline{DE}} = {"
+        },
+        {
+          "rank": 9,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.7908,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 10,
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "similarity": 0.7903,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $M$은 ${\\overline{BC}}$의 중점이고, 점 $P$는 ${\\overline{BD}}$와 ${\\overline{AM}}$"
+        }
+      ]
+    },
+    {
+      "query_id": "DC786E25B9AD449B86EF35F0F774B642",
+      "query_content": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $E$는 ${\\overline{AB}}$ 위의 한 점이고 $∠EDC = 50°$, $∠B = 80°$, $∠ECB = 15°$일 때, $∠DEC$의 크기는? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 3,
+          "reasoning": "평행사변형의 각 비율을 이용해 각의 크기를 구하는 문제로, 유사한 개념을 포함한다."
+        },
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "relevance": 4,
+          "reasoning": "평행사변형에서 각의 크기를 구하는 문제로, 기본적인 성질을 활용한다."
+        },
+        {
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "relevance": 5,
+          "reasoning": "각의 크기를 구하는 문제지만, 평행사변형과는 다른 형태의 문제로 약간의 차이가 있다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "similarity": 0.9362,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$에서 $∠A$의 이등분선과 ${\\overline{DC}}$의 연장선과의 교점을 $E$라고 하자. $∠AEC = 56°$일 때, $\\angle"
+        },
+        {
+          "rank": 2,
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "similarity": 0.9097,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림에서 ${\\overline{AB}} = {\\overline{AC}} = {\\overline{CD}}$이고 $∠DCE = 114°$일 때, $∠ABC$의 크기는? [이미지]"
+        },
+        {
+          "rank": 3,
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "similarity": 0.9082,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$의 두 꼭짓점 $B$, $D$에서 대각선 $AC$에 내린 수선의 발을 각각 $P$, $Q$라고 하자. $∠DPC = 55°$일 때, $\\an"
+        },
+        {
+          "rank": 4,
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "similarity": 0.9017,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 ${\\overline{AB}} = {\\overline{AC}}$인 이등변삼각형 $ABC$에서 ${\\overline{BD}} = {\\overline{DE}} = {"
+        },
+        {
+          "rank": 5,
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "similarity": 0.8871,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 $∠A ~ : ~∠B = 3 ~ : ~ 2$일 때, $∠C$와 $∠D$의 크기를 각각 구하시오. [이미지] $∠C = {\\boxed} "
+        },
+        {
+          "rank": 6,
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "similarity": 0.8841,
+          "in_llm_gt": true,
+          "content_preview": "[이미지] 오른쪽 그림과 같은 평행사변형 $ABCD$에서 $\\anglex$의 크기는?"
+        },
+        {
+          "rank": 7,
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "similarity": 0.8417,
+          "in_llm_gt": true,
+          "content_preview": "강의 폭 ${\\overline{AB}}$의 길이를 구하기 위해 다음 그림과 같이 ${\\overline{AB}}$의 연장선 위에 점 $C$를 잡고 $∠DBC = 84° , ~∠ADB"
+        },
+        {
+          "rank": 8,
+          "id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "similarity": 0.837,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 $□ ABCD$가 평행사변형이 되는 것은? (단, 점 $O$는 두 대각선의 교점이다.)"
+        },
+        {
+          "rank": 9,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.8322,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 10,
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "similarity": 0.8171,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 넓이가 $48 ` ` {{cm}^{2}}$인 평행사변형 $ABCD$에서 변 $AB$ 위에 ${\\overline{AE}} = {\\overline{DG}}$인 점 $"
+        }
+      ]
+    },
+    {
+      "query_id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+      "query_content": "다음 그림과 같이 $A$, $B$, $C$, $D$ 네 영역으로 나누어진 도형을 빨강, 파랑, 노랑 $3$가지 색으로 칠하려고 한다. 이웃한 영역은 서로 다른 색으로 구분하여 칠할 때, $B$영역에 빨간색이 칠해질 확률은? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "relevance": 3,
+          "reasoning": "평행사변형의 각도와 관련된 문제로, 도형의 성질을 활용하는 접근이 비슷하다."
+        },
+        {
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "relevance": 4,
+          "reasoning": "직사각형 내부의 점과 관련된 거리 문제로, 도형의 성질을 이용한 접근이 유사하다."
+        },
+        {
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "relevance": 5,
+          "reasoning": "직사각형과 원의 관계를 다루며, 도형의 성질을 활용하는 점에서 유사하다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+          "similarity": 0.7807,
+          "in_llm_gt": false,
+          "content_preview": "좌표평면 위의 네 점 $A (2 , ~ 4)$, $B (4 , ~ 2)$, $C (5 , ~ 2)$, $D (5 , ~ 4)$를 꼭짓점으로 하는 사각형이 아래 그림과 같이 있다. "
+        },
+        {
+          "rank": 2,
+          "id": "75D6A18B7A664FC0B35942B943FD16FC",
+          "similarity": 0.7552,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 넓이가 $64 ` {{cm}^{2}}$인 평행사변형 $` ABCD$의 내부에 한 점 $P$를 잡았다. $△PCD$의 넓이가 $13 ` {{cm}^{2}}$일 때,"
+        },
+        {
+          "rank": 3,
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "similarity": 0.7543,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $M$은 ${\\overline{BC}}$의 중점이고, 점 $P$는 ${\\overline{BD}}$와 ${\\overline{AM}}$"
+        },
+        {
+          "rank": 4,
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "similarity": 0.7473,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 직사각형 ABCD의 내부에 한 점 P를 잡았을 때, ${\\overline{AP}} = 8$ cm, ${\\overline{BP}} = 5 {\\sqrt{2}}$ c"
+        },
+        {
+          "rank": 5,
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "similarity": 0.7468,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 점 $B$는 원 $O$ 위의 점이고, $□ OABC$가 직사각형일 때, ${\\overline{AC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 6,
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "similarity": 0.742,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림은 평행사변형 $ABCD$에서 점 $D$가 점 $A$에 오도록 ${\\overline{EF}}$를 접는 선으로 하여 접은 것이다. $△ABC '$의 넓이가 $□ AC ' F"
+        },
+        {
+          "rank": 7,
+          "id": "EF59D406E05D4D3885CB6DCB8E41A7E5",
+          "similarity": 0.7359,
+          "in_llm_gt": false,
+          "content_preview": "두 분수 ${\\cfrac{1}{6}}$과 ${\\cfrac{7}{8}}$ 사이에 분모가 $24$이고 분자가 자연수인 분수 중에서 유한소수로 나타낼 수 있는 분수의 개수를 구하여 □ "
+        },
+        {
+          "rank": 8,
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "similarity": 0.7358,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$의 두 꼭짓점 $B$, $D$에서 대각선 $AC$에 내린 수선의 발을 각각 $P$, $Q$라고 하자. $∠DPC = 55°$일 때, $\\an"
+        },
+        {
+          "rank": 9,
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "similarity": 0.7306,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 □ABCD의 대각선이 직교할 때, ${{{\\overline{CD}}}^{2}}$의 값은? [이미지]"
+        },
+        {
+          "rank": 10,
+          "id": "2F63FE75EC4E4A32887455C839BD2C1E",
+          "similarity": 0.7294,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 똑같은 모양의 사다리꼴을 한 변이 완전히 겹치도록 계속해서 이어 붙여 새로운 도형을 만들려고 한다. $29$개의 사다리꼴로 만들 도형의 둘레의 길이는? [이미지]"
+        }
+      ]
+    },
+    {
+      "query_id": "AE50A202C3384AFD9C52678B6BA7833A",
+      "query_content": "다음 (가) 밑변의 길이가 ${{9x}^{3}}{{y}^{2}}$이고 높이가 ${{2 xy}^{3}}$인 직각삼각형의 넓이와 (나) 넓이가 ${{20a}^{4}}{{b}^{9}}$이고, 세로의 길이가 ${{5a}^{2}}{{b}^{5}}$인 직사각형의 가로의 길이를 바르게 구한 것은? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "7D58A391CEDB4BDF88E36C79847B4EBA",
+          "relevance": 3,
+          "reasoning": "연립방정식의 해를 구하는 문제로, 수학적 개념이 관련 있다."
+        },
+        {
+          "id": "53B97CBEFC1B45E6B344D433AA485DBF",
+          "relevance": 4,
+          "reasoning": "다항식의 계수를 구하는 문제로, 유사한 실수를 할 가능성이 있다."
+        },
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 5,
+          "reasoning": "복잡한 다항식의 계수를 다루는 문제로, 유사한 접근 방식이 필요하다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "65E3BB5494B34C1C8289DEDE63C2F68D",
+          "similarity": 0.8709,
+          "in_llm_gt": false,
+          "content_preview": "다음 중에서 계산 결과가 옳은 것은?"
+        },
+        {
+          "rank": 2,
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "similarity": 0.8417,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 옳은 것은?"
+        },
+        {
+          "rank": 3,
+          "id": "9B6BD5C274E347098DF7AC098C7E06DA",
+          "similarity": 0.8289,
+          "in_llm_gt": false,
+          "content_preview": "$2a {\\left (4a - 3b \\right)} + {\\left ({{8a}^{2}}{{b}^{2}}{{- 4a}^{3}} b \\right)} \\div{{4 ab = ma}^{"
+        },
+        {
+          "rank": 4,
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "similarity": 0.8238,
+          "in_llm_gt": true,
+          "content_preview": "${{4x}^{2}} - {\\left [ {{x}^{2}} - 3x - {\\left \\lbrace{{2x}^{2}} - 4x - ({{- x}^{2}} + 5x) + 2 \\righ"
+        },
+        {
+          "rank": 5,
+          "id": "DC0FA60E4C1D4084A1281B9DC491D577",
+          "similarity": 0.8047,
+          "in_llm_gt": false,
+          "content_preview": "$- 3a {\\left (5a - 2b \\right)} - {\\left \\lbrace - 3a {\\left ({{2a}^{2}}{{b + ab}^{2}} \\right)}{{+ 8a"
+        },
+        {
+          "rank": 6,
+          "id": "7D58A391CEDB4BDF88E36C79847B4EBA",
+          "similarity": 0.7929,
+          "in_llm_gt": true,
+          "content_preview": "연립방정식 ${\\left \\lbrace{\\begin{matrix}{3y = x + a} \\\\ {- 7x + by = 14} \\end{matrix}} \\right .}$의 해가 무수"
+        },
+        {
+          "rank": 7,
+          "id": "53B97CBEFC1B45E6B344D433AA485DBF",
+          "similarity": 0.7883,
+          "in_llm_gt": true,
+          "content_preview": "$({{x}^{2}} + 3x + 5) {{- (2x}^{2}} - x - 1)$을 간단히 하였을 때, $x$의 계수와 상수항의 합은?"
+        },
+        {
+          "rank": 8,
+          "id": "43DA19AE34574C43AB1912BB2F48AFC2",
+          "similarity": 0.7872,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 가장 큰 수는?"
+        },
+        {
+          "rank": 9,
+          "id": "F94806629A674E4B81126B3264A320C5",
+          "similarity": 0.7838,
+          "in_llm_gt": false,
+          "content_preview": "그림과 같이 길이가 ${{3}^{8}}$인 끈을 $3$등분하여 그 중간 부분을 잘라 내는 과정을 $10$회 반복하였다. 이때 남은 끈의 길이의 합은? [이미지]"
+        },
+        {
+          "rank": 10,
+          "id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+          "similarity": 0.7793,
+          "in_llm_gt": false,
+          "content_preview": "좌표평면 위의 네 점 $A (2 , ~ 4)$, $B (4 , ~ 2)$, $C (5 , ~ 2)$, $D (5 , ~ 4)$를 꼭짓점으로 하는 사각형이 아래 그림과 같이 있다. "
+        }
+      ]
+    },
+    {
+      "query_id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+      "query_content": "다음 그림과 같은 평행사변형 $ABCD$에서 $∠A ~ : ~∠B = 3 ~ : ~ 2$일 때, $∠C$와 $∠D$의 크기를 각각 구하시오. [이미지] $∠C = {\\boxed} \\degree$, $∠D = {\\boxed} \\degree$",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "relevance": 3,
+          "reasoning": "평행사변형의 각도를 다루지만 추가적인 점이 포함되어 있어 약간의 차이가 있음."
+        },
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "relevance": 4,
+          "reasoning": "평행사변형의 각도를 구하는 문제이나 구체적인 각도 정보가 부족함."
+        },
+        {
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "relevance": 5,
+          "reasoning": "이등변삼각형의 각도를 다루지만 평행사변형과의 연관성이 약함."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "similarity": 0.8871,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $E$는 ${\\overline{AB}}$ 위의 한 점이고 $∠EDC = 50°$, $∠B = 80°$, $∠ECB = 15°$일 때"
+        },
+        {
+          "rank": 2,
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "similarity": 0.8848,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$에서 $∠A$의 이등분선과 ${\\overline{DC}}$의 연장선과의 교점을 $E$라고 하자. $∠AEC = 56°$일 때, $\\angle"
+        },
+        {
+          "rank": 3,
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "similarity": 0.8806,
+          "in_llm_gt": true,
+          "content_preview": "[이미지] 오른쪽 그림과 같은 평행사변형 $ABCD$에서 $\\anglex$의 크기는?"
+        },
+        {
+          "rank": 4,
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "similarity": 0.8784,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$의 두 꼭짓점 $B$, $D$에서 대각선 $AC$에 내린 수선의 발을 각각 $P$, $Q$라고 하자. $∠DPC = 55°$일 때, $\\an"
+        },
+        {
+          "rank": 5,
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "similarity": 0.8524,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림에서 ${\\overline{AB}} = {\\overline{AC}} = {\\overline{CD}}$이고 $∠DCE = 114°$일 때, $∠ABC$의 크기는? [이미지]"
+        },
+        {
+          "rank": 6,
+          "id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "similarity": 0.8468,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 $□ ABCD$가 평행사변형이 되는 것은? (단, 점 $O$는 두 대각선의 교점이다.)"
+        },
+        {
+          "rank": 7,
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "similarity": 0.8282,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림은 평행사변형 $ABCD$에서 점 $D$가 점 $A$에 오도록 ${\\overline{EF}}$를 접는 선으로 하여 접은 것이다. $△ABC '$의 넓이가 $□ AC ' F"
+        },
+        {
+          "rank": 8,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.8279,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 9,
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "similarity": 0.8191,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 ${\\overline{AB}} = {\\overline{AC}}$인 이등변삼각형 $ABC$에서 ${\\overline{BD}} = {\\overline{DE}} = {"
+        },
+        {
+          "rank": 10,
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "similarity": 0.8119,
+          "in_llm_gt": false,
+          "content_preview": "강의 폭 ${\\overline{AB}}$의 길이를 구하기 위해 다음 그림과 같이 ${\\overline{AB}}$의 연장선 위에 점 $C$를 잡고 $∠DBC = 84° , ~∠ADB"
+        }
+      ]
+    },
+    {
+      "query_id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+      "query_content": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 3,
+          "reasoning": "도형의 성질을 이용한 길이 계산 문제로, 비슷한 접근 방식을 요구한다."
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 4,
+          "reasoning": "직사각형의 성질을 활용하여 길이를 구하는 문제이다."
+        },
+        {
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "relevance": 5,
+          "reasoning": "직각삼각형의 성질을 이용한 길이 계산 문제로, 유사한 개념을 포함한다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "similarity": 0.9146,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 점 $B$는 원 $O$ 위의 점이고, $□ OABC$가 직사각형일 때, ${\\overline{AC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 2,
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "similarity": 0.914,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $O$는 두 대각선의 교점이고, ${\\overline{CD}} = 8 ` ` cm$, ${\\overline{AC}} = 10 ` `"
+        },
+        {
+          "rank": 3,
+          "id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "similarity": 0.8993,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 $□ ABCD$가 평행사변형이 되는 것은? (단, 점 $O$는 두 대각선의 교점이다.)"
+        },
+        {
+          "rank": 4,
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "similarity": 0.8887,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 ${\\overline{AC}} \\bot{\\overline{BD}}$인 $□ ABCD$에서 ${\\overline{BC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 5,
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "similarity": 0.8797,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AB}} = 4 , ~ {\\overline{AC}} = 6$일 때, ${{{\\overline{"
+        },
+        {
+          "rank": 6,
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "similarity": 0.8731,
+          "in_llm_gt": false,
+          "content_preview": "강의 폭 ${\\overline{AB}}$의 길이를 구하기 위해 다음 그림과 같이 ${\\overline{AB}}$의 연장선 위에 점 $C$를 잡고 $∠DBC = 84° , ~∠ADB"
+        },
+        {
+          "rank": 7,
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "similarity": 0.8683,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림에서 ${\\overline{AB}} = {\\overline{AC}} = {\\overline{CD}}$이고 $∠DCE = 114°$일 때, $∠ABC$의 크기는? [이미지]"
+        },
+        {
+          "rank": 8,
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "similarity": 0.8676,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 □ABCD의 대각선이 직교할 때, ${{{\\overline{CD}}}^{2}}$의 값은? [이미지]"
+        },
+        {
+          "rank": 9,
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "similarity": 0.8561,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림의 $△ABC$에서 $∠A = 90°$이고 ${\\overline{BE}} = 7 ~cm ,$${\\overline{CD}} = 9 ~cm$, ${\\overline{BC}}"
+        },
+        {
+          "rank": 10,
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "similarity": 0.8559,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 ${\\overline{AB}} = {\\overline{AC}}$인 이등변삼각형 $ABC$에서 ${\\overline{BD}} = {\\overline{DE}} = {"
+        }
+      ]
+    },
+    {
+      "query_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "query_content": "오른쪽 그림과 같이 □ABCD의 대각선이 직교할 때, ${{{\\overline{CD}}}^{2}}$의 값은? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "relevance": 3,
+          "reasoning": "직사각형의 변 길이를 구하는 문제로, 도형의 성질을 활용한다."
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 4,
+          "reasoning": "평행사변형의 성질을 이용하여 둘레를 구하는 문제로, 도형의 성질을 다룬다."
+        },
+        {
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "relevance": 5,
+          "reasoning": "직사각형 내부의 점과 관련된 길이를 구하는 문제로, 도형의 성질을 활용한다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "similarity": 0.869,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 ${\\overline{AC}} \\bot{\\overline{BD}}$인 $□ ABCD$에서 ${\\overline{BC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 2,
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "similarity": 0.8679,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AB}} = 4 , ~ {\\overline{AC}} = 6$일 때, ${{{\\overline{"
+        },
+        {
+          "rank": 3,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.8676,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 4,
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "similarity": 0.8539,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 점 $B$는 원 $O$ 위의 점이고, $□ OABC$가 직사각형일 때, ${\\overline{AC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 5,
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "similarity": 0.8457,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $O$는 두 대각선의 교점이고, ${\\overline{CD}} = 8 ` ` cm$, ${\\overline{AC}} = 10 ` `"
+        },
+        {
+          "rank": 6,
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "similarity": 0.8339,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 직사각형 ABCD의 내부에 한 점 P를 잡았을 때, ${\\overline{AP}} = 8$ cm, ${\\overline{BP}} = 5 {\\sqrt{2}}$ c"
+        },
+        {
+          "rank": 7,
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "similarity": 0.8298,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림에서 ${\\overline{AB}} = {\\overline{AC}} = {\\overline{CD}}$이고 $∠DCE = 114°$일 때, $∠ABC$의 크기는? [이미지]"
+        },
+        {
+          "rank": 8,
+          "id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "similarity": 0.8239,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 $□ ABCD$가 평행사변형이 되는 것은? (단, 점 $O$는 두 대각선의 교점이다.)"
+        },
+        {
+          "rank": 9,
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "similarity": 0.8234,
+          "in_llm_gt": false,
+          "content_preview": "[이미지] 오른쪽 그림과 같은 평행사변형 $ABCD$에서 $\\anglex$의 크기는?"
+        },
+        {
+          "rank": 10,
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "similarity": 0.8145,
+          "in_llm_gt": false,
+          "content_preview": "강의 폭 ${\\overline{AB}}$의 길이를 구하기 위해 다음 그림과 같이 ${\\overline{AB}}$의 연장선 위에 점 $C$를 잡고 $∠DBC = 84° , ~∠ADB"
+        }
+      ]
+    },
+    {
+      "query_id": "75D6A18B7A664FC0B35942B943FD16FC",
+      "query_content": "다음 그림과 같이 넓이가 $64 ` {{cm}^{2}}$인 평행사변형 $` ABCD$의 내부에 한 점 $P$를 잡았다. $△PCD$의 넓이가 $13 ` {{cm}^{2}}$일 때, $△PAB$의 넓이를 구하시오. [이미지] ${\\boxed}{{~cm}^{2}}$",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 3,
+          "reasoning": "평행사변형의 성질을 이용하여 넓이와 둘레를 구하는 문제로, 점 O의 위치가 관련되어 있다."
+        },
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 4,
+          "reasoning": "평행사변형의 각도를 구하는 문제로, 평행사변형의 성질을 이해하는 데 유사성이 있다."
+        },
+        {
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "relevance": 5,
+          "reasoning": "평행사변형의 넓이와 비율을 다루는 문제로, 넓이 계산과 관련된 개념이 포함되어 있다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "similarity": 0.8811,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $M$은 ${\\overline{BC}}$의 중점이고, 점 $P$는 ${\\overline{BD}}$와 ${\\overline{AM}}$"
+        },
+        {
+          "rank": 2,
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "similarity": 0.8438,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림은 평행사변형 $ABCD$에서 점 $D$가 점 $A$에 오도록 ${\\overline{EF}}$를 접는 선으로 하여 접은 것이다. $△ABC '$의 넓이가 $□ AC ' F"
+        },
+        {
+          "rank": 3,
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "similarity": 0.8252,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 넓이가 $48 ` ` {{cm}^{2}}$인 평행사변형 $ABCD$에서 변 $AB$ 위에 ${\\overline{AE}} = {\\overline{DG}}$인 점 $"
+        },
+        {
+          "rank": 4,
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "similarity": 0.8189,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 직사각형 ABCD의 내부에 한 점 P를 잡았을 때, ${\\overline{AP}} = 8$ cm, ${\\overline{BP}} = 5 {\\sqrt{2}}$ c"
+        },
+        {
+          "rank": 5,
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "similarity": 0.8042,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$의 두 꼭짓점 $B$, $D$에서 대각선 $AC$에 내린 수선의 발을 각각 $P$, $Q$라고 하자. $∠DPC = 55°$일 때, $\\an"
+        },
+        {
+          "rank": 6,
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "similarity": 0.8029,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 □ABCD의 대각선이 직교할 때, ${{{\\overline{CD}}}^{2}}$의 값은? [이미지]"
+        },
+        {
+          "rank": 7,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.8025,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 8,
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "similarity": 0.8023,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $O$는 두 대각선의 교점이고, ${\\overline{CD}} = 8 ` ` cm$, ${\\overline{AC}} = 10 ` `"
+        },
+        {
+          "rank": 9,
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "similarity": 0.7974,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 $∠A ~ : ~∠B = 3 ~ : ~ 2$일 때, $∠C$와 $∠D$의 크기를 각각 구하시오. [이미지] $∠C = {\\boxed} "
+        },
+        {
+          "rank": 10,
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "similarity": 0.7849,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 점 $B$는 원 $O$ 위의 점이고, $□ OABC$가 직사각형일 때, ${\\overline{AC}}$의 길이는? [이미지]"
+        }
+      ]
+    },
+    {
+      "query_id": "B58161E49AC641CAAC6C4E8259122859",
+      "query_content": "다음 그림과 같이 ${\\overline{AC}}$와 ${\\overline{BD}}$의 교점이 $E$이고 ${\\overline{AB}} / / {\\overline{EF}} / / {\\overline{DC}}$이다. ${\\overline{AB}} = 6$, ${\\overline{CD}} = 12$일 때, ${\\overline{BD}} ~ : ~ {\\overli...",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "relevance": 3,
+          "reasoning": "평행선과 비율을 다루지만, 면적 계산이 포함되어 다소 다르다."
+        },
+        {
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "relevance": 4,
+          "reasoning": "비율을 구하는 문제이나, 접힌 도형의 넓이와 관련되어 있다."
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 5,
+          "reasoning": "도형의 둘레를 구하는 문제로, 비율과 관련된 개념이 포함되어 있다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "AB202E4A636A4DA288A841F393E51704",
+          "similarity": 0.9114,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 $□ ABCD$에서 ${\\overline{AE}} = {\\overline{EF}} = {\\overline{FB}}$, ${\\overline{DH}} = {\\ove"
+        },
+        {
+          "rank": 2,
+          "id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "similarity": 0.8562,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림에서 $△BFG$에 대해 ${\\overline{DE}} = 3 ` ` cm$, ${\\overline{BD}} = {\\overline{DF}}$, ${\\overline{BE"
+        },
+        {
+          "rank": 3,
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "similarity": 0.855,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 넓이가 $48 ` ` {{cm}^{2}}$인 평행사변형 $ABCD$에서 변 $AB$ 위에 ${\\overline{AE}} = {\\overline{DG}}$인 점 $"
+        },
+        {
+          "rank": 4,
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "similarity": 0.8411,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 ${\\overline{AC}} \\bot{\\overline{BD}}$인 $□ ABCD$에서 ${\\overline{BC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 5,
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "similarity": 0.8372,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림은 평행사변형 $ABCD$에서 점 $D$가 점 $A$에 오도록 ${\\overline{EF}}$를 접는 선으로 하여 접은 것이다. $△ABC '$의 넓이가 $□ AC ' F"
+        },
+        {
+          "rank": 6,
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "similarity": 0.8265,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림의 $△ABC$에서 $∠A = 90°$이고 ${\\overline{BE}} = 7 ~cm ,$${\\overline{CD}} = 9 ~cm$, ${\\overline{BC}}"
+        },
+        {
+          "rank": 7,
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "similarity": 0.8202,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 ${\\overline{AB}} = {\\overline{AC}}$인 이등변삼각형 $ABC$에서 ${\\overline{BD}} = {\\overline{DE}} = {"
+        },
+        {
+          "rank": 8,
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "similarity": 0.7976,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $O$는 두 대각선의 교점이고, ${\\overline{CD}} = 8 ` ` cm$, ${\\overline{AC}} = 10 ` `"
+        },
+        {
+          "rank": 9,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.7967,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 10,
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "similarity": 0.794,
+          "in_llm_gt": false,
+          "content_preview": "강의 폭 ${\\overline{AB}}$의 길이를 구하기 위해 다음 그림과 같이 ${\\overline{AB}}$의 연장선 위에 점 $C$를 잡고 $∠DBC = 84° , ~∠ADB"
+        }
+      ]
+    },
+    {
+      "query_id": "2F63FE75EC4E4A32887455C839BD2C1E",
+      "query_content": "다음 그림과 같이 똑같은 모양의 사다리꼴을 한 변이 완전히 겹치도록 계속해서 이어 붙여 새로운 도형을 만들려고 한다. $29$개의 사다리꼴로 만들 도형의 둘레의 길이는? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "relevance": 3,
+          "reasoning": "평행사변형의 넓이와 비율을 다루며, 도형의 성질을 이용한다."
+        },
+        {
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "relevance": 4,
+          "reasoning": "직사각형의 성질을 이용하여 길이를 구하는 문제이다."
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 5,
+          "reasoning": "대각선의 성질을 다루며, 도형의 성질을 이용한다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "078734A8414A42FC835674EFAD010906",
+          "similarity": 0.87,
+          "in_llm_gt": false,
+          "content_preview": "$60$개의 블록으로 만든 도형의 둘레의 길이를 구하시오.${\\boxed} ` ` cm$"
+        },
+        {
+          "rank": 2,
+          "id": "72D59B348C22410AB71A08CA16EA24CD",
+          "similarity": 0.8066,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 문장을 미지수가 $2$개인 일차방정식으로 나타낸 것으로 옳지 것은?"
+        },
+        {
+          "rank": 3,
+          "id": "8953FEB42A4343648F0811C21B5CF162",
+          "similarity": 0.7948,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림은 밑면의 가로, 세로의 길이가 각각 $8a , ~ 5$이고, 부피가 $80 {{a}^{2}} + 120 ab$인 큰 직육면체 위에 밑면의 가로, 세로의 길이가 각각 $4"
+        },
+        {
+          "rank": 4,
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "similarity": 0.792,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 □ABCD의 대각선이 직교할 때, ${{{\\overline{CD}}}^{2}}$의 값은? [이미지]"
+        },
+        {
+          "rank": 5,
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "similarity": 0.7821,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 점 $B$는 원 $O$ 위의 점이고, $□ OABC$가 직사각형일 때, ${\\overline{AC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 6,
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "similarity": 0.7796,
+          "in_llm_gt": false,
+          "content_preview": "[이미지] 오른쪽 그림과 같은 평행사변형 $ABCD$에서 $\\anglex$의 크기는?"
+        },
+        {
+          "rank": 7,
+          "id": "B731CFD846ED40AA8D26DD6D9E8546C9",
+          "similarity": 0.7792,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 항상 닮음인 것을 모두 고른 것은? ㄱ. 두 이등변삼각형 ㄴ. 두 직사각형ㄷ. 두 원 ㄹ. 두 구ㅁ. 두 직사각형 ㅂ. 두 원기둥"
+        },
+        {
+          "rank": 8,
+          "id": "6D28AB8080074BF1AC157C90EEFAC301",
+          "similarity": 0.7743,
+          "in_llm_gt": false,
+          "content_preview": "다음 사각형에 대한 설명 중에서 옳지 것은?"
+        },
+        {
+          "rank": 9,
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "similarity": 0.7664,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $O$는 두 대각선의 교점이고, ${\\overline{CD}} = 8 ` ` cm$, ${\\overline{AC}} = 10 ` `"
+        },
+        {
+          "rank": 10,
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "similarity": 0.7584,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림은 평행사변형 $ABCD$에서 점 $D$가 점 $A$에 오도록 ${\\overline{EF}}$를 접는 선으로 하여 접은 것이다. $△ABC '$의 넓이가 $□ AC ' F"
+        }
+      ]
+    },
+    {
+      "query_id": "027A1DBAAD4B4715B86256B9F614F840",
+      "query_content": "다음은 ‘이등변삼각형의 꼭지각의 이등분선은 밑변을 수직이등분한다.’를 설명하는 과정이다. (가)~(다)에 알맞은 것을 써넣으시오. [이미지] ${\\overline{AB}} = {\\overline{AC}}$인 이등변삼각형 $ABC$에서 $∠A$의 이등분선과 밑변 $BC$의 교점을 $D$라 하면$△ABD$와 $△ACD$에서${\\overline{AB}} = {\\...",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 3,
+          "reasoning": "이등변삼각형의 이등분선과 관련된 문제로, 유사한 개념을 다룬다."
+        },
+        {
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "relevance": 4,
+          "reasoning": "각도와 삼각형의 성질을 이용한 문제로, 학생이 비슷한 실수를 할 가능성이 있다."
+        },
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 5,
+          "reasoning": "각도 비율을 다루는 문제로, 삼각형의 성질과 관련이 있다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "similarity": 0.8396,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 ${\\overline{AB}} = {\\overline{AC}}$인 이등변삼각형 $ABC$에서 ${\\overline{BD}} = {\\overline{DE}} = {"
+        },
+        {
+          "rank": 2,
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "similarity": 0.8158,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림은 평행사변형 $ABCD$에서 점 $D$가 점 $A$에 오도록 ${\\overline{EF}}$를 접는 선으로 하여 접은 것이다. $△ABC '$의 넓이가 $□ AC ' F"
+        },
+        {
+          "rank": 3,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.8146,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        },
+        {
+          "rank": 4,
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "similarity": 0.8096,
+          "in_llm_gt": true,
+          "content_preview": "강의 폭 ${\\overline{AB}}$의 길이를 구하기 위해 다음 그림과 같이 ${\\overline{AB}}$의 연장선 위에 점 $C$를 잡고 $∠DBC = 84° , ~∠ADB"
+        },
+        {
+          "rank": 5,
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "similarity": 0.8088,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림에서 ${\\overline{AB}} = {\\overline{AC}} = {\\overline{CD}}$이고 $∠DCE = 114°$일 때, $∠ABC$의 크기는? [이미지]"
+        },
+        {
+          "rank": 6,
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "similarity": 0.8075,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$에서 $∠A$의 이등분선과 ${\\overline{DC}}$의 연장선과의 교점을 $E$라고 하자. $∠AEC = 56°$일 때, $\\angle"
+        },
+        {
+          "rank": 7,
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "similarity": 0.8065,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 $∠A ~ : ~∠B = 3 ~ : ~ 2$일 때, $∠C$와 $∠D$의 크기를 각각 구하시오. [이미지] $∠C = {\\boxed} "
+        },
+        {
+          "rank": 8,
+          "id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "similarity": 0.8061,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 $□ ABCD$가 평행사변형이 되는 것은? (단, 점 $O$는 두 대각선의 교점이다.)"
+        },
+        {
+          "rank": 9,
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "similarity": 0.7869,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 넓이가 $48 ` ` {{cm}^{2}}$인 평행사변형 $ABCD$에서 변 $AB$ 위에 ${\\overline{AE}} = {\\overline{DG}}$인 점 $"
+        },
+        {
+          "rank": 10,
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "similarity": 0.7865,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$의 두 꼭짓점 $B$, $D$에서 대각선 $AC$에 내린 수선의 발을 각각 $P$, $Q$라고 하자. $∠DPC = 55°$일 때, $\\an"
+        }
+      ]
+    },
+    {
+      "query_id": "A88C66DF5A314FFFA0576F9480514924",
+      "query_content": "다음 그림과 같이 평행사변형 $ABCD$의 두 꼭짓점 $B$, $D$에서 대각선 $AC$에 내린 수선의 발을 각각 $P$, $Q$라고 하자. $∠DPC = 55°$일 때, $\\anglex$의 크기는? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 3,
+          "reasoning": "평행사변형의 각도 관계를 다루지만, 비율을 이용한 접근 방식이 다르다."
+        },
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "relevance": 4,
+          "reasoning": "평행사변형의 각도를 구하는 문제로, 기본적인 각도 계산을 요구한다."
+        },
+        {
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "relevance": 5,
+          "reasoning": "이등변삼각형의 각도 문제로, 평행사변형과는 다르지만 각도 계산이 필요하다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "similarity": 0.9134,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$에서 $∠A$의 이등분선과 ${\\overline{DC}}$의 연장선과의 교점을 $E$라고 하자. $∠AEC = 56°$일 때, $\\angle"
+        },
+        {
+          "rank": 2,
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "similarity": 0.9082,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $E$는 ${\\overline{AB}}$ 위의 한 점이고 $∠EDC = 50°$, $∠B = 80°$, $∠ECB = 15°$일 때"
+        },
+        {
+          "rank": 3,
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "similarity": 0.8784,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 $∠A ~ : ~∠B = 3 ~ : ~ 2$일 때, $∠C$와 $∠D$의 크기를 각각 구하시오. [이미지] $∠C = {\\boxed} "
+        },
+        {
+          "rank": 4,
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "similarity": 0.8694,
+          "in_llm_gt": true,
+          "content_preview": "[이미지] 오른쪽 그림과 같은 평행사변형 $ABCD$에서 $\\anglex$의 크기는?"
+        },
+        {
+          "rank": 5,
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "similarity": 0.8424,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 ${\\overline{AB}} = {\\overline{AC}}$인 이등변삼각형 $ABC$에서 ${\\overline{BD}} = {\\overline{DE}} = {"
+        },
+        {
+          "rank": 6,
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "similarity": 0.8398,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림에서 ${\\overline{AB}} = {\\overline{AC}} = {\\overline{CD}}$이고 $∠DCE = 114°$일 때, $∠ABC$의 크기는? [이미지]"
+        },
+        {
+          "rank": 7,
+          "id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "similarity": 0.8241,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 $□ ABCD$가 평행사변형이 되는 것은? (단, 점 $O$는 두 대각선의 교점이다.)"
+        },
+        {
+          "rank": 8,
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "similarity": 0.8239,
+          "in_llm_gt": false,
+          "content_preview": "강의 폭 ${\\overline{AB}}$의 길이를 구하기 위해 다음 그림과 같이 ${\\overline{AB}}$의 연장선 위에 점 $C$를 잡고 $∠DBC = 84° , ~∠ADB"
+        },
+        {
+          "rank": 9,
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "similarity": 0.8222,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 넓이가 $48 ` ` {{cm}^{2}}$인 평행사변형 $ABCD$에서 변 $AB$ 위에 ${\\overline{AE}} = {\\overline{DG}}$인 점 $"
+        },
+        {
+          "rank": 10,
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "similarity": 0.8199,
+          "in_llm_gt": false,
+          "content_preview": "아래 그림과 같은 직사각형 $ABCD$에서 ${\\overline{AD}} = 12 ` ` cm$, ${\\overline{OA}} = 8 ` ` cm$일 때, 다음 중 옳지 것은? "
+        }
+      ]
+    },
+    {
+      "query_id": "F94806629A674E4B81126B3264A320C5",
+      "query_content": "그림과 같이 길이가 ${{3}^{8}}$인 끈을 $3$등분하여 그 중간 부분을 잘라 내는 과정을 $10$회 반복하였다. 이때 남은 끈의 길이의 합은? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "AE50A202C3384AFD9C52678B6BA7833A",
+          "relevance": 5,
+          "reasoning": "유사한 수학적 개념인 면적 계산을 다루고 있으며, 학생이 비슷한 실수를 할 가능성이 있다."
+        },
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 4,
+          "reasoning": "다항식의 계수를 구하는 문제로, 수학적 접근 방식이 유사하다."
+        },
+        {
+          "id": "53B97CBEFC1B45E6B344D433AA485DBF",
+          "relevance": 4,
+          "reasoning": "다항식의 간단한 계산을 요구하며, 비슷한 실수를 할 수 있다."
+        },
+        {
+          "id": "FFC898D3218140B5A3C3B6FC0DD454F6",
+          "relevance": 3,
+          "reasoning": "순환소수를 다루고 있지만, 접근 방식이 다소 다르다."
+        },
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 3,
+          "reasoning": "순환소수와 관련된 문제로, 개념은 유사하나 접근 방식이 다르다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "43DA19AE34574C43AB1912BB2F48AFC2",
+          "similarity": 0.7929,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 가장 큰 수는?"
+        },
+        {
+          "rank": 2,
+          "id": "65E3BB5494B34C1C8289DEDE63C2F68D",
+          "similarity": 0.7919,
+          "in_llm_gt": false,
+          "content_preview": "다음 중에서 계산 결과가 옳은 것은?"
+        },
+        {
+          "rank": 3,
+          "id": "AE50A202C3384AFD9C52678B6BA7833A",
+          "similarity": 0.7838,
+          "in_llm_gt": true,
+          "content_preview": "다음 (가) 밑변의 길이가 ${{9x}^{3}}{{y}^{2}}$이고 높이가 ${{2 xy}^{3}}$인 직각삼각형의 넓이와 (나) 넓이가 ${{20a}^{4}}{{b}^{9}}$"
+        },
+        {
+          "rank": 4,
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "similarity": 0.7803,
+          "in_llm_gt": true,
+          "content_preview": "${{4x}^{2}} - {\\left [ {{x}^{2}} - 3x - {\\left \\lbrace{{2x}^{2}} - 4x - ({{- x}^{2}} + 5x) + 2 \\righ"
+        },
+        {
+          "rank": 5,
+          "id": "53B97CBEFC1B45E6B344D433AA485DBF",
+          "similarity": 0.7723,
+          "in_llm_gt": true,
+          "content_preview": "$({{x}^{2}} + 3x + 5) {{- (2x}^{2}} - x - 1)$을 간단히 하였을 때, $x$의 계수와 상수항의 합은?"
+        },
+        {
+          "rank": 6,
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "similarity": 0.7679,
+          "in_llm_gt": true,
+          "content_preview": "다음 중 순환소수를 분수로 나타낸 것으로 옳은 것은?"
+        },
+        {
+          "rank": 7,
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "similarity": 0.7599,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 옳은 것은?"
+        },
+        {
+          "rank": 8,
+          "id": "0533E6E14C514571B8FE88E524550438",
+          "similarity": 0.7522,
+          "in_llm_gt": false,
+          "content_preview": "분수 ${\\cfrac{5}{3}}$를 소수로 나타낼 때, 순환마디를 구하면?"
+        },
+        {
+          "rank": 9,
+          "id": "FFC898D3218140B5A3C3B6FC0DD454F6",
+          "similarity": 0.7498,
+          "in_llm_gt": true,
+          "content_preview": "순환소수 $7.4 {\\dot{2}}$를 $10$의 거듭제곱을 이용하여 기약분수로 나타내면 ${\\cfrac{b}{a}}$일 때, $b - a$ 의 값을 구하시오. (단, $a , ~"
+        },
+        {
+          "rank": 10,
+          "id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+          "similarity": 0.7457,
+          "in_llm_gt": false,
+          "content_preview": "좌표평면 위의 네 점 $A (2 , ~ 4)$, $B (4 , ~ 2)$, $C (5 , ~ 2)$, $D (5 , ~ 4)$를 꼭짓점으로 하는 사각형이 아래 그림과 같이 있다. "
+        }
+      ]
+    },
+    {
+      "query_id": "5AD1D60463134A7AA56AA545EB347533",
+      "query_content": "두 일차방정식 $4x + y - 6 = 0$, $4x - 5y + 30 = 0$의 그래프와 $x$축으로 둘러싸인 삼각형의 넓이를 <조건>에 따라 차례로 구하시오.(가) $4x + y - 6 = 0$, $4x - 5y + 30 = 0$의 교점 구하기 (나) $4x + y - 6 = 0$, $4x - 5y + 30 = 0$과$x$축과의 교점 각각 구하기(다) ...",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "7D58A391CEDB4BDF88E36C79847B4EBA",
+          "relevance": 5,
+          "reasoning": "연립방정식의 해를 구하는 문제로, 일차방정식의 개념을 포함한다."
+        },
+        {
+          "id": "1FCB1D636A01499CA6072319786229AB",
+          "relevance": 4,
+          "reasoning": "연립방정식의 해의 개수를 다루며, 일차방정식의 성질을 이해해야 한다."
+        },
+        {
+          "id": "45A8E2DF4C4A4205A59ACB33A0C9DB65",
+          "relevance": 3,
+          "reasoning": "일차함수의 성질을 다루며, 그래프의 위치와 관련된 문제이다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "66063A66864042448368E291FDCF44D5",
+          "similarity": 0.8267,
+          "in_llm_gt": false,
+          "content_preview": "일차함수 $y = ax + b$의 그래프가 오른쪽 그림과 같을 때, 다음 중 $y = bx + a$의 그래프 위에 있는 점은? (단, $a$, $b$는 상수) [이미지]"
+        },
+        {
+          "rank": 2,
+          "id": "7D58A391CEDB4BDF88E36C79847B4EBA",
+          "similarity": 0.7987,
+          "in_llm_gt": true,
+          "content_preview": "연립방정식 ${\\left \\lbrace{\\begin{matrix}{3y = x + a} \\\\ {- 7x + by = 14} \\end{matrix}} \\right .}$의 해가 무수"
+        },
+        {
+          "rank": 3,
+          "id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+          "similarity": 0.7946,
+          "in_llm_gt": false,
+          "content_preview": "좌표평면 위의 네 점 $A (2 , ~ 4)$, $B (4 , ~ 2)$, $C (5 , ~ 2)$, $D (5 , ~ 4)$를 꼭짓점으로 하는 사각형이 아래 그림과 같이 있다. "
+        },
+        {
+          "rank": 4,
+          "id": "66EB70674E174FCAB2942F840B5442EF",
+          "similarity": 0.7847,
+          "in_llm_gt": false,
+          "content_preview": "$10$ 이하의 두 자연수 $x , ~y$에 대하여 일차방정식 $x + 3y = 15$의 $3$개의 해를 $(a , ~b) , ~ (c , ~d) , ~ (e , ~f)$라 할 때"
+        },
+        {
+          "rank": 5,
+          "id": "72D59B348C22410AB71A08CA16EA24CD",
+          "similarity": 0.7829,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 문장을 미지수가 $2$개인 일차방정식으로 나타낸 것으로 옳지 것은?"
+        },
+        {
+          "rank": 6,
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "similarity": 0.7519,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$의 두 꼭짓점 $B$, $D$에서 대각선 $AC$에 내린 수선의 발을 각각 $P$, $Q$라고 하자. $∠DPC = 55°$일 때, $\\an"
+        },
+        {
+          "rank": 7,
+          "id": "51EFF604353C41E8A0AE820C04A25DD7",
+          "similarity": 0.7503,
+          "in_llm_gt": false,
+          "content_preview": "[이미지] 다음 그림과 같이 두 원 $O$, $O}^{\\prime$가 각각 직사각형 ABCD의 두 변에 접하고 $\\overline{AB}$ = 8cm, $\\overline{BC}$"
+        },
+        {
+          "rank": 8,
+          "id": "45A8E2DF4C4A4205A59ACB33A0C9DB65",
+          "similarity": 0.7485,
+          "in_llm_gt": true,
+          "content_preview": "일차함수 $y = - ax + b$에 대하여 $ab < 0$일 때, 이 일차함수의 그래프가 반드시 지나는 사분면은?"
+        },
+        {
+          "rank": 9,
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "similarity": 0.7469,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AB}} = 4 , ~ {\\overline{AC}} = 6$일 때, ${{{\\overline{"
+        },
+        {
+          "rank": 10,
+          "id": "1FCB1D636A01499CA6072319786229AB",
+          "similarity": 0.7437,
+          "in_llm_gt": true,
+          "content_preview": "다음 연립방정식 중 해가 무수히 많은 것은?"
+        }
+      ]
+    },
+    {
+      "query_id": "8953FEB42A4343648F0811C21B5CF162",
+      "query_content": "다음 그림은 밑면의 가로, 세로의 길이가 각각 $8a , ~ 5$이고, 부피가 $80 {{a}^{2}} + 120 ab$인 큰 직육면체 위에 밑면의 가로, 세로의 길이가 각각 $4a , ~ 5$이고, 부피가 $40 {{a}^{2}} - 20 ab$인 작은 직육면체를 올려놓은 것이다. 이때 두 직육면체의 높이의 합을 구하시오. [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "AE50A202C3384AFD9C52678B6BA7833A",
+          "relevance": 5,
+          "reasoning": "직육면체와 관련된 문제로, 부피와 높이를 구하는 접근 방식이 유사하다."
+        },
+        {
+          "id": "51EFF604353C41E8A0AE820C04A25DD7",
+          "relevance": 4,
+          "reasoning": "직사각형과 원의 관계를 다루며, 기하학적 요소가 포함되어 있다."
+        },
+        {
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "relevance": 3,
+          "reasoning": "직사각형과 관련된 문제로, 길이를 구하는 접근 방식이 유사하다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "2F63FE75EC4E4A32887455C839BD2C1E",
+          "similarity": 0.7948,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 똑같은 모양의 사다리꼴을 한 변이 완전히 겹치도록 계속해서 이어 붙여 새로운 도형을 만들려고 한다. $29$개의 사다리꼴로 만들 도형의 둘레의 길이는? [이미지]"
+        },
+        {
+          "rank": 2,
+          "id": "72D59B348C22410AB71A08CA16EA24CD",
+          "similarity": 0.7734,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 문장을 미지수가 $2$개인 일차방정식으로 나타낸 것으로 옳지 것은?"
+        },
+        {
+          "rank": 3,
+          "id": "AE50A202C3384AFD9C52678B6BA7833A",
+          "similarity": 0.7718,
+          "in_llm_gt": true,
+          "content_preview": "다음 (가) 밑변의 길이가 ${{9x}^{3}}{{y}^{2}}$이고 높이가 ${{2 xy}^{3}}$인 직각삼각형의 넓이와 (나) 넓이가 ${{20a}^{4}}{{b}^{9}}$"
+        },
+        {
+          "rank": 4,
+          "id": "078734A8414A42FC835674EFAD010906",
+          "similarity": 0.7636,
+          "in_llm_gt": false,
+          "content_preview": "$60$개의 블록으로 만든 도형의 둘레의 길이를 구하시오.${\\boxed} ` ` cm$"
+        },
+        {
+          "rank": 5,
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "similarity": 0.7561,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 점 $B$는 원 $O$ 위의 점이고, $□ OABC$가 직사각형일 때, ${\\overline{AC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 6,
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "similarity": 0.751,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 □ABCD의 대각선이 직교할 때, ${{{\\overline{CD}}}^{2}}$의 값은? [이미지]"
+        },
+        {
+          "rank": 7,
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "similarity": 0.7473,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림은 평행사변형 $ABCD$에서 점 $D$가 점 $A$에 오도록 ${\\overline{EF}}$를 접는 선으로 하여 접은 것이다. $△ABC '$의 넓이가 $□ AC ' F"
+        },
+        {
+          "rank": 8,
+          "id": "EEFB41E903DA41C7A8B5F3B1BBB8A2B1",
+          "similarity": 0.7433,
+          "in_llm_gt": false,
+          "content_preview": "세 점 $(0 , ~a) , ~ (1 , ~ 0) , ~ (6 , ~ 5)$가 한 직선 위에 있을 때, $a$의 값을 구하시오."
+        },
+        {
+          "rank": 9,
+          "id": "51EFF604353C41E8A0AE820C04A25DD7",
+          "similarity": 0.7385,
+          "in_llm_gt": true,
+          "content_preview": "[이미지] 다음 그림과 같이 두 원 $O$, $O}^{\\prime$가 각각 직사각형 ABCD의 두 변에 접하고 $\\overline{AB}$ = 8cm, $\\overline{BC}$"
+        },
+        {
+          "rank": 10,
+          "id": "9786B12616DF41F5B614B49078961AD4",
+          "similarity": 0.7373,
+          "in_llm_gt": false,
+          "content_preview": "모든 자연수 $x$가 일차부등식 $5 (x - 2a) \\geqx - 12$의 해가 될 때, $a$의 값의 범위를 구하시오."
+        }
+      ]
+    },
+    {
+      "query_id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+      "query_content": "좌표평면 위의 네 점 $A (2 , ~ 4)$, $B (4 , ~ 2)$, $C (5 , ~ 2)$, $D (5 , ~ 4)$를 꼭짓점으로 하는 사각형이 아래 그림과 같이 있다. 이 사각형과 일차함수 $y = ax + {\\cfrac{1}{2}}$의 그래프가 만나도록 하는 기울기 $a$의 값의 범위는? [이미지]",
+      "category": "image",
+      "llm_gt_items": [
+        {
+          "id": "7D58A391CEDB4BDF88E36C79847B4EBA",
+          "relevance": 3,
+          "reasoning": "연립방정식의 해를 다루며, 기울기와 관련된 상수의 값을 구하는 문제로 유사성이 있다."
+        },
+        {
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "relevance": 4,
+          "reasoning": "일차방정식의 해를 구하는 문제로, 기하적 해석과 관련이 있다."
+        },
+        {
+          "id": "66EB70674E174FCAB2942F840B5442EF",
+          "relevance": 5,
+          "reasoning": "일차방정식의 해를 구하는 문제로, 자연수 조건이 추가되어 있지만 기본 개념은 유사하다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "66063A66864042448368E291FDCF44D5",
+          "similarity": 0.8435,
+          "in_llm_gt": false,
+          "content_preview": "일차함수 $y = ax + b$의 그래프가 오른쪽 그림과 같을 때, 다음 중 $y = bx + a$의 그래프 위에 있는 점은? (단, $a$, $b$는 상수) [이미지]"
+        },
+        {
+          "rank": 2,
+          "id": "7D58A391CEDB4BDF88E36C79847B4EBA",
+          "similarity": 0.8336,
+          "in_llm_gt": true,
+          "content_preview": "연립방정식 ${\\left \\lbrace{\\begin{matrix}{3y = x + a} \\\\ {- 7x + by = 14} \\end{matrix}} \\right .}$의 해가 무수"
+        },
+        {
+          "rank": 3,
+          "id": "E91BA85F84D84C0892780CDDB19C2DA6",
+          "similarity": 0.8205,
+          "in_llm_gt": false,
+          "content_preview": "세 점 $(- 4 , ~ 1) , ~ {\\left ({\\cfrac{a}{2}} , ~ - 5 \\right)} , ~ (1 , ~ - 3)$이 한 직선 위에 있을 때, $a$의 값을"
+        },
+        {
+          "rank": 4,
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "similarity": 0.8175,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 ${\\overline{AC}} \\bot{\\overline{BD}}$인 $□ ABCD$에서 ${\\overline{BC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 5,
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "similarity": 0.8166,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 직사각형 ABCD의 내부에 한 점 P를 잡았을 때, ${\\overline{AP}} = 8$ cm, ${\\overline{BP}} = 5 {\\sqrt{2}}$ c"
+        },
+        {
+          "rank": 6,
+          "id": "4EEA29416564497A91346D3457D4C87F",
+          "similarity": 0.8139,
+          "in_llm_gt": false,
+          "content_preview": "세 변의 길이가 다음과 같은 삼각형 중에서 직각삼각형은?"
+        },
+        {
+          "rank": 7,
+          "id": "DE1E9E4943D641B1BDA68EE63BE82D60",
+          "similarity": 0.8131,
+          "in_llm_gt": false,
+          "content_preview": "$x$에 대한 일차부등식 $5x + 4a > 9x$를 만족시키는 자연수 $x$가 $5$개일 때, 상수 $a$의 값의 범위는?"
+        },
+        {
+          "rank": 8,
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "similarity": 0.8115,
+          "in_llm_gt": true,
+          "content_preview": "$x$, $y$가 자연수일 때, 일차방정식 $3x + y = 10$의 해를 모두 구한 것은?"
+        },
+        {
+          "rank": 9,
+          "id": "66EB70674E174FCAB2942F840B5442EF",
+          "similarity": 0.8076,
+          "in_llm_gt": true,
+          "content_preview": "$10$ 이하의 두 자연수 $x , ~y$에 대하여 일차방정식 $x + 3y = 15$의 $3$개의 해를 $(a , ~b) , ~ (c , ~d) , ~ (e , ~f)$라 할 때"
+        },
+        {
+          "rank": 10,
+          "id": "5AD1D60463134A7AA56AA545EB347533",
+          "similarity": 0.7946,
+          "in_llm_gt": false,
+          "content_preview": "두 일차방정식 $4x + y - 6 = 0$, $4x - 5y + 30 = 0$의 그래프와 $x$축으로 둘러싸인 삼각형의 넓이를 <조건>에 따라 차례로 구하시오.(가) $4x + "
+        }
+      ]
+    },
+    {
+      "query_id": "AB56E85712904550A62A39027F9FFB68",
+      "query_content": "다음 사각형 중에서 두 대각선이 서로 다른 것을 이등분하지 것은?",
+      "category": "text_only",
+      "llm_gt_items": [
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "relevance": 3,
+          "reasoning": "대각선과 관련된 문제로, 평행사변형의 성질을 이용한 풀이가 필요하다."
+        },
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "relevance": 4,
+          "reasoning": "평행사변형의 각도를 다루고 있어, 도형의 성질을 이해하는 데 유사성이 있다."
+        },
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 5,
+          "reasoning": "평행사변형의 각도와 관련된 문제로, 도형의 성질을 이용한 풀이가 필요하다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "6D28AB8080074BF1AC157C90EEFAC301",
+          "similarity": 0.9443,
+          "in_llm_gt": false,
+          "content_preview": "다음 사각형에 대한 설명 중에서 옳지 것은?"
+        },
+        {
+          "rank": 2,
+          "id": "B731CFD846ED40AA8D26DD6D9E8546C9",
+          "similarity": 0.8019,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 항상 닮음인 것을 모두 고른 것은? ㄱ. 두 이등변삼각형 ㄴ. 두 직사각형ㄷ. 두 원 ㄹ. 두 구ㅁ. 두 직사각형 ㅂ. 두 원기둥"
+        },
+        {
+          "rank": 3,
+          "id": "2F63FE75EC4E4A32887455C839BD2C1E",
+          "similarity": 0.7424,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 똑같은 모양의 사다리꼴을 한 변이 완전히 겹치도록 계속해서 이어 붙여 새로운 도형을 만들려고 한다. $29$개의 사다리꼴로 만들 도형의 둘레의 길이는? [이미지]"
+        },
+        {
+          "rank": 4,
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "similarity": 0.7119,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 □ABCD의 대각선이 직교할 때, ${{{\\overline{CD}}}^{2}}$의 값은? [이미지]"
+        },
+        {
+          "rank": 5,
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "similarity": 0.7083,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 평행사변형 $ABCD$의 두 꼭짓점 $B$, $D$에서 대각선 $AC$에 내린 수선의 발을 각각 $P$, $Q$라고 하자. $∠DPC = 55°$일 때, $\\an"
+        },
+        {
+          "rank": 6,
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "similarity": 0.694,
+          "in_llm_gt": true,
+          "content_preview": "[이미지] 오른쪽 그림과 같은 평행사변형 $ABCD$에서 $\\anglex$의 크기는?"
+        },
+        {
+          "rank": 7,
+          "id": "078734A8414A42FC835674EFAD010906",
+          "similarity": 0.6932,
+          "in_llm_gt": false,
+          "content_preview": "$60$개의 블록으로 만든 도형의 둘레의 길이를 구하시오.${\\boxed} ` ` cm$"
+        },
+        {
+          "rank": 8,
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "similarity": 0.6879,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 $∠A ~ : ~∠B = 3 ~ : ~ 2$일 때, $∠C$와 $∠D$의 크기를 각각 구하시오. [이미지] $∠C = {\\boxed} "
+        },
+        {
+          "rank": 9,
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "similarity": 0.6853,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 넓이가 $48 ` ` {{cm}^{2}}$인 평행사변형 $ABCD$에서 변 $AB$ 위에 ${\\overline{AE}} = {\\overline{DG}}$인 점 $"
+        },
+        {
+          "rank": 10,
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "similarity": 0.6846,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같은 평행사변형 $ABCD$에서 점 $O$는 두 대각선의 교점이고, ${\\overline{CD}} = 8 ` ` cm$, ${\\overline{AC}} = 10 ` `"
+        }
+      ]
+    },
+    {
+      "query_id": "AB1E7C8E41F14335ABB108B08D509FF3",
+      "query_content": "연립방정식을 세우시오.",
+      "category": "text_only",
+      "llm_gt_items": [
+        {
+          "id": "FFA0C20F69D44C78B08D60001432CEB3",
+          "relevance": 3,
+          "reasoning": "부등식을 세우는 문제로, 방정식과 유사한 접근 방식을 요구한다."
+        },
+        {
+          "id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "relevance": 4,
+          "reasoning": "부등식을 세우는 문제로, 유사한 수학적 개념을 다룬다."
+        },
+        {
+          "id": "81925C731BF644D8B5B51D57034EF074",
+          "relevance": 5,
+          "reasoning": "문제의 상황에 맞게 미지수를 정하는 것으로, 연립방정식과 관련된 사고를 요구한다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "4571CE49715F4599A720038136A255A4",
+          "similarity": 1.0,
+          "in_llm_gt": false,
+          "content_preview": "연립방정식을 세우시오."
+        },
+        {
+          "rank": 2,
+          "id": "99E8B0308AE340E3A7A95D4767E32670",
+          "similarity": 0.8812,
+          "in_llm_gt": false,
+          "content_preview": "두 자연수의 합에 대한 일차방정식을 세우시오."
+        },
+        {
+          "rank": 3,
+          "id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "similarity": 0.8537,
+          "in_llm_gt": true,
+          "content_preview": "부등식을 세우시오."
+        },
+        {
+          "rank": 4,
+          "id": "FFA0C20F69D44C78B08D60001432CEB3",
+          "similarity": 0.8537,
+          "in_llm_gt": true,
+          "content_preview": "부등식을 세우시오."
+        },
+        {
+          "rank": 5,
+          "id": "3B244379271242BAB76B6256388A5C22",
+          "similarity": 0.8136,
+          "in_llm_gt": false,
+          "content_preview": "일차함수의 식을 구하시오."
+        },
+        {
+          "rank": 6,
+          "id": "8850634E0F4D40F48CDEB2741F5FBC40",
+          "similarity": 0.8055,
+          "in_llm_gt": false,
+          "content_preview": "위 문제에서 세운 부등식을 푸시오."
+        },
+        {
+          "rank": 7,
+          "id": "81925C731BF644D8B5B51D57034EF074",
+          "similarity": 0.7894,
+          "in_llm_gt": true,
+          "content_preview": "문제의 상황에 맞게 미지수를 정하시오."
+        },
+        {
+          "rank": 8,
+          "id": "7B93E5877728421EBA9A2435AF8AA7B3",
+          "similarity": 0.7638,
+          "in_llm_gt": false,
+          "content_preview": "어떤 식을 구하시오."
+        },
+        {
+          "rank": 9,
+          "id": "6873C3D7F24141C39C1CAA8A283012AF",
+          "similarity": 0.7521,
+          "in_llm_gt": false,
+          "content_preview": "앞의 세 문제들의 결과를 바탕으로 필요한 피자와 치킨의 수를 각각 구하시오."
+        },
+        {
+          "rank": 10,
+          "id": "BBC376CB2FB646EB9B528ECB74674EB6",
+          "similarity": 0.7378,
+          "in_llm_gt": false,
+          "content_preview": "만들어진 세 자리의 정수 중 짝수가 나올 확률을 구하시오,"
+        }
+      ]
+    },
+    {
+      "query_id": "99E8B0308AE340E3A7A95D4767E32670",
+      "query_content": "두 자연수의 합에 대한 일차방정식을 세우시오.",
+      "category": "text_only",
+      "llm_gt_items": [
+        {
+          "id": "3B244379271242BAB76B6256388A5C22",
+          "relevance": 3,
+          "reasoning": "일차함수의 식을 구하는 문제로, 일차방정식과 관련된 개념을 다룸."
+        },
+        {
+          "id": "81925C731BF644D8B5B51D57034EF074",
+          "relevance": 4,
+          "reasoning": "문제의 상황에 맞게 미지수를 정하는 문제로, 유사한 사고 과정을 요구함."
+        },
+        {
+          "id": "8850634E0F4D40F48CDEB2741F5FBC40",
+          "relevance": 5,
+          "reasoning": "부등식을 푸는 문제로, 이전 문제와 연결된 풀이 접근 방식을 가짐."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "AB1E7C8E41F14335ABB108B08D509FF3",
+          "similarity": 0.8812,
+          "in_llm_gt": false,
+          "content_preview": "연립방정식을 세우시오."
+        },
+        {
+          "rank": 2,
+          "id": "4571CE49715F4599A720038136A255A4",
+          "similarity": 0.8812,
+          "in_llm_gt": false,
+          "content_preview": "연립방정식을 세우시오."
+        },
+        {
+          "rank": 3,
+          "id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "similarity": 0.8393,
+          "in_llm_gt": false,
+          "content_preview": "부등식을 세우시오."
+        },
+        {
+          "rank": 4,
+          "id": "FFA0C20F69D44C78B08D60001432CEB3",
+          "similarity": 0.8393,
+          "in_llm_gt": false,
+          "content_preview": "부등식을 세우시오."
+        },
+        {
+          "rank": 5,
+          "id": "3B244379271242BAB76B6256388A5C22",
+          "similarity": 0.8341,
+          "in_llm_gt": true,
+          "content_preview": "일차함수의 식을 구하시오."
+        },
+        {
+          "rank": 6,
+          "id": "81925C731BF644D8B5B51D57034EF074",
+          "similarity": 0.8172,
+          "in_llm_gt": true,
+          "content_preview": "문제의 상황에 맞게 미지수를 정하시오."
+        },
+        {
+          "rank": 7,
+          "id": "BBC376CB2FB646EB9B528ECB74674EB6",
+          "similarity": 0.8101,
+          "in_llm_gt": false,
+          "content_preview": "만들어진 세 자리의 정수 중 짝수가 나올 확률을 구하시오,"
+        },
+        {
+          "rank": 8,
+          "id": "8850634E0F4D40F48CDEB2741F5FBC40",
+          "similarity": 0.8027,
+          "in_llm_gt": true,
+          "content_preview": "위 문제에서 세운 부등식을 푸시오."
+        },
+        {
+          "rank": 9,
+          "id": "6873C3D7F24141C39C1CAA8A283012AF",
+          "similarity": 0.7952,
+          "in_llm_gt": false,
+          "content_preview": "앞의 세 문제들의 결과를 바탕으로 필요한 피자와 치킨의 수를 각각 구하시오."
+        },
+        {
+          "rank": 10,
+          "id": "7B93E5877728421EBA9A2435AF8AA7B3",
+          "similarity": 0.7758,
+          "in_llm_gt": false,
+          "content_preview": "어떤 식을 구하시오."
+        }
+      ]
+    },
+    {
+      "query_id": "D1D6F4DD3327483B8C128978E321A984",
+      "query_content": "세 변의 길이가 각각 다음과 같은 삼각형 중에서 둔각삼각형인 것은?",
+      "category": "text_only",
+      "llm_gt_items": [
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 3,
+          "reasoning": "직각삼각형의 성질을 다루며, 학생이 길이를 구하는 과정에서 비슷한 실수를 할 수 있다."
+        },
+        {
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "relevance": 4,
+          "reasoning": "직각삼각형의 성질을 다루며, 학생이 피타고라스 정리를 적용하는 방식이 유사하다."
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 5,
+          "reasoning": "직각을 포함한 도형 문제로, 학생이 도형의 성질을 이해하는 데 유사한 접근이 필요하다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "BBEBEF54DE6E4C04BAACE9E6E89D1308",
+          "similarity": 0.9778,
+          "in_llm_gt": false,
+          "content_preview": "세 변의 길이가 각각 다음과 같은 삼각형 중에서 예각삼각형인 것은?"
+        },
+        {
+          "rank": 2,
+          "id": "4EEA29416564497A91346D3457D4C87F",
+          "similarity": 0.9222,
+          "in_llm_gt": false,
+          "content_preview": "세 변의 길이가 다음과 같은 삼각형 중에서 직각삼각형은?"
+        },
+        {
+          "rank": 3,
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "similarity": 0.8176,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림의 $△ABC$에서 $∠A = 90°$이고 ${\\overline{BE}} = 7 ~cm ,$${\\overline{CD}} = 9 ~cm$, ${\\overline{BC}}"
+        },
+        {
+          "rank": 4,
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "similarity": 0.8172,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AB}} = 4 , ~ {\\overline{AC}} = 6$일 때, ${{{\\overline{"
+        },
+        {
+          "rank": 5,
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "similarity": 0.8012,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 ${\\overline{AC}} \\bot{\\overline{BD}}$인 $□ ABCD$에서 ${\\overline{BC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 6,
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "similarity": 0.7983,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 직사각형 ABCD의 내부에 한 점 P를 잡았을 때, ${\\overline{AP}} = 8$ cm, ${\\overline{BP}} = 5 {\\sqrt{2}}$ c"
+        },
+        {
+          "rank": 7,
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "similarity": 0.7881,
+          "in_llm_gt": false,
+          "content_preview": "$x$, $y$가 자연수일 때, 일차방정식 $3x + y = 10$의 해를 모두 구한 것은?"
+        },
+        {
+          "rank": 8,
+          "id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+          "similarity": 0.7757,
+          "in_llm_gt": false,
+          "content_preview": "좌표평면 위의 네 점 $A (2 , ~ 4)$, $B (4 , ~ 2)$, $C (5 , ~ 2)$, $D (5 , ~ 4)$를 꼭짓점으로 하는 사각형이 아래 그림과 같이 있다. "
+        },
+        {
+          "rank": 9,
+          "id": "66EB70674E174FCAB2942F840B5442EF",
+          "similarity": 0.775,
+          "in_llm_gt": false,
+          "content_preview": "$10$ 이하의 두 자연수 $x , ~y$에 대하여 일차방정식 $x + 3y = 15$의 $3$개의 해를 $(a , ~b) , ~ (c , ~d) , ~ (e , ~f)$라 할 때"
+        },
+        {
+          "rank": 10,
+          "id": "E91BA85F84D84C0892780CDDB19C2DA6",
+          "similarity": 0.7727,
+          "in_llm_gt": false,
+          "content_preview": "세 점 $(- 4 , ~ 1) , ~ {\\left ({\\cfrac{a}{2}} , ~ - 5 \\right)} , ~ (1 , ~ - 3)$이 한 직선 위에 있을 때, $a$의 값을"
+        }
+      ]
+    },
+    {
+      "query_id": "4EEA29416564497A91346D3457D4C87F",
+      "query_content": "세 변의 길이가 다음과 같은 삼각형 중에서 직각삼각형은?",
+      "category": "text_only",
+      "llm_gt_items": [
+        {
+          "id": "BBEBEF54DE6E4C04BAACE9E6E89D1308",
+          "relevance": 3,
+          "reasoning": "삼각형의 종류를 묻고 있으나, 예각삼각형을 다루므로 직각삼각형과는 개념이 다르다."
+        },
+        {
+          "id": "D1D6F4DD3327483B8C128978E321A984",
+          "relevance": 4,
+          "reasoning": "삼각형의 종류를 묻고 있으나, 둔각삼각형을 다루므로 직각삼각형과는 개념이 다르다."
+        },
+        {
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "relevance": 5,
+          "reasoning": "일차방정식의 해를 구하는 문제로, 삼각형과는 관련이 없지만 수학적 사고가 필요하다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "BBEBEF54DE6E4C04BAACE9E6E89D1308",
+          "similarity": 0.9292,
+          "in_llm_gt": true,
+          "content_preview": "세 변의 길이가 각각 다음과 같은 삼각형 중에서 예각삼각형인 것은?"
+        },
+        {
+          "rank": 2,
+          "id": "D1D6F4DD3327483B8C128978E321A984",
+          "similarity": 0.9222,
+          "in_llm_gt": true,
+          "content_preview": "세 변의 길이가 각각 다음과 같은 삼각형 중에서 둔각삼각형인 것은?"
+        },
+        {
+          "rank": 3,
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "similarity": 0.8279,
+          "in_llm_gt": true,
+          "content_preview": "$x$, $y$가 자연수일 때, 일차방정식 $3x + y = 10$의 해를 모두 구한 것은?"
+        },
+        {
+          "rank": 4,
+          "id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+          "similarity": 0.8139,
+          "in_llm_gt": false,
+          "content_preview": "좌표평면 위의 네 점 $A (2 , ~ 4)$, $B (4 , ~ 2)$, $C (5 , ~ 2)$, $D (5 , ~ 4)$를 꼭짓점으로 하는 사각형이 아래 그림과 같이 있다. "
+        },
+        {
+          "rank": 5,
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "similarity": 0.8089,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AB}} = 4 , ~ {\\overline{AC}} = 6$일 때, ${{{\\overline{"
+        },
+        {
+          "rank": 6,
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "similarity": 0.8069,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림의 $△ABC$에서 $∠A = 90°$이고 ${\\overline{BE}} = 7 ~cm ,$${\\overline{CD}} = 9 ~cm$, ${\\overline{BC}}"
+        },
+        {
+          "rank": 7,
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "similarity": 0.8024,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 ${\\overline{AC}} \\bot{\\overline{BD}}$인 $□ ABCD$에서 ${\\overline{BC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 8,
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "similarity": 0.8017,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 직사각형 ABCD의 내부에 한 점 P를 잡았을 때, ${\\overline{AP}} = 8$ cm, ${\\overline{BP}} = 5 {\\sqrt{2}}$ c"
+        },
+        {
+          "rank": 9,
+          "id": "E91BA85F84D84C0892780CDDB19C2DA6",
+          "similarity": 0.772,
+          "in_llm_gt": false,
+          "content_preview": "세 점 $(- 4 , ~ 1) , ~ {\\left ({\\cfrac{a}{2}} , ~ - 5 \\right)} , ~ (1 , ~ - 3)$이 한 직선 위에 있을 때, $a$의 값을"
+        },
+        {
+          "rank": 10,
+          "id": "66EB70674E174FCAB2942F840B5442EF",
+          "similarity": 0.7646,
+          "in_llm_gt": false,
+          "content_preview": "$10$ 이하의 두 자연수 $x , ~y$에 대하여 일차방정식 $x + 3y = 15$의 $3$개의 해를 $(a , ~b) , ~ (c , ~d) , ~ (e , ~f)$라 할 때"
+        }
+      ]
+    },
+    {
+      "query_id": "5F8D37AB72804C418FFAD219CA29DD52",
+      "query_content": "다음 중 일차부등식인 것은?",
+      "category": "text_only",
+      "llm_gt_items": [
+        {
+          "id": "DE1E9E4943D641B1BDA68EE63BE82D60",
+          "relevance": 3,
+          "reasoning": "일차부등식의 해를 만족하는 조건을 찾는 문제로 유사함."
+        },
+        {
+          "id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+          "relevance": 4,
+          "reasoning": "일차부등식의 예시를 제시하고 있어 관련성이 있음."
+        },
+        {
+          "id": "8C3A46CACBA44483B99486CA39238C7A",
+          "relevance": 5,
+          "reasoning": "일차부등식과 관련된 형태를 가지고 있으나 직접적인 관련성은 낮음."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "410C0A8C87D74B78A66C8DBBC6802E4C",
+          "similarity": 0.8958,
+          "in_llm_gt": false,
+          "content_preview": "다음 일차부등식 중 해가 $x `≥` - 1$인 것은?"
+        },
+        {
+          "rank": 2,
+          "id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+          "similarity": 0.8811,
+          "in_llm_gt": true,
+          "content_preview": "$x + 2≤5$ [이미지]"
+        },
+        {
+          "rank": 3,
+          "id": "66EB2F912E2B46E080CA1DC478580B36",
+          "similarity": 0.8398,
+          "in_llm_gt": false,
+          "content_preview": "함수 $f (x) = {\\cfrac{24}{x}}$에 대하여 $f (- 2) + f (3) + f (12)$의값을 구하시오."
+        },
+        {
+          "rank": 4,
+          "id": "53B97CBEFC1B45E6B344D433AA485DBF",
+          "similarity": 0.8355,
+          "in_llm_gt": false,
+          "content_preview": "$({{x}^{2}} + 3x + 5) {{- (2x}^{2}} - x - 1)$을 간단히 하였을 때, $x$의 계수와 상수항의 합은?"
+        },
+        {
+          "rank": 5,
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "similarity": 0.8246,
+          "in_llm_gt": false,
+          "content_preview": "${{4x}^{2}} - {\\left [ {{x}^{2}} - 3x - {\\left \\lbrace{{2x}^{2}} - 4x - ({{- x}^{2}} + 5x) + 2 \\righ"
+        },
+        {
+          "rank": 6,
+          "id": "8C3A46CACBA44483B99486CA39238C7A",
+          "similarity": 0.8187,
+          "in_llm_gt": true,
+          "content_preview": "$3a - 5 ` {\\boxed{\\boxed{~ ~ ~}}} ` 3b - 5$"
+        },
+        {
+          "rank": 7,
+          "id": "9786B12616DF41F5B614B49078961AD4",
+          "similarity": 0.8155,
+          "in_llm_gt": false,
+          "content_preview": "모든 자연수 $x$가 일차부등식 $5 (x - 2a) \\geqx - 12$의 해가 될 때, $a$의 값의 범위를 구하시오."
+        },
+        {
+          "rank": 8,
+          "id": "E91BA85F84D84C0892780CDDB19C2DA6",
+          "similarity": 0.8147,
+          "in_llm_gt": false,
+          "content_preview": "세 점 $(- 4 , ~ 1) , ~ {\\left ({\\cfrac{a}{2}} , ~ - 5 \\right)} , ~ (1 , ~ - 3)$이 한 직선 위에 있을 때, $a$의 값을"
+        },
+        {
+          "rank": 9,
+          "id": "DE1E9E4943D641B1BDA68EE63BE82D60",
+          "similarity": 0.8032,
+          "in_llm_gt": true,
+          "content_preview": "$x$에 대한 일차부등식 $5x + 4a > 9x$를 만족시키는 자연수 $x$가 $5$개일 때, 상수 $a$의 값의 범위는?"
+        },
+        {
+          "rank": 10,
+          "id": "7D58A391CEDB4BDF88E36C79847B4EBA",
+          "similarity": 0.797,
+          "in_llm_gt": false,
+          "content_preview": "연립방정식 ${\\left \\lbrace{\\begin{matrix}{3y = x + a} \\\\ {- 7x + by = 14} \\end{matrix}} \\right .}$의 해가 무수"
+        }
+      ]
+    },
+    {
+      "query_id": "BBEBEF54DE6E4C04BAACE9E6E89D1308",
+      "query_content": "세 변의 길이가 각각 다음과 같은 삼각형 중에서 예각삼각형인 것은?",
+      "category": "text_only",
+      "llm_gt_items": [
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 3,
+          "reasoning": "직각삼각형의 성질을 이용한 문제로, 삼각형의 성질을 다루고 있어 관련성이 있다."
+        },
+        {
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "relevance": 4,
+          "reasoning": "직각삼각형의 성질을 이용한 문제로, 삼각형의 성질을 다루고 있어 관련성이 있다."
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 5,
+          "reasoning": "직각을 포함한 도형 문제로, 삼각형과 관련된 기하학적 성질을 다루고 있다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "D1D6F4DD3327483B8C128978E321A984",
+          "similarity": 0.9778,
+          "in_llm_gt": false,
+          "content_preview": "세 변의 길이가 각각 다음과 같은 삼각형 중에서 둔각삼각형인 것은?"
+        },
+        {
+          "rank": 2,
+          "id": "4EEA29416564497A91346D3457D4C87F",
+          "similarity": 0.9292,
+          "in_llm_gt": false,
+          "content_preview": "세 변의 길이가 다음과 같은 삼각형 중에서 직각삼각형은?"
+        },
+        {
+          "rank": 3,
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "similarity": 0.8259,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림의 $△ABC$에서 $∠A = 90°$이고 ${\\overline{BE}} = 7 ~cm ,$${\\overline{CD}} = 9 ~cm$, ${\\overline{BC}}"
+        },
+        {
+          "rank": 4,
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "similarity": 0.8094,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 $∠A = 90°$인 직각삼각형 $ABC$에서 ${\\overline{AB}} = 4 , ~ {\\overline{AC}} = 6$일 때, ${{{\\overline{"
+        },
+        {
+          "rank": 5,
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "similarity": 0.8092,
+          "in_llm_gt": true,
+          "content_preview": "오른쪽 그림과 같이 ${\\overline{AC}} \\bot{\\overline{BD}}$인 $□ ABCD$에서 ${\\overline{BC}}$의 길이는? [이미지]"
+        },
+        {
+          "rank": 6,
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "similarity": 0.8058,
+          "in_llm_gt": false,
+          "content_preview": "오른쪽 그림과 같이 직사각형 ABCD의 내부에 한 점 P를 잡았을 때, ${\\overline{AP}} = 8$ cm, ${\\overline{BP}} = 5 {\\sqrt{2}}$ c"
+        },
+        {
+          "rank": 7,
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "similarity": 0.7948,
+          "in_llm_gt": false,
+          "content_preview": "$x$, $y$가 자연수일 때, 일차방정식 $3x + y = 10$의 해를 모두 구한 것은?"
+        },
+        {
+          "rank": 8,
+          "id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+          "similarity": 0.7795,
+          "in_llm_gt": false,
+          "content_preview": "좌표평면 위의 네 점 $A (2 , ~ 4)$, $B (4 , ~ 2)$, $C (5 , ~ 2)$, $D (5 , ~ 4)$를 꼭짓점으로 하는 사각형이 아래 그림과 같이 있다. "
+        },
+        {
+          "rank": 9,
+          "id": "E91BA85F84D84C0892780CDDB19C2DA6",
+          "similarity": 0.7771,
+          "in_llm_gt": false,
+          "content_preview": "세 점 $(- 4 , ~ 1) , ~ {\\left ({\\cfrac{a}{2}} , ~ - 5 \\right)} , ~ (1 , ~ - 3)$이 한 직선 위에 있을 때, $a$의 값을"
+        },
+        {
+          "rank": 10,
+          "id": "66EB70674E174FCAB2942F840B5442EF",
+          "similarity": 0.7725,
+          "in_llm_gt": false,
+          "content_preview": "$10$ 이하의 두 자연수 $x , ~y$에 대하여 일차방정식 $x + 3y = 15$의 $3$개의 해를 $(a , ~b) , ~ (c , ~d) , ~ (e , ~f)$라 할 때"
+        }
+      ]
+    },
+    {
+      "query_id": "3BE68CED94D548EF9C1FC122E18F49F3",
+      "query_content": "경우의 수가 가장 작은 것은?",
+      "category": "text_only",
+      "llm_gt_items": [
+        {
+          "id": "BBC376CB2FB646EB9B528ECB74674EB6",
+          "relevance": 3,
+          "reasoning": "확률을 구하는 문제로, 경우의 수와 관련된 개념이 비슷하다."
+        },
+        {
+          "id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+          "relevance": 4,
+          "reasoning": "색칠 문제로 경우의 수를 고려해야 하며, 유사한 접근 방식을 요구한다."
+        },
+        {
+          "id": "B731CFD846ED40AA8D26DD6D9E8546C9",
+          "relevance": 5,
+          "reasoning": "닮음의 경우의 수를 다루지만, 경우의 수 개념과는 다소 차이가 있다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "BBC376CB2FB646EB9B528ECB74674EB6",
+          "similarity": 0.7976,
+          "in_llm_gt": true,
+          "content_preview": "만들어진 세 자리의 정수 중 짝수가 나올 확률을 구하시오,"
+        },
+        {
+          "rank": 2,
+          "id": "E45A58F169EF4D07A691871F807BFAD0",
+          "similarity": 0.7911,
+          "in_llm_gt": false,
+          "content_preview": "두 사람이 가위바위보를 할 때, 승부가 결정되는 경우의 수는?"
+        },
+        {
+          "rank": 3,
+          "id": "59ABA99C8C7A4195B45D0092A20AC136",
+          "similarity": 0.7346,
+          "in_llm_gt": false,
+          "content_preview": "세 변의 길이가 모두 자연수인 직각삼각형이 있다. 이 중 두 변의 길이는 홀수이고 그 차는 50일 때, 나머지 한 변의 길이로 가능한 값 중 가장 작은 값을 구하여라."
+        },
+        {
+          "rank": 4,
+          "id": "B731CFD846ED40AA8D26DD6D9E8546C9",
+          "similarity": 0.7344,
+          "in_llm_gt": true,
+          "content_preview": "다음 중 항상 닮음인 것을 모두 고른 것은? ㄱ. 두 이등변삼각형 ㄴ. 두 직사각형ㄷ. 두 원 ㄹ. 두 구ㅁ. 두 직사각형 ㅂ. 두 원기둥"
+        },
+        {
+          "rank": 5,
+          "id": "99E8B0308AE340E3A7A95D4767E32670",
+          "similarity": 0.7258,
+          "in_llm_gt": false,
+          "content_preview": "두 자연수의 합에 대한 일차방정식을 세우시오."
+        },
+        {
+          "rank": 6,
+          "id": "72D59B348C22410AB71A08CA16EA24CD",
+          "similarity": 0.7224,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 문장을 미지수가 $2$개인 일차방정식으로 나타낸 것으로 옳지 것은?"
+        },
+        {
+          "rank": 7,
+          "id": "B3321AD022474BAD888A8496B48EAE92",
+          "similarity": 0.7218,
+          "in_llm_gt": false,
+          "content_preview": "남학생 2명과 여학생 3명을 한 줄로 세울 때, 남학생끼리 이웃하여 서는 경우의 수를 구하여라."
+        },
+        {
+          "rank": 8,
+          "id": "EF59D406E05D4D3885CB6DCB8E41A7E5",
+          "similarity": 0.7107,
+          "in_llm_gt": false,
+          "content_preview": "두 분수 ${\\cfrac{1}{6}}$과 ${\\cfrac{7}{8}}$ 사이에 분모가 $24$이고 분자가 자연수인 분수 중에서 유한소수로 나타낼 수 있는 분수의 개수를 구하여 □ "
+        },
+        {
+          "rank": 9,
+          "id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+          "similarity": 0.7091,
+          "in_llm_gt": true,
+          "content_preview": "다음 그림과 같이 $A$, $B$, $C$, $D$ 네 영역으로 나누어진 도형을 빨강, 파랑, 노랑 $3$가지 색으로 칠하려고 한다. 이웃한 영역은 서로 다른 색으로 구분하여 칠할"
+        },
+        {
+          "rank": 10,
+          "id": "6873C3D7F24141C39C1CAA8A283012AF",
+          "similarity": 0.7054,
+          "in_llm_gt": false,
+          "content_preview": "앞의 세 문제들의 결과를 바탕으로 필요한 피자와 치킨의 수를 각각 구하시오."
+        }
+      ]
+    },
+    {
+      "query_id": "FFA0C20F69D44C78B08D60001432CEB3",
+      "query_content": "부등식을 세우시오.",
+      "category": "text_only",
+      "llm_gt_items": [
+        {
+          "id": "99E8B0308AE340E3A7A95D4767E32670",
+          "relevance": 3,
+          "reasoning": "일차방정식을 세우는 문제로 수학적 개념의 유사성."
+        },
+        {
+          "id": "81925C731BF644D8B5B51D57034EF074",
+          "relevance": 4,
+          "reasoning": "미지수를 정하는 문제로 문제 설정의 유사성."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "similarity": 1.0,
+          "in_llm_gt": false,
+          "content_preview": "부등식을 세우시오."
+        },
+        {
+          "rank": 2,
+          "id": "8850634E0F4D40F48CDEB2741F5FBC40",
+          "similarity": 0.9125,
+          "in_llm_gt": false,
+          "content_preview": "위 문제에서 세운 부등식을 푸시오."
+        },
+        {
+          "rank": 3,
+          "id": "4571CE49715F4599A720038136A255A4",
+          "similarity": 0.8537,
+          "in_llm_gt": false,
+          "content_preview": "연립방정식을 세우시오."
+        },
+        {
+          "rank": 4,
+          "id": "AB1E7C8E41F14335ABB108B08D509FF3",
+          "similarity": 0.8537,
+          "in_llm_gt": false,
+          "content_preview": "연립방정식을 세우시오."
+        },
+        {
+          "rank": 5,
+          "id": "99E8B0308AE340E3A7A95D4767E32670",
+          "similarity": 0.8393,
+          "in_llm_gt": true,
+          "content_preview": "두 자연수의 합에 대한 일차방정식을 세우시오."
+        },
+        {
+          "rank": 6,
+          "id": "81925C731BF644D8B5B51D57034EF074",
+          "similarity": 0.8147,
+          "in_llm_gt": true,
+          "content_preview": "문제의 상황에 맞게 미지수를 정하시오."
+        },
+        {
+          "rank": 7,
+          "id": "E9ECDF6686F64B64B22757BB90BB4BEE",
+          "similarity": 0.8053,
+          "in_llm_gt": false,
+          "content_preview": "처음의 기약분수를 구하시오."
+        },
+        {
+          "rank": 8,
+          "id": "7B93E5877728421EBA9A2435AF8AA7B3",
+          "similarity": 0.8021,
+          "in_llm_gt": false,
+          "content_preview": "어떤 식을 구하시오."
+        },
+        {
+          "rank": 9,
+          "id": "6873C3D7F24141C39C1CAA8A283012AF",
+          "similarity": 0.7963,
+          "in_llm_gt": false,
+          "content_preview": "앞의 세 문제들의 결과를 바탕으로 필요한 피자와 치킨의 수를 각각 구하시오."
+        },
+        {
+          "rank": 10,
+          "id": "3B7BCF51304D4DB7B1422591226E8775",
+          "similarity": 0.7935,
+          "in_llm_gt": false,
+          "content_preview": "남학생이 잘못 본 분수를 구하시오."
+        }
+      ]
+    },
+    {
+      "query_id": "E45A58F169EF4D07A691871F807BFAD0",
+      "query_content": "두 사람이 가위바위보를 할 때, 승부가 결정되는 경우의 수는?",
+      "category": "text_only",
+      "llm_gt_items": [
+        {
+          "id": "BBC376CB2FB646EB9B528ECB74674EB6",
+          "relevance": 5,
+          "reasoning": "세 자리의 정수 중 짝수가 나올 경우의 수를 구하는 문제로, 경우의 수를 다루고 있다."
+        },
+        {
+          "id": "FB17AAD57C3B4547AA5EFFF13F6F18DB",
+          "relevance": 4,
+          "reasoning": "학생 수를 구하는 문제로, 비율과 경우의 수를 다루고 있어 유사성이 있다."
+        },
+        {
+          "id": "BFC2D238D32546B1BF7362E55396AE66",
+          "relevance": 3,
+          "reasoning": "사탕의 개수를 구하는 문제로, 조건에 따른 경우의 수를 다루고 있다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "3BE68CED94D548EF9C1FC122E18F49F3",
+          "similarity": 0.7911,
+          "in_llm_gt": false,
+          "content_preview": "경우의 수가 가장 작은 것은?"
+        },
+        {
+          "rank": 2,
+          "id": "FB17AAD57C3B4547AA5EFFF13F6F18DB",
+          "similarity": 0.719,
+          "in_llm_gt": true,
+          "content_preview": "전국 매스게임에 참가하기 위해 푸르넷 중학교는 남학생의 $6 %$, 여학생의 $15 %$를 뽑았더니 정확히 전체 학생 $270$명의 $10 %$이었다고 한다. 푸르넷 중학교의 전체"
+        },
+        {
+          "rank": 3,
+          "id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+          "similarity": 0.7169,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 $A$, $B$, $C$, $D$ 네 영역으로 나누어진 도형을 빨강, 파랑, 노랑 $3$가지 색으로 칠하려고 한다. 이웃한 영역은 서로 다른 색으로 구분하여 칠할"
+        },
+        {
+          "rank": 4,
+          "id": "BBC376CB2FB646EB9B528ECB74674EB6",
+          "similarity": 0.7155,
+          "in_llm_gt": true,
+          "content_preview": "만들어진 세 자리의 정수 중 짝수가 나올 확률을 구하시오,"
+        },
+        {
+          "rank": 5,
+          "id": "72D59B348C22410AB71A08CA16EA24CD",
+          "similarity": 0.7127,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 문장을 미지수가 $2$개인 일차방정식으로 나타낸 것으로 옳지 것은?"
+        },
+        {
+          "rank": 6,
+          "id": "2F63FE75EC4E4A32887455C839BD2C1E",
+          "similarity": 0.7077,
+          "in_llm_gt": false,
+          "content_preview": "다음 그림과 같이 똑같은 모양의 사다리꼴을 한 변이 완전히 겹치도록 계속해서 이어 붙여 새로운 도형을 만들려고 한다. $29$개의 사다리꼴로 만들 도형의 둘레의 길이는? [이미지]"
+        },
+        {
+          "rank": 7,
+          "id": "66EB70674E174FCAB2942F840B5442EF",
+          "similarity": 0.7048,
+          "in_llm_gt": false,
+          "content_preview": "$10$ 이하의 두 자연수 $x , ~y$에 대하여 일차방정식 $x + 3y = 15$의 $3$개의 해를 $(a , ~b) , ~ (c , ~d) , ~ (e , ~f)$라 할 때"
+        },
+        {
+          "rank": 8,
+          "id": "BFC2D238D32546B1BF7362E55396AE66",
+          "similarity": 0.6986,
+          "in_llm_gt": true,
+          "content_preview": "한 개에 $800$원인 사탕을 값이 $4000$원 이상이 되게 사려고 할 때, 사탕은 몇 개 이상 사야 하는가?"
+        },
+        {
+          "rank": 9,
+          "id": "85C794C9955848D297A98598E88C06FD",
+          "similarity": 0.6981,
+          "in_llm_gt": false,
+          "content_preview": "$1$분 동안 귀뚜라미가 울음소리를 낸 횟수와 섭씨온도 사이에는 다음과 같은 일차함수 관계가 있다고 한다. $1$분 동안 울음소리를 낸 횟수(회)기온$40$$10° C$$112$$"
+        },
+        {
+          "rank": 10,
+          "id": "B731CFD846ED40AA8D26DD6D9E8546C9",
+          "similarity": 0.6899,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 항상 닮음인 것을 모두 고른 것은? ㄱ. 두 이등변삼각형 ㄴ. 두 직사각형ㄷ. 두 원 ㄹ. 두 구ㅁ. 두 직사각형 ㅂ. 두 원기둥"
+        }
+      ]
+    },
+    {
+      "query_id": "99FE13B09A0E48DB89A5E8465944CC19",
+      "query_content": "다음 중 옳은 것은?",
+      "category": "text_only",
+      "llm_gt_items": [
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 3,
+          "reasoning": "다항식의 계수를 구하는 문제로, 계산 과정에서 비슷한 실수를 할 수 있음."
+        },
+        {
+          "id": "9B6BD5C274E347098DF7AC098C7E06DA",
+          "relevance": 4,
+          "reasoning": "다항식의 계산을 포함하여, 유사한 접근 방식을 요구함."
+        },
+        {
+          "id": "DC0FA60E4C1D4084A1281B9DC491D577",
+          "relevance": 5,
+          "reasoning": "다항식의 계산을 포함하여, 유사한 접근 방식을 요구함."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "65E3BB5494B34C1C8289DEDE63C2F68D",
+          "similarity": 0.9649,
+          "in_llm_gt": false,
+          "content_preview": "다음 중에서 계산 결과가 옳은 것은?"
+        },
+        {
+          "rank": 2,
+          "id": "AE50A202C3384AFD9C52678B6BA7833A",
+          "similarity": 0.8417,
+          "in_llm_gt": false,
+          "content_preview": "다음 (가) 밑변의 길이가 ${{9x}^{3}}{{y}^{2}}$이고 높이가 ${{2 xy}^{3}}$인 직각삼각형의 넓이와 (나) 넓이가 ${{20a}^{4}}{{b}^{9}}$"
+        },
+        {
+          "rank": 3,
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "similarity": 0.8182,
+          "in_llm_gt": true,
+          "content_preview": "${{4x}^{2}} - {\\left [ {{x}^{2}} - 3x - {\\left \\lbrace{{2x}^{2}} - 4x - ({{- x}^{2}} + 5x) + 2 \\righ"
+        },
+        {
+          "rank": 4,
+          "id": "9B6BD5C274E347098DF7AC098C7E06DA",
+          "similarity": 0.7683,
+          "in_llm_gt": true,
+          "content_preview": "$2a {\\left (4a - 3b \\right)} + {\\left ({{8a}^{2}}{{b}^{2}}{{- 4a}^{3}} b \\right)} \\div{{4 ab = ma}^{"
+        },
+        {
+          "rank": 5,
+          "id": "F94806629A674E4B81126B3264A320C5",
+          "similarity": 0.7599,
+          "in_llm_gt": false,
+          "content_preview": "그림과 같이 길이가 ${{3}^{8}}$인 끈을 $3$등분하여 그 중간 부분을 잘라 내는 과정을 $10$회 반복하였다. 이때 남은 끈의 길이의 합은? [이미지]"
+        },
+        {
+          "rank": 6,
+          "id": "DC0FA60E4C1D4084A1281B9DC491D577",
+          "similarity": 0.7557,
+          "in_llm_gt": true,
+          "content_preview": "$- 3a {\\left (5a - 2b \\right)} - {\\left \\lbrace - 3a {\\left ({{2a}^{2}}{{b + ab}^{2}} \\right)}{{+ 8a"
+        },
+        {
+          "rank": 7,
+          "id": "43DA19AE34574C43AB1912BB2F48AFC2",
+          "similarity": 0.755,
+          "in_llm_gt": false,
+          "content_preview": "다음 중 가장 큰 수는?"
+        },
+        {
+          "rank": 8,
+          "id": "53B97CBEFC1B45E6B344D433AA485DBF",
+          "similarity": 0.7493,
+          "in_llm_gt": false,
+          "content_preview": "$({{x}^{2}} + 3x + 5) {{- (2x}^{2}} - x - 1)$을 간단히 하였을 때, $x$의 계수와 상수항의 합은?"
+        },
+        {
+          "rank": 9,
+          "id": "1FCB1D636A01499CA6072319786229AB",
+          "similarity": 0.743,
+          "in_llm_gt": false,
+          "content_preview": "다음 연립방정식 중 해가 무수히 많은 것은?"
+        },
+        {
+          "rank": 10,
+          "id": "66EB2F912E2B46E080CA1DC478580B36",
+          "similarity": 0.7192,
+          "in_llm_gt": false,
+          "content_preview": "함수 $f (x) = {\\cfrac{24}{x}}$에 대하여 $f (- 2) + f (3) + f (12)$의값을 구하시오."
+        }
+      ]
+    },
+    {
+      "query_id": "BBC376CB2FB646EB9B528ECB74674EB6",
+      "query_content": "만들어진 세 자리의 정수 중 짝수가 나올 확률을 구하시오,",
+      "category": "text_only",
+      "llm_gt_items": [
+        {
+          "id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "relevance": 3,
+          "reasoning": "부등식을 세우는 문제로, 수학적 접근 방식이 비슷하다."
+        },
+        {
+          "id": "7B93E5877728421EBA9A2435AF8AA7B3",
+          "relevance": 4,
+          "reasoning": "어떤 식을 구하는 문제로, 수학적 개념을 다루고 있다."
+        },
+        {
+          "id": "81925C731BF644D8B5B51D57034EF074",
+          "relevance": 5,
+          "reasoning": "문제의 상황을 바탕으로 수를 구하는 과정이 포함되어 있다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "99E8B0308AE340E3A7A95D4767E32670",
+          "similarity": 0.8101,
+          "in_llm_gt": false,
+          "content_preview": "두 자연수의 합에 대한 일차방정식을 세우시오."
+        },
+        {
+          "rank": 2,
+          "id": "6873C3D7F24141C39C1CAA8A283012AF",
+          "similarity": 0.8059,
+          "in_llm_gt": false,
+          "content_preview": "앞의 세 문제들의 결과를 바탕으로 필요한 피자와 치킨의 수를 각각 구하시오."
+        },
+        {
+          "rank": 3,
+          "id": "81925C731BF644D8B5B51D57034EF074",
+          "similarity": 0.7977,
+          "in_llm_gt": true,
+          "content_preview": "문제의 상황에 맞게 미지수를 정하시오."
+        },
+        {
+          "rank": 4,
+          "id": "3BE68CED94D548EF9C1FC122E18F49F3",
+          "similarity": 0.7976,
+          "in_llm_gt": false,
+          "content_preview": "경우의 수가 가장 작은 것은?"
+        },
+        {
+          "rank": 5,
+          "id": "5D95B24A75484679A2F971E19102922D",
+          "similarity": 0.7789,
+          "in_llm_gt": false,
+          "content_preview": "작년의 남학생 수를 이용하여 올해의 남학생 수를 구하여 □ 안에 써넣으시오.명"
+        },
+        {
+          "rank": 6,
+          "id": "8850634E0F4D40F48CDEB2741F5FBC40",
+          "similarity": 0.7753,
+          "in_llm_gt": false,
+          "content_preview": "위 문제에서 세운 부등식을 푸시오."
+        },
+        {
+          "rank": 7,
+          "id": "7B93E5877728421EBA9A2435AF8AA7B3",
+          "similarity": 0.7731,
+          "in_llm_gt": true,
+          "content_preview": "어떤 식을 구하시오."
+        },
+        {
+          "rank": 8,
+          "id": "FFA0C20F69D44C78B08D60001432CEB3",
+          "similarity": 0.7683,
+          "in_llm_gt": false,
+          "content_preview": "부등식을 세우시오."
+        },
+        {
+          "rank": 9,
+          "id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "similarity": 0.7683,
+          "in_llm_gt": true,
+          "content_preview": "부등식을 세우시오."
+        },
+        {
+          "rank": 10,
+          "id": "3B7BCF51304D4DB7B1422591226E8775",
+          "similarity": 0.764,
+          "in_llm_gt": false,
+          "content_preview": "남학생이 잘못 본 분수를 구하시오."
+        }
+      ]
+    },
+    {
+      "query_id": "8850634E0F4D40F48CDEB2741F5FBC40",
+      "query_content": "위 문제에서 세운 부등식을 푸시오.",
+      "category": "text_only",
+      "llm_gt_items": [
+        {
+          "id": "AB1E7C8E41F14335ABB108B08D509FF3",
+          "relevance": 3,
+          "reasoning": "연립방정식을 세우는 문제로, 비슷한 풀이 접근 방식을 가짐."
+        },
+        {
+          "id": "4571CE49715F4599A720038136A255A4",
+          "relevance": 4,
+          "reasoning": "연립방정식을 세우는 문제로, 비슷한 풀이 접근 방식을 가짐."
+        },
+        {
+          "id": "81925C731BF644D8B5B51D57034EF074",
+          "relevance": 5,
+          "reasoning": "문제의 상황에 맞게 미지수를 정하는 문제로, 유사한 개념을 다룸."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "FFA0C20F69D44C78B08D60001432CEB3",
+          "similarity": 0.9125,
+          "in_llm_gt": false,
+          "content_preview": "부등식을 세우시오."
+        },
+        {
+          "rank": 2,
+          "id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "similarity": 0.9125,
+          "in_llm_gt": false,
+          "content_preview": "부등식을 세우시오."
+        },
+        {
+          "rank": 3,
+          "id": "6873C3D7F24141C39C1CAA8A283012AF",
+          "similarity": 0.8334,
+          "in_llm_gt": false,
+          "content_preview": "앞의 세 문제들의 결과를 바탕으로 필요한 피자와 치킨의 수를 각각 구하시오."
+        },
+        {
+          "rank": 4,
+          "id": "E9ECDF6686F64B64B22757BB90BB4BEE",
+          "similarity": 0.8285,
+          "in_llm_gt": false,
+          "content_preview": "처음의 기약분수를 구하시오."
+        },
+        {
+          "rank": 5,
+          "id": "81925C731BF644D8B5B51D57034EF074",
+          "similarity": 0.8213,
+          "in_llm_gt": true,
+          "content_preview": "문제의 상황에 맞게 미지수를 정하시오."
+        },
+        {
+          "rank": 6,
+          "id": "3B7BCF51304D4DB7B1422591226E8775",
+          "similarity": 0.8188,
+          "in_llm_gt": false,
+          "content_preview": "남학생이 잘못 본 분수를 구하시오."
+        },
+        {
+          "rank": 7,
+          "id": "18CB6CD734304254938B9FF7BD33452F",
+          "similarity": 0.8184,
+          "in_llm_gt": false,
+          "content_preview": "올바른 풀이"
+        },
+        {
+          "rank": 8,
+          "id": "7B93E5877728421EBA9A2435AF8AA7B3",
+          "similarity": 0.8158,
+          "in_llm_gt": false,
+          "content_preview": "어떤 식을 구하시오."
+        },
+        {
+          "rank": 9,
+          "id": "4571CE49715F4599A720038136A255A4",
+          "similarity": 0.8055,
+          "in_llm_gt": true,
+          "content_preview": "연립방정식을 세우시오."
+        },
+        {
+          "rank": 10,
+          "id": "AB1E7C8E41F14335ABB108B08D509FF3",
+          "similarity": 0.8055,
+          "in_llm_gt": true,
+          "content_preview": "연립방정식을 세우시오."
+        }
+      ]
+    },
+    {
+      "query_id": "B3321AD022474BAD888A8496B48EAE92",
+      "query_content": "남학생 2명과 여학생 3명을 한 줄로 세울 때, 남학생끼리 이웃하여 서는 경우의 수를 구하여라.",
+      "category": "text_only",
+      "llm_gt_items": [
+        {
+          "id": "BBC376CB2FB646EB9B528ECB74674EB6",
+          "relevance": 3,
+          "reasoning": "비율과 수를 구하는 문제로, 수학적 사고가 유사하다."
+        },
+        {
+          "id": "81925C731BF644D8B5B51D57034EF074",
+          "relevance": 4,
+          "reasoning": "문제 상황에 맞게 미지수를 정하는 과정이 포함되어 있다."
+        },
+        {
+          "id": "AB1E7C8E41F14335ABB108B08D509FF3",
+          "relevance": 5,
+          "reasoning": "연립방정식을 세우는 문제로, 수학적 모델링이 필요하다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "5D95B24A75484679A2F971E19102922D",
+          "similarity": 0.7955,
+          "in_llm_gt": false,
+          "content_preview": "작년의 남학생 수를 이용하여 올해의 남학생 수를 구하여 □ 안에 써넣으시오.명"
+        },
+        {
+          "rank": 2,
+          "id": "FB17AAD57C3B4547AA5EFFF13F6F18DB",
+          "similarity": 0.7611,
+          "in_llm_gt": false,
+          "content_preview": "전국 매스게임에 참가하기 위해 푸르넷 중학교는 남학생의 $6 %$, 여학생의 $15 %$를 뽑았더니 정확히 전체 학생 $270$명의 $10 %$이었다고 한다. 푸르넷 중학교의 전체"
+        },
+        {
+          "rank": 3,
+          "id": "BBC376CB2FB646EB9B528ECB74674EB6",
+          "similarity": 0.7484,
+          "in_llm_gt": true,
+          "content_preview": "만들어진 세 자리의 정수 중 짝수가 나올 확률을 구하시오,"
+        },
+        {
+          "rank": 4,
+          "id": "99E8B0308AE340E3A7A95D4767E32670",
+          "similarity": 0.7222,
+          "in_llm_gt": false,
+          "content_preview": "두 자연수의 합에 대한 일차방정식을 세우시오."
+        },
+        {
+          "rank": 5,
+          "id": "3BE68CED94D548EF9C1FC122E18F49F3",
+          "similarity": 0.7218,
+          "in_llm_gt": false,
+          "content_preview": "경우의 수가 가장 작은 것은?"
+        },
+        {
+          "rank": 6,
+          "id": "3B7BCF51304D4DB7B1422591226E8775",
+          "similarity": 0.7209,
+          "in_llm_gt": false,
+          "content_preview": "남학생이 잘못 본 분수를 구하시오."
+        },
+        {
+          "rank": 7,
+          "id": "6873C3D7F24141C39C1CAA8A283012AF",
+          "similarity": 0.6885,
+          "in_llm_gt": false,
+          "content_preview": "앞의 세 문제들의 결과를 바탕으로 필요한 피자와 치킨의 수를 각각 구하시오."
+        },
+        {
+          "rank": 8,
+          "id": "81925C731BF644D8B5B51D57034EF074",
+          "similarity": 0.6875,
+          "in_llm_gt": true,
+          "content_preview": "문제의 상황에 맞게 미지수를 정하시오."
+        },
+        {
+          "rank": 9,
+          "id": "AB1E7C8E41F14335ABB108B08D509FF3",
+          "similarity": 0.6826,
+          "in_llm_gt": true,
+          "content_preview": "연립방정식을 세우시오."
+        },
+        {
+          "rank": 10,
+          "id": "4571CE49715F4599A720038136A255A4",
+          "similarity": 0.6826,
+          "in_llm_gt": false,
+          "content_preview": "연립방정식을 세우시오."
+        }
+      ]
+    },
+    {
+      "query_id": "EFC2FD18007745ECBC0B047F5C1CC6C7",
+      "query_content": "구의 부피를 구하여라.",
+      "category": "text_only",
+      "llm_gt_items": [
+        {
+          "id": "8850634E0F4D40F48CDEB2741F5FBC40",
+          "relevance": 3,
+          "reasoning": "부등식을 푸는 과정에서 수학적 사고가 필요하여 유사성이 있다."
+        },
+        {
+          "id": "FFA0C20F69D44C78B08D60001432CEB3",
+          "relevance": 4,
+          "reasoning": "부등식을 세우는 과정이 문제 해결에 필요한 사고를 요구한다."
+        },
+        {
+          "id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "relevance": 5,
+          "reasoning": "부등식을 세우는 문제로, 수학적 개념이 유사하다."
+        }
+      ],
+      "embedding_top10": [
+        {
+          "rank": 1,
+          "id": "8850634E0F4D40F48CDEB2741F5FBC40",
+          "similarity": 0.7066,
+          "in_llm_gt": true,
+          "content_preview": "위 문제에서 세운 부등식을 푸시오."
+        },
+        {
+          "rank": 2,
+          "id": "FFA0C20F69D44C78B08D60001432CEB3",
+          "similarity": 0.7043,
+          "in_llm_gt": true,
+          "content_preview": "부등식을 세우시오."
+        },
+        {
+          "rank": 3,
+          "id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "similarity": 0.7043,
+          "in_llm_gt": true,
+          "content_preview": "부등식을 세우시오."
+        },
+        {
+          "rank": 4,
+          "id": "7B93E5877728421EBA9A2435AF8AA7B3",
+          "similarity": 0.7036,
+          "in_llm_gt": false,
+          "content_preview": "어떤 식을 구하시오."
+        },
+        {
+          "rank": 5,
+          "id": "BBC376CB2FB646EB9B528ECB74674EB6",
+          "similarity": 0.7024,
+          "in_llm_gt": false,
+          "content_preview": "만들어진 세 자리의 정수 중 짝수가 나올 확률을 구하시오,"
+        },
+        {
+          "rank": 6,
+          "id": "3B7BCF51304D4DB7B1422591226E8775",
+          "similarity": 0.699,
+          "in_llm_gt": false,
+          "content_preview": "남학생이 잘못 본 분수를 구하시오."
+        },
+        {
+          "rank": 7,
+          "id": "6873C3D7F24141C39C1CAA8A283012AF",
+          "similarity": 0.6962,
+          "in_llm_gt": false,
+          "content_preview": "앞의 세 문제들의 결과를 바탕으로 필요한 피자와 치킨의 수를 각각 구하시오."
+        },
+        {
+          "rank": 8,
+          "id": "81925C731BF644D8B5B51D57034EF074",
+          "similarity": 0.6958,
+          "in_llm_gt": false,
+          "content_preview": "문제의 상황에 맞게 미지수를 정하시오."
+        },
+        {
+          "rank": 9,
+          "id": "078734A8414A42FC835674EFAD010906",
+          "similarity": 0.6957,
+          "in_llm_gt": false,
+          "content_preview": "$60$개의 블록으로 만든 도형의 둘레의 길이를 구하시오.${\\boxed} ` ` cm$"
+        },
+        {
+          "rank": 10,
+          "id": "E9ECDF6686F64B64B22757BB90BB4BEE",
+          "similarity": 0.6844,
+          "in_llm_gt": false,
+          "content_preview": "처음의 기약분수를 구하시오."
+        }
+      ]
+    }
+  ]
+}

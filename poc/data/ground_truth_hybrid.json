@@ -1,0 +1,909 @@
+{
+  "metadata": {
+    "total_queries": 61,
+    "total_pairs": 93,
+    "generation_method": "Hybrid (TF-IDF ∩ LLM GT)",
+    "created_at": "2026-01-27T23:10:00.025775",
+    "stats": {
+      "total_queries": 100,
+      "queries_with_intersection": 61,
+      "total_pairs": 93,
+      "intersection_sizes": [
+        1,
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        4,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "ground_truth": [
+    {
+      "query_id": "46ACB9139B444F578F9A7DC9B54175CB",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "B433ED8101A14DF88CADA9116F0CDB97",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "relevance": 4,
+          "source": "intersection"
+        },
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "AD550B4E409F4EC097E610BB3615C98B",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "relevance": 4,
+          "source": "intersection"
+        },
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "1001AC6A482E4383B34E5476DFA3A9C2",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 5,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "6C3E301AFD69401FAA960C8C55361238",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 3,
+          "source": "intersection"
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "E3D336A89BAD46F0A5E9034E243F5D92",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "relevance": 3,
+          "source": "intersection"
+        },
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "5F8D37AB72804C418FFAD219CA29DD52",
+          "relevance": 3,
+          "source": "intersection"
+        },
+        {
+          "id": "9786B12616DF41F5B614B49078961AD4",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "3128064044C64F4A8F9296D235F94ACB",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 3,
+          "source": "intersection"
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "66063A66864042448368E291FDCF44D5",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "E91BA85F84D84C0892780CDDB19C2DA6",
+          "relevance": 5,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 4,
+          "source": "intersection"
+        },
+        {
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "relevance": 3,
+          "source": "intersection"
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 5,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "51EFF604353C41E8A0AE820C04A25DD7",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 4,
+          "source": "intersection"
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 5,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "AB202E4A636A4DA288A841F393E51704",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "relevance": 4,
+          "source": "intersection"
+        },
+        {
+          "id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "relevance": 5,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "DC786E25B9AD449B86EF35F0F774B642",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "AE50A202C3384AFD9C52678B6BA7833A",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 5,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "relevance": 4,
+          "source": "intersection"
+        },
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "75D6A18B7A664FC0B35942B943FD16FC",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "relevance": 5,
+          "source": "intersection"
+        },
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "027A1DBAAD4B4715B86256B9F614F840",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "relevance": 4,
+          "source": "intersection"
+        },
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "A88C66DF5A314FFFA0576F9480514924",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "relevance": 4,
+          "source": "intersection"
+        },
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "F94806629A674E4B81126B3264A320C5",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "8953FEB42A4343648F0811C21B5CF162",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "AE50A202C3384AFD9C52678B6BA7833A",
+          "relevance": 5,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "AB56E85712904550A62A39027F9FFB68",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "AB1E7C8E41F14335ABB108B08D509FF3",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "relevance": 4,
+          "source": "intersection"
+        },
+        {
+          "id": "FFA0C20F69D44C78B08D60001432CEB3",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "D1D6F4DD3327483B8C128978E321A984",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 3,
+          "source": "intersection"
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 5,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "4EEA29416564497A91346D3457D4C87F",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "BBEBEF54DE6E4C04BAACE9E6E89D1308",
+          "relevance": 3,
+          "source": "intersection"
+        },
+        {
+          "id": "D1D6F4DD3327483B8C128978E321A984",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "5F8D37AB72804C418FFAD219CA29DD52",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "DE1E9E4943D641B1BDA68EE63BE82D60",
+          "relevance": 3,
+          "source": "intersection"
+        },
+        {
+          "id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "BBEBEF54DE6E4C04BAACE9E6E89D1308",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 3,
+          "source": "intersection"
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 5,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "3BE68CED94D548EF9C1FC122E18F49F3",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+          "relevance": 4,
+          "source": "intersection"
+        },
+        {
+          "id": "BBC376CB2FB646EB9B528ECB74674EB6",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "E45A58F169EF4D07A691871F807BFAD0",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "BBC376CB2FB646EB9B528ECB74674EB6",
+          "relevance": 5,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "99FE13B09A0E48DB89A5E8465944CC19",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "DC0FA60E4C1D4084A1281B9DC491D577",
+          "relevance": 5,
+          "source": "intersection"
+        },
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "B3321AD022474BAD888A8496B48EAE92",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "BBC376CB2FB646EB9B528ECB74674EB6",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "43DA19AE34574C43AB1912BB2F48AFC2",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "65E3BB5494B34C1C8289DEDE63C2F68D",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "81925C731BF644D8B5B51D57034EF074",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "65E3BB5494B34C1C8289DEDE63C2F68D",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "AE50A202C3384AFD9C52678B6BA7833A",
+          "relevance": 3,
+          "source": "intersection"
+        },
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 5,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "32EB59561EEC43BBB6AFE66FD5A77D67",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "DE1E9E4943D641B1BDA68EE63BE82D60",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "19B56562F5AD4ECCA68A8FF9D51A445E",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "8850634E0F4D40F48CDEB2741F5FBC40",
+          "relevance": 5,
+          "source": "intersection"
+        },
+        {
+          "id": "FFA0C20F69D44C78B08D60001432CEB3",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "6D28AB8080074BF1AC157C90EEFAC301",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "AB56E85712904550A62A39027F9FFB68",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "AB1E7C8E41F14335ABB108B08D509FF3",
+          "relevance": 3,
+          "source": "intersection"
+        },
+        {
+          "id": "4571CE49715F4599A720038136A255A4",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "1FCB1D636A01499CA6072319786229AB",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "66EB70674E174FCAB2942F840B5442EF",
+          "relevance": 4,
+          "source": "intersection"
+        },
+        {
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "4571CE49715F4599A720038136A255A4",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "relevance": 4,
+          "source": "intersection"
+        },
+        {
+          "id": "FFA0C20F69D44C78B08D60001432CEB3",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "72D59B348C22410AB71A08CA16EA24CD",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "7D58A391CEDB4BDF88E36C79847B4EBA",
+          "relevance": 4,
+          "source": "intersection"
+        },
+        {
+          "id": "66EB70674E174FCAB2942F840B5442EF",
+          "relevance": 5,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "1B73CF5B8E274FBDB18ACEBA105BE1A6",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "8414DC7576484155866A351B3B436D8C",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "8414DC7576484155866A351B3B436D8C",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 5,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "1C26FF6D401C4070821EC3DE8FA440A6",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "1B73CF5B8E274FBDB18ACEBA105BE1A6",
+          "relevance": 4,
+          "source": "intersection"
+        },
+        {
+          "id": "FFC898D3218140B5A3C3B6FC0DD454F6",
+          "relevance": 3,
+          "source": "intersection"
+        },
+        {
+          "id": "6375D1D173274F808E4961A5D0F52473",
+          "relevance": 5,
+          "source": "intersection"
+        },
+        {
+          "id": "8414DC7576484155866A351B3B436D8C",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "38A9C868EA3E44C58E501DC193A1FA8E",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "9786B12616DF41F5B614B49078961AD4",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "410C0A8C87D74B78A66C8DBBC6802E4C",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "DE1E9E4943D641B1BDA68EE63BE82D60",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "0533E6E14C514571B8FE88E524550438",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "6375D1D173274F808E4961A5D0F52473",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "715256BA1D9A46589C17C0BA9E65F85F",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "F48BBE62C7964BAE92A06D075EBE09F8",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "BFC2D238D32546B1BF7362E55396AE66",
+          "relevance": 5,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "DE1E9E4943D641B1BDA68EE63BE82D60",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "410C0A8C87D74B78A66C8DBBC6802E4C",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "9B6BD5C274E347098DF7AC098C7E06DA",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 5,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "6375D1D173274F808E4961A5D0F52473",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "1C26FF6D401C4070821EC3DE8FA440A6",
+          "relevance": 4,
+          "source": "intersection"
+        },
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "9786B12616DF41F5B614B49078961AD4",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "5F8D37AB72804C418FFAD219CA29DD52",
+          "relevance": 5,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "EF59D406E05D4D3885CB6DCB8E41A7E5",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "FFC898D3218140B5A3C3B6FC0DD454F6",
+          "relevance": 5,
+          "source": "intersection"
+        },
+        {
+          "id": "0533E6E14C514571B8FE88E524550438",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "E91BA85F84D84C0892780CDDB19C2DA6",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "66063A66864042448368E291FDCF44D5",
+          "relevance": 5,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "DC0FA60E4C1D4084A1281B9DC491D577",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "FFC898D3218140B5A3C3B6FC0DD454F6",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "6375D1D173274F808E4961A5D0F52473",
+          "relevance": 3,
+          "source": "intersection"
+        }
+      ]
+    },
+    {
+      "query_id": "FB17AAD57C3B4547AA5EFFF13F6F18DB",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "5D95B24A75484679A2F971E19102922D",
+          "relevance": 4,
+          "source": "intersection"
+        }
+      ]
+    }
+  ]
+}
