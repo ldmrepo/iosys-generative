@@ -1,0 +1,21 @@
+# Virtual environment
+.venv/
+
+# Models (large files - download separately)
+models/
+
+# Binary results (keep JSON)
+results/*.npz
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,35 @@
+{
+  "model": "Qwen3-VL-Embedding-2B",
+  "gpu": "NVIDIA GeForce RTX 2070 SUPER",
+  "vram_after_load": {
+    "allocated_gb": 4.255,
+    "reserved_gb": 4.276,
+    "max_allocated_gb": 4.255
+  },
+  "latency": {
+    "mean_ms": 23.51,
+    "std_ms": 3.35,
+    "p50_ms": 22.5,
+    "p95_ms": 30.54,
+    "p99_ms": 33.55,
+    "min_ms": 21.61,
+    "max_ms": 46.11
+  },
+  "throughput": {
+    "total_items": 100,
+    "elapsed_seconds": 2.31,
+    "items_per_second": 43.22
+  },
+  "vram_peak": {
+    "allocated_gb": 4.264,
+    "reserved_gb": 4.36,
+    "max_allocated_gb": 4.335
+  },
+  "stability": {
+    "total_iterations": 1000,
+    "successes": 1000,
+    "failures": 0,
+    "success_rate": 100.0,
+    "errors": []
+  }
+}

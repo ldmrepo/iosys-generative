@@ -1,0 +1,3116 @@
+{
+  "metadata": {
+    "total_queries": 100,
+    "total_pairs": 500,
+    "relevance_distribution": {
+      "3": 200,
+      "2": 200,
+      "1": 100
+    },
+    "generation_method": "TF-IDF + Metadata Similarity",
+    "top_k": 5,
+    "min_similarity": 0.05
+  },
+  "ground_truth": [
+    {
+      "query_id": "E8A959E017454D1A83E17ED3064C282F",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "relevance": 3,
+          "similarity_score": 0.7093
+        },
+        {
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "relevance": 3,
+          "similarity_score": 0.5152
+        },
+        {
+          "id": "027A1DBAAD4B4715B86256B9F614F840",
+          "relevance": 2,
+          "similarity_score": 0.5005
+        },
+        {
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "relevance": 2,
+          "similarity_score": 0.4544
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 1,
+          "similarity_score": 0.4365
+        }
+      ]
+    },
+    {
+      "query_id": "46ACB9139B444F578F9A7DC9B54175CB",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 3,
+          "similarity_score": 0.8669
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 3,
+          "similarity_score": 0.7293
+        },
+        {
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "relevance": 2,
+          "similarity_score": 0.6708
+        },
+        {
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "relevance": 2,
+          "similarity_score": 0.6478
+        },
+        {
+          "id": "51EFF604353C41E8A0AE820C04A25DD7",
+          "relevance": 1,
+          "similarity_score": 0.5877
+        }
+      ]
+    },
+    {
+      "query_id": "B433ED8101A14DF88CADA9116F0CDB97",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "relevance": 3,
+          "similarity_score": 0.7822
+        },
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "relevance": 3,
+          "similarity_score": 0.7398
+        },
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 2,
+          "similarity_score": 0.7142
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 2,
+          "similarity_score": 0.6873
+        },
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "relevance": 1,
+          "similarity_score": 0.6032
+        }
+      ]
+    },
+    {
+      "query_id": "AD550B4E409F4EC097E610BB3615C98B",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "relevance": 3,
+          "similarity_score": 0.6306
+        },
+        {
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "relevance": 3,
+          "similarity_score": 0.5152
+        },
+        {
+          "id": "027A1DBAAD4B4715B86256B9F614F840",
+          "relevance": 2,
+          "similarity_score": 0.4705
+        },
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 2,
+          "similarity_score": 0.3733
+        },
+        {
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "relevance": 1,
+          "similarity_score": 0.3431
+        }
+      ]
+    },
+    {
+      "query_id": "1001AC6A482E4383B34E5476DFA3A9C2",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "relevance": 3,
+          "similarity_score": 0.5414
+        },
+        {
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "relevance": 3,
+          "similarity_score": 0.53
+        },
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 2,
+          "similarity_score": 0.4973
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 2,
+          "similarity_score": 0.4921
+        },
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "relevance": 1,
+          "similarity_score": 0.4729
+        }
+      ]
+    },
+    {
+      "query_id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 3,
+          "similarity_score": 0.6754
+        },
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 3,
+          "similarity_score": 0.6708
+        },
+        {
+          "id": "AB202E4A636A4DA288A841F393E51704",
+          "relevance": 2,
+          "similarity_score": 0.6704
+        },
+        {
+          "id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "relevance": 2,
+          "similarity_score": 0.6435
+        },
+        {
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "relevance": 1,
+          "similarity_score": 0.6387
+        }
+      ]
+    },
+    {
+      "query_id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "relevance": 3,
+          "similarity_score": 0.7093
+        },
+        {
+          "id": "027A1DBAAD4B4715B86256B9F614F840",
+          "relevance": 3,
+          "similarity_score": 0.6723
+        },
+        {
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "relevance": 2,
+          "similarity_score": 0.6306
+        },
+        {
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "relevance": 2,
+          "similarity_score": 0.5703
+        },
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 1,
+          "similarity_score": 0.5587
+        }
+      ]
+    },
+    {
+      "query_id": "6C3E301AFD69401FAA960C8C55361238",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 3,
+          "similarity_score": 0.7378
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 3,
+          "similarity_score": 0.6744
+        },
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 2,
+          "similarity_score": 0.6478
+        },
+        {
+          "id": "51EFF604353C41E8A0AE820C04A25DD7",
+          "relevance": 2,
+          "similarity_score": 0.5748
+        },
+        {
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "relevance": 1,
+          "similarity_score": 0.568
+        }
+      ]
+    },
+    {
+      "query_id": "E3D336A89BAD46F0A5E9034E243F5D92",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 3,
+          "similarity_score": 0.618
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 3,
+          "similarity_score": 0.6111
+        },
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 2,
+          "similarity_score": 0.6032
+        },
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "relevance": 2,
+          "similarity_score": 0.5834
+        },
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "relevance": 1,
+          "similarity_score": 0.5727
+        }
+      ]
+    },
+    {
+      "query_id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "410C0A8C87D74B78A66C8DBBC6802E4C",
+          "relevance": 3,
+          "similarity_score": 0.5495
+        },
+        {
+          "id": "DE1E9E4943D641B1BDA68EE63BE82D60",
+          "relevance": 3,
+          "similarity_score": 0.3991
+        },
+        {
+          "id": "5F8D37AB72804C418FFAD219CA29DD52",
+          "relevance": 2,
+          "similarity_score": 0.3608
+        },
+        {
+          "id": "9786B12616DF41F5B614B49078961AD4",
+          "relevance": 2,
+          "similarity_score": 0.36
+        },
+        {
+          "id": "8C3A46CACBA44483B99486CA39238C7A",
+          "relevance": 1,
+          "similarity_score": 0.2701
+        }
+      ]
+    },
+    {
+      "query_id": "4D72036FB3CF437B86D4C658D032D854",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 3,
+          "similarity_score": 0.7452
+        },
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 3,
+          "similarity_score": 0.6873
+        },
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "relevance": 2,
+          "similarity_score": 0.6857
+        },
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "relevance": 2,
+          "similarity_score": 0.6788
+        },
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "relevance": 1,
+          "similarity_score": 0.6111
+        }
+      ]
+    },
+    {
+      "query_id": "3128064044C64F4A8F9296D235F94ACB",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 3,
+          "similarity_score": 0.4927
+        },
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 3,
+          "similarity_score": 0.4397
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 2,
+          "similarity_score": 0.4287
+        },
+        {
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "relevance": 2,
+          "similarity_score": 0.4183
+        },
+        {
+          "id": "D1D6F4DD3327483B8C128978E321A984",
+          "relevance": 1,
+          "similarity_score": 0.3924
+        }
+      ]
+    },
+    {
+      "query_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 3,
+          "similarity_score": 0.8669
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 3,
+          "similarity_score": 0.7992
+        },
+        {
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "relevance": 2,
+          "similarity_score": 0.7378
+        },
+        {
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "relevance": 2,
+          "similarity_score": 0.6754
+        },
+        {
+          "id": "51EFF604353C41E8A0AE820C04A25DD7",
+          "relevance": 1,
+          "similarity_score": 0.6217
+        }
+      ]
+    },
+    {
+      "query_id": "66063A66864042448368E291FDCF44D5",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "E91BA85F84D84C0892780CDDB19C2DA6",
+          "relevance": 3,
+          "similarity_score": 0.5861
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 3,
+          "similarity_score": 0.4586
+        },
+        {
+          "id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+          "relevance": 2,
+          "similarity_score": 0.4386
+        },
+        {
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "relevance": 2,
+          "similarity_score": 0.4383
+        },
+        {
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "relevance": 1,
+          "similarity_score": 0.4295
+        }
+      ]
+    },
+    {
+      "query_id": "2CC59E14574C4F0094BC50DDFC326734",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 3,
+          "similarity_score": 0.5058
+        },
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "relevance": 3,
+          "similarity_score": 0.5012
+        },
+        {
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "relevance": 2,
+          "similarity_score": 0.4948
+        },
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 2,
+          "similarity_score": 0.4936
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 1,
+          "similarity_score": 0.4832
+        }
+      ]
+    },
+    {
+      "query_id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "75D6A18B7A664FC0B35942B943FD16FC",
+          "relevance": 3,
+          "similarity_score": 0.6282
+        },
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "relevance": 3,
+          "similarity_score": 0.5967
+        },
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "relevance": 2,
+          "similarity_score": 0.5273
+        },
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 2,
+          "similarity_score": 0.5229
+        },
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 1,
+          "similarity_score": 0.5114
+        }
+      ]
+    },
+    {
+      "query_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "relevance": 3,
+          "similarity_score": 0.6435
+        },
+        {
+          "id": "AB202E4A636A4DA288A841F393E51704",
+          "relevance": 3,
+          "similarity_score": 0.6361
+        },
+        {
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "relevance": 2,
+          "similarity_score": 0.617
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 2,
+          "similarity_score": 0.5529
+        },
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 1,
+          "similarity_score": 0.5492
+        }
+      ]
+    },
+    {
+      "query_id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "AB202E4A636A4DA288A841F393E51704",
+          "relevance": 3,
+          "similarity_score": 0.6617
+        },
+        {
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "relevance": 3,
+          "similarity_score": 0.6387
+        },
+        {
+          "id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "relevance": 2,
+          "similarity_score": 0.617
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 2,
+          "similarity_score": 0.5605
+        },
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 1,
+          "similarity_score": 0.5328
+        }
+      ]
+    },
+    {
+      "query_id": "51EFF604353C41E8A0AE820C04A25DD7",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 3,
+          "similarity_score": 0.6217
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 3,
+          "similarity_score": 0.5974
+        },
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 2,
+          "similarity_score": 0.5877
+        },
+        {
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "relevance": 2,
+          "similarity_score": 0.5748
+        },
+        {
+          "id": "59ABA99C8C7A4195B45D0092A20AC136",
+          "relevance": 1,
+          "similarity_score": 0.4798
+        }
+      ]
+    },
+    {
+      "query_id": "AB202E4A636A4DA288A841F393E51704",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "relevance": 3,
+          "similarity_score": 0.6704
+        },
+        {
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "relevance": 3,
+          "similarity_score": 0.6617
+        },
+        {
+          "id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "relevance": 2,
+          "similarity_score": 0.6361
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 2,
+          "similarity_score": 0.5823
+        },
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 1,
+          "similarity_score": 0.5564
+        }
+      ]
+    },
+    {
+      "query_id": "DC786E25B9AD449B86EF35F0F774B642",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 3,
+          "similarity_score": 0.7398
+        },
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "relevance": 3,
+          "similarity_score": 0.7293
+        },
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 2,
+          "similarity_score": 0.7064
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 2,
+          "similarity_score": 0.6788
+        },
+        {
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "relevance": 1,
+          "similarity_score": 0.5967
+        }
+      ]
+    },
+    {
+      "query_id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "E45A58F169EF4D07A691871F807BFAD0",
+          "relevance": 3,
+          "similarity_score": 0.2597
+        },
+        {
+          "id": "3BE68CED94D548EF9C1FC122E18F49F3",
+          "relevance": 3,
+          "similarity_score": 0.2549
+        },
+        {
+          "id": "BBC376CB2FB646EB9B528ECB74674EB6",
+          "relevance": 2,
+          "similarity_score": 0.2161
+        },
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 2,
+          "similarity_score": 0.2018
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 1,
+          "similarity_score": 0.1877
+        }
+      ]
+    },
+    {
+      "query_id": "AE50A202C3384AFD9C52678B6BA7833A",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "relevance": 3,
+          "similarity_score": 0.6116
+        },
+        {
+          "id": "65E3BB5494B34C1C8289DEDE63C2F68D",
+          "relevance": 3,
+          "similarity_score": 0.6
+        },
+        {
+          "id": "18CB6CD734304254938B9FF7BD33452F",
+          "relevance": 2,
+          "similarity_score": 0.4517
+        },
+        {
+          "id": "DC0FA60E4C1D4084A1281B9DC491D577",
+          "relevance": 2,
+          "similarity_score": 0.4441
+        },
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 1,
+          "similarity_score": 0.4425
+        }
+      ]
+    },
+    {
+      "query_id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 3,
+          "similarity_score": 0.7452
+        },
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 3,
+          "similarity_score": 0.7142
+        },
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "relevance": 2,
+          "similarity_score": 0.7064
+        },
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "relevance": 2,
+          "similarity_score": 0.6988
+        },
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "relevance": 1,
+          "similarity_score": 0.618
+        }
+      ]
+    },
+    {
+      "query_id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 3,
+          "similarity_score": 0.5616
+        },
+        {
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "relevance": 3,
+          "similarity_score": 0.53
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 2,
+          "similarity_score": 0.512
+        },
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "relevance": 2,
+          "similarity_score": 0.491
+        },
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "relevance": 1,
+          "similarity_score": 0.4862
+        }
+      ]
+    },
+    {
+      "query_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 3,
+          "similarity_score": 0.7992
+        },
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 3,
+          "similarity_score": 0.7293
+        },
+        {
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "relevance": 2,
+          "similarity_score": 0.6744
+        },
+        {
+          "id": "51EFF604353C41E8A0AE820C04A25DD7",
+          "relevance": 2,
+          "similarity_score": 0.5974
+        },
+        {
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "relevance": 1,
+          "similarity_score": 0.5254
+        }
+      ]
+    },
+    {
+      "query_id": "75D6A18B7A664FC0B35942B943FD16FC",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "relevance": 3,
+          "similarity_score": 0.6282
+        },
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 3,
+          "similarity_score": 0.503
+        },
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 2,
+          "similarity_score": 0.4648
+        },
+        {
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "relevance": 2,
+          "similarity_score": 0.4471
+        },
+        {
+          "id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "relevance": 1,
+          "similarity_score": 0.4375
+        }
+      ]
+    },
+    {
+      "query_id": "B58161E49AC641CAAC6C4E8259122859",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "relevance": 3,
+          "similarity_score": 0.5493
+        },
+        {
+          "id": "AB202E4A636A4DA288A841F393E51704",
+          "relevance": 3,
+          "similarity_score": 0.5437
+        },
+        {
+          "id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "relevance": 2,
+          "similarity_score": 0.5026
+        },
+        {
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "relevance": 2,
+          "similarity_score": 0.4733
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 1,
+          "similarity_score": 0.4344
+        }
+      ]
+    },
+    {
+      "query_id": "2F63FE75EC4E4A32887455C839BD2C1E",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "DC0FA60E4C1D4084A1281B9DC491D577",
+          "relevance": 3,
+          "similarity_score": 0.4094
+        },
+        {
+          "id": "9B6BD5C274E347098DF7AC098C7E06DA",
+          "relevance": 3,
+          "similarity_score": 0.391
+        },
+        {
+          "id": "8953FEB42A4343648F0811C21B5CF162",
+          "relevance": 2,
+          "similarity_score": 0.339
+        },
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 2,
+          "similarity_score": 0.3187
+        },
+        {
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "relevance": 1,
+          "similarity_score": 0.3107
+        }
+      ]
+    },
+    {
+      "query_id": "027A1DBAAD4B4715B86256B9F614F840",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "relevance": 3,
+          "similarity_score": 0.6723
+        },
+        {
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "relevance": 3,
+          "similarity_score": 0.5005
+        },
+        {
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "relevance": 2,
+          "similarity_score": 0.4705
+        },
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "relevance": 2,
+          "similarity_score": 0.4055
+        },
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 1,
+          "similarity_score": 0.3707
+        }
+      ]
+    },
+    {
+      "query_id": "A88C66DF5A314FFFA0576F9480514924",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 3,
+          "similarity_score": 0.7822
+        },
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "relevance": 3,
+          "similarity_score": 0.7293
+        },
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "relevance": 2,
+          "similarity_score": 0.6988
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 2,
+          "similarity_score": 0.6857
+        },
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "relevance": 1,
+          "similarity_score": 0.5727
+        }
+      ]
+    },
+    {
+      "query_id": "F94806629A674E4B81126B3264A320C5",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "relevance": 3,
+          "similarity_score": 0.5038
+        },
+        {
+          "id": "43DA19AE34574C43AB1912BB2F48AFC2",
+          "relevance": 3,
+          "similarity_score": 0.5027
+        },
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 2,
+          "similarity_score": 0.4917
+        },
+        {
+          "id": "DC0FA60E4C1D4084A1281B9DC491D577",
+          "relevance": 2,
+          "similarity_score": 0.4586
+        },
+        {
+          "id": "65E3BB5494B34C1C8289DEDE63C2F68D",
+          "relevance": 1,
+          "similarity_score": 0.4577
+        }
+      ]
+    },
+    {
+      "query_id": "5AD1D60463134A7AA56AA545EB347533",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+          "relevance": 3,
+          "similarity_score": 0.2534
+        },
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "relevance": 3,
+          "similarity_score": 0.2474
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 2,
+          "similarity_score": 0.2474
+        },
+        {
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "relevance": 2,
+          "similarity_score": 0.2467
+        },
+        {
+          "id": "E91BA85F84D84C0892780CDDB19C2DA6",
+          "relevance": 1,
+          "similarity_score": 0.2452
+        }
+      ]
+    },
+    {
+      "query_id": "8953FEB42A4343648F0811C21B5CF162",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "DC0FA60E4C1D4084A1281B9DC491D577",
+          "relevance": 3,
+          "similarity_score": 0.389
+        },
+        {
+          "id": "9B6BD5C274E347098DF7AC098C7E06DA",
+          "relevance": 3,
+          "similarity_score": 0.3809
+        },
+        {
+          "id": "2F63FE75EC4E4A32887455C839BD2C1E",
+          "relevance": 2,
+          "similarity_score": 0.339
+        },
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 2,
+          "similarity_score": 0.29
+        },
+        {
+          "id": "AE50A202C3384AFD9C52678B6BA7833A",
+          "relevance": 1,
+          "similarity_score": 0.2827
+        }
+      ]
+    },
+    {
+      "query_id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "66063A66864042448368E291FDCF44D5",
+          "relevance": 3,
+          "similarity_score": 0.4386
+        },
+        {
+          "id": "E91BA85F84D84C0892780CDDB19C2DA6",
+          "relevance": 3,
+          "similarity_score": 0.3446
+        },
+        {
+          "id": "85C794C9955848D297A98598E88C06FD",
+          "relevance": 2,
+          "similarity_score": 0.3384
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 2,
+          "similarity_score": 0.337
+        },
+        {
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "relevance": 1,
+          "similarity_score": 0.3327
+        }
+      ]
+    },
+    {
+      "query_id": "AB56E85712904550A62A39027F9FFB68",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "6D28AB8080074BF1AC157C90EEFAC301",
+          "relevance": 3,
+          "similarity_score": 0.3765
+        },
+        {
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "relevance": 3,
+          "similarity_score": 0.2916
+        },
+        {
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "relevance": 2,
+          "similarity_score": 0.2787
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 2,
+          "similarity_score": 0.2034
+        },
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "relevance": 1,
+          "similarity_score": 0.1884
+        }
+      ]
+    },
+    {
+      "query_id": "AB1E7C8E41F14335ABB108B08D509FF3",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "4571CE49715F4599A720038136A255A4",
+          "relevance": 3,
+          "similarity_score": 0.85
+        },
+        {
+          "id": "FFA0C20F69D44C78B08D60001432CEB3",
+          "relevance": 3,
+          "similarity_score": 0.3794
+        },
+        {
+          "id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "relevance": 2,
+          "similarity_score": 0.3794
+        },
+        {
+          "id": "99E8B0308AE340E3A7A95D4767E32670",
+          "relevance": 2,
+          "similarity_score": 0.3717
+        },
+        {
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "relevance": 1,
+          "similarity_score": 0.2338
+        }
+      ]
+    },
+    {
+      "query_id": "99E8B0308AE340E3A7A95D4767E32670",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "AB1E7C8E41F14335ABB108B08D509FF3",
+          "relevance": 3,
+          "similarity_score": 0.3717
+        },
+        {
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "relevance": 3,
+          "similarity_score": 0.2275
+        },
+        {
+          "id": "4571CE49715F4599A720038136A255A4",
+          "relevance": 2,
+          "similarity_score": 0.2217
+        },
+        {
+          "id": "1FCB1D636A01499CA6072319786229AB",
+          "relevance": 2,
+          "similarity_score": 0.2139
+        },
+        {
+          "id": "66EB70674E174FCAB2942F840B5442EF",
+          "relevance": 1,
+          "similarity_score": 0.2036
+        }
+      ]
+    },
+    {
+      "query_id": "D1D6F4DD3327483B8C128978E321A984",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "BBEBEF54DE6E4C04BAACE9E6E89D1308",
+          "relevance": 3,
+          "similarity_score": 0.8316
+        },
+        {
+          "id": "4EEA29416564497A91346D3457D4C87F",
+          "relevance": 3,
+          "similarity_score": 0.6249
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 2,
+          "similarity_score": 0.5724
+        },
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 2,
+          "similarity_score": 0.5299
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 1,
+          "similarity_score": 0.5074
+        }
+      ]
+    },
+    {
+      "query_id": "4EEA29416564497A91346D3457D4C87F",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "D1D6F4DD3327483B8C128978E321A984",
+          "relevance": 3,
+          "similarity_score": 0.6249
+        },
+        {
+          "id": "BBEBEF54DE6E4C04BAACE9E6E89D1308",
+          "relevance": 3,
+          "similarity_score": 0.6249
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 2,
+          "similarity_score": 0.5845
+        },
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 2,
+          "similarity_score": 0.5411
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 1,
+          "similarity_score": 0.5223
+        }
+      ]
+    },
+    {
+      "query_id": "5F8D37AB72804C418FFAD219CA29DD52",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "410C0A8C87D74B78A66C8DBBC6802E4C",
+          "relevance": 3,
+          "similarity_score": 0.4777
+        },
+        {
+          "id": "9786B12616DF41F5B614B49078961AD4",
+          "relevance": 3,
+          "similarity_score": 0.4163
+        },
+        {
+          "id": "DE1E9E4943D641B1BDA68EE63BE82D60",
+          "relevance": 2,
+          "similarity_score": 0.4014
+        },
+        {
+          "id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+          "relevance": 2,
+          "similarity_score": 0.3608
+        },
+        {
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "relevance": 1,
+          "similarity_score": 0.2798
+        }
+      ]
+    },
+    {
+      "query_id": "BBEBEF54DE6E4C04BAACE9E6E89D1308",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "D1D6F4DD3327483B8C128978E321A984",
+          "relevance": 3,
+          "similarity_score": 0.8316
+        },
+        {
+          "id": "4EEA29416564497A91346D3457D4C87F",
+          "relevance": 3,
+          "similarity_score": 0.6249
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 2,
+          "similarity_score": 0.5724
+        },
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 2,
+          "similarity_score": 0.5299
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 1,
+          "similarity_score": 0.5074
+        }
+      ]
+    },
+    {
+      "query_id": "3BE68CED94D548EF9C1FC122E18F49F3",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "E45A58F169EF4D07A691871F807BFAD0",
+          "relevance": 3,
+          "similarity_score": 0.5013
+        },
+        {
+          "id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+          "relevance": 3,
+          "similarity_score": 0.2549
+        },
+        {
+          "id": "BBC376CB2FB646EB9B528ECB74674EB6",
+          "relevance": 2,
+          "similarity_score": 0.2309
+        },
+        {
+          "id": "B3321AD022474BAD888A8496B48EAE92",
+          "relevance": 2,
+          "similarity_score": 0.2304
+        },
+        {
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "relevance": 1,
+          "similarity_score": 0.2106
+        }
+      ]
+    },
+    {
+      "query_id": "FFA0C20F69D44C78B08D60001432CEB3",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "relevance": 3,
+          "similarity_score": 1.0
+        },
+        {
+          "id": "4571CE49715F4599A720038136A255A4",
+          "relevance": 3,
+          "similarity_score": 0.4094
+        },
+        {
+          "id": "8850634E0F4D40F48CDEB2741F5FBC40",
+          "relevance": 2,
+          "similarity_score": 0.3981
+        },
+        {
+          "id": "AB1E7C8E41F14335ABB108B08D509FF3",
+          "relevance": 2,
+          "similarity_score": 0.3794
+        },
+        {
+          "id": "F48BBE62C7964BAE92A06D075EBE09F8",
+          "relevance": 1,
+          "similarity_score": 0.3426
+        }
+      ]
+    },
+    {
+      "query_id": "E45A58F169EF4D07A691871F807BFAD0",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "3BE68CED94D548EF9C1FC122E18F49F3",
+          "relevance": 3,
+          "similarity_score": 0.5013
+        },
+        {
+          "id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+          "relevance": 3,
+          "similarity_score": 0.2597
+        },
+        {
+          "id": "B3321AD022474BAD888A8496B48EAE92",
+          "relevance": 2,
+          "similarity_score": 0.2424
+        },
+        {
+          "id": "BBC376CB2FB646EB9B528ECB74674EB6",
+          "relevance": 2,
+          "similarity_score": 0.2195
+        },
+        {
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "relevance": 1,
+          "similarity_score": 0.2055
+        }
+      ]
+    },
+    {
+      "query_id": "99FE13B09A0E48DB89A5E8465944CC19",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "65E3BB5494B34C1C8289DEDE63C2F68D",
+          "relevance": 3,
+          "similarity_score": 0.9065
+        },
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 3,
+          "similarity_score": 0.6768
+        },
+        {
+          "id": "DC0FA60E4C1D4084A1281B9DC491D577",
+          "relevance": 2,
+          "similarity_score": 0.6533
+        },
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 2,
+          "similarity_score": 0.6496
+        },
+        {
+          "id": "AE50A202C3384AFD9C52678B6BA7833A",
+          "relevance": 1,
+          "similarity_score": 0.6116
+        }
+      ]
+    },
+    {
+      "query_id": "BBC376CB2FB646EB9B528ECB74674EB6",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "3BE68CED94D548EF9C1FC122E18F49F3",
+          "relevance": 3,
+          "similarity_score": 0.2309
+        },
+        {
+          "id": "E45A58F169EF4D07A691871F807BFAD0",
+          "relevance": 3,
+          "similarity_score": 0.2195
+        },
+        {
+          "id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+          "relevance": 2,
+          "similarity_score": 0.2161
+        },
+        {
+          "id": "B3321AD022474BAD888A8496B48EAE92",
+          "relevance": 2,
+          "similarity_score": 0.18
+        },
+        {
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "relevance": 1,
+          "similarity_score": 0.1493
+        }
+      ]
+    },
+    {
+      "query_id": "8850634E0F4D40F48CDEB2741F5FBC40",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "8C3A46CACBA44483B99486CA39238C7A",
+          "relevance": 3,
+          "similarity_score": 0.4964
+        },
+        {
+          "id": "FFA0C20F69D44C78B08D60001432CEB3",
+          "relevance": 3,
+          "similarity_score": 0.3981
+        },
+        {
+          "id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "relevance": 2,
+          "similarity_score": 0.3981
+        },
+        {
+          "id": "F48BBE62C7964BAE92A06D075EBE09F8",
+          "relevance": 2,
+          "similarity_score": 0.3922
+        },
+        {
+          "id": "BFC2D238D32546B1BF7362E55396AE66",
+          "relevance": 1,
+          "similarity_score": 0.371
+        }
+      ]
+    },
+    {
+      "query_id": "B3321AD022474BAD888A8496B48EAE92",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "E45A58F169EF4D07A691871F807BFAD0",
+          "relevance": 3,
+          "similarity_score": 0.2424
+        },
+        {
+          "id": "3BE68CED94D548EF9C1FC122E18F49F3",
+          "relevance": 3,
+          "similarity_score": 0.2304
+        },
+        {
+          "id": "BBC376CB2FB646EB9B528ECB74674EB6",
+          "relevance": 2,
+          "similarity_score": 0.18
+        },
+        {
+          "id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+          "relevance": 2,
+          "similarity_score": 0.1551
+        },
+        {
+          "id": "5D95B24A75484679A2F971E19102922D",
+          "relevance": 1,
+          "similarity_score": 0.1221
+        }
+      ]
+    },
+    {
+      "query_id": "EFC2FD18007745ECBC0B047F5C1CC6C7",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "18CB6CD734304254938B9FF7BD33452F",
+          "relevance": 3,
+          "similarity_score": 0.3162
+        },
+        {
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "relevance": 3,
+          "similarity_score": 0.2971
+        },
+        {
+          "id": "65E3BB5494B34C1C8289DEDE63C2F68D",
+          "relevance": 2,
+          "similarity_score": 0.2937
+        },
+        {
+          "id": "AE50A202C3384AFD9C52678B6BA7833A",
+          "relevance": 2,
+          "similarity_score": 0.2893
+        },
+        {
+          "id": "DC0FA60E4C1D4084A1281B9DC491D577",
+          "relevance": 1,
+          "similarity_score": 0.2068
+        }
+      ]
+    },
+    {
+      "query_id": "3B7BCF51304D4DB7B1422591226E8775",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 3,
+          "similarity_score": 0.6295
+        },
+        {
+          "id": "FFC898D3218140B5A3C3B6FC0DD454F6",
+          "relevance": 3,
+          "similarity_score": 0.5716
+        },
+        {
+          "id": "1B73CF5B8E274FBDB18ACEBA105BE1A6",
+          "relevance": 2,
+          "similarity_score": 0.5212
+        },
+        {
+          "id": "6375D1D173274F808E4961A5D0F52473",
+          "relevance": 2,
+          "similarity_score": 0.5114
+        },
+        {
+          "id": "7B93E5877728421EBA9A2435AF8AA7B3",
+          "relevance": 1,
+          "similarity_score": 0.4939
+        }
+      ]
+    },
+    {
+      "query_id": "6873C3D7F24141C39C1CAA8A283012AF",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "relevance": 3,
+          "similarity_score": 0.3036
+        },
+        {
+          "id": "66EB70674E174FCAB2942F840B5442EF",
+          "relevance": 3,
+          "similarity_score": 0.2991
+        },
+        {
+          "id": "72D59B348C22410AB71A08CA16EA24CD",
+          "relevance": 2,
+          "similarity_score": 0.2954
+        },
+        {
+          "id": "FB17AAD57C3B4547AA5EFFF13F6F18DB",
+          "relevance": 2,
+          "similarity_score": 0.1878
+        },
+        {
+          "id": "7D58A391CEDB4BDF88E36C79847B4EBA",
+          "relevance": 1,
+          "similarity_score": 0.1764
+        }
+      ]
+    },
+    {
+      "query_id": "43DA19AE34574C43AB1912BB2F48AFC2",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "relevance": 3,
+          "similarity_score": 0.5452
+        },
+        {
+          "id": "DC0FA60E4C1D4084A1281B9DC491D577",
+          "relevance": 3,
+          "similarity_score": 0.5102
+        },
+        {
+          "id": "F94806629A674E4B81126B3264A320C5",
+          "relevance": 2,
+          "similarity_score": 0.5027
+        },
+        {
+          "id": "65E3BB5494B34C1C8289DEDE63C2F68D",
+          "relevance": 2,
+          "similarity_score": 0.4976
+        },
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 1,
+          "similarity_score": 0.478
+        }
+      ]
+    },
+    {
+      "query_id": "18CB6CD734304254938B9FF7BD33452F",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "relevance": 3,
+          "similarity_score": 0.5831
+        },
+        {
+          "id": "65E3BB5494B34C1C8289DEDE63C2F68D",
+          "relevance": 3,
+          "similarity_score": 0.5421
+        },
+        {
+          "id": "AE50A202C3384AFD9C52678B6BA7833A",
+          "relevance": 2,
+          "similarity_score": 0.4517
+        },
+        {
+          "id": "DC0FA60E4C1D4084A1281B9DC491D577",
+          "relevance": 2,
+          "similarity_score": 0.4507
+        },
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 1,
+          "similarity_score": 0.419
+        }
+      ]
+    },
+    {
+      "query_id": "59ABA99C8C7A4195B45D0092A20AC136",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "relevance": 3,
+          "similarity_score": 0.5208
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 3,
+          "similarity_score": 0.5187
+        },
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "relevance": 2,
+          "similarity_score": 0.509
+        },
+        {
+          "id": "51EFF604353C41E8A0AE820C04A25DD7",
+          "relevance": 2,
+          "similarity_score": 0.4798
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "relevance": 1,
+          "similarity_score": 0.4745
+        }
+      ]
+    },
+    {
+      "query_id": "81925C731BF644D8B5B51D57034EF074",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "8850634E0F4D40F48CDEB2741F5FBC40",
+          "relevance": 3,
+          "similarity_score": 0.282
+        },
+        {
+          "id": "BFC2D238D32546B1BF7362E55396AE66",
+          "relevance": 3,
+          "similarity_score": 0.2815
+        },
+        {
+          "id": "F48BBE62C7964BAE92A06D075EBE09F8",
+          "relevance": 2,
+          "similarity_score": 0.2798
+        },
+        {
+          "id": "FFA0C20F69D44C78B08D60001432CEB3",
+          "relevance": 2,
+          "similarity_score": 0.2745
+        },
+        {
+          "id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "relevance": 1,
+          "similarity_score": 0.2745
+        }
+      ]
+    },
+    {
+      "query_id": "C686163EB2EC4798A30041DD8814ED0F",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "relevance": 3,
+          "similarity_score": 0.6768
+        },
+        {
+          "id": "1B73CF5B8E274FBDB18ACEBA105BE1A6",
+          "relevance": 3,
+          "similarity_score": 0.6751
+        },
+        {
+          "id": "FFC898D3218140B5A3C3B6FC0DD454F6",
+          "relevance": 2,
+          "similarity_score": 0.6468
+        },
+        {
+          "id": "65E3BB5494B34C1C8289DEDE63C2F68D",
+          "relevance": 2,
+          "similarity_score": 0.6421
+        },
+        {
+          "id": "3B7BCF51304D4DB7B1422591226E8775",
+          "relevance": 1,
+          "similarity_score": 0.6295
+        }
+      ]
+    },
+    {
+      "query_id": "65E3BB5494B34C1C8289DEDE63C2F68D",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "relevance": 3,
+          "similarity_score": 0.9065
+        },
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 3,
+          "similarity_score": 0.6421
+        },
+        {
+          "id": "AE50A202C3384AFD9C52678B6BA7833A",
+          "relevance": 2,
+          "similarity_score": 0.6
+        },
+        {
+          "id": "DC0FA60E4C1D4084A1281B9DC491D577",
+          "relevance": 2,
+          "similarity_score": 0.5875
+        },
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 1,
+          "similarity_score": 0.5844
+        }
+      ]
+    },
+    {
+      "query_id": "32EB59561EEC43BBB6AFE66FD5A77D67",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "38A9C868EA3E44C58E501DC193A1FA8E",
+          "relevance": 3,
+          "similarity_score": 0.3802
+        },
+        {
+          "id": "8C3A46CACBA44483B99486CA39238C7A",
+          "relevance": 3,
+          "similarity_score": 0.3653
+        },
+        {
+          "id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "relevance": 2,
+          "similarity_score": 0.3582
+        },
+        {
+          "id": "410C0A8C87D74B78A66C8DBBC6802E4C",
+          "relevance": 2,
+          "similarity_score": 0.3012
+        },
+        {
+          "id": "DE1E9E4943D641B1BDA68EE63BE82D60",
+          "relevance": 1,
+          "similarity_score": 0.2661
+        }
+      ]
+    },
+    {
+      "query_id": "3B244379271242BAB76B6256388A5C22",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "E91BA85F84D84C0892780CDDB19C2DA6",
+          "relevance": 3,
+          "similarity_score": 0.3481
+        },
+        {
+          "id": "66063A66864042448368E291FDCF44D5",
+          "relevance": 3,
+          "similarity_score": 0.3469
+        },
+        {
+          "id": "EEFB41E903DA41C7A8B5F3B1BBB8A2B1",
+          "relevance": 2,
+          "similarity_score": 0.3254
+        },
+        {
+          "id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+          "relevance": 2,
+          "similarity_score": 0.2608
+        },
+        {
+          "id": "66EB2F912E2B46E080CA1DC478580B36",
+          "relevance": 1,
+          "similarity_score": 0.243
+        }
+      ]
+    },
+    {
+      "query_id": "19B56562F5AD4ECCA68A8FF9D51A445E",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "BFC2D238D32546B1BF7362E55396AE66",
+          "relevance": 3,
+          "similarity_score": 0.3249
+        },
+        {
+          "id": "8850634E0F4D40F48CDEB2741F5FBC40",
+          "relevance": 3,
+          "similarity_score": 0.2959
+        },
+        {
+          "id": "F48BBE62C7964BAE92A06D075EBE09F8",
+          "relevance": 2,
+          "similarity_score": 0.2913
+        },
+        {
+          "id": "FFA0C20F69D44C78B08D60001432CEB3",
+          "relevance": 2,
+          "similarity_score": 0.2798
+        },
+        {
+          "id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "relevance": 1,
+          "similarity_score": 0.2798
+        }
+      ]
+    },
+    {
+      "query_id": "7B93E5877728421EBA9A2435AF8AA7B3",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 3,
+          "similarity_score": 0.5735
+        },
+        {
+          "id": "FFC898D3218140B5A3C3B6FC0DD454F6",
+          "relevance": 3,
+          "similarity_score": 0.5158
+        },
+        {
+          "id": "3B7BCF51304D4DB7B1422591226E8775",
+          "relevance": 2,
+          "similarity_score": 0.4939
+        },
+        {
+          "id": "1B73CF5B8E274FBDB18ACEBA105BE1A6",
+          "relevance": 2,
+          "similarity_score": 0.4922
+        },
+        {
+          "id": "8414DC7576484155866A351B3B436D8C",
+          "relevance": 1,
+          "similarity_score": 0.4591
+        }
+      ]
+    },
+    {
+      "query_id": "ADA69C9D38D943069C75D4F4EB476296",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 3,
+          "similarity_score": 0.305
+        },
+        {
+          "id": "7B93E5877728421EBA9A2435AF8AA7B3",
+          "relevance": 3,
+          "similarity_score": 0.3
+        },
+        {
+          "id": "1B73CF5B8E274FBDB18ACEBA105BE1A6",
+          "relevance": 2,
+          "similarity_score": 0.3
+        },
+        {
+          "id": "8414DC7576484155866A351B3B436D8C",
+          "relevance": 2,
+          "similarity_score": 0.3
+        },
+        {
+          "id": "1C26FF6D401C4070821EC3DE8FA440A6",
+          "relevance": 1,
+          "similarity_score": 0.3
+        }
+      ]
+    },
+    {
+      "query_id": "E9ECDF6686F64B64B22757BB90BB4BEE",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "FFC898D3218140B5A3C3B6FC0DD454F6",
+          "relevance": 3,
+          "similarity_score": 0.3874
+        },
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 3,
+          "similarity_score": 0.3721
+        },
+        {
+          "id": "0533E6E14C514571B8FE88E524550438",
+          "relevance": 2,
+          "similarity_score": 0.3717
+        },
+        {
+          "id": "1B73CF5B8E274FBDB18ACEBA105BE1A6",
+          "relevance": 2,
+          "similarity_score": 0.3484
+        },
+        {
+          "id": "6375D1D173274F808E4961A5D0F52473",
+          "relevance": 1,
+          "similarity_score": 0.3477
+        }
+      ]
+    },
+    {
+      "query_id": "5D95B24A75484679A2F971E19102922D",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "FB17AAD57C3B4547AA5EFFF13F6F18DB",
+          "relevance": 3,
+          "similarity_score": 0.3158
+        },
+        {
+          "id": "4571CE49715F4599A720038136A255A4",
+          "relevance": 3,
+          "similarity_score": 0.3051
+        },
+        {
+          "id": "7D58A391CEDB4BDF88E36C79847B4EBA",
+          "relevance": 2,
+          "similarity_score": 0.2
+        },
+        {
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "relevance": 2,
+          "similarity_score": 0.1824
+        },
+        {
+          "id": "6873C3D7F24141C39C1CAA8A283012AF",
+          "relevance": 1,
+          "similarity_score": 0.1761
+        }
+      ]
+    },
+    {
+      "query_id": "6D28AB8080074BF1AC157C90EEFAC301",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "AB56E85712904550A62A39027F9FFB68",
+          "relevance": 3,
+          "similarity_score": 0.3765
+        },
+        {
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "relevance": 3,
+          "similarity_score": 0.2712
+        },
+        {
+          "id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "relevance": 2,
+          "similarity_score": 0.2027
+        },
+        {
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "relevance": 2,
+          "similarity_score": 0.1816
+        },
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 1,
+          "similarity_score": 0.1815
+        }
+      ]
+    },
+    {
+      "query_id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "FFA0C20F69D44C78B08D60001432CEB3",
+          "relevance": 3,
+          "similarity_score": 1.0
+        },
+        {
+          "id": "4571CE49715F4599A720038136A255A4",
+          "relevance": 3,
+          "similarity_score": 0.4094
+        },
+        {
+          "id": "8850634E0F4D40F48CDEB2741F5FBC40",
+          "relevance": 2,
+          "similarity_score": 0.3981
+        },
+        {
+          "id": "AB1E7C8E41F14335ABB108B08D509FF3",
+          "relevance": 2,
+          "similarity_score": 0.3794
+        },
+        {
+          "id": "F48BBE62C7964BAE92A06D075EBE09F8",
+          "relevance": 1,
+          "similarity_score": 0.3426
+        }
+      ]
+    },
+    {
+      "query_id": "B731CFD846ED40AA8D26DD6D9E8546C9",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "relevance": 3,
+          "similarity_score": 0.1538
+        },
+        {
+          "id": "B58161E49AC641CAAC6C4E8259122859",
+          "relevance": 3,
+          "similarity_score": 0.1534
+        },
+        {
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "relevance": 2,
+          "similarity_score": 0.1526
+        },
+        {
+          "id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "relevance": 2,
+          "similarity_score": 0.1521
+        },
+        {
+          "id": "AB202E4A636A4DA288A841F393E51704",
+          "relevance": 1,
+          "similarity_score": 0.1518
+        }
+      ]
+    },
+    {
+      "query_id": "1FCB1D636A01499CA6072319786229AB",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "7D58A391CEDB4BDF88E36C79847B4EBA",
+          "relevance": 3,
+          "similarity_score": 0.6422
+        },
+        {
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "relevance": 3,
+          "similarity_score": 0.4209
+        },
+        {
+          "id": "410C0A8C87D74B78A66C8DBBC6802E4C",
+          "relevance": 2,
+          "similarity_score": 0.4077
+        },
+        {
+          "id": "66EB70674E174FCAB2942F840B5442EF",
+          "relevance": 2,
+          "similarity_score": 0.3226
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 1,
+          "similarity_score": 0.2933
+        }
+      ]
+    },
+    {
+      "query_id": "4571CE49715F4599A720038136A255A4",
+      "query_category": "text_only",
+      "relevant_items": [
+        {
+          "id": "AB1E7C8E41F14335ABB108B08D509FF3",
+          "relevance": 3,
+          "similarity_score": 0.85
+        },
+        {
+          "id": "FFA0C20F69D44C78B08D60001432CEB3",
+          "relevance": 3,
+          "similarity_score": 0.4094
+        },
+        {
+          "id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "relevance": 2,
+          "similarity_score": 0.4094
+        },
+        {
+          "id": "5D95B24A75484679A2F971E19102922D",
+          "relevance": 2,
+          "similarity_score": 0.3051
+        },
+        {
+          "id": "FB17AAD57C3B4547AA5EFFF13F6F18DB",
+          "relevance": 1,
+          "similarity_score": 0.2982
+        }
+      ]
+    },
+    {
+      "query_id": "078734A8414A42FC835674EFAD010906",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "85C794C9955848D297A98598E88C06FD",
+          "relevance": 3,
+          "similarity_score": 0.3757
+        },
+        {
+          "id": "E91BA85F84D84C0892780CDDB19C2DA6",
+          "relevance": 3,
+          "similarity_score": 0.2814
+        },
+        {
+          "id": "66063A66864042448368E291FDCF44D5",
+          "relevance": 2,
+          "similarity_score": 0.2634
+        },
+        {
+          "id": "66EB2F912E2B46E080CA1DC478580B36",
+          "relevance": 2,
+          "similarity_score": 0.2495
+        },
+        {
+          "id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+          "relevance": 1,
+          "similarity_score": 0.2312
+        }
+      ]
+    },
+    {
+      "query_id": "72D59B348C22410AB71A08CA16EA24CD",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "relevance": 3,
+          "similarity_score": 0.5268
+        },
+        {
+          "id": "66EB70674E174FCAB2942F840B5442EF",
+          "relevance": 3,
+          "similarity_score": 0.4691
+        },
+        {
+          "id": "7D58A391CEDB4BDF88E36C79847B4EBA",
+          "relevance": 2,
+          "similarity_score": 0.3353
+        },
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 2,
+          "similarity_score": 0.3014
+        },
+        {
+          "id": "6873C3D7F24141C39C1CAA8A283012AF",
+          "relevance": 1,
+          "similarity_score": 0.2954
+        }
+      ]
+    },
+    {
+      "query_id": "1B73CF5B8E274FBDB18ACEBA105BE1A6",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "8414DC7576484155866A351B3B436D8C",
+          "relevance": 3,
+          "similarity_score": 0.7464
+        },
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 3,
+          "similarity_score": 0.6751
+        },
+        {
+          "id": "FFC898D3218140B5A3C3B6FC0DD454F6",
+          "relevance": 2,
+          "similarity_score": 0.5463
+        },
+        {
+          "id": "3B7BCF51304D4DB7B1422591226E8775",
+          "relevance": 2,
+          "similarity_score": 0.5212
+        },
+        {
+          "id": "0533E6E14C514571B8FE88E524550438",
+          "relevance": 1,
+          "similarity_score": 0.5037
+        }
+      ]
+    },
+    {
+      "query_id": "BFC2D238D32546B1BF7362E55396AE66",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "8850634E0F4D40F48CDEB2741F5FBC40",
+          "relevance": 3,
+          "similarity_score": 0.371
+        },
+        {
+          "id": "F48BBE62C7964BAE92A06D075EBE09F8",
+          "relevance": 3,
+          "similarity_score": 0.3571
+        },
+        {
+          "id": "410C0A8C87D74B78A66C8DBBC6802E4C",
+          "relevance": 2,
+          "similarity_score": 0.3381
+        },
+        {
+          "id": "19B56562F5AD4ECCA68A8FF9D51A445E",
+          "relevance": 2,
+          "similarity_score": 0.3249
+        },
+        {
+          "id": "FFA0C20F69D44C78B08D60001432CEB3",
+          "relevance": 1,
+          "similarity_score": 0.2994
+        }
+      ]
+    },
+    {
+      "query_id": "8414DC7576484155866A351B3B436D8C",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "1B73CF5B8E274FBDB18ACEBA105BE1A6",
+          "relevance": 3,
+          "similarity_score": 0.7464
+        },
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 3,
+          "similarity_score": 0.6105
+        },
+        {
+          "id": "FFC898D3218140B5A3C3B6FC0DD454F6",
+          "relevance": 2,
+          "similarity_score": 0.4987
+        },
+        {
+          "id": "3B7BCF51304D4DB7B1422591226E8775",
+          "relevance": 2,
+          "similarity_score": 0.478
+        },
+        {
+          "id": "0533E6E14C514571B8FE88E524550438",
+          "relevance": 1,
+          "similarity_score": 0.4635
+        }
+      ]
+    },
+    {
+      "query_id": "1C26FF6D401C4070821EC3DE8FA440A6",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "6375D1D173274F808E4961A5D0F52473",
+          "relevance": 3,
+          "similarity_score": 0.7675
+        },
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 3,
+          "similarity_score": 0.4055
+        },
+        {
+          "id": "1B73CF5B8E274FBDB18ACEBA105BE1A6",
+          "relevance": 2,
+          "similarity_score": 0.3852
+        },
+        {
+          "id": "8414DC7576484155866A351B3B436D8C",
+          "relevance": 2,
+          "similarity_score": 0.3705
+        },
+        {
+          "id": "FFC898D3218140B5A3C3B6FC0DD454F6",
+          "relevance": 1,
+          "similarity_score": 0.3649
+        }
+      ]
+    },
+    {
+      "query_id": "8C3A46CACBA44483B99486CA39238C7A",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "8850634E0F4D40F48CDEB2741F5FBC40",
+          "relevance": 3,
+          "similarity_score": 0.4964
+        },
+        {
+          "id": "38A9C868EA3E44C58E501DC193A1FA8E",
+          "relevance": 3,
+          "similarity_score": 0.4093
+        },
+        {
+          "id": "FFC898D3218140B5A3C3B6FC0DD454F6",
+          "relevance": 2,
+          "similarity_score": 0.3906
+        },
+        {
+          "id": "410C0A8C87D74B78A66C8DBBC6802E4C",
+          "relevance": 2,
+          "similarity_score": 0.3886
+        },
+        {
+          "id": "32EB59561EEC43BBB6AFE66FD5A77D67",
+          "relevance": 1,
+          "similarity_score": 0.3653
+        }
+      ]
+    },
+    {
+      "query_id": "38A9C868EA3E44C58E501DC193A1FA8E",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "8C3A46CACBA44483B99486CA39238C7A",
+          "relevance": 3,
+          "similarity_score": 0.4093
+        },
+        {
+          "id": "32EB59561EEC43BBB6AFE66FD5A77D67",
+          "relevance": 3,
+          "similarity_score": 0.3802
+        },
+        {
+          "id": "410C0A8C87D74B78A66C8DBBC6802E4C",
+          "relevance": 2,
+          "similarity_score": 0.3322
+        },
+        {
+          "id": "9B6BD5C274E347098DF7AC098C7E06DA",
+          "relevance": 2,
+          "similarity_score": 0.3191
+        },
+        {
+          "id": "9786B12616DF41F5B614B49078961AD4",
+          "relevance": 1,
+          "similarity_score": 0.3081
+        }
+      ]
+    },
+    {
+      "query_id": "410C0A8C87D74B78A66C8DBBC6802E4C",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "9786B12616DF41F5B614B49078961AD4",
+          "relevance": 3,
+          "similarity_score": 0.5911
+        },
+        {
+          "id": "DE1E9E4943D641B1BDA68EE63BE82D60",
+          "relevance": 3,
+          "similarity_score": 0.5898
+        },
+        {
+          "id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+          "relevance": 2,
+          "similarity_score": 0.5495
+        },
+        {
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "relevance": 2,
+          "similarity_score": 0.5183
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 1,
+          "similarity_score": 0.5121
+        }
+      ]
+    },
+    {
+      "query_id": "53B97CBEFC1B45E6B344D433AA485DBF",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 3,
+          "similarity_score": 0.5715
+        },
+        {
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "relevance": 3,
+          "similarity_score": 0.4314
+        },
+        {
+          "id": "DC0FA60E4C1D4084A1281B9DC491D577",
+          "relevance": 2,
+          "similarity_score": 0.4087
+        },
+        {
+          "id": "65E3BB5494B34C1C8289DEDE63C2F68D",
+          "relevance": 2,
+          "similarity_score": 0.3961
+        },
+        {
+          "id": "9B6BD5C274E347098DF7AC098C7E06DA",
+          "relevance": 1,
+          "similarity_score": 0.3793
+        }
+      ]
+    },
+    {
+      "query_id": "0533E6E14C514571B8FE88E524550438",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 3,
+          "similarity_score": 0.6001
+        },
+        {
+          "id": "FFC898D3218140B5A3C3B6FC0DD454F6",
+          "relevance": 3,
+          "similarity_score": 0.5142
+        },
+        {
+          "id": "1B73CF5B8E274FBDB18ACEBA105BE1A6",
+          "relevance": 2,
+          "similarity_score": 0.5037
+        },
+        {
+          "id": "3B7BCF51304D4DB7B1422591226E8775",
+          "relevance": 2,
+          "similarity_score": 0.4898
+        },
+        {
+          "id": "6375D1D173274F808E4961A5D0F52473",
+          "relevance": 1,
+          "similarity_score": 0.4773
+        }
+      ]
+    },
+    {
+      "query_id": "EA70D8075E0E462FAA483D662E85BE8A",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "66EB70674E174FCAB2942F840B5442EF",
+          "relevance": 3,
+          "similarity_score": 0.6912
+        },
+        {
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "relevance": 3,
+          "similarity_score": 0.5465
+        },
+        {
+          "id": "72D59B348C22410AB71A08CA16EA24CD",
+          "relevance": 2,
+          "similarity_score": 0.5268
+        },
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 2,
+          "similarity_score": 0.5214
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "relevance": 1,
+          "similarity_score": 0.519
+        }
+      ]
+    },
+    {
+      "query_id": "7D58A391CEDB4BDF88E36C79847B4EBA",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "1FCB1D636A01499CA6072319786229AB",
+          "relevance": 3,
+          "similarity_score": 0.6422
+        },
+        {
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "relevance": 3,
+          "similarity_score": 0.4894
+        },
+        {
+          "id": "66EB70674E174FCAB2942F840B5442EF",
+          "relevance": 2,
+          "similarity_score": 0.4361
+        },
+        {
+          "id": "410C0A8C87D74B78A66C8DBBC6802E4C",
+          "relevance": 2,
+          "similarity_score": 0.4198
+        },
+        {
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "relevance": 1,
+          "similarity_score": 0.3981
+        }
+      ]
+    },
+    {
+      "query_id": "715256BA1D9A46589C17C0BA9E65F85F",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "relevance": 3,
+          "similarity_score": 0.4842
+        },
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "relevance": 3,
+          "similarity_score": 0.4523
+        },
+        {
+          "id": "75D6A18B7A664FC0B35942B943FD16FC",
+          "relevance": 2,
+          "similarity_score": 0.4375
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "relevance": 2,
+          "similarity_score": 0.425
+        },
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "relevance": 1,
+          "similarity_score": 0.4206
+        }
+      ]
+    },
+    {
+      "query_id": "F48BBE62C7964BAE92A06D075EBE09F8",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "8850634E0F4D40F48CDEB2741F5FBC40",
+          "relevance": 3,
+          "similarity_score": 0.3922
+        },
+        {
+          "id": "BFC2D238D32546B1BF7362E55396AE66",
+          "relevance": 3,
+          "similarity_score": 0.3571
+        },
+        {
+          "id": "FFA0C20F69D44C78B08D60001432CEB3",
+          "relevance": 2,
+          "similarity_score": 0.3426
+        },
+        {
+          "id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "relevance": 2,
+          "similarity_score": 0.3426
+        },
+        {
+          "id": "410C0A8C87D74B78A66C8DBBC6802E4C",
+          "relevance": 1,
+          "similarity_score": 0.3055
+        }
+      ]
+    },
+    {
+      "query_id": "EEFB41E903DA41C7A8B5F3B1BBB8A2B1",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "E91BA85F84D84C0892780CDDB19C2DA6",
+          "relevance": 3,
+          "similarity_score": 0.5849
+        },
+        {
+          "id": "66063A66864042448368E291FDCF44D5",
+          "relevance": 3,
+          "similarity_score": 0.4119
+        },
+        {
+          "id": "3B244379271242BAB76B6256388A5C22",
+          "relevance": 2,
+          "similarity_score": 0.3254
+        },
+        {
+          "id": "66EB2F912E2B46E080CA1DC478580B36",
+          "relevance": 2,
+          "similarity_score": 0.2892
+        },
+        {
+          "id": "85C794C9955848D297A98598E88C06FD",
+          "relevance": 1,
+          "similarity_score": 0.2716
+        }
+      ]
+    },
+    {
+      "query_id": "DE1E9E4943D641B1BDA68EE63BE82D60",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "410C0A8C87D74B78A66C8DBBC6802E4C",
+          "relevance": 3,
+          "similarity_score": 0.5898
+        },
+        {
+          "id": "9786B12616DF41F5B614B49078961AD4",
+          "relevance": 3,
+          "similarity_score": 0.5643
+        },
+        {
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "relevance": 2,
+          "similarity_score": 0.4414
+        },
+        {
+          "id": "5F8D37AB72804C418FFAD219CA29DD52",
+          "relevance": 2,
+          "similarity_score": 0.4014
+        },
+        {
+          "id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+          "relevance": 1,
+          "similarity_score": 0.3991
+        }
+      ]
+    },
+    {
+      "query_id": "9B6BD5C274E347098DF7AC098C7E06DA",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "DC0FA60E4C1D4084A1281B9DC491D577",
+          "relevance": 3,
+          "similarity_score": 0.9605
+        },
+        {
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "relevance": 3,
+          "similarity_score": 0.6105
+        },
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 2,
+          "similarity_score": 0.5256
+        },
+        {
+          "id": "65E3BB5494B34C1C8289DEDE63C2F68D",
+          "relevance": 2,
+          "similarity_score": 0.5245
+        },
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 1,
+          "similarity_score": 0.4754
+        }
+      ]
+    },
+    {
+      "query_id": "6375D1D173274F808E4961A5D0F52473",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "1C26FF6D401C4070821EC3DE8FA440A6",
+          "relevance": 3,
+          "similarity_score": 0.7675
+        },
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 3,
+          "similarity_score": 0.5854
+        },
+        {
+          "id": "FFC898D3218140B5A3C3B6FC0DD454F6",
+          "relevance": 2,
+          "similarity_score": 0.5235
+        },
+        {
+          "id": "3B7BCF51304D4DB7B1422591226E8775",
+          "relevance": 2,
+          "similarity_score": 0.5114
+        },
+        {
+          "id": "1B73CF5B8E274FBDB18ACEBA105BE1A6",
+          "relevance": 1,
+          "similarity_score": 0.4962
+        }
+      ]
+    },
+    {
+      "query_id": "9786B12616DF41F5B614B49078961AD4",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "410C0A8C87D74B78A66C8DBBC6802E4C",
+          "relevance": 3,
+          "similarity_score": 0.5911
+        },
+        {
+          "id": "DE1E9E4943D641B1BDA68EE63BE82D60",
+          "relevance": 3,
+          "similarity_score": 0.5643
+        },
+        {
+          "id": "5F8D37AB72804C418FFAD219CA29DD52",
+          "relevance": 2,
+          "similarity_score": 0.4163
+        },
+        {
+          "id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+          "relevance": 2,
+          "similarity_score": 0.36
+        },
+        {
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "relevance": 1,
+          "similarity_score": 0.3567
+        }
+      ]
+    },
+    {
+      "query_id": "66EB2F912E2B46E080CA1DC478580B36",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "E91BA85F84D84C0892780CDDB19C2DA6",
+          "relevance": 3,
+          "similarity_score": 0.3875
+        },
+        {
+          "id": "66063A66864042448368E291FDCF44D5",
+          "relevance": 3,
+          "similarity_score": 0.3649
+        },
+        {
+          "id": "DC0FA60E4C1D4084A1281B9DC491D577",
+          "relevance": 2,
+          "similarity_score": 0.3585
+        },
+        {
+          "id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+          "relevance": 2,
+          "similarity_score": 0.3296
+        },
+        {
+          "id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "relevance": 1,
+          "similarity_score": 0.3263
+        }
+      ]
+    },
+    {
+      "query_id": "EF59D406E05D4D3885CB6DCB8E41A7E5",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 3,
+          "similarity_score": 0.4313
+        },
+        {
+          "id": "3B7BCF51304D4DB7B1422591226E8775",
+          "relevance": 3,
+          "similarity_score": 0.405
+        },
+        {
+          "id": "FFC898D3218140B5A3C3B6FC0DD454F6",
+          "relevance": 2,
+          "similarity_score": 0.3964
+        },
+        {
+          "id": "0533E6E14C514571B8FE88E524550438",
+          "relevance": 2,
+          "similarity_score": 0.3934
+        },
+        {
+          "id": "1B73CF5B8E274FBDB18ACEBA105BE1A6",
+          "relevance": 1,
+          "similarity_score": 0.3565
+        }
+      ]
+    },
+    {
+      "query_id": "E91BA85F84D84C0892780CDDB19C2DA6",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "66063A66864042448368E291FDCF44D5",
+          "relevance": 3,
+          "similarity_score": 0.5861
+        },
+        {
+          "id": "EEFB41E903DA41C7A8B5F3B1BBB8A2B1",
+          "relevance": 3,
+          "similarity_score": 0.5849
+        },
+        {
+          "id": "66EB2F912E2B46E080CA1DC478580B36",
+          "relevance": 2,
+          "similarity_score": 0.3875
+        },
+        {
+          "id": "85C794C9955848D297A98598E88C06FD",
+          "relevance": 2,
+          "similarity_score": 0.3646
+        },
+        {
+          "id": "AB202E4A636A4DA288A841F393E51704",
+          "relevance": 1,
+          "similarity_score": 0.36
+        }
+      ]
+    },
+    {
+      "query_id": "DC0FA60E4C1D4084A1281B9DC491D577",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "9B6BD5C274E347098DF7AC098C7E06DA",
+          "relevance": 3,
+          "similarity_score": 0.9605
+        },
+        {
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "relevance": 3,
+          "similarity_score": 0.6533
+        },
+        {
+          "id": "65E3BB5494B34C1C8289DEDE63C2F68D",
+          "relevance": 2,
+          "similarity_score": 0.5875
+        },
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 2,
+          "similarity_score": 0.5844
+        },
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 1,
+          "similarity_score": 0.5455
+        }
+      ]
+    },
+    {
+      "query_id": "66EB70674E174FCAB2942F840B5442EF",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "relevance": 3,
+          "similarity_score": 0.6912
+        },
+        {
+          "id": "72D59B348C22410AB71A08CA16EA24CD",
+          "relevance": 3,
+          "similarity_score": 0.4691
+        },
+        {
+          "id": "7D58A391CEDB4BDF88E36C79847B4EBA",
+          "relevance": 2,
+          "similarity_score": 0.4361
+        },
+        {
+          "id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+          "relevance": 2,
+          "similarity_score": 0.3814
+        },
+        {
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "relevance": 1,
+          "similarity_score": 0.3719
+        }
+      ]
+    },
+    {
+      "query_id": "9DFEDEA9E8E74EE0BD487503EDC78D87",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "relevance": 3,
+          "similarity_score": 0.6496
+        },
+        {
+          "id": "DC0FA60E4C1D4084A1281B9DC491D577",
+          "relevance": 3,
+          "similarity_score": 0.5844
+        },
+        {
+          "id": "65E3BB5494B34C1C8289DEDE63C2F68D",
+          "relevance": 2,
+          "similarity_score": 0.5844
+        },
+        {
+          "id": "53B97CBEFC1B45E6B344D433AA485DBF",
+          "relevance": 2,
+          "similarity_score": 0.5715
+        },
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 1,
+          "similarity_score": 0.5421
+        }
+      ]
+    },
+    {
+      "query_id": "FFC898D3218140B5A3C3B6FC0DD454F6",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "C686163EB2EC4798A30041DD8814ED0F",
+          "relevance": 3,
+          "similarity_score": 0.6468
+        },
+        {
+          "id": "3B7BCF51304D4DB7B1422591226E8775",
+          "relevance": 3,
+          "similarity_score": 0.5716
+        },
+        {
+          "id": "1B73CF5B8E274FBDB18ACEBA105BE1A6",
+          "relevance": 2,
+          "similarity_score": 0.5463
+        },
+        {
+          "id": "6375D1D173274F808E4961A5D0F52473",
+          "relevance": 2,
+          "similarity_score": 0.5235
+        },
+        {
+          "id": "7B93E5877728421EBA9A2435AF8AA7B3",
+          "relevance": 1,
+          "similarity_score": 0.5158
+        }
+      ]
+    },
+    {
+      "query_id": "85C794C9955848D297A98598E88C06FD",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "078734A8414A42FC835674EFAD010906",
+          "relevance": 3,
+          "similarity_score": 0.3757
+        },
+        {
+          "id": "E91BA85F84D84C0892780CDDB19C2DA6",
+          "relevance": 3,
+          "similarity_score": 0.3646
+        },
+        {
+          "id": "66063A66864042448368E291FDCF44D5",
+          "relevance": 2,
+          "similarity_score": 0.351
+        },
+        {
+          "id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+          "relevance": 2,
+          "similarity_score": 0.3384
+        },
+        {
+          "id": "66EB2F912E2B46E080CA1DC478580B36",
+          "relevance": 1,
+          "similarity_score": 0.3036
+        }
+      ]
+    },
+    {
+      "query_id": "45A8E2DF4C4A4205A59ACB33A0C9DB65",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "66063A66864042448368E291FDCF44D5",
+          "relevance": 3,
+          "similarity_score": 0.3149
+        },
+        {
+          "id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+          "relevance": 3,
+          "similarity_score": 0.3125
+        },
+        {
+          "id": "66EB2F912E2B46E080CA1DC478580B36",
+          "relevance": 2,
+          "similarity_score": 0.2929
+        },
+        {
+          "id": "85C794C9955848D297A98598E88C06FD",
+          "relevance": 2,
+          "similarity_score": 0.2875
+        },
+        {
+          "id": "E91BA85F84D84C0892780CDDB19C2DA6",
+          "relevance": 1,
+          "similarity_score": 0.2743
+        }
+      ]
+    },
+    {
+      "query_id": "FB17AAD57C3B4547AA5EFFF13F6F18DB",
+      "query_category": "latex",
+      "relevant_items": [
+        {
+          "id": "EA70D8075E0E462FAA483D662E85BE8A",
+          "relevance": 3,
+          "similarity_score": 0.3596
+        },
+        {
+          "id": "66EB70674E174FCAB2942F840B5442EF",
+          "relevance": 3,
+          "similarity_score": 0.3368
+        },
+        {
+          "id": "5D95B24A75484679A2F971E19102922D",
+          "relevance": 2,
+          "similarity_score": 0.3158
+        },
+        {
+          "id": "7D58A391CEDB4BDF88E36C79847B4EBA",
+          "relevance": 2,
+          "similarity_score": 0.2997
+        },
+        {
+          "id": "4571CE49715F4599A720038136A255A4",
+          "relevance": 1,
+          "similarity_score": 0.2982
+        }
+      ]
+    }
+  ]
+}
