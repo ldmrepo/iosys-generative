@@ -1,0 +1,160 @@
+{
+  "total_items": 10952,
+  "valid_items": 10945,
+  "invalid_items": 7,
+  "validation_rate": "99.94%",
+  "errors_by_type": {
+    "empty_choices": 2,
+    "question_too_short": 5
+  },
+  "sample_errors": [
+    {
+      "id": "6608C68186B94FD3A496B2BF5BB92FD4",
+      "errors": [
+        "empty_choices:[4]"
+      ],
+      "question_preview": "다음 두 일차부등식의 해가 서로 같을 때, 상수 $a$의 값은?${\\cfrac{x + 3}{2}} - {\\cfrac{3x - 1}{4}}≤2$, $3x - 1≤5x + a$"
+    },
+    {
+      "id": "68C2AB6EB3254272984EB51834920534",
+      "errors": [
+        "empty_choices:[1]"
+      ],
+      "question_preview": "$(- 4x + 5y - 2) - (3x - 2y + 1)$을 간단히 하였을 때, $y$의 계수와 상수항의 합은?"
+    },
+    {
+      "id": "36CF8ED98EDF4A74AEADA501616EE2D6",
+      "errors": [
+        "question_too_short"
+      ],
+      "question_preview": "자연수"
+    },
+    {
+      "id": "8A6E87ACF2BA45F0AC2C0F63267AAA79",
+      "errors": [
+        "question_too_short"
+      ],
+      "question_preview": "유리수"
+    },
+    {
+      "id": "C68C0910D405463B8BE19891AF5C7F81",
+      "errors": [
+        "question_too_short"
+      ],
+      "question_preview": "자연수"
+    },
+    {
+      "id": "E7255F2198484EDEAA4C3CCAE4C1A953",
+      "errors": [
+        "question_too_short"
+      ],
+      "question_preview": "유리수"
+    },
+    {
+      "id": "8421B1A0BFC448ADBEB64A4170AB0AC1",
+      "errors": [
+        "question_too_short"
+      ],
+      "question_preview": "$4x$"
+    }
+  ],
+  "duplicates": {
+    "duplicate_id_count": 0,
+    "duplicate_question_count": 239,
+    "duplicate_ids": [],
+    "duplicate_questions": [
+      {
+        "question": "다음은 순환소수를 간단히 나타낸 것이다. 옳지 것은?",
+        "count": 2,
+        "indices": [
+          35,
+          138
+        ]
+      },
+      {
+        "question": "다음 분수 중 유한소수로 나타낼 수 있는 것을 모두 고르면? (정답 $2$개)",
+        "count": 2,
+        "indices": [
+          69,
+          7030
+        ]
+      },
+      {
+        "question": "$a < b$일 때, 다음 중 옳지 것은?",
+        "count": 7,
+        "indices": [
+          96,
+          269,
+          8290,
+          8660,
+          8939
+        ]
+      },
+      {
+        "question": "다음 중 유한소수로 나타낼 수 있는 것은?",
+        "count": 4,
+        "indices": [
+          106,
+          6338,
+          6833,
+          7403
+        ]
+      },
+      {
+        "question": "다음 연립방정식 중 해가 나머지 넷과 하나는?",
+        "count": 3,
+        "indices": [
+          110,
+          2013,
+          2030
+        ]
+      },
+      {
+        "question": "다음 중 $y$가 $x$에 대한 일차함수인 것은?",
+        "count": 3,
+        "indices": [
+          165,
+          2066,
+          2122
+        ]
+      },
+      {
+        "question": "다음 그림에서 $x$의 값은? [이미지]",
+        "count": 11,
+        "indices": [
+          253,
+          2220,
+          2434,
+          2437,
+          3755
+        ]
+      },
+      {
+        "question": "다음 그림에서 $\\overline{BC}$$∥$$\\overline{DE}$일 때, $x$, $y$의 값을 각각 구하여라. [이미지] $x =$, $y =$",
+        "count": 3,
+        "indices": [
+          329,
+          348,
+          366
+        ]
+      },
+      {
+        "question": "오른쪽 그림에서 $\\overline{BC}$$∥$$\\overline{DE}$일 때, $x$, $y$의 값을 각각 구하여라. [이미지] $x =$, $y =$",
+        "count": 3,
+        "indices": [
+          330,
+          331,
+          333
+        ]
+      },
+      {
+        "question": "다음 그림에서 $\\overline{BC}$$∥$$\\overline{DE}$가 되도록 하는 $x$의 값을 구하여라. [이미지]",
+        "count": 2,
+        "indices": [
+          334,
+          335
+        ]
+      }
+    ]
+  }
+}

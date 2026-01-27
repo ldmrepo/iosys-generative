@@ -1,0 +1,740 @@
+{
+  "_meta": {
+    "description": "IML 태그 사전 - 태그 의미, 용도, 속성 정의",
+    "version": "1.0",
+    "total_tags": 34,
+    "created": "2025-01-27"
+  },
+  "tags": {
+    "문항종류": {
+      "english": "Item Type Container",
+      "description": "IML 문서의 최상위 루트 요소",
+      "purpose": "단위문항들을 포함하는 컨테이너",
+      "parents": ["ROOT"],
+      "children": ["단위문항"],
+      "attributes": {}
+    },
+    "단위문항": {
+      "english": "Unit Item",
+      "description": "개별 문항 또는 지문 단위",
+      "purpose": "문항과 지문을 그룹화",
+      "parents": ["문항종류"],
+      "children": ["문항", "지문"],
+      "attributes": {}
+    },
+    "문항": {
+      "english": "Question Item",
+      "description": "개별 문제 항목의 루트 요소",
+      "purpose": "문제, 정답, 해설을 포함하는 최상위 컨테이너",
+      "parents": ["단위문항"],
+      "children": ["QUIZLINK", "QUIZTAGLIST2", "문제", "정답", "정답임시", "해석", "해설"],
+      "attributes": {
+        "id": {
+          "description": "문항 고유 식별자",
+          "format": "32자리 UUID (예: A6F2B6C4AA7E493196146D925FFDB98E)"
+        },
+        "df": {
+          "description": "난이도",
+          "values": ["01 상", "02 상중", "03 중", "04 중하", "05 하"]
+        },
+        "qt": {
+          "description": "문항 유형",
+          "values": ["11 선택형", "31 단답형", "34 완결형", "41 서술형"]
+        },
+        "vt": {
+          "description": "보기 유형 (qt와 동일)",
+          "values": ["11 선택형", "31 단답형", "34 완결형", "41 서술형"]
+        },
+        "cls1": {
+          "description": "교육과정",
+          "example": "A12 2015개정교육과정"
+        },
+        "cls2": {
+          "description": "학교급",
+          "example": "02 중학교"
+        },
+        "cls3": {
+          "description": "학년",
+          "example": "08 2학년"
+        },
+        "cls4": {
+          "description": "과목",
+          "example": "03 수학"
+        },
+        "cls5": {
+          "description": "세부과목",
+          "example": "01 수학"
+        },
+        "cls6": {
+          "description": "학기",
+          "values": ["01 1학기", "02 2학기"]
+        },
+        "cls7": {
+          "description": "대단원",
+          "examples": ["01 수와 식", "02 부등식과 방정식", "03 일차함수"]
+        },
+        "cls8": {
+          "description": "중단원",
+          "examples": ["01 유리수와 순환소수", "02 식의 계산", "01 부등식"]
+        },
+        "cls9": {
+          "description": "소단원",
+          "examples": ["01 지수법칙", "02 순환소수", "01 부등식과 그 성질"]
+        },
+        "cls10": {
+          "description": "분류10 (미사용)",
+          "default": "0"
+        },
+        "cls11": {
+          "description": "분류11 (미사용)",
+          "default": "0"
+        },
+        "cls12": {
+          "description": "분류12 (미사용)",
+          "default": "0"
+        },
+        "gd": {
+          "description": "학년 코드",
+          "example": "08 8학년"
+        },
+        "gg1": {
+          "description": "영역",
+          "values": ["05 수와 연산", "10 문자와 식", "15 함수", "20 기하", "25 확률과 통계"]
+        },
+        "kw": {
+          "description": "키워드 (출처 정보)",
+          "example": "2-1-중간-대구-월암중-1"
+        },
+        "qns": {
+          "description": "출처명",
+          "example": "2-1-중간-대구-월암중"
+        },
+        "pgi": {
+          "description": "성취기준/평가기준",
+          "example": "순환소수를 분수로 나타낼 수 있다."
+        },
+        "hd1": {
+          "description": "행동영역",
+          "values": ["MCA 계산능력", "chu 추론능력", "sol 문제해결능력", "und 이해능력"]
+        },
+        "dyear": {
+          "description": "출제연도",
+          "format": "YYYY (예: 2020, 2021)"
+        },
+        "sdt": {
+          "description": "등록일",
+          "format": "YYYYMMDD"
+        },
+        "edt": {
+          "description": "수정일",
+          "format": "YYYYMMDD"
+        },
+        "du": {
+          "description": "용도 구분",
+          "values": ["01 평가문항", "30 에듀족보", "80 중등연산"]
+        },
+        "sv": {
+          "description": "서비스 구분",
+          "values": ["00 일반"]
+        },
+        "daps": {
+          "description": "정답 개수",
+          "values": ["1", "2"]
+        },
+        "dcols": {
+          "description": "답항 열 수",
+          "values": ["1", "2", "3", "5"]
+        },
+        "drows": {
+          "description": "답항 행 수",
+          "values": ["1", "2", "3", "5"]
+        },
+        "dhs": {
+          "description": "답항 높이 스타일",
+          "values": ["1", "2", "3", "4", "5", "6", "7"]
+        },
+        "iQuizWidth": {
+          "description": "문항 너비 (픽셀)",
+          "example": "4400"
+        },
+        "iQuizHeightHTML": {
+          "description": "문항 높이 HTML (픽셀)",
+          "example": "2080"
+        },
+        "dvp": {
+          "description": "개발자 ID",
+          "example": "mathx"
+        },
+        "iid": {
+          "description": "입력자 ID",
+          "example": "manager"
+        },
+        "su": {
+          "description": "수정자 ID",
+          "example": "SYSTEM"
+        },
+        "al": {
+          "description": "정렬 방식",
+          "values": ["0", "1"]
+        },
+        "bj": {
+          "description": "배점",
+          "example": "3"
+        },
+        "tm": {
+          "description": "제한시간 (초)",
+          "example": "60"
+        },
+        "cyn": {
+          "description": "저작권 여부",
+          "values": ["0", "1"]
+        },
+        "clv": {
+          "description": "난이도 (레거시)",
+          "values": ["04 중하", "05 하"]
+        },
+        "combined": {
+          "description": "결합 문항 여부",
+          "default": "0"
+        },
+        "flashQuiz": {
+          "description": "플래시 문항 여부",
+          "values": ["1"]
+        },
+        "html": {
+          "description": "HTML 형식 여부",
+          "default": "0"
+        },
+        "hw": {
+          "description": "숙제 문항 여부",
+          "default": "0"
+        },
+        "iOrder": {
+          "description": "정렬 순서",
+          "example": "1"
+        },
+        "no": {
+          "description": "문항 번호",
+          "default": "0"
+        },
+        "pageno": {
+          "description": "페이지 번호",
+          "default": "0"
+        },
+        "pod": {
+          "description": "POD 출력 여부",
+          "values": ["1"]
+        },
+        "qs": {
+          "description": "문항 출처 설명",
+          "example": "2015개정 복사 문항"
+        },
+        "st": {
+          "description": "상태",
+          "default": "0"
+        },
+        "ws": {
+          "description": "워크시트 여부",
+          "default": "0"
+        },
+        "adh": {
+          "description": "추가 높이",
+          "default": "0"
+        },
+        "cmsid": {
+          "description": "CMS ID",
+          "default": "0"
+        },
+        "dmn1": {
+          "description": "도메인1",
+          "values": ["0", "1"]
+        },
+        "dmn2": {
+          "description": "도메인2",
+          "default": "0"
+        },
+        "dmn3": {
+          "description": "도메인3",
+          "default": "0"
+        },
+        "dnt": {
+          "description": "답안 유형",
+          "example": "10"
+        },
+        "js": {
+          "description": "자바스크립트 여부",
+          "default": "0"
+        }
+      }
+    },
+    "지문": {
+      "english": "Passage",
+      "description": "공통 지문/본문 요소",
+      "purpose": "여러 문항이 공유하는 지문 텍스트",
+      "parents": ["단위문항"],
+      "children": ["QUIZLINK", "QUIZTAGLIST2", "본문", "해설"],
+      "attributes": {
+        "id": {
+          "description": "지문 고유 식별자",
+          "format": "32자리 UUID"
+        },
+        "cls1-cls9": {
+          "description": "분류 속성 (문항과 동일)"
+        },
+        "df": {
+          "description": "난이도"
+        },
+        "qt": {
+          "description": "문항 유형"
+        },
+        "kw": {
+          "description": "키워드"
+        },
+        "qns": {
+          "description": "출처명"
+        },
+        "jms": {
+          "description": "지문 설명",
+          "example": "2_24_하_연립방정식의 해와 그래프"
+        }
+      }
+    },
+    "문제": {
+      "english": "Problem",
+      "description": "문제 본문 컨테이너",
+      "purpose": "물음과 답항을 포함",
+      "parents": ["문항"],
+      "children": ["답항", "물음"],
+      "attributes": {}
+    },
+    "물음": {
+      "english": "Question Text",
+      "description": "문제 질문 텍스트",
+      "purpose": "실제 문제 내용을 담는 요소",
+      "parents": ["문제"],
+      "children": ["TABLE", "그림", "단락", "보기", "형판"],
+      "attributes": {}
+    },
+    "답항": {
+      "english": "Answer Choice",
+      "description": "선택지 항목",
+      "purpose": "선택형 문항의 개별 보기 (1~5번)",
+      "parents": ["문제"],
+      "children": ["그림", "단락", "형판"],
+      "attributes": {}
+    },
+    "정답": {
+      "english": "Correct Answer",
+      "description": "정답 정보",
+      "purpose": "문항의 정답을 저장",
+      "parents": ["문항"],
+      "children": ["그림", "단락"],
+      "attributes": {}
+    },
+    "정답임시": {
+      "english": "Temporary Answer",
+      "description": "임시 정답 정보",
+      "purpose": "작업 중인 정답 데이터",
+      "parents": ["문항"],
+      "children": ["단락"],
+      "attributes": {}
+    },
+    "해설": {
+      "english": "Explanation",
+      "description": "문제 해설",
+      "purpose": "정답 풀이 및 설명",
+      "parents": ["문항", "지문"],
+      "children": ["TABLE", "그림", "단락", "보기", "형판"],
+      "attributes": {}
+    },
+    "해석": {
+      "english": "Interpretation",
+      "description": "문제 해석",
+      "purpose": "문제 번역 또는 해석 정보",
+      "parents": ["문항"],
+      "children": ["단락"],
+      "attributes": {}
+    },
+    "본문": {
+      "english": "Body Text",
+      "description": "지문 본문",
+      "purpose": "공통 지문의 실제 텍스트",
+      "parents": ["지문"],
+      "children": ["TABLE", "그림", "단락", "보기", "형판"],
+      "attributes": {}
+    },
+    "보기": {
+      "english": "Example Box",
+      "description": "보기 박스",
+      "purpose": "예시, 조건, 참고 내용을 박스로 표시",
+      "parents": ["물음", "보기", "본문", "해설"],
+      "children": ["TABLE", "그림", "단락", "보기", "형판"],
+      "attributes": {
+        "title": {
+          "description": "보기 제목",
+          "examples": ["<보기>", "|보기|", "<조건>", "|증명|"]
+        },
+        "titlejust": {
+          "description": "제목 정렬",
+          "values": ["0", "1"]
+        },
+        "w": {
+          "description": "너비 (%)",
+          "example": "95.60"
+        },
+        "h": {
+          "description": "높이",
+          "example": "50.75"
+        },
+        "borderinfo": {
+          "description": "테두리 정보",
+          "values": ["0,0,0,0", "1,1,1,1"]
+        }
+      }
+    },
+    "단락": {
+      "english": "Paragraph",
+      "description": "텍스트 단락",
+      "purpose": "텍스트, 수식, 이미지를 포함하는 단락 컨테이너",
+      "parents": ["CELL", "답항", "물음", "보기", "본문", "정답", "정답임시", "해석", "해설"],
+      "children": ["DECO", "답박스", "문자그림", "문자열", "수식"],
+      "attributes": {
+        "justh": {
+          "description": "수평 정렬",
+          "values": {"1": "왼쪽", "2": "가운데", "3": "오른쪽", "5": "양쪽", "6": "분산"}
+        },
+        "justv": {
+          "description": "수직 정렬",
+          "values": {"0": "위", "1": "가운데", "2": "아래"}
+        },
+        "bidt": {
+          "description": "들여쓰기 (1/100mm)",
+          "example": "200"
+        },
+        "tidt": {
+          "description": "첫줄 들여쓰기 (1/100mm)",
+          "example": "200"
+        }
+      }
+    },
+    "문자열": {
+      "english": "Text String",
+      "description": "일반 텍스트",
+      "purpose": "순수 텍스트 콘텐츠",
+      "parents": ["단락"],
+      "children": ["B", "COLOR", "GB", "I", "U"],
+      "attributes": {
+        "{http://www.w3.org/XML/1998/namespace}space": {
+          "description": "공백 보존",
+          "values": ["preserve"]
+        }
+      }
+    },
+    "수식": {
+      "english": "Formula/Equation",
+      "description": "수학 수식",
+      "purpose": "LaTeX 형식의 수학 표현식 저장",
+      "parents": ["단락"],
+      "children": [],
+      "content_format": "LaTeX (문자 간 공백 포함, 정규화 필요)",
+      "attributes": {
+        "w": {
+          "description": "수식 너비 (1/100mm)",
+          "example": "600"
+        },
+        "h": {
+          "description": "수식 높이 (1/100mm)",
+          "example": "240"
+        }
+      }
+    },
+    "그림": {
+      "english": "Image",
+      "description": "이미지 파일 참조",
+      "purpose": "문제/해설에 포함된 이미지",
+      "parents": ["CELL", "답항", "물음", "보기", "본문", "정답", "해설"],
+      "children": [],
+      "content_format": "이미지 파일 경로 (예: ID/image.png)",
+      "attributes": {
+        "w": {
+          "description": "표시 너비 (mm)",
+          "example": "35.24"
+        },
+        "h": {
+          "description": "표시 높이 (mm)",
+          "example": "27.15"
+        },
+        "ow": {
+          "description": "원본 너비 (픽셀)",
+          "example": "1722"
+        },
+        "oh": {
+          "description": "원본 높이 (픽셀)",
+          "example": "1337"
+        },
+        "name": {
+          "description": "이미지 고유명",
+          "example": "A6F2B6C4AA7E493196146D925FFDB98E_07bec710_17399"
+        }
+      }
+    },
+    "문자그림": {
+      "english": "Character Image",
+      "description": "문자 이미지",
+      "purpose": "특수 문자를 이미지로 표현",
+      "parents": ["단락"],
+      "children": [],
+      "attributes": {
+        "path": {
+          "description": "이미지 경로",
+          "example": "ID/DrawObjPic/6907680.BMP"
+        },
+        "w": {
+          "description": "너비 (mm)"
+        },
+        "h": {
+          "description": "높이 (mm)"
+        },
+        "ow": {
+          "description": "원본 너비 (픽셀)"
+        },
+        "oh": {
+          "description": "원본 높이 (픽셀)"
+        }
+      }
+    },
+    "답박스": {
+      "english": "Answer Box",
+      "description": "답안 입력 박스",
+      "purpose": "단답형/완결형 문항의 답안 입력 영역",
+      "parents": ["단락"],
+      "children": [],
+      "attributes": {
+        "did": {
+          "description": "답박스 ID",
+          "values": ["1", "2", "3", "4", "5", "6", "7"]
+        },
+        "w": {
+          "description": "너비 (1/100mm)",
+          "example": "600"
+        },
+        "h": {
+          "description": "높이 (1/100mm)",
+          "example": "200"
+        },
+        "x": {
+          "description": "X 좌표 (1/100mm)"
+        },
+        "y": {
+          "description": "Y 좌표 (1/100mm)"
+        },
+        "iLenEng": {
+          "description": "영문 글자 수",
+          "example": "5"
+        },
+        "border": {
+          "description": "테두리 스타일",
+          "example": "15"
+        },
+        "just": {
+          "description": "정렬",
+          "values": ["2"]
+        }
+      }
+    },
+    "형판": {
+      "english": "Layout Template",
+      "description": "레이아웃 템플릿",
+      "purpose": "콘텐츠 배치 순서/방식 정의",
+      "parents": ["CELL", "답항", "물음", "보기", "본문", "해설"],
+      "children": [],
+      "content_format": "CDATA with placeholders",
+      "placeholders": {
+        "<우>": "우측 정렬",
+        "<좌>": "좌측 정렬",
+        "<물음1>": "질문 영역 1",
+        "<물음2>": "질문 영역 2",
+        "<그림1>": "이미지 영역 1",
+        "<리턴>": "줄바꿈"
+      },
+      "attributes": {}
+    },
+    "TABLE": {
+      "english": "Table",
+      "description": "표",
+      "purpose": "표 형식 데이터 표시",
+      "parents": ["CELL", "물음", "보기", "본문", "해설"],
+      "children": ["TR"],
+      "attributes": {}
+    },
+    "TR": {
+      "english": "Table Row",
+      "description": "표 행",
+      "purpose": "표의 한 행",
+      "parents": ["TABLE"],
+      "children": ["CELL"],
+      "attributes": {}
+    },
+    "CELL": {
+      "english": "Table Cell",
+      "description": "표 셀",
+      "purpose": "표의 개별 셀",
+      "parents": ["TR"],
+      "children": ["TABLE", "그림", "단락", "형판"],
+      "attributes": {
+        "w": {
+          "description": "너비",
+          "example": "33"
+        },
+        "h": {
+          "description": "높이",
+          "example": "25"
+        },
+        "x": {
+          "description": "X 좌표"
+        },
+        "y": {
+          "description": "Y 좌표"
+        },
+        "colspan": {
+          "description": "열 병합 수",
+          "values": ["2", "3", "4"]
+        },
+        "rowspan": {
+          "description": "행 병합 수",
+          "values": ["2", "3", "6"]
+        },
+        "borderinfo": {
+          "description": "테두리 정보 (상,우,하,좌)",
+          "example": "1,1,1,1"
+        },
+        "colbk": {
+          "description": "배경색 (R,G,B)",
+          "example": "192,192,192"
+        },
+        "cjustv": {
+          "description": "수직 정렬",
+          "values": ["1", "3"]
+        }
+      }
+    },
+    "B": {
+      "english": "Bold",
+      "description": "굵게",
+      "purpose": "텍스트 굵게 표시",
+      "parents": ["COLOR", "문자열"],
+      "children": ["U"],
+      "attributes": {}
+    },
+    "I": {
+      "english": "Italic",
+      "description": "기울임",
+      "purpose": "텍스트 기울임 표시",
+      "parents": ["문자열"],
+      "children": [],
+      "attributes": {}
+    },
+    "U": {
+      "english": "Underline",
+      "description": "밑줄",
+      "purpose": "텍스트 밑줄 표시",
+      "parents": ["B", "문자열"],
+      "children": [],
+      "attributes": {}
+    },
+    "COLOR": {
+      "english": "Color",
+      "description": "색상",
+      "purpose": "텍스트 색상 지정",
+      "parents": ["문자열"],
+      "children": ["B"],
+      "attributes": {
+        "fore": {
+          "description": "전경색 (16진수)",
+          "example": "FF"
+        }
+      }
+    },
+    "GB": {
+      "english": "Gothic Bold",
+      "description": "고딕 굵게",
+      "purpose": "고딕체 굵게 표시",
+      "parents": ["문자열"],
+      "children": [],
+      "attributes": {}
+    },
+    "DECO": {
+      "english": "Decoration",
+      "description": "장식",
+      "purpose": "텍스트 장식 효과",
+      "parents": ["단락"],
+      "children": [],
+      "attributes": {
+        "kind": {
+          "description": "장식 종류",
+          "values": ["5"]
+        }
+      }
+    },
+    "QUIZLINK": {
+      "english": "Quiz Link",
+      "description": "문항 연결",
+      "purpose": "관련 문항들 간의 링크",
+      "parents": ["문항", "지문"],
+      "children": ["LINK"],
+      "attributes": {
+        "iCount": {
+          "description": "연결된 문항 수",
+          "example": "3"
+        }
+      }
+    },
+    "LINK": {
+      "english": "Link",
+      "description": "개별 링크",
+      "purpose": "연결된 문항 ID 참조",
+      "parents": ["QUIZLINK"],
+      "children": [],
+      "attributes": {
+        "id": {
+          "description": "연결된 문항 ID",
+          "format": "32자리 UUID"
+        }
+      }
+    },
+    "QUIZTAGLIST2": {
+      "english": "Quiz Tag List",
+      "description": "문항 태그 목록",
+      "purpose": "문항 사용 이력 관리",
+      "parents": ["문항", "지문"],
+      "children": ["USEDLIST2"],
+      "attributes": {}
+    },
+    "USEDLIST2": {
+      "english": "Used List",
+      "description": "사용 목록",
+      "purpose": "문항이 사용된 시험 목록",
+      "parents": ["QUIZTAGLIST2"],
+      "children": ["USED2"],
+      "attributes": {}
+    },
+    "USED2": {
+      "english": "Used Entry",
+      "description": "사용 항목",
+      "purpose": "개별 시험 사용 기록",
+      "parents": ["USEDLIST2"],
+      "children": [],
+      "attributes": {
+        "UTKIND": {
+          "description": "시험 종류",
+          "values": ["M30_05 중간고사", "M30_10 기말고사"]
+        },
+        "UYEAR": {
+          "description": "사용일",
+          "format": "YYYYMMDD",
+          "example": "20200721"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,327 @@
+{
+  "total_tags": 34,
+  "tags": {
+    "B": {
+      "parents": [
+        "COLOR",
+        "문자열"
+      ],
+      "children": [
+        "U"
+      ]
+    },
+    "CELL": {
+      "parents": [
+        "TR"
+      ],
+      "children": [
+        "TABLE",
+        "그림",
+        "단락",
+        "형판"
+      ]
+    },
+    "COLOR": {
+      "parents": [
+        "문자열"
+      ],
+      "children": [
+        "B"
+      ]
+    },
+    "DECO": {
+      "parents": [
+        "단락"
+      ],
+      "children": []
+    },
+    "GB": {
+      "parents": [
+        "문자열"
+      ],
+      "children": []
+    },
+    "I": {
+      "parents": [
+        "문자열"
+      ],
+      "children": []
+    },
+    "LINK": {
+      "parents": [
+        "QUIZLINK"
+      ],
+      "children": []
+    },
+    "QUIZLINK": {
+      "parents": [
+        "문항",
+        "지문"
+      ],
+      "children": [
+        "LINK"
+      ]
+    },
+    "QUIZTAGLIST2": {
+      "parents": [
+        "문항",
+        "지문"
+      ],
+      "children": [
+        "USEDLIST2"
+      ]
+    },
+    "TABLE": {
+      "parents": [
+        "CELL",
+        "물음",
+        "보기",
+        "본문",
+        "해설"
+      ],
+      "children": [
+        "TR"
+      ]
+    },
+    "TR": {
+      "parents": [
+        "TABLE"
+      ],
+      "children": [
+        "CELL"
+      ]
+    },
+    "U": {
+      "parents": [
+        "B",
+        "문자열"
+      ],
+      "children": []
+    },
+    "USED2": {
+      "parents": [
+        "USEDLIST2"
+      ],
+      "children": []
+    },
+    "USEDLIST2": {
+      "parents": [
+        "QUIZTAGLIST2"
+      ],
+      "children": [
+        "USED2"
+      ]
+    },
+    "그림": {
+      "parents": [
+        "CELL",
+        "답항",
+        "물음",
+        "보기",
+        "본문",
+        "정답",
+        "해설"
+      ],
+      "children": []
+    },
+    "단락": {
+      "parents": [
+        "CELL",
+        "답항",
+        "물음",
+        "보기",
+        "본문",
+        "정답",
+        "정답임시",
+        "해석",
+        "해설"
+      ],
+      "children": [
+        "DECO",
+        "답박스",
+        "문자그림",
+        "문자열",
+        "수식"
+      ]
+    },
+    "단위문항": {
+      "parents": [
+        "문항종류"
+      ],
+      "children": [
+        "문항",
+        "지문"
+      ]
+    },
+    "답박스": {
+      "parents": [
+        "단락"
+      ],
+      "children": []
+    },
+    "답항": {
+      "parents": [
+        "문제"
+      ],
+      "children": [
+        "그림",
+        "단락",
+        "형판"
+      ]
+    },
+    "문자그림": {
+      "parents": [
+        "단락"
+      ],
+      "children": []
+    },
+    "문자열": {
+      "parents": [
+        "단락"
+      ],
+      "children": [
+        "B",
+        "COLOR",
+        "GB",
+        "I",
+        "U"
+      ]
+    },
+    "문제": {
+      "parents": [
+        "문항"
+      ],
+      "children": [
+        "답항",
+        "물음"
+      ]
+    },
+    "문항": {
+      "parents": [
+        "단위문항"
+      ],
+      "children": [
+        "QUIZLINK",
+        "QUIZTAGLIST2",
+        "문제",
+        "정답",
+        "정답임시",
+        "해석",
+        "해설"
+      ]
+    },
+    "문항종류": {
+      "parents": [
+        "ROOT"
+      ],
+      "children": [
+        "단위문항"
+      ]
+    },
+    "물음": {
+      "parents": [
+        "문제"
+      ],
+      "children": [
+        "TABLE",
+        "그림",
+        "단락",
+        "보기",
+        "형판"
+      ]
+    },
+    "보기": {
+      "parents": [
+        "물음",
+        "보기",
+        "본문",
+        "해설"
+      ],
+      "children": [
+        "TABLE",
+        "그림",
+        "단락",
+        "보기",
+        "형판"
+      ]
+    },
+    "본문": {
+      "parents": [
+        "지문"
+      ],
+      "children": [
+        "TABLE",
+        "그림",
+        "단락",
+        "보기",
+        "형판"
+      ]
+    },
+    "수식": {
+      "parents": [
+        "단락"
+      ],
+      "children": []
+    },
+    "정답": {
+      "parents": [
+        "문항"
+      ],
+      "children": [
+        "그림",
+        "단락"
+      ]
+    },
+    "정답임시": {
+      "parents": [
+        "문항"
+      ],
+      "children": [
+        "단락"
+      ]
+    },
+    "지문": {
+      "parents": [
+        "단위문항"
+      ],
+      "children": [
+        "QUIZLINK",
+        "QUIZTAGLIST2",
+        "본문",
+        "해설"
+      ]
+    },
+    "해석": {
+      "parents": [
+        "문항"
+      ],
+      "children": [
+        "단락"
+      ]
+    },
+    "해설": {
+      "parents": [
+        "문항",
+        "지문"
+      ],
+      "children": [
+        "TABLE",
+        "그림",
+        "단락",
+        "보기",
+        "형판"
+      ]
+    },
+    "형판": {
+      "parents": [
+        "CELL",
+        "답항",
+        "물음",
+        "보기",
+        "본문",
+        "해설"
+      ],
+      "children": []
+    }
+  }
+}
