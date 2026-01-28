@@ -581,45 +581,57 @@ except Exception as e:
 
 ---
 
-## 9. 진행 중인 작업 (2026-01-28)
+## 9. 완료된 추가 작업 (2026-01-28)
 
-### 9.1 Qwen3-VL-Embedding-8B 성능 검증 실험 (예정)
+### 9.1 Qwen3-Embedding-8B 임베딩 생성 ✅ 완료
 
 #### 배경
 - 현재 2B 모델로 Image GT 기준 Top-5 Recall 76.3% 달성
 - 8B 모델 사용 시 벤치마크 기준 +4~5% 성능 향상 예상
 - 로컬 RTX 2070 SUPER (8GB)로는 8B 모델 실행 불가
 
-#### 실험 환경
+#### 실험 환경 (실제)
+
 | 항목 | 값 |
 |------|------|
 | 플랫폼 | Vast.ai |
-| GPU | RTX 3090 (24GB) |
-| 예상 비용 | ~$0.25/hr |
-| 모델 | Qwen3-VL-Embedding-8B (BF16) |
+| GPU | RTX 3090 Ti (24GB) |
+| 인스턴스 | Type #19905787 (Vietnam) |
+| 시간당 비용 | $0.143/hr (50GB 디스크 포함) |
+| 모델 | Qwen/Qwen3-Embedding-8B (BF16) |
+| 총 비용 | ~$0.58 |
 
-#### 예상 성능 향상 (벤치마크 기준)
+#### 실행 결과 (2026-01-28)
 
-| Metric | 2B (현재) | 8B (예상) | 변화 |
-|--------|----------|-----------|------|
-| MMEB-V2 Overall | 73.4 | 77.9 | +4.5점 |
-| MMTEB Retrieval | 78.50 | 81.08 | +2.58점 |
-| **Image GT Top-5** | **76.3%** | **~80-82%** | **+4~6%p** |
+| 항목 | 값 |
+|------|------|
+| 임베딩 수 | 100개 |
+| 임베딩 차원 | 4096 (2B는 2048) |
+| VRAM 사용 | 15.17 GB |
+| 생성 시간 | ~10분 |
+| 결과 파일 | `poc/results/qwen_embeddings_8b.json` (9.2MB) |
 
-#### 실험 계획
-1. Vast.ai RTX 3090 인스턴스 대여
-2. Qwen3-VL-Embedding-8B로 100건 테스트 문항 임베딩 생성
-3. Image GT 기준 성능 평가
-4. 2B vs 8B 성능 비교 분석
-5. (성능 향상 확인 시) 전체 10,952건 임베딩 생성
+#### 주요 이슈 및 해결
 
-#### 준비 완료 사항
-- [x] SSH 키 생성 (`~/.ssh/id_ed25519`)
-- [x] Vast.ai 계정 설정
+| 이슈 | 원인 | 해결 |
+|------|------|------|
+| 디스크 공간 부족 | Container Size 16GB (기본값) | 50GB로 재설정 후 재대여 |
+| python 명령어 없음 | conda 환경 미활성화 | `source /opt/miniforge3/etc/profile.d/conda.sh && conda activate base` |
+| torch 모듈 없음 | 패키지 미설치 | conda 환경에서 pip install |
+
+#### 완료 사항
+- [x] SSH 키 생성 (`~/.ssh/id_ed25519_vastai`)
+- [x] Vast.ai 계정 설정 및 크레딧 충전 ($5)
 - [x] 상세 가이드 문서 작성 (`poc/VASTAI-GUIDE.md`)
-- [ ] RTX 3090 인스턴스 대여
-- [ ] 8B 모델 임베딩 생성
-- [ ] 성능 평가 및 비교
+- [x] RTX 3090 Ti 인스턴스 대여
+- [x] 8B 모델 임베딩 생성 (100건, 4096차원)
+- [x] 결과 다운로드 (`qwen_embeddings_8b.json`)
+- [ ] 성능 평가 및 2B vs 8B 비교
+
+#### 다음 단계
+1. 8B 임베딩으로 성능 평가 (Top-K Recall, MRR)
+2. 2B vs 8B 비교 분석
+3. (성능 향상 확인 시) 전체 10,952건 임베딩 생성
 
 ---
 
@@ -669,3 +681,9 @@ except Exception as e:
 | | | - Qwen3-VL-Embedding-8B 성능 검증 실험 계획 | |
 | | | - Vast.ai RTX 3090 환경 설정 완료 | |
 | | | - 예상 성능 향상: Top-5 76.3% → ~80-82% | |
+| v1.6.0 | 2026-01-28 | Vast.ai 8B 모델 임베딩 생성 완료 | AI TF |
+| | | - RTX 3090 Ti 인스턴스로 8B 임베딩 생성 (100건) | |
+| | | - 임베딩 차원: 4096 (2B는 2048) | |
+| | | - VRAM 사용: 15.17GB, 총 비용: $0.58 | |
+| | | - Container Size 50GB 필수 (16GB 기본값 문제 해결) | |
+| | | - VASTAI-GUIDE.md 실제 실행 결과 반영 | |
