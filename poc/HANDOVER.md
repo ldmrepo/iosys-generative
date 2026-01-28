@@ -616,6 +616,7 @@ except Exception as e:
 #### 준비 완료 사항
 - [x] SSH 키 생성 (`~/.ssh/id_ed25519`)
 - [x] Vast.ai 계정 설정
+- [x] 상세 가이드 문서 작성 (`poc/VASTAI-GUIDE.md`)
 - [ ] RTX 3090 인스턴스 대여
 - [ ] 8B 모델 임베딩 생성
 - [ ] 성능 평가 및 비교
@@ -632,6 +633,7 @@ except Exception as e:
 | POC 계획서 | `docs/06 IOSYS-ITEMBANK-AI-001-POC-Qwen3-VL-Embedding.md` |
 | 기술 리서치 보고서 | `docs/05 IOSYS-ITEMBANK-AI-001-R02.md` |
 | POC 최종 보고서 | `poc/POC-Report.md` |
+| **Vast.ai 가이드** | **`poc/VASTAI-GUIDE.md`** |
 
 ### 10.2 외부 참고 자료
 
