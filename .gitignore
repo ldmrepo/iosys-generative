@@ -49,3 +49,4 @@ Thumbs.db
 .agents/
 .claude/
 node_modules/
+poc/results/qwen_embeddings_full_2b_multimodal.json

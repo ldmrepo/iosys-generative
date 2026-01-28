@@ -1,158 +1,190 @@
 {
-  "total_items": 10952,
-  "valid_items": 10945,
-  "invalid_items": 7,
-  "validation_rate": "99.94%",
+  "total_items": 176443,
+  "valid_items": 131460,
+  "invalid_items": 44983,
+  "validation_rate": "74.51%",
   "errors_by_type": {
-    "empty_choices": 2,
-    "question_too_short": 5
+    "invalid_semester": 33128,
+    "empty_question": 17470,
+    "question_too_short": 302,
+    "invalid_image_extension": 1,
+    "image_not_found": 1,
+    "missing_images_count": 1,
+    "empty_choices": 224,
+    "invalid_question_type": 989,
+    "too_many_choices": 30,
+    "no_choices": 651,
+    "answer_out_of_range": 797,
+    "insufficient_choices": 1081,
+    "missing_answer": 38
   },
   "sample_errors": [
     {
-      "id": "6608C68186B94FD3A496B2BF5BB92FD4",
+      "id": "2327564E93464A849927AF3B9F559E23",
       "errors": [
-        "empty_choices:[4]"
+        "invalid_semester:역사②"
       ],
-      "question_preview": "다음 두 일차부등식의 해가 서로 같을 때, 상수 $a$의 값은?${\\cfrac{x + 3}{2}} - {\\cfrac{3x - 1}{4}}≤2$, $3x - 1≤5x + a$"
+      "question_preview": "해, 달, 강, 동물 등에 영혼이 깃들여 있다고 믿었다."
     },
     {
-      "id": "68C2AB6EB3254272984EB51834920534",
+      "id": "B93B16A6B0FC47AAA8C1434FFAFABF6A",
       "errors": [
-        "empty_choices:[1]"
+        "invalid_semester:역사 ①-1"
       ],
-      "question_preview": "$(- 4x + 5y - 2) - (3x - 2y + 1)$을 간단히 하였을 때, $y$의 계수와 상수항의 합은?"
+      "question_preview": "해, 달, 강, 동물 등에 영혼이 깃들여 있다고 믿었다."
     },
     {
-      "id": "36CF8ED98EDF4A74AEADA501616EE2D6",
+      "id": "0FE6C41BAFAE4B3A93FFCBEFCF93018A",
       "errors": [
-        "question_too_short"
+        "invalid_semester:역사②"
       ],
-      "question_preview": "자연수"
+      "question_preview": "ㆍ가락 바퀴 ㆍ뼈바늘"
     },
     {
-      "id": "8A6E87ACF2BA45F0AC2C0F63267AAA79",
+      "id": "10215FABE874461BAF6BC4E21A3DC171",
       "errors": [
-        "question_too_short"
+        "invalid_semester:역사 ①-1",
+        "empty_question"
       ],
-      "question_preview": "유리수"
+      "question_preview": ""
     },
     {
-      "id": "C68C0910D405463B8BE19891AF5C7F81",
+      "id": "701D06F9FBEE430F9B5D65A427B7256C",
       "errors": [
-        "question_too_short"
+        "invalid_semester:역사②",
+        "empty_question"
       ],
-      "question_preview": "자연수"
+      "question_preview": ""
     },
     {
-      "id": "E7255F2198484EDEAA4C3CCAE4C1A953",
+      "id": "7B79EA68B367427EBE59CF739B6F1448",
       "errors": [
-        "question_too_short"
+        "invalid_semester:역사②"
       ],
-      "question_preview": "유리수"
+      "question_preview": "ㆍ가락 바퀴 ㆍ뼈바늘"
     },
     {
-      "id": "8421B1A0BFC448ADBEB64A4170AB0AC1",
+      "id": "8F4872891E714FEDBF65C31D739D3486",
       "errors": [
-        "question_too_short"
+        "invalid_semester:역사②"
       ],
-      "question_preview": "$4x$"
+      "question_preview": "[이미지]"
+    },
+    {
+      "id": "D64DA4C795244915AB0ACDEB4FED98B1",
+      "errors": [
+        "invalid_semester:역사②",
+        "empty_question"
+      ],
+      "question_preview": ""
+    },
+    {
+      "id": "E560789D2AC443D58437E0D459CCBCF4",
+      "errors": [
+        "invalid_semester:역사②",
+        "empty_question"
+      ],
+      "question_preview": ""
+    },
+    {
+      "id": "EE6F9FF4D9E5417698ACF040A008F25C",
+      "errors": [
+        "invalid_semester:역사②"
+      ],
+      "question_preview": "[이미지]"
     }
   ],
   "duplicates": {
     "duplicate_id_count": 0,
-    "duplicate_question_count": 239,
+    "duplicate_question_count": 10631,
     "duplicate_ids": [],
     "duplicate_questions": [
       {
-        "question": "다음은 순환소수를 간단히 나타낸 것이다. 옳지 것은?",
+        "question": "다음 방정식 중 해가 나머지 넷과 하나는?",
+        "count": 3,
+        "indices": [
+          8,
+          40,
+          151480
+        ]
+      },
+      {
+        "question": "다음 방정식 중 해가 $x = - 2$인 것은?",
         "count": 2,
         "indices": [
-          35,
-          138
+          10,
+          120441
         ]
       },
       {
-        "question": "다음 분수 중 유한소수로 나타낼 수 있는 것을 모두 고르면? (정답 $2$개)",
+        "question": "해, 달, 강, 동물 등에 영혼이 깃들여 있다고 믿었다.",
+        "count": 3,
+        "indices": [
+          16,
+          17,
+          6110
+        ]
+      },
+      {
+        "question": "다음 방정식 중 해가 $x = - 1$인 것은?",
+        "count": 3,
+        "indices": [
+          34,
+          132513,
+          151508
+        ]
+      },
+      {
+        "question": "다음 방정식 중 해가 $x = - 3$인 것은?",
         "count": 2,
         "indices": [
-          69,
-          7030
+          36,
+          158313
         ]
       },
       {
-        "question": "$a < b$일 때, 다음 중 옳지 것은?",
-        "count": 7,
+        "question": "다음 중 $x$의 값에 관계없이 항상 참인 등식은?",
+        "count": 3,
         "indices": [
-          96,
-          269,
-          8290,
-          8660,
-          8939
+          59,
+          129,
+          151389
         ]
       },
       {
-        "question": "다음 중 유한소수로 나타낼 수 있는 것은?",
+        "question": "다음 문장을 등식으로 나타낸 것 중 옳지 것은?",
         "count": 4,
         "indices": [
-          106,
-          6338,
-          6833,
-          7403
+          89,
+          21211,
+          21240,
+          21392
         ]
       },
       {
-        "question": "다음 연립방정식 중 해가 나머지 넷과 하나는?",
-        "count": 3,
+        "question": "곡식의 이삭을 자르는 도구로, 당시 농경 생활이 발달하였음을 보여 주는 청동기 시대의 대표적인 도구이다.",
+        "count": 4,
         "indices": [
-          110,
-          2013,
-          2030
+          132,
+          139,
+          6391,
+          6397
         ]
       },
       {
-        "question": "다음 중 $y$가 $x$에 대한 일차함수인 것은?",
-        "count": 3,
-        "indices": [
-          165,
-          2066,
-          2122
-        ]
-      },
-      {
-        "question": "다음 그림에서 $x$의 값은? [이미지]",
-        "count": 11,
-        "indices": [
-          253,
-          2220,
-          2434,
-          2437,
-          3755
-        ]
-      },
-      {
-        "question": "다음 그림에서 $\\overline{BC}$$∥$$\\overline{DE}$일 때, $x$, $y$의 값을 각각 구하여라. [이미지] $x =$, $y =$",
-        "count": 3,
-        "indices": [
-          329,
-          348,
-          366
-        ]
-      },
-      {
-        "question": "오른쪽 그림에서 $\\overline{BC}$$∥$$\\overline{DE}$일 때, $x$, $y$의 값을 각각 구하여라. [이미지] $x =$, $y =$",
-        "count": 3,
-        "indices": [
-          330,
-          331,
-          333
-        ]
-      },
-      {
-        "question": "다음 그림에서 $\\overline{BC}$$∥$$\\overline{DE}$가 되도록 하는 $x$의 값을 구하여라. [이미지]",
+        "question": "$x = y$일 때, 다음 중 옳지 것은?",
         "count": 2,
         "indices": [
-          334,
-          335
+          146,
+          182
+        ]
+      },
+      {
+        "question": "다음 중 항등식인 것은? (정답 2개)",
+        "count": 2,
+        "indices": [
+          153,
+          159
         ]
       }
     ]
