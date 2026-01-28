@@ -2,15 +2,16 @@
 """
 Task #7 & #8: Qwen3-VL-Embedding-2B 임베딩 생성
 텍스트 + 이미지 멀티모달 임베딩 생성
+
+Uses the official Qwen3VLEmbedder wrapper for proper multimodal processing.
 """
 import json
+import sys
 import torch
 import gc
 import numpy as np
 from pathlib import Path
 from tqdm import tqdm
-from PIL import Image
-from transformers import AutoModel, AutoTokenizer, AutoProcessor
 
 # Paths
 POC_DIR = Path("/mnt/sda/worker/dev_ldm/iosys-generative/poc")
@@ -20,6 +21,9 @@ RAW_IMAGE_DIR = Path("/mnt/sda/worker/dev_ldm/iosys-generative/data/raw")
 OUTPUT_DIR = POC_DIR / "results"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
+# Add model scripts to path for Qwen3VLEmbedder
+sys.path.insert(0, str(MODEL_PATH / "scripts"))
+
 def get_gpu_memory():
     """GPU 메모리 사용량"""
     if torch.cuda.is_available():
@@ -28,31 +32,21 @@ def get_gpu_memory():
     return "N/A"
 
 def load_model():
-    """모델 로드 (FP16)"""
+    """모델 로드 - Qwen3VLEmbedder 래퍼 사용"""
+    from qwen3_vl_embedding import Qwen3VLEmbedder
+
     print(f"Loading model from {MODEL_PATH}...")
     print(f"Initial GPU memory: {get_gpu_memory()}")
 
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, trust_remote_code=True)
-
-    model = AutoModel.from_pretrained(
-        MODEL_PATH,
+    model = Qwen3VLEmbedder(
+        model_name_or_path=str(MODEL_PATH),
         torch_dtype=torch.float16,
-        device_map="auto",
-        trust_remote_code=True,
-        low_cpu_mem_usage=True
+        default_instruction="Represent this educational question item for retrieval."
     )
-    model.eval()
 
     print(f"Model loaded. GPU memory: {get_gpu_memory()}")
 
-    # Try to load processor for image handling
-    try:
-        processor = AutoProcessor.from_pretrained(MODEL_PATH, trust_remote_code=True)
-    except Exception as e:
-        print(f"Processor not available: {e}")
-        processor = None
-
-    return model, tokenizer, processor
+    return model
 
 def load_test_items():
     """테스트 데이터 로드"""
@@ -82,114 +76,153 @@ def prepare_text_input(item):
     return text
 
 def find_image_path(item):
-    """문항의 이미지 경로 찾기"""
-    images = item.get('images', {})
-    question_images = images.get('question', [])
+    """문항의 이미지 경로 찾기 (question + explanation)
 
-    if not question_images:
+    두 가지 폴더 구조 지원:
+    1. YYYYMMDD: {RAW_IMAGE_DIR}/20150226/{item_id}/DrawObjPic/{filename}
+    2. YYYY/MM/DD: {RAW_IMAGE_DIR}/2020/06/09/{item_id}/DrawObjPic/{filename}
+
+    이미지 우선순위: question > explanation
+    """
+    images = item.get('images', {})
+
+    # question 이미지 우선, 없으면 explanation 이미지 사용
+    image_candidates = images.get('question', []) or images.get('explanation', [])
+
+    if not image_candidates:
         return None
 
     # 첫 번째 이미지 사용
-    img_path = question_images[0]
+    img_path = image_candidates[0]  # e.g., "E8A959E.../DrawObjPic/P0697DA38.png"
 
-    # 이미지 경로 구성
-    item_id = item['id']
+    # 직접 경로 시도
+    direct_path = RAW_IMAGE_DIR / img_path
+    if direct_path.exists():
+        return direct_path
 
-    # 여러 가능한 경로 시도
-    possible_paths = [
-        RAW_IMAGE_DIR / item_id / img_path,
-        RAW_IMAGE_DIR / img_path,
-    ]
+    for folder in RAW_IMAGE_DIR.iterdir():
+        if not folder.is_dir() or not folder.name.isdigit():
+            continue
 
-    # 날짜 폴더 검색
-    for date_folder in RAW_IMAGE_DIR.iterdir():
-        if date_folder.is_dir():
-            candidate = date_folder / item_id / img_path
+        if len(folder.name) == 8:
+            # YYYYMMDD 구조 (예: 20150226)
+            candidate = folder / img_path
             if candidate.exists():
                 return candidate
-
-    for path in possible_paths:
-        if path.exists():
-            return path
+        elif len(folder.name) == 4:
+            # YYYY/MM/DD 구조 (예: 2020/06/09)
+            for month_folder in folder.iterdir():
+                if not month_folder.is_dir():
+                    continue
+                for day_folder in month_folder.iterdir():
+                    if not day_folder.is_dir():
+                        continue
+                    candidate = day_folder / img_path
+                    if candidate.exists():
+                        return candidate
 
     return None
 
-def generate_embedding(model, tokenizer, processor, text, image_path=None):
-    """단일 문항 임베딩 생성"""
-    device = next(model.parameters()).device
 
-    # 텍스트만 사용 (이미지 처리는 모델 특성에 따라 조정 필요)
-    inputs = tokenizer(
-        text,
-        return_tensors="pt",
-        padding=True,
-        truncation=True,
-        max_length=512
-    )
-    inputs = {k: v.to(device) for k, v in inputs.items()}
+def generate_embeddings_batch(model, items, batch_size=4):
+    """배치 단위로 멀티모달 임베딩 생성"""
+    all_embeddings = {}
+    errors = []
 
-    with torch.no_grad():
-        outputs = model(**inputs)
+    for i in tqdm(range(0, len(items), batch_size), desc="Generating embeddings"):
+        batch_items = items[i:i + batch_size]
+        batch_inputs = []
 
-    # Mean pooling
-    attention_mask = inputs['attention_mask']
-    token_embeddings = outputs.last_hidden_state
-    input_mask_expanded = attention_mask.unsqueeze(-1).expand(token_embeddings.size()).float()
-    embedding = torch.sum(token_embeddings * input_mask_expanded, 1) / torch.clamp(input_mask_expanded.sum(1), min=1e-9)
+        for item in batch_items:
+            try:
+                # 텍스트 준비
+                text = prepare_text_input(item)
 
-    # Normalize
-    embedding = torch.nn.functional.normalize(embedding, p=2, dim=1)
+                # 멀티모달 입력 구성
+                inp = {"text": text}
 
-    return embedding.cpu().numpy()[0]
+                # 이미지가 있는 문항은 이미지 포함
+                if item.get('has_image'):
+                    image_path = find_image_path(item)
+                    if image_path and image_path.exists():
+                        inp["image"] = str(image_path)
+
+                batch_inputs.append((item['id'], inp))
+            except Exception as e:
+                errors.append({"id": item['id'], "error": str(e)})
+
+        if not batch_inputs:
+            continue
+
+        try:
+            # Qwen3VLEmbedder.process()로 배치 임베딩 생성
+            inputs_for_model = [inp for _, inp in batch_inputs]
+            embeddings = model.process(inputs_for_model, normalize=True)
+
+            # 결과 저장
+            for idx, (item_id, _) in enumerate(batch_inputs):
+                all_embeddings[item_id] = embeddings[idx].cpu().numpy().tolist()
+
+        except Exception as e:
+            # 배치 실패 시 개별 처리
+            print(f"\nBatch failed, processing individually: {e}")
+            for item_id, inp in batch_inputs:
+                try:
+                    embedding = model.process([inp], normalize=True)
+                    all_embeddings[item_id] = embedding[0].cpu().numpy().tolist()
+                except Exception as e2:
+                    errors.append({"id": item_id, "error": str(e2)})
+
+    return all_embeddings, errors
 
 def main():
     print("=" * 60)
-    print("Qwen3-VL-Embedding-2B 임베딩 생성")
+    print("Qwen3-VL-Embedding-2B 멀티모달 임베딩 생성")
     print("=" * 60)
 
     # 모델 로드
-    print("\n[1/4] 모델 로드...")
-    model, tokenizer, processor = load_model()
+    print("\n[1/4] 모델 로드 (Qwen3VLEmbedder)...")
+    model = load_model()
 
     # 데이터 로드
     print("\n[2/4] 테스트 데이터 로드...")
     items = load_test_items()
     print(f"      문항 수: {len(items)}")
 
-    # 임베딩 생성
-    print("\n[3/4] 임베딩 생성...")
-    embeddings = {}
-    errors = []
+    # 이미지 문항 통계
+    image_items = [item for item in items if item.get('has_image')]
+    text_only_items = [item for item in items if not item.get('has_image')]
+    print(f"      이미지 문항: {len(image_items)}")
+    print(f"      텍스트 문항: {len(text_only_items)}")
 
-    for item in tqdm(items, desc="Generating embeddings"):
-        item_id = item['id']
-        try:
-            # 텍스트 준비
-            text = prepare_text_input(item)
+    # 이미지 경로 확인
+    found_images = 0
+    for item in image_items:
+        if find_image_path(item):
+            found_images += 1
+    print(f"      이미지 파일 발견: {found_images}/{len(image_items)}")
 
-            # 이미지 경로 (있으면)
-            image_path = find_image_path(item) if item.get('has_image') else None
-
-            # 임베딩 생성
-            embedding = generate_embedding(model, tokenizer, processor, text, image_path)
-            embeddings[item_id] = embedding.tolist()
-
-        except Exception as e:
-            errors.append({"id": item_id, "error": str(e)})
-            print(f"\nError for {item_id}: {e}")
+    # 임베딩 생성 (배치 처리)
+    print("\n[3/4] 멀티모달 임베딩 생성...")
+    embeddings, errors = generate_embeddings_batch(model, items, batch_size=4)
 
     print(f"\n      성공: {len(embeddings)}/{len(items)}")
     if errors:
         print(f"      오류: {len(errors)}")
+        for err in errors[:5]:
+            print(f"        - {err['id']}: {err['error']}")
 
     # 저장
     print("\n[4/4] 저장...")
     output_data = {
         "metadata": {
             "model": "Qwen3-VL-Embedding-2B",
+            "mode": "multimodal",
             "total_items": len(items),
             "successful": len(embeddings),
             "failed": len(errors),
+            "image_items": len(image_items),
+            "images_found": found_images,
             "embedding_dim": 2048,
             "dtype": "float16"
         },
@@ -211,12 +244,12 @@ def main():
     print(f"      저장: {np_file}")
 
     # 메모리 정리
-    del model, tokenizer
+    del model
     gc.collect()
     torch.cuda.empty_cache()
 
     print("\n" + "=" * 60)
-    print("임베딩 생성 완료!")
+    print("멀티모달 임베딩 생성 완료!")
     print(f"Embedding shape: ({len(embeddings)}, 2048)")
     print("=" * 60)
 

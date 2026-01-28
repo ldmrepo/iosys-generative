@@ -1,0 +1,4351 @@
+{
+  "metadata": {
+    "generation_method": "GPT-4o with images",
+    "model": "gpt-4o",
+    "total_pairs_evaluated": 228,
+    "successful_evaluations": 228,
+    "failed_evaluations": 0,
+    "min_relevance_score": 3,
+    "total_queries": 27,
+    "total_relevant_pairs": 61,
+    "cost": {
+      "prompt_tokens": 192815,
+      "completion_tokens": 23501,
+      "estimated_cost_usd": 1.31659
+    }
+  },
+  "ground_truth": [
+    {
+      "query_id": "E8A959E017454D1A83E17ED3064C282F",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 삼각형의 성질을 이용하지만, 하나는 삼각형의 각도와 길이를 이용한 문제이고 다른 하나는 직각삼각형의 높이와 관련된 문제입니다. 이미지와 풀이 방법은 일부 유사하지만, 문제의 구체적인 내용은 다릅니다."
+        },
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 삼각형과 관련된 문제로, 삼각형의 성질을 이용해 풀어야 합니다. 그러나 하나는 직각삼각형의 성질을, 다른 하나는 삼각형의 각도를 이용한 문제로, 개념과 풀이 방법이 일부 유사하지만 완전히 동일하지는 않습니다. 이미지도 삼각형을 포함하고 있지만, 구성과 목적이 다릅니다."
+        }
+      ]
+    },
+    {
+      "query_id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 삼각형의 성질을 이용하지만, 하나는 삼각형의 각도와 길이를 이용한 문제이고 다른 하나는 직각삼각형의 높이와 관련된 문제입니다. 이미지와 풀이 방법은 일부 유사하지만, 문제의 구체적인 내용은 다릅니다."
+        },
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 4,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 직각삼각형의 성질을 이용하여 변의 길이를 구하는 문제입니다. 이미지 구조는 다르지만, 풀이 과정에서 피타고라스 정리와 직각삼각형의 성질을 사용한다는 점에서 유사합니다."
+        },
+        {
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 직각삼각형의 성질을 이용하여 변의 길이를 구하는 문제로, 개념적으로 동일하다. 이미지는 직각삼각형이라는 점에서 유사하지만, 주어진 변의 위치와 길이가 다르다. 풀이 방법은 피타고라스 정리를 사용한다는 점에서 일부 유사하다."
+        }
+      ]
+    },
+    {
+      "query_id": "46ACB9139B444F578F9A7DC9B54175CB",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 성질을 이용하여 길이를 구하는 문제로, 직각 삼각형과 사각형의 성질을 다루고 있습니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 문제의 구체적인 설정과 요구 사항이 다릅니다."
+        },
+        {
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 4,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 직각삼각형의 성질을 이용하여 변의 길이를 구하는 문제입니다. 이미지 구조는 다르지만, 풀이 과정에서 피타고라스 정리와 직각삼각형의 성질을 사용한다는 점에서 유사합니다."
+        },
+        {
+          "id": "E8A959E017454D1A83E17ED3064C282F",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 삼각형과 관련된 문제로, 삼각형의 성질을 이용해 풀어야 합니다. 그러나 하나는 직각삼각형의 성질을, 다른 하나는 삼각형의 각도를 이용한 문제로, 개념과 풀이 방법이 일부 유사하지만 완전히 동일하지는 않습니다. 이미지도 삼각형을 포함하고 있지만, 구성과 목적이 다릅니다."
+        },
+        {
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 직각삼각형의 성질을 이용하여 문제를 해결하는 점에서 개념이 동일합니다. 이미지에서는 둘 다 직각삼각형을 포함하지만, 구성 요소가 다릅니다. 풀이 방법은 피타고라스 정리를 사용하지만, 문제의 세부 사항이 달라 일부 단계만 유사합니다."
+        }
+      ]
+    },
+    {
+      "query_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 성질을 이용하여 길이를 구하는 문제로, 직각 삼각형과 사각형의 성질을 다루고 있습니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 문제의 구체적인 설정과 요구 사항이 다릅니다."
+        },
+        {
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 성질을 이용하여 길이를 구하는 문제로 관련된 개념을 다루고 있습니다. 이미지 형태는 다르지만, 직각삼각형과 직사각형의 성질을 활용하는 점에서 유사합니다. 풀이 방법도 도형의 성질을 이용하여 길이를 구하는 점에서 일부 유사합니다."
+        },
+        {
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "문항 A는 직각삼각형의 피타고라스 정리를 사용하고, 문항 B는 직각을 포함한 사각형의 변 길이를 구하는 문제로, 둘 다 직각과 관련된 문제입니다. 이미지와 풀이 방법은 일부 유사하지만, 다른 도형을 다루고 있습니다."
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형을 다루지만, 문항 A는 평행사변형의 대각선과 둘레를, 문항 B는 직각을 포함한 사각형의 변의 길이를 구하는 문제입니다. 개념과 풀이 방법에서 일부 유사점이 있지만, 문제의 초점과 접근 방식이 다릅니다."
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "concept_score": 5,
+          "image_score": 5,
+          "solution_score": 5,
+          "overall_score": 5,
+          "reasoning": "두 문제 모두 대각선이 직교하는 사각형의 성질을 이용하여 길이를 구하는 문제로, 개념, 이미지, 풀이 방법이 매우 유사합니다."
+        },
+        {
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문항 모두 도형의 성질을 이용한 문제로, 직각 삼각형과 관련된 개념을 다루고 있습니다. 이미지 형태는 다르지만, 도형의 대각선과 직각을 활용하는 점에서 유사합니다. 풀이 과정에서도 피타고라스 정리를 사용할 수 있어 일부 유사성이 있습니다."
+        }
+      ]
+    },
+    {
+      "query_id": "6C3E301AFD69401FAA960C8C55361238",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 직각삼각형의 성질을 이용하여 문제를 해결하는 점에서 개념이 동일합니다. 이미지에서는 둘 다 직각삼각형을 포함하지만, 구성 요소가 다릅니다. 풀이 방법은 피타고라스 정리를 사용하지만, 문제의 세부 사항이 달라 일부 단계만 유사합니다."
+        },
+        {
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 직각삼각형을 다루고 있으며, 피타고라스 정리를 사용하여 풀 수 있습니다. 그러나 하나는 원과 직사각형을 포함하고 있어 개념과 이미지에서 차이가 있습니다."
+        },
+        {
+          "id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 직각삼각형의 성질을 이용하여 변의 길이를 구하는 문제로, 개념적으로 동일하다. 이미지는 직각삼각형이라는 점에서 유사하지만, 주어진 변의 위치와 길이가 다르다. 풀이 방법은 피타고라스 정리를 사용한다는 점에서 일부 유사하다."
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 직각삼각형과 관련된 피타고라스 정리를 사용하지만, 문항 A는 삼각형, 문항 B는 사각형을 다루고 있어 개념과 풀이가 일부 유사합니다. 이미지도 비슷한 유형이지만 다른 도형을 포함하고 있습니다."
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "문항 A는 직각삼각형의 피타고라스 정리를 사용하고, 문항 B는 직각을 포함한 사각형의 변 길이를 구하는 문제로, 둘 다 직각과 관련된 문제입니다. 이미지와 풀이 방법은 일부 유사하지만, 다른 도형을 다루고 있습니다."
+        }
+      ]
+    },
+    {
+      "query_id": "B433ED8101A14DF88CADA9116F0CDB97",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "concept_score": 5,
+          "image_score": 5,
+          "solution_score": 5,
+          "overall_score": 5,
+          "reasoning": "두 문제 모두 평행사변형의 성질과 각도 계산을 다루며, 이미지 구조와 풀이 방법이 매우 유사합니다."
+        },
+        {
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 삼각형의 각도와 관련된 문제로, 삼각형의 성질을 이용해 풀 수 있습니다. 그러나 하나는 평행사변형과 이등분선, 다른 하나는 등변삼각형을 다루고 있어 개념과 풀이가 완전히 동일하지는 않습니다. 이미지도 삼각형을 포함하지만 다른 구조를 가지고 있습니다."
+        },
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 4,
+          "overall_score": 4,
+          "reasoning": "두 문항 모두 평행사변형의 성질을 이용하여 각도를 구하는 문제로, 개념적으로 동일하다. 이미지의 구조는 다르지만, 평행사변형을 포함하고 있어 유사하다. 풀이 방법은 평행사변형의 성질을 이용하므로 유사하다."
+        },
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 평행사변형의 성질을 다루고 있으며, 각도 계산이 핵심입니다. 이미지는 비슷한 유형이지만 다른 요소가 포함되어 있습니다. 풀이 방법은 각도 계산을 포함하지만, 접근 방식이 다소 다릅니다."
+        },
+        {
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 각도 계산을 포함하지만, 하나는 평행사변형의 성질을, 다른 하나는 이등변삼각형과 등변삼각형의 성질을 사용합니다. 이미지와 풀이 방법은 일부 유사하지만, 다른 도형의 성질을 사용합니다."
+        },
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 평행사변형의 성질을 이용하여 각도를 구하는 문제로, 개념적으로 동일하다. 이미지는 평행사변형을 포함하지만, 구성 요소가 다르다. 풀이 과정에서 평행사변형의 성질을 활용하지만, 접근 방식이 다소 다르다."
+        },
+        {
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문항 모두 평행사변형을 다루지만, 하나는 각도 계산, 다른 하나는 넓이 계산을 요구합니다. 이미지는 평행사변형을 포함하지만, 세부 구조가 다릅니다. 풀이 방법도 다릅니다."
+        }
+      ]
+    },
+    {
+      "query_id": "DC786E25B9AD449B86EF35F0F774B642",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "concept_score": 5,
+          "image_score": 5,
+          "solution_score": 5,
+          "overall_score": 5,
+          "reasoning": "두 문제 모두 평행사변형의 성질과 각도 계산을 다루며, 이미지 구조와 풀이 방법이 매우 유사합니다."
+        },
+        {
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 삼각형의 각도를 구하는 문제로 관련된 개념을 다루지만, 다른 도형과 조건을 사용합니다. 이미지와 풀이 방법도 일부 유사하지만, 다른 도형적 특성을 고려해야 합니다."
+        },
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "concept_score": 5,
+          "image_score": 5,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 평행사변형의 성질을 이용하여 각도를 구하는 문제로, 개념과 이미지가 매우 유사합니다. 그러나 문제 B는 추가적인 점 E와 관련된 각도 계산이 필요하여 풀이 방법이 약간 다릅니다."
+        },
+        {
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형을 다루지만, 하나는 넓이 계산, 다른 하나는 각도 계산을 요구합니다. 이미지는 비슷한 구조를 가지지만, 문제의 초점이 다릅니다. 풀이 방법도 다르며, 일부 기하학적 성질을 공유할 뿐입니다."
+        },
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 평행사변형의 성질과 각도를 다루고 있어 개념적으로 유사합니다. 이미지는 평행사변형을 포함하지만, 구성 요소가 다소 다릅니다. 풀이 방법은 각도 계산을 포함하여 일부 유사한 단계가 있습니다."
+        },
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "concept_score": 5,
+          "image_score": 5,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문항 모두 평행사변형의 성질을 다루고 있으며, 각도 계산을 요구합니다. 이미지는 거의 동일한 형태의 평행사변형을 포함하고 있습니다. 풀이 방법은 일부 단계가 유사하지만, 문항 A는 추가적인 각도 계산이 필요합니다."
+        }
+      ]
+    },
+    {
+      "query_id": "AD550B4E409F4EC097E610BB3615C98B",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 삼각형의 각도와 관련된 문제로, 삼각형의 성질을 이용해 풀 수 있습니다. 그러나 하나는 평행사변형과 이등분선, 다른 하나는 등변삼각형을 다루고 있어 개념과 풀이가 완전히 동일하지는 않습니다. 이미지도 삼각형을 포함하지만 다른 구조를 가지고 있습니다."
+        },
+        {
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 5,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 이등변삼각형과 관련된 각도 계산 문제로, 동일한 수학 개념을 다루고 있으며, 풀이 방법도 유사합니다. 이미지는 삼각형의 구조가 다소 다르지만, 유사한 유형입니다."
+        },
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 삼각형의 각도를 구하는 문제로 관련된 개념을 다루지만, 다른 도형과 조건을 사용합니다. 이미지와 풀이 방법도 일부 유사하지만, 다른 도형적 특성을 고려해야 합니다."
+        },
+        {
+          "id": "027A1DBAAD4B4715B86256B9F614F840",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문항 모두 이등변삼각형의 성질을 다루고 있으며, 이미지도 삼각형을 포함하고 있다. 풀이 과정에서 삼각형의 합동과 각도 계산이 필요하므로 일부 유사성이 있다."
+        }
+      ]
+    },
+    {
+      "query_id": "E3D336A89BAD46F0A5E9034E243F5D92",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 4,
+          "overall_score": 4,
+          "reasoning": "두 문항 모두 평행사변형의 성질을 이용하여 각도를 구하는 문제로, 개념적으로 동일하다. 이미지의 구조는 다르지만, 평행사변형을 포함하고 있어 유사하다. 풀이 방법은 평행사변형의 성질을 이용하므로 유사하다."
+        },
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "concept_score": 5,
+          "image_score": 5,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 평행사변형의 성질을 이용하여 각도를 구하는 문제로, 개념과 이미지가 매우 유사합니다. 그러나 문제 B는 추가적인 점 E와 관련된 각도 계산이 필요하여 풀이 방법이 약간 다릅니다."
+        },
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문항 모두 평행사변형의 성질을 이용하여 각도를 구하는 문제로, 개념적으로 동일하다. 이미지 구조는 비슷하지만, 문항 B는 추가적인 선과 각이 포함되어 있다. 풀이 방법은 평행사변형의 성질을 이용하지만, 문항 B는 추가적인 직각 삼각형의 성질을 사용해야 한다."
+        },
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "concept_score": 5,
+          "image_score": 5,
+          "solution_score": 5,
+          "overall_score": 5,
+          "reasoning": "두 문항 모두 평행사변형의 내각을 구하는 문제로, 동일한 수학 개념과 풀이 방법을 사용하며, 이미지도 거의 동일한 형태를 가지고 있다."
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "concept_score": 3,
+          "image_score": 5,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문항 모두 평행사변형을 다루지만, 문항 A는 각도 계산, 문항 B는 길이 계산을 요구합니다. 이미지는 유사하지만 풀이 방법은 다릅니다."
+        },
+        {
+          "id": "75D6A18B7A664FC0B35942B943FD16FC",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문항 모두 평행사변형을 다루지만, 하나는 각도 계산, 다른 하나는 넓이 계산을 요구합니다. 이미지 구조는 비슷하지만 내용이 다르고, 풀이 방법도 다릅니다."
+        }
+      ]
+    },
+    {
+      "query_id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 평행사변형의 성질을 다루고 있으며, 각도 계산이 핵심입니다. 이미지는 비슷한 유형이지만 다른 요소가 포함되어 있습니다. 풀이 방법은 각도 계산을 포함하지만, 접근 방식이 다소 다릅니다."
+        },
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "concept_score": 5,
+          "image_score": 5,
+          "solution_score": 5,
+          "overall_score": 5,
+          "reasoning": "두 문항 모두 평행사변형의 내각을 구하는 문제로, 동일한 수학 개념과 풀이 방법을 사용하며, 이미지도 거의 동일한 형태를 가지고 있다."
+        },
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "concept_score": 5,
+          "image_score": 5,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문항 모두 평행사변형의 성질을 다루고 있으며, 각도 계산을 요구합니다. 이미지는 거의 동일한 형태의 평행사변형을 포함하고 있습니다. 풀이 방법은 일부 단계가 유사하지만, 문항 A는 추가적인 각도 계산이 필요합니다."
+        },
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "concept_score": 5,
+          "image_score": 4,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문항 모두 평행사변형의 성질을 다루고 있으며, 각도 계산을 요구합니다. 이미지는 평행사변형을 포함하지만, 문항 B는 추가적인 선과 각도가 포함되어 있습니다. 풀이 방법은 각도 계산이지만, 문항 B는 추가적인 삼각형 성질을 사용해야 합니다."
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형을 다루지만, 하나는 각도 계산, 다른 하나는 길이 계산을 요구합니다. 이미지는 비슷한 구조지만, 주어진 정보가 다릅니다. 풀이 방법도 다르며, 하나는 각도 비율, 다른 하나는 길이 합산을 사용합니다."
+        }
+      ]
+    },
+    {
+      "query_id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 각도 계산을 포함하지만, 하나는 평행사변형의 성질을, 다른 하나는 이등변삼각형과 등변삼각형의 성질을 사용합니다. 이미지와 풀이 방법은 일부 유사하지만, 다른 도형의 성질을 사용합니다."
+        },
+        {
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 5,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 이등변삼각형과 관련된 각도 계산 문제로, 동일한 수학 개념을 다루고 있으며, 풀이 방법도 유사합니다. 이미지는 삼각형의 구조가 다소 다르지만, 유사한 유형입니다."
+        },
+        {
+          "id": "027A1DBAAD4B4715B86256B9F614F840",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문항 모두 이등변삼각형의 성질을 다루고 있으며, 이미지에서 이등변삼각형이 포함되어 있습니다. 풀이 과정에서 삼각형의 합동을 이용하는 점이 유사합니다."
+        }
+      ]
+    },
+    {
+      "query_id": "A88C66DF5A314FFFA0576F9480514924",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 평행사변형의 성질을 이용하여 각도를 구하는 문제로, 개념적으로 동일하다. 이미지는 평행사변형을 포함하지만, 구성 요소가 다르다. 풀이 과정에서 평행사변형의 성질을 활용하지만, 접근 방식이 다소 다르다."
+        },
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문항 모두 평행사변형의 성질을 이용하여 각도를 구하는 문제로, 개념적으로 동일하다. 이미지 구조는 비슷하지만, 문항 B는 추가적인 선과 각이 포함되어 있다. 풀이 방법은 평행사변형의 성질을 이용하지만, 문항 B는 추가적인 직각 삼각형의 성질을 사용해야 한다."
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "concept_score": 3,
+          "image_score": 5,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형을 다루지만, 하나는 둘레를 구하고 다른 하나는 각도를 구하는 문제입니다. 이미지는 유사하지만 풀이 방법은 다릅니다."
+        },
+        {
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형을 다루지만, 문항 A는 넓이 계산을, 문항 B는 각도 계산을 요구합니다. 이미지 구조는 비슷하지만, 다른 요소들이 포함되어 있습니다. 풀이 방법은 다르지만, 평행사변형의 성질을 활용한다는 점에서 일부 유사성이 있습니다."
+        },
+        {
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문항 모두 평행사변형을 다루지만, 하나는 넓이 계산, 다른 하나는 각도 계산을 요구합니다. 이미지는 비슷한 구조를 가지지만, 다른 요소를 포함하고 있습니다. 풀이 방법은 다르지만, 평행사변형의 성질을 이용한다는 점에서 일부 유사합니다."
+        },
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 평행사변형의 성질과 각도를 다루고 있어 개념적으로 유사합니다. 이미지는 평행사변형을 포함하지만, 구성 요소가 다소 다릅니다. 풀이 방법은 각도 계산을 포함하여 일부 유사한 단계가 있습니다."
+        },
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "concept_score": 5,
+          "image_score": 4,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문항 모두 평행사변형의 성질을 다루고 있으며, 각도 계산을 요구합니다. 이미지는 평행사변형을 포함하지만, 문항 B는 추가적인 선과 각도가 포함되어 있습니다. 풀이 방법은 각도 계산이지만, 문항 B는 추가적인 삼각형 성질을 사용해야 합니다."
+        }
+      ]
+    },
+    {
+      "query_id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문항 모두 평행사변형을 다루지만, 하나는 각도 계산, 다른 하나는 넓이 계산을 요구합니다. 이미지는 평행사변형을 포함하지만, 세부 구조가 다릅니다. 풀이 방법도 다릅니다."
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문항 모두 평행사변형을 다루지만, 하나는 둘레를 구하고 다른 하나는 넓이를 구하는 문제입니다. 이미지 구조는 비슷하지만 다른 요소를 포함하고 있으며, 풀이 방법도 다릅니다."
+        },
+        {
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형과 관련된 문제로, 도형의 넓이를 구하는 것이 공통점입니다. 그러나 문제의 조건과 풀이 과정이 다소 다릅니다. 이미지도 비슷한 유형이지만 다른 구조를 가지고 있습니다."
+        },
+        {
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형의 넓이와 관련된 문제로, 도형의 성질을 이용해 넓이를 구하는 문제입니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 구체적인 조건과 계산 과정이 다릅니다."
+        },
+        {
+          "id": "75D6A18B7A664FC0B35942B943FD16FC",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 4,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 평행사변형 내의 삼각형의 넓이를 구하는 문제로, 개념적으로 동일하다. 이미지는 비슷한 유형이지만 다른 점이 있다. 풀이 방법은 평행사변형의 성질을 이용하여 삼각형의 넓이를 구하는 점에서 유사하다."
+        },
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문항 모두 평행사변형을 다루지만, 하나는 넓이 계산, 다른 하나는 각도 계산을 요구합니다. 이미지는 비슷한 구조를 가지지만, 다른 요소를 포함하고 있습니다. 풀이 방법은 다르지만, 평행사변형의 성질을 이용한다는 점에서 일부 유사합니다."
+        },
+        {
+          "id": "AB202E4A636A4DA288A841F393E51704",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 성질을 이용하지만, 문항 A는 평행사변형의 넓이와 삼각형의 넓이를 다루고, 문항 B는 평행선과 비례식을 다룹니다. 이미지와 풀이 방법은 일부 유사하지만, 문제의 핵심 개념은 다릅니다."
+        }
+      ]
+    },
+    {
+      "query_id": "1001AC6A482E4383B34E5476DFA3A9C2",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형과 관련된 문제로, 직사각형의 성질을 이용하지만, 하나는 원과 직사각형의 관계를 다루고 다른 하나는 직사각형 내의 삼각형을 다룹니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 문제의 초점이 다릅니다."
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 성질을 이용하여 길이를 구하는 문제로 관련된 개념을 다루고 있습니다. 이미지 형태는 다르지만, 직각삼각형과 직사각형의 성질을 활용하는 점에서 유사합니다. 풀이 방법도 도형의 성질을 이용하여 길이를 구하는 점에서 일부 유사합니다."
+        },
+        {
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 직각삼각형을 다루고 있으며, 피타고라스 정리를 사용하여 풀 수 있습니다. 그러나 하나는 원과 직사각형을 포함하고 있어 개념과 이미지에서 차이가 있습니다."
+        }
+      ]
+    },
+    {
+      "query_id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형과 관련된 문제로, 직사각형의 성질을 이용하지만, 하나는 원과 직사각형의 관계를 다루고 다른 하나는 직사각형 내의 삼각형을 다룹니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 문제의 초점이 다릅니다."
+        },
+        {
+          "id": "3128064044C64F4A8F9296D235F94ACB",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문항 모두 직사각형과 관련된 문제이지만, 문항 A는 점과의 거리 계산, 문항 B는 각도와 변의 길이 관계를 다룹니다. 이미지 구조는 비슷하지만, 다른 정보를 포함하고 있습니다. 풀이 방법은 일부 유사하지만, 다른 수학적 개념을 사용합니다."
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문항 모두 도형의 성질을 이용한 문제로, 직각 삼각형과 관련된 개념을 다루고 있습니다. 이미지 형태는 다르지만, 도형의 대각선과 직각을 활용하는 점에서 유사합니다. 풀이 과정에서도 피타고라스 정리를 사용할 수 있어 일부 유사성이 있습니다."
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 성질을 다루지만, 하나는 직사각형의 성질을, 다른 하나는 대각선이 직교하는 사각형의 성질을 다룹니다. 이미지와 풀이 방법은 일부 유사하지만, 문제의 초점이 다릅니다."
+        }
+      ]
+    },
+    {
+      "query_id": "027A1DBAAD4B4715B86256B9F614F840",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문항 모두 이등변삼각형의 성질을 다루고 있으며, 이미지에서 이등변삼각형이 포함되어 있습니다. 풀이 과정에서 삼각형의 합동을 이용하는 점이 유사합니다."
+        },
+        {
+          "id": "AD550B4E409F4EC097E610BB3615C98B",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문항 모두 이등변삼각형의 성질을 다루고 있으며, 이미지도 삼각형을 포함하고 있다. 풀이 과정에서 삼각형의 합동과 각도 계산이 필요하므로 일부 유사성이 있다."
+        }
+      ]
+    },
+    {
+      "query_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "6C3E301AFD69401FAA960C8C55361238",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 직각삼각형과 관련된 피타고라스 정리를 사용하지만, 문항 A는 삼각형, 문항 B는 사각형을 다루고 있어 개념과 풀이가 일부 유사합니다. 이미지도 비슷한 유형이지만 다른 도형을 포함하고 있습니다."
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "문항 A와 B는 모두 도형의 성질을 다루지만, A는 평행사변형의 대각선과 둘레를, B는 대각선이 직교하는 사각형의 성질을 다룹니다. 이미지와 풀이 방법은 일부 유사하지만, 문제의 초점이 다릅니다."
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "concept_score": 5,
+          "image_score": 5,
+          "solution_score": 5,
+          "overall_score": 5,
+          "reasoning": "두 문제 모두 대각선이 직교하는 사각형의 성질을 이용하여 길이를 구하는 문제로, 개념, 이미지, 풀이 방법이 매우 유사합니다."
+        },
+        {
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 성질을 다루지만, 하나는 직사각형의 성질을, 다른 하나는 대각선이 직교하는 사각형의 성질을 다룹니다. 이미지와 풀이 방법은 일부 유사하지만, 문제의 초점이 다릅니다."
+        }
+      ]
+    },
+    {
+      "query_id": "4D72036FB3CF437B86D4C658D032D854",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "concept_score": 3,
+          "image_score": 5,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문항 모두 평행사변형을 다루지만, 문항 A는 각도 계산, 문항 B는 길이 계산을 요구합니다. 이미지는 유사하지만 풀이 방법은 다릅니다."
+        },
+        {
+          "id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "문항 A와 B는 모두 도형의 성질을 다루지만, A는 평행사변형의 대각선과 둘레를, B는 대각선이 직교하는 사각형의 성질을 다룹니다. 이미지와 풀이 방법은 일부 유사하지만, 문제의 초점이 다릅니다."
+        },
+        {
+          "id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형을 다루지만, 문항 A는 평행사변형의 대각선과 둘레를, 문항 B는 직각을 포함한 사각형의 변의 길이를 구하는 문제입니다. 개념과 풀이 방법에서 일부 유사점이 있지만, 문제의 초점과 접근 방식이 다릅니다."
+        },
+        {
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문항 모두 평행사변형을 다루지만, 하나는 둘레를 구하고 다른 하나는 넓이를 구하는 문제입니다. 이미지 구조는 비슷하지만 다른 요소를 포함하고 있으며, 풀이 방법도 다릅니다."
+        },
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "concept_score": 3,
+          "image_score": 5,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형을 다루지만, 하나는 둘레를 구하고 다른 하나는 각도를 구하는 문제입니다. 이미지는 유사하지만 풀이 방법은 다릅니다."
+        },
+        {
+          "id": "75D6A18B7A664FC0B35942B943FD16FC",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형을 다루지만, 하나는 둘레를 구하고 다른 하나는 넓이를 구하는 문제입니다. 이미지 구조는 비슷하지만 다른 정보를 포함하고 있으며, 풀이 방법도 다릅니다."
+        },
+        {
+          "id": "B58161E49AC641CAAC6C4E8259122859",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형을 다루지만, 문항 A는 평행사변형의 성질을 이용한 둘레 계산이고, 문항 B는 평행선과 비례식을 이용한 비율 계산이다. 이미지와 풀이 방법은 일부 유사하지만, 문제의 핵심 개념은 다르다."
+        },
+        {
+          "id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형을 다루지만, 하나는 각도 계산, 다른 하나는 길이 계산을 요구합니다. 이미지는 비슷한 구조지만, 주어진 정보가 다릅니다. 풀이 방법도 다르며, 하나는 각도 비율, 다른 하나는 길이 합산을 사용합니다."
+        }
+      ]
+    },
+    {
+      "query_id": "75D6A18B7A664FC0B35942B943FD16FC",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문항 모두 평행사변형을 다루지만, 하나는 각도 계산, 다른 하나는 넓이 계산을 요구합니다. 이미지 구조는 비슷하지만 내용이 다르고, 풀이 방법도 다릅니다."
+        },
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형을 다루지만, 하나는 둘레를 구하고 다른 하나는 넓이를 구하는 문제입니다. 이미지 구조는 비슷하지만 다른 정보를 포함하고 있으며, 풀이 방법도 다릅니다."
+        },
+        {
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형과 삼각형의 넓이를 다루지만, 문제의 조건과 해결 방법이 다릅니다. 이미지도 비슷한 유형의 도형을 포함하지만, 구성과 목적이 다릅니다."
+        },
+        {
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형의 넓이와 관련된 문제로, 도형의 성질을 이용해 넓이를 구하는 문제입니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 구체적인 조건과 계산 과정이 다릅니다."
+        },
+        {
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 4,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 평행사변형 내의 삼각형의 넓이를 구하는 문제로, 개념적으로 동일하다. 이미지는 비슷한 유형이지만 다른 점이 있다. 풀이 방법은 평행사변형의 성질을 이용하여 삼각형의 넓이를 구하는 점에서 유사하다."
+        }
+      ]
+    },
+    {
+      "query_id": "B58161E49AC641CAAC6C4E8259122859",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "4D72036FB3CF437B86D4C658D032D854",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형을 다루지만, 문항 A는 평행사변형의 성질을 이용한 둘레 계산이고, 문항 B는 평행선과 비례식을 이용한 비율 계산이다. 이미지와 풀이 방법은 일부 유사하지만, 문제의 핵심 개념은 다르다."
+        },
+        {
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 비율과 평행선 관련 문제를 다루고 있으며, 이미지 구조도 비슷한 유형의 도형을 포함하고 있습니다. 풀이 과정에서 비율과 평행선의 성질을 이용하는 점에서 유사성이 있습니다."
+        },
+        {
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행선과 도형의 성질을 다루고 있으며, 평행선 사이의 비율과 넓이 계산이 포함되어 있습니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 문제의 구체적인 내용과 목표는 다릅니다."
+        },
+        {
+          "id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 비율과 평행선의 성질을 다루지만, 구체적인 개념과 풀이 방법은 다소 다릅니다. 이미지도 삼각형을 포함하지만 구조가 다릅니다."
+        },
+        {
+          "id": "AB202E4A636A4DA288A841F393E51704",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 4,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 평행선과 비례를 이용한 도형 문제로, 개념적으로 유사하다. 이미지는 다른 도형이지만 평행선과 비례 관계를 다루고 있어 일부 유사하다. 풀이 방법은 비례식을 활용하는 점에서 유사하다."
+        }
+      ]
+    },
+    {
+      "query_id": "3128064044C64F4A8F9296D235F94ACB",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문항 모두 직사각형과 관련된 문제이지만, 문항 A는 점과의 거리 계산, 문항 B는 각도와 변의 길이 관계를 다룹니다. 이미지 구조는 비슷하지만, 다른 정보를 포함하고 있습니다. 풀이 방법은 일부 유사하지만, 다른 수학적 개념을 사용합니다."
+        }
+      ]
+    },
+    {
+      "query_id": "66063A66864042448368E291FDCF44D5",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문항 모두 일차함수와 관련된 문제로, 개념적으로 동일하다. 이미지에서는 그래프와 도형이 다르지만, 둘 다 좌표평면을 사용한다. 풀이 방법은 함수의 기울기와 관련된 계산이 필요하여 일부 유사하다."
+        }
+      ]
+    },
+    {
+      "query_id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "66063A66864042448368E291FDCF44D5",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 4,
+          "reasoning": "두 문항 모두 일차함수와 관련된 문제로, 개념적으로 동일하다. 이미지에서는 그래프와 도형이 다르지만, 둘 다 좌표평면을 사용한다. 풀이 방법은 함수의 기울기와 관련된 계산이 필요하여 일부 유사하다."
+        }
+      ]
+    },
+    {
+      "query_id": "2CC59E14574C4F0094BC50DDFC326734",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형과 관련된 문제로, 도형의 넓이를 구하는 것이 공통점입니다. 그러나 문제의 조건과 요구하는 바가 다르며, 이미지도 비슷한 유형이지만 다른 구조를 가지고 있습니다. 풀이 방법도 일부 단계에서 유사할 수 있지만, 전체적으로는 다른 접근이 필요합니다."
+        },
+        {
+          "id": "B58161E49AC641CAAC6C4E8259122859",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 비율과 평행선 관련 문제를 다루고 있으며, 이미지 구조도 비슷한 유형의 도형을 포함하고 있습니다. 풀이 과정에서 비율과 평행선의 성질을 이용하는 점에서 유사성이 있습니다."
+        },
+        {
+          "id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 넓이와 비율을 다루고 있으며, 삼각형과 평행사변형을 포함한 도형의 성질을 이용합니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 문제의 구체적인 설정과 요구 사항이 다릅니다."
+        },
+        {
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형과 관련된 문제로, 도형의 넓이를 구하는 것이 공통점입니다. 그러나 문제의 조건과 풀이 과정이 다소 다릅니다. 이미지도 비슷한 유형이지만 다른 구조를 가지고 있습니다."
+        },
+        {
+          "id": "75D6A18B7A664FC0B35942B943FD16FC",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형과 삼각형의 넓이를 다루지만, 문제의 조건과 해결 방법이 다릅니다. 이미지도 비슷한 유형의 도형을 포함하지만, 구성과 목적이 다릅니다."
+        },
+        {
+          "id": "AB202E4A636A4DA288A841F393E51704",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 성질을 이용한 문제로, 평행선과 비율을 다루고 있습니다. 이미지 형태는 다르지만, 평행선과 비율 계산이 포함되어 있어 풀이 방법에 일부 유사성이 있습니다."
+        }
+      ]
+    },
+    {
+      "query_id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형과 관련된 문제로, 도형의 넓이를 구하는 것이 공통점입니다. 그러나 문제의 조건과 요구하는 바가 다르며, 이미지도 비슷한 유형이지만 다른 구조를 가지고 있습니다. 풀이 방법도 일부 단계에서 유사할 수 있지만, 전체적으로는 다른 접근이 필요합니다."
+        },
+        {
+          "id": "AB202E4A636A4DA288A841F393E51704",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행선과 도형의 성질을 다루고 있으며, 이미지에서 평행사변형과 사다리꼴이 사용되었습니다. 풀이 과정에서 평행선의 성질을 이용하는 점에서 유사성이 있습니다."
+        },
+        {
+          "id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 넓이와 관련된 문제이지만, 문항 A는 평행사변형과 사각형의 넓이를 다루고, 문항 B는 삼각형의 비율을 다룹니다. 이미지 구조는 다르지만 도형을 포함하고 있으며, 풀이 방법은 일부 유사한 점이 있지만 전체적으로 다릅니다."
+        },
+        {
+          "id": "B58161E49AC641CAAC6C4E8259122859",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행선과 도형의 성질을 다루고 있으며, 평행선 사이의 비율과 넓이 계산이 포함되어 있습니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 문제의 구체적인 내용과 목표는 다릅니다."
+        },
+        {
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형의 넓이와 관련된 문제로, 도형의 성질을 이용해 넓이를 구하는 문제입니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 구체적인 조건과 계산 과정이 다릅니다."
+        },
+        {
+          "id": "75D6A18B7A664FC0B35942B943FD16FC",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형의 넓이와 관련된 문제로, 도형의 성질을 이용해 넓이를 구하는 문제입니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 구체적인 조건과 계산 과정이 다릅니다."
+        },
+        {
+          "id": "DC786E25B9AD449B86EF35F0F774B642",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형을 다루지만, 하나는 넓이 계산, 다른 하나는 각도 계산을 요구합니다. 이미지는 비슷한 구조를 가지지만, 문제의 초점이 다릅니다. 풀이 방법도 다르며, 일부 기하학적 성질을 공유할 뿐입니다."
+        },
+        {
+          "id": "A88C66DF5A314FFFA0576F9480514924",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행사변형을 다루지만, 문항 A는 넓이 계산을, 문항 B는 각도 계산을 요구합니다. 이미지 구조는 비슷하지만, 다른 요소들이 포함되어 있습니다. 풀이 방법은 다르지만, 평행사변형의 성질을 활용한다는 점에서 일부 유사성이 있습니다."
+        }
+      ]
+    },
+    {
+      "query_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 넓이와 비율을 다루고 있으며, 삼각형과 평행사변형을 포함한 도형의 성질을 이용합니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 문제의 구체적인 설정과 요구 사항이 다릅니다."
+        },
+        {
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 넓이와 관련된 문제이지만, 문항 A는 평행사변형과 사각형의 넓이를 다루고, 문항 B는 삼각형의 비율을 다룹니다. 이미지 구조는 다르지만 도형을 포함하고 있으며, 풀이 방법은 일부 유사한 점이 있지만 전체적으로 다릅니다."
+        },
+        {
+          "id": "B58161E49AC641CAAC6C4E8259122859",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 비율과 평행선의 성질을 다루지만, 구체적인 개념과 풀이 방법은 다소 다릅니다. 이미지도 삼각형을 포함하지만 구조가 다릅니다."
+        },
+        {
+          "id": "AB202E4A636A4DA288A841F393E51704",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 성질을 이용한 문제로, 삼각형과 사다리꼴의 비율과 길이를 구하는 문제입니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 다루는 도형과 구체적인 조건이 다릅니다."
+        }
+      ]
+    },
+    {
+      "query_id": "AB202E4A636A4DA288A841F393E51704",
+      "query_category": "image",
+      "relevant_items": [
+        {
+          "id": "2CC59E14574C4F0094BC50DDFC326734",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 성질을 이용한 문제로, 평행선과 비율을 다루고 있습니다. 이미지 형태는 다르지만, 평행선과 비율 계산이 포함되어 있어 풀이 방법에 일부 유사성이 있습니다."
+        },
+        {
+          "id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 평행선과 도형의 성질을 다루고 있으며, 이미지에서 평행사변형과 사다리꼴이 사용되었습니다. 풀이 과정에서 평행선의 성질을 이용하는 점에서 유사성이 있습니다."
+        },
+        {
+          "id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 3,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 성질을 이용한 문제로, 삼각형과 사다리꼴의 비율과 길이를 구하는 문제입니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 다루는 도형과 구체적인 조건이 다릅니다."
+        },
+        {
+          "id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "concept_score": 3,
+          "image_score": 3,
+          "solution_score": 2,
+          "overall_score": 3,
+          "reasoning": "두 문제 모두 도형의 성질을 이용하지만, 문항 A는 평행사변형의 넓이와 삼각형의 넓이를 다루고, 문항 B는 평행선과 비례식을 다룹니다. 이미지와 풀이 방법은 일부 유사하지만, 문제의 핵심 개념은 다릅니다."
+        },
+        {
+          "id": "B58161E49AC641CAAC6C4E8259122859",
+          "concept_score": 5,
+          "image_score": 3,
+          "solution_score": 4,
+          "overall_score": 4,
+          "reasoning": "두 문제 모두 평행선과 비례를 이용한 도형 문제로, 개념적으로 유사하다. 이미지는 다른 도형이지만 평행선과 비례 관계를 다루고 있어 일부 유사하다. 풀이 방법은 비례식을 활용하는 점에서 유사하다."
+        }
+      ]
+    }
+  ],
+  "raw_results": [
+    {
+      "item_a_id": "E8A959E017454D1A83E17ED3064C282F",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 삼각형의 각도와 길이를 이용한 문제이고, 문항 B는 대각선이 직교하는 사각형의 성질을 이용한 문제로, 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.8798810725737982,
+      "usage": {
+        "prompt_tokens": 809,
+        "completion_tokens": 103
+      }
+    },
+    {
+      "item_a_id": "E8A959E017454D1A83E17ED3064C282F",
+      "item_b_id": "6C3E301AFD69401FAA960C8C55361238",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 삼각형의 각도와 길이를 이용한 삼각법 문제이고, 문항 B는 피타고라스 정리를 이용한 직각삼각형 문제입니다. 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.8707034729527033,
+      "usage": {
+        "prompt_tokens": 839,
+        "completion_tokens": 104
+      }
+    },
+    {
+      "item_a_id": "E8A959E017454D1A83E17ED3064C282F",
+      "item_b_id": "AD550B4E409F4EC097E610BB3615C98B",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 삼각형의 각도와 길이를 이용한 문제이고, 문항 B는 등변삼각형의 각도 문제로 개념이 다릅니다. 이미지는 삼각형을 포함하지만, 다른 유형입니다. 풀이 방법도 다릅니다.",
+      "embedding_similarity": 0.8703793857718644,
+      "usage": {
+        "prompt_tokens": 828,
+        "completion_tokens": 104
+      }
+    },
+    {
+      "item_a_id": "E8A959E017454D1A83E17ED3064C282F",
+      "item_b_id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 삼각형의 성질을 이용하지만, 하나는 삼각형의 각도와 길이를 이용한 문제이고 다른 하나는 직각삼각형의 높이와 관련된 문제입니다. 이미지와 풀이 방법은 일부 유사하지만, 문제의 구체적인 내용은 다릅니다.",
+      "embedding_similarity": 0.8690487389749761,
+      "usage": {
+        "prompt_tokens": 859,
+        "completion_tokens": 111
+      }
+    },
+    {
+      "item_a_id": "E8A959E017454D1A83E17ED3064C282F",
+      "item_b_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 삼각형의 각도와 길이를 이용한 문제이고, 문항 B는 직각 사각형의 변 길이를 구하는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.8661961590873576,
+      "usage": {
+        "prompt_tokens": 850,
+        "completion_tokens": 93
+      }
+    },
+    {
+      "item_a_id": "E8A959E017454D1A83E17ED3064C282F",
+      "item_b_id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 삼각형의 각도와 길이를 이용한 삼각법 문제이고, 문항 B는 이등변삼각형의 성질을 이용한 각도 문제입니다. 이미지 형태는 삼각형으로 비슷하지만, 문제 해결 방법과 개념은 다릅니다.",
+      "embedding_similarity": 0.8633920024083284,
+      "usage": {
+        "prompt_tokens": 855,
+        "completion_tokens": 108
+      }
+    },
+    {
+      "item_a_id": "E8A959E017454D1A83E17ED3064C282F",
+      "item_b_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 삼각형의 각도와 길이를 이용한 삼각법 문제이고, 문항 B는 도형의 비율과 합동을 이용한 문제입니다. 이미지 형태는 삼각형을 포함하고 있어 비슷하지만, 문제 해결 방법과 개념은 다릅니다.",
+      "embedding_similarity": 0.8509117265716684,
+      "usage": {
+        "prompt_tokens": 896,
+        "completion_tokens": 108
+      }
+    },
+    {
+      "item_a_id": "E8A959E017454D1A83E17ED3064C282F",
+      "item_b_id": "DC786E25B9AD449B86EF35F0F774B642",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 삼각형의 각도와 길이를 이용한 문제이고, 문항 B는 평행사변형의 각도를 구하는 문제로, 개념과 풀이 방법이 다릅니다. 이미지도 서로 다른 유형의 도형을 포함하고 있습니다.",
+      "embedding_similarity": 0.843595292955422,
+      "usage": {
+        "prompt_tokens": 852,
+        "completion_tokens": 103
+      }
+    },
+    {
+      "item_a_id": "E8A959E017454D1A83E17ED3064C282F",
+      "item_b_id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 삼각형의 각도와 길이를 이용한 문제이고, 문항 B는 직사각형의 성질을 이용한 문제로, 개념과 풀이 방법이 다릅니다. 이미지도 서로 다른 유형의 도형을 포함하고 있습니다.",
+      "embedding_similarity": 0.8435249467092447,
+      "usage": {
+        "prompt_tokens": 869,
+        "completion_tokens": 103
+      }
+    },
+    {
+      "item_a_id": "E8A959E017454D1A83E17ED3064C282F",
+      "item_b_id": "3128064044C64F4A8F9296D235F94ACB",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 삼각형의 각도와 길이를 이용한 문제이고, 문항 B는 직사각형 내의 점과 관련된 거리 문제로, 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.8419074263154389,
+      "usage": {
+        "prompt_tokens": 878,
+        "completion_tokens": 98
+      }
+    },
+    {
+      "item_a_id": "46ACB9139B444F578F9A7DC9B54175CB",
+      "item_b_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 도형의 성질을 이용하여 길이를 구하는 문제로, 직각 삼각형과 사각형의 성질을 다루고 있습니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 문제의 구체적인 설정과 요구 사항이 다릅니다.",
+      "embedding_similarity": 0.905417295621486,
+      "usage": {
+        "prompt_tokens": 827,
+        "completion_tokens": 107
+      }
+    },
+    {
+      "item_a_id": "46ACB9139B444F578F9A7DC9B54175CB",
+      "item_b_id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+      "concept_score": 5,
+      "image_score": 3,
+      "solution_score": 4,
+      "overall_score": 4,
+      "reasoning": "두 문제 모두 직각삼각형의 성질을 이용하여 변의 길이를 구하는 문제입니다. 이미지 구조는 다르지만, 풀이 과정에서 피타고라스 정리와 직각삼각형의 성질을 사용한다는 점에서 유사합니다.",
+      "embedding_similarity": 0.8747155669713061,
+      "usage": {
+        "prompt_tokens": 836,
+        "completion_tokens": 104
+      }
+    },
+    {
+      "item_a_id": "46ACB9139B444F578F9A7DC9B54175CB",
+      "item_b_id": "3128064044C64F4A8F9296D235F94ACB",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 삼각형의 성질을, 문항 B는 직사각형의 대각선 성질을 다루고 있어 개념과 풀이가 다릅니다. 이미지도 서로 다른 도형을 포함하고 있습니다.",
+      "embedding_similarity": 0.8574777600103177,
+      "usage": {
+        "prompt_tokens": 855,
+        "completion_tokens": 96
+      }
+    },
+    {
+      "item_a_id": "46ACB9139B444F578F9A7DC9B54175CB",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 삼각형의 내접 사각형 문제이고, 문항 B는 대각선이 직교하는 사각형 문제로, 개념과 풀이 방법이 다릅니다. 이미지는 둘 다 도형을 포함하지만, 구조가 다릅니다.",
+      "embedding_similarity": 0.8490023352198088,
+      "usage": {
+        "prompt_tokens": 786,
+        "completion_tokens": 104
+      }
+    },
+    {
+      "item_a_id": "46ACB9139B444F578F9A7DC9B54175CB",
+      "item_b_id": "E8A959E017454D1A83E17ED3064C282F",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 삼각형과 관련된 문제로, 삼각형의 성질을 이용해 풀어야 합니다. 그러나 하나는 직각삼각형의 성질을, 다른 하나는 삼각형의 각도를 이용한 문제로, 개념과 풀이 방법이 일부 유사하지만 완전히 동일하지는 않습니다. 이미지도 삼각형을 포함하고 있지만, 구성과 목적이 다릅니다.",
+      "embedding_similarity": 0.8409206581545938,
+      "usage": {
+        "prompt_tokens": 872,
+        "completion_tokens": 133
+      }
+    },
+    {
+      "item_a_id": "46ACB9139B444F578F9A7DC9B54175CB",
+      "item_b_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A는 직각삼각형의 성질을 이용한 문제이고, 문항 B는 삼각형의 비율과 합동을 이용한 문제로, 개념과 풀이 방법이 다르다. 이미지는 삼각형을 포함하지만 구조가 다르다.",
+      "embedding_similarity": 0.8234423324351731,
+      "usage": {
+        "prompt_tokens": 873,
+        "completion_tokens": 106
+      }
+    },
+    {
+      "item_a_id": "46ACB9139B444F578F9A7DC9B54175CB",
+      "item_b_id": "B58161E49AC641CAAC6C4E8259122859",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 삼각형의 변의 길이를 구하는 문제이고, 문항 B는 비율을 구하는 문제로 개념과 풀이 방법이 다릅니다. 이미지는 삼각형을 포함하지만 구조가 다릅니다.",
+      "embedding_similarity": 0.82303398865515,
+      "usage": {
+        "prompt_tokens": 835,
+        "completion_tokens": 97
+      }
+    },
+    {
+      "item_a_id": "46ACB9139B444F578F9A7DC9B54175CB",
+      "item_b_id": "6C3E301AFD69401FAA960C8C55361238",
+      "concept_score": 5,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 4,
+      "reasoning": "두 문제 모두 직각삼각형의 성질을 이용하여 문제를 해결하는 점에서 개념이 동일합니다. 이미지에서는 둘 다 직각삼각형을 포함하지만, 구성 요소가 다릅니다. 풀이 방법은 피타고라스 정리를 사용하지만, 문제의 세부 사항이 달라 일부 단계만 유사합니다.",
+      "embedding_similarity": 0.8208608670208436,
+      "usage": {
+        "prompt_tokens": 816,
+        "completion_tokens": 119
+      }
+    },
+    {
+      "item_a_id": "46ACB9139B444F578F9A7DC9B54175CB",
+      "item_b_id": "AB202E4A636A4DA288A841F393E51704",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 삼각형의 성질을 이용한 문제이고, 문항 B는 사다리꼴의 성질을 이용한 문제로, 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 거의 없습니다.",
+      "embedding_similarity": 0.8067448782061628,
+      "usage": {
+        "prompt_tokens": 904,
+        "completion_tokens": 97
+      }
+    },
+    {
+      "item_a_id": "46ACB9139B444F578F9A7DC9B54175CB",
+      "item_b_id": "4D72036FB3CF437B86D4C658D032D854",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 직각삼각형의 성질을 이용한 문제이고, 문항 B는 평행사변형의 성질을 이용한 문제로, 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 거의 없습니다.",
+      "embedding_similarity": 0.8042779337137579,
+      "usage": {
+        "prompt_tokens": 853,
+        "completion_tokens": 99
+      }
+    },
+    {
+      "item_a_id": "B433ED8101A14DF88CADA9116F0CDB97",
+      "item_b_id": "DC786E25B9AD449B86EF35F0F774B642",
+      "concept_score": 5,
+      "image_score": 5,
+      "solution_score": 5,
+      "overall_score": 5,
+      "reasoning": "두 문제 모두 평행사변형의 성질과 각도 계산을 다루며, 이미지 구조와 풀이 방법이 매우 유사합니다.",
+      "embedding_similarity": 0.9480192524504463,
+      "usage": {
+        "prompt_tokens": 805,
+        "completion_tokens": 76
+      }
+    },
+    {
+      "item_a_id": "B433ED8101A14DF88CADA9116F0CDB97",
+      "item_b_id": "AD550B4E409F4EC097E610BB3615C98B",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 삼각형의 각도와 관련된 문제로, 삼각형의 성질을 이용해 풀 수 있습니다. 그러나 하나는 평행사변형과 이등분선, 다른 하나는 등변삼각형을 다루고 있어 개념과 풀이가 완전히 동일하지는 않습니다. 이미지도 삼각형을 포함하지만 다른 구조를 가지고 있습니다.",
+      "embedding_similarity": 0.9390331484488806,
+      "usage": {
+        "prompt_tokens": 781,
+        "completion_tokens": 126
+      }
+    },
+    {
+      "item_a_id": "B433ED8101A14DF88CADA9116F0CDB97",
+      "item_b_id": "E3D336A89BAD46F0A5E9034E243F5D92",
+      "concept_score": 5,
+      "image_score": 3,
+      "solution_score": 4,
+      "overall_score": 4,
+      "reasoning": "두 문항 모두 평행사변형의 성질을 이용하여 각도를 구하는 문제로, 개념적으로 동일하다. 이미지의 구조는 다르지만, 평행사변형을 포함하고 있어 유사하다. 풀이 방법은 평행사변형의 성질을 이용하므로 유사하다.",
+      "embedding_similarity": 0.9308060055773058,
+      "usage": {
+        "prompt_tokens": 756,
+        "completion_tokens": 113
+      }
+    },
+    {
+      "item_a_id": "B433ED8101A14DF88CADA9116F0CDB97",
+      "item_b_id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+      "concept_score": 5,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 4,
+      "reasoning": "두 문제 모두 평행사변형의 성질을 다루고 있으며, 각도 계산이 핵심입니다. 이미지는 비슷한 유형이지만 다른 요소가 포함되어 있습니다. 풀이 방법은 각도 계산을 포함하지만, 접근 방식이 다소 다릅니다.",
+      "embedding_similarity": 0.9207818121246031,
+      "usage": {
+        "prompt_tokens": 776,
+        "completion_tokens": 98
+      }
+    },
+    {
+      "item_a_id": "B433ED8101A14DF88CADA9116F0CDB97",
+      "item_b_id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 각도 계산을 포함하지만, 하나는 평행사변형의 성질을, 다른 하나는 이등변삼각형과 등변삼각형의 성질을 사용합니다. 이미지와 풀이 방법은 일부 유사하지만, 다른 도형의 성질을 사용합니다.",
+      "embedding_similarity": 0.9152516962000423,
+      "usage": {
+        "prompt_tokens": 808,
+        "completion_tokens": 109
+      }
+    },
+    {
+      "item_a_id": "B433ED8101A14DF88CADA9116F0CDB97",
+      "item_b_id": "A88C66DF5A314FFFA0576F9480514924",
+      "concept_score": 5,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 4,
+      "reasoning": "두 문제 모두 평행사변형의 성질을 이용하여 각도를 구하는 문제로, 개념적으로 동일하다. 이미지는 평행사변형을 포함하지만, 구성 요소가 다르다. 풀이 과정에서 평행사변형의 성질을 활용하지만, 접근 방식이 다소 다르다.",
+      "embedding_similarity": 0.9135503474454933,
+      "usage": {
+        "prompt_tokens": 804,
+        "completion_tokens": 114
+      }
+    },
+    {
+      "item_a_id": "B433ED8101A14DF88CADA9116F0CDB97",
+      "item_b_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 각도와 평행사변형의 성질을 다루고, 문항 B는 삼각형의 비율과 길이를 다룹니다. 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.8698695787327246,
+      "usage": {
+        "prompt_tokens": 849,
+        "completion_tokens": 99
+      }
+    },
+    {
+      "item_a_id": "B433ED8101A14DF88CADA9116F0CDB97",
+      "item_b_id": "B58161E49AC641CAAC6C4E8259122859",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 각도와 평행사변형의 성질을 다루고, 문항 B는 평행선과 비례식을 다룹니다. 이미지는 둘 다 도형을 포함하지만, 다른 구조입니다. 풀이 방법도 완전히 다릅니다.",
+      "embedding_similarity": 0.8655135380134494,
+      "usage": {
+        "prompt_tokens": 811,
+        "completion_tokens": 103
+      }
+    },
+    {
+      "item_a_id": "B433ED8101A14DF88CADA9116F0CDB97",
+      "item_b_id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 3,
+      "reasoning": "두 문항 모두 평행사변형을 다루지만, 하나는 각도 계산, 다른 하나는 넓이 계산을 요구합니다. 이미지는 평행사변형을 포함하지만, 세부 구조가 다릅니다. 풀이 방법도 다릅니다.",
+      "embedding_similarity": 0.8582183667214763,
+      "usage": {
+        "prompt_tokens": 854,
+        "completion_tokens": 102
+      }
+    },
+    {
+      "item_a_id": "B433ED8101A14DF88CADA9116F0CDB97",
+      "item_b_id": "2CC59E14574C4F0094BC50DDFC326734",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 각도 계산 문제이고, 문항 B는 넓이와 비율 문제로 개념이 다릅니다. 이미지는 둘 다 평행사변형을 포함하지만, 구조와 목적이 다릅니다. 풀이 방법도 완전히 다릅니다.",
+      "embedding_similarity": 0.8550720427595493,
+      "usage": {
+        "prompt_tokens": 829,
+        "completion_tokens": 104
+      }
+    },
+    {
+      "item_a_id": "AD550B4E409F4EC097E610BB3615C98B",
+      "item_b_id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+      "concept_score": 5,
+      "image_score": 3,
+      "solution_score": 5,
+      "overall_score": 4,
+      "reasoning": "두 문제 모두 이등변삼각형과 관련된 각도 계산 문제로, 동일한 수학 개념을 다루고 있으며, 풀이 방법도 유사합니다. 이미지는 삼각형의 구조가 다소 다르지만, 유사한 유형입니다.",
+      "embedding_similarity": 0.9377893189013187,
+      "usage": {
+        "prompt_tokens": 788,
+        "completion_tokens": 102
+      }
+    },
+    {
+      "item_a_id": "AD550B4E409F4EC097E610BB3615C98B",
+      "item_b_id": "DC786E25B9AD449B86EF35F0F774B642",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 삼각형의 각도를 구하는 문제로 관련된 개념을 다루지만, 다른 도형과 조건을 사용합니다. 이미지와 풀이 방법도 일부 유사하지만, 다른 도형적 특성을 고려해야 합니다.",
+      "embedding_similarity": 0.8998529952604308,
+      "usage": {
+        "prompt_tokens": 785,
+        "completion_tokens": 96
+      }
+    },
+    {
+      "item_a_id": "AD550B4E409F4EC097E610BB3615C98B",
+      "item_b_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 삼각형의 각도 계산 문제이고, 문항 B는 삼각형의 비율과 길이 계산 문제로 개념과 풀이 방법이 다릅니다. 이미지는 둘 다 삼각형을 포함하지만, 구조와 내용이 다릅니다.",
+      "embedding_similarity": 0.8877332160582705,
+      "usage": {
+        "prompt_tokens": 829,
+        "completion_tokens": 104
+      }
+    },
+    {
+      "item_a_id": "AD550B4E409F4EC097E610BB3615C98B",
+      "item_b_id": "B58161E49AC641CAAC6C4E8259122859",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 삼각형의 각도 계산 문제이고, 문항 B는 평행선과 비례식을 이용한 길이 비율 문제로 개념과 풀이 방법이 다릅니다. 이미지는 둘 다 삼각형을 포함하지만, 구조와 목적이 다릅니다.",
+      "embedding_similarity": 0.8779219713271428,
+      "usage": {
+        "prompt_tokens": 791,
+        "completion_tokens": 107
+      }
+    },
+    {
+      "item_a_id": "AD550B4E409F4EC097E610BB3615C98B",
+      "item_b_id": "A88C66DF5A314FFFA0576F9480514924",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 삼각형의 내각을 구하는 문제이고, 문항 B는 평행사변형의 각을 구하는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.86121580297488,
+      "usage": {
+        "prompt_tokens": 784,
+        "completion_tokens": 90
+      }
+    },
+    {
+      "item_a_id": "AD550B4E409F4EC097E610BB3615C98B",
+      "item_b_id": "E3D336A89BAD46F0A5E9034E243F5D92",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 삼각형의 내각을 구하는 문제이고, 문항 B는 평행사변형의 내각을 구하는 문제로, 개념과 풀이 방법이 다릅니다. 이미지도 서로 다른 도형을 포함하고 있습니다.",
+      "embedding_similarity": 0.8599259921798081,
+      "usage": {
+        "prompt_tokens": 736,
+        "completion_tokens": 100
+      }
+    },
+    {
+      "item_a_id": "AD550B4E409F4EC097E610BB3615C98B",
+      "item_b_id": "6C3E301AFD69401FAA960C8C55361238",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 삼각형의 각도 계산, 문항 B는 피타고라스 정리를 사용한 변의 길이 계산 문제로 개념과 풀이 방법이 다릅니다. 이미지는 둘 다 삼각형을 포함하지만, 구조와 목적이 다릅니다.",
+      "embedding_similarity": 0.8556517742921672,
+      "usage": {
+        "prompt_tokens": 772,
+        "completion_tokens": 106
+      }
+    },
+    {
+      "item_a_id": "AD550B4E409F4EC097E610BB3615C98B",
+      "item_b_id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+      "concept_score": 3,
+      "image_score": 1,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A는 삼각형의 내각을 구하는 문제이고, 문항 B는 평행사변형의 내각을 구하는 문제로, 관련된 개념이지만 다른 도형을 다룹니다. 이미지와 풀이 방법도 다릅니다.",
+      "embedding_similarity": 0.853786435586281,
+      "usage": {
+        "prompt_tokens": 756,
+        "completion_tokens": 102
+      }
+    },
+    {
+      "item_a_id": "1001AC6A482E4383B34E5476DFA3A9C2",
+      "item_b_id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 도형과 관련된 문제로, 직사각형의 성질을 이용하지만, 하나는 원과 직사각형의 관계를 다루고 다른 하나는 직사각형 내의 삼각형을 다룹니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 문제의 초점이 다릅니다.",
+      "embedding_similarity": 0.9071875941663302,
+      "usage": {
+        "prompt_tokens": 802,
+        "completion_tokens": 113
+      }
+    },
+    {
+      "item_a_id": "1001AC6A482E4383B34E5476DFA3A9C2",
+      "item_b_id": "4D72036FB3CF437B86D4C658D032D854",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 원과 직사각형의 성질을 이용한 문제이고, 문항 B는 평행사변형과 대각선의 성질을 이용한 문제로, 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 거의 없습니다.",
+      "embedding_similarity": 0.8928871231776302,
+      "usage": {
+        "prompt_tokens": 809,
+        "completion_tokens": 104
+      }
+    },
+    {
+      "item_a_id": "1001AC6A482E4383B34E5476DFA3A9C2",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 3,
+      "image_score": 1,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A는 원과 직사각형의 성질을, 문항 B는 사각형의 대각선 성질을 다루며, 개념적으로 관련이 있지만 다릅니다. 이미지와 풀이 방법도 다릅니다.",
+      "embedding_similarity": 0.8872995876913673,
+      "usage": {
+        "prompt_tokens": 742,
+        "completion_tokens": 97
+      }
+    },
+    {
+      "item_a_id": "1001AC6A482E4383B34E5476DFA3A9C2",
+      "item_b_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 도형의 성질을 이용하여 길이를 구하는 문제로 관련된 개념을 다루고 있습니다. 이미지 형태는 다르지만, 직각삼각형과 직사각형의 성질을 활용하는 점에서 유사합니다. 풀이 방법도 도형의 성질을 이용하여 길이를 구하는 점에서 일부 유사합니다.",
+      "embedding_similarity": 0.8774343426050821,
+      "usage": {
+        "prompt_tokens": 783,
+        "completion_tokens": 123
+      }
+    },
+    {
+      "item_a_id": "1001AC6A482E4383B34E5476DFA3A9C2",
+      "item_b_id": "6C3E301AFD69401FAA960C8C55361238",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 직각삼각형을 다루고 있으며, 피타고라스 정리를 사용하여 풀 수 있습니다. 그러나 하나는 원과 직사각형을 포함하고 있어 개념과 이미지에서 차이가 있습니다.",
+      "embedding_similarity": 0.8680590261277369,
+      "usage": {
+        "prompt_tokens": 772,
+        "completion_tokens": 93
+      }
+    },
+    {
+      "item_a_id": "1001AC6A482E4383B34E5476DFA3A9C2",
+      "item_b_id": "51EFF604353C41E8A0AE820C04A25DD7",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 원과 직사각형의 관계를 다루고, 문항 B는 직사각형 내의 원의 배치와 반지름 비율을 다룹니다. 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.8559884185143136,
+      "usage": {
+        "prompt_tokens": 787,
+        "completion_tokens": 104
+      }
+    },
+    {
+      "item_a_id": "1001AC6A482E4383B34E5476DFA3A9C2",
+      "item_b_id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+      "concept_score": 3,
+      "image_score": 1,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A는 원과 직사각형의 성질을, 문항 B는 직각삼각형의 성질을 다루고 있어 개념이 다릅니다. 이미지도 서로 다른 도형을 포함하고 있습니다. 풀이 방법은 일부 기하학적 성질을 사용하지만, 전반적으로 다른 접근이 필요합니다.",
+      "embedding_similarity": 0.8552247701149387,
+      "usage": {
+        "prompt_tokens": 792,
+        "completion_tokens": 118
+      }
+    },
+    {
+      "item_a_id": "1001AC6A482E4383B34E5476DFA3A9C2",
+      "item_b_id": "E8A959E017454D1A83E17ED3064C282F",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 기하학적 도형의 성질을 이용한 문제이고, 문항 B는 삼각법을 이용한 문제로, 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 거의 없습니다.",
+      "embedding_similarity": 0.8411108132820149,
+      "usage": {
+        "prompt_tokens": 828,
+        "completion_tokens": 95
+      }
+    },
+    {
+      "item_a_id": "1001AC6A482E4383B34E5476DFA3A9C2",
+      "item_b_id": "3128064044C64F4A8F9296D235F94ACB",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 원과 직사각형의 관계를 다루고, 문항 B는 직사각형 내의 점과 거리 관계를 다룹니다. 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.8290122474696804,
+      "usage": {
+        "prompt_tokens": 811,
+        "completion_tokens": 98
+      }
+    },
+    {
+      "item_a_id": "1001AC6A482E4383B34E5476DFA3A9C2",
+      "item_b_id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 기하학적 도형의 길이를 구하는 문제이고, 문항 B는 좌표평면에서 일차함수의 기울기를 구하는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.8155419629943208,
+      "usage": {
+        "prompt_tokens": 909,
+        "completion_tokens": 97
+      }
+    },
+    {
+      "item_a_id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+      "item_b_id": "6C3E301AFD69401FAA960C8C55361238",
+      "concept_score": 5,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 4,
+      "reasoning": "두 문제 모두 직각삼각형의 성질을 이용하여 변의 길이를 구하는 문제로, 개념적으로 동일하다. 이미지는 직각삼각형이라는 점에서 유사하지만, 주어진 변의 위치와 길이가 다르다. 풀이 방법은 피타고라스 정리를 사용한다는 점에서 일부 유사하다.",
+      "embedding_similarity": 0.9262421951822292,
+      "usage": {
+        "prompt_tokens": 803,
+        "completion_tokens": 120
+      }
+    },
+    {
+      "item_a_id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+      "item_b_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A는 직각삼각형의 성질을, 문항 B는 사각형의 대각선과 직각의 성질을 다루고 있어 관련된 개념이지만 다릅니다. 이미지 형태는 삼각형과 사각형으로 다르지만, 도형의 성질을 이용한다는 점에서 유사합니다. 풀이 방법은 서로 다른 도형의 성질을 사용하므로 유사성이 낮습니다.",
+      "embedding_similarity": 0.8860321239519282,
+      "usage": {
+        "prompt_tokens": 814,
+        "completion_tokens": 141
+      }
+    },
+    {
+      "item_a_id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+      "item_b_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A는 직각삼각형의 성질을 이용한 문제이고, 문항 B는 삼각형의 비율과 합동을 이용한 문제로 개념이 다소 다릅니다. 이미지 형태는 삼각형을 포함하지만 구조가 다릅니다. 풀이 방법도 서로 다른 접근이 필요합니다.",
+      "embedding_similarity": 0.8803602062719086,
+      "usage": {
+        "prompt_tokens": 860,
+        "completion_tokens": 115
+      }
+    },
+    {
+      "item_a_id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 직각삼각형의 성질을, 문항 B는 대각선이 직교하는 사각형의 성질을 다룹니다. 이미지는 삼각형과 사각형으로 다르지만, 도형의 형태는 일부 유사합니다. 풀이 방법은 완전히 다릅니다.",
+      "embedding_similarity": 0.8724907132950688,
+      "usage": {
+        "prompt_tokens": 773,
+        "completion_tokens": 114
+      }
+    },
+    {
+      "item_a_id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+      "item_b_id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 직각삼각형의 성질을, 문항 B는 이등변삼각형과 각의 성질을 다룹니다. 이미지는 삼각형이라는 점에서 유사하지만, 문제 해결 방법은 완전히 다릅니다.",
+      "embedding_similarity": 0.8538779927913732,
+      "usage": {
+        "prompt_tokens": 819,
+        "completion_tokens": 100
+      }
+    },
+    {
+      "item_a_id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+      "item_b_id": "4D72036FB3CF437B86D4C658D032D854",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 직각삼각형의 성질을 이용한 문제이고, 문항 B는 평행사변형의 성질을 이용한 문제로, 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 거의 없습니다.",
+      "embedding_similarity": 0.8438224288295361,
+      "usage": {
+        "prompt_tokens": 840,
+        "completion_tokens": 99
+      }
+    },
+    {
+      "item_a_id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+      "item_b_id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 직각삼각형의 성질을 이용한 문제이고, 문항 B는 직사각형의 성질을 이용한 문제로, 개념과 풀이 방법이 다릅니다. 이미지도 서로 다른 도형을 포함하고 있습니다.",
+      "embedding_similarity": 0.8392916734817787,
+      "usage": {
+        "prompt_tokens": 833,
+        "completion_tokens": 101
+      }
+    },
+    {
+      "item_a_id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+      "item_b_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 삼각형의 각도 계산 문제이고, 문항 B는 삼각형의 길이 비율 문제로 개념이 다릅니다. 이미지는 둘 다 삼각형을 포함하지만, 구조와 내용이 다릅니다. 풀이 방법도 완전히 다릅니다.",
+      "embedding_similarity": 0.8997525651669362,
+      "usage": {
+        "prompt_tokens": 856,
+        "completion_tokens": 98
+      }
+    },
+    {
+      "item_a_id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+      "item_b_id": "027A1DBAAD4B4715B86256B9F614F840",
+      "concept_score": 5,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 4,
+      "reasoning": "두 문항 모두 이등변삼각형의 성질을 다루고 있으며, 이미지에서 이등변삼각형이 포함되어 있습니다. 풀이 과정에서 삼각형의 합동을 이용하는 점이 유사합니다.",
+      "embedding_similarity": 0.8943925341622644,
+      "usage": {
+        "prompt_tokens": 987,
+        "completion_tokens": 95
+      }
+    },
+    {
+      "item_a_id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+      "item_b_id": "DC786E25B9AD449B86EF35F0F774B642",
+      "concept_score": 3,
+      "image_score": 1,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A는 이등변삼각형과 관련된 문제이고, 문항 B는 평행사변형과 관련된 문제로, 다루는 도형의 종류가 다릅니다. 이미지 형태도 다르며, 풀이 방법도 다릅니다. 일부 각도 계산이라는 공통점이 있지만, 전반적으로 유사성이 낮습니다.",
+      "embedding_similarity": 0.8927725353396201,
+      "usage": {
+        "prompt_tokens": 812,
+        "completion_tokens": 122
+      }
+    },
+    {
+      "item_a_id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+      "item_b_id": "B58161E49AC641CAAC6C4E8259122859",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 이등변삼각형과 각도 계산을 다루고, 문항 B는 평행선과 비율을 다루므로 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.8699718350601584,
+      "usage": {
+        "prompt_tokens": 818,
+        "completion_tokens": 90
+      }
+    },
+    {
+      "item_a_id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+      "item_b_id": "6C3E301AFD69401FAA960C8C55361238",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 이등변삼각형과 각도 계산을 다루고, 문항 B는 직각삼각형과 피타고라스 정리를 다룹니다. 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.8642323179411181,
+      "usage": {
+        "prompt_tokens": 799,
+        "completion_tokens": 102
+      }
+    },
+    {
+      "item_a_id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+      "item_b_id": "A88C66DF5A314FFFA0576F9480514924",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 이등변삼각형과 각의 합을 다루고, 문항 B는 평행사변형과 직각 삼각형을 다룹니다. 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.8440628541021262,
+      "usage": {
+        "prompt_tokens": 811,
+        "completion_tokens": 101
+      }
+    },
+    {
+      "item_a_id": "6C3E301AFD69401FAA960C8C55361238",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 직각삼각형과 관련된 피타고라스 정리를 사용하지만, 문항 A는 삼각형, 문항 B는 사각형을 다루고 있어 개념과 풀이가 일부 유사합니다. 이미지도 비슷한 유형이지만 다른 도형을 포함하고 있습니다.",
+      "embedding_similarity": 0.882075704838425,
+      "usage": {
+        "prompt_tokens": 753,
+        "completion_tokens": 112
+      }
+    },
+    {
+      "item_a_id": "6C3E301AFD69401FAA960C8C55361238",
+      "item_b_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "문항 A는 직각삼각형의 피타고라스 정리를 사용하고, 문항 B는 직각을 포함한 사각형의 변 길이를 구하는 문제로, 둘 다 직각과 관련된 문제입니다. 이미지와 풀이 방법은 일부 유사하지만, 다른 도형을 다루고 있습니다.",
+      "embedding_similarity": 0.8767310210366501,
+      "usage": {
+        "prompt_tokens": 794,
+        "completion_tokens": 115
+      }
+    },
+    {
+      "item_a_id": "6C3E301AFD69401FAA960C8C55361238",
+      "item_b_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 피타고라스 정리를 사용한 직각삼각형 문제이고, 문항 B는 삼각형의 비율과 합동을 이용한 문제로 개념과 풀이가 다릅니다. 이미지는 삼각형을 포함하지만 구조가 다릅니다.",
+      "embedding_similarity": 0.8635891385468025,
+      "usage": {
+        "prompt_tokens": 840,
+        "completion_tokens": 107
+      }
+    },
+    {
+      "item_a_id": "6C3E301AFD69401FAA960C8C55361238",
+      "item_b_id": "4D72036FB3CF437B86D4C658D032D854",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 직각삼각형의 피타고라스 정리를 다루고, 문항 B는 평행사변형의 성질을 이용한 문제로, 개념과 풀이 방법이 완전히 다릅니다. 이미지도 서로 다른 도형을 포함하고 있습니다.",
+      "embedding_similarity": 0.8471567227300941,
+      "usage": {
+        "prompt_tokens": 820,
+        "completion_tokens": 107
+      }
+    },
+    {
+      "item_a_id": "6C3E301AFD69401FAA960C8C55361238",
+      "item_b_id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 직각삼각형의 피타고라스 정리를 다루고, 문항 B는 직사각형의 성질을 다룹니다. 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.842895485825938,
+      "usage": {
+        "prompt_tokens": 813,
+        "completion_tokens": 99
+      }
+    },
+    {
+      "item_a_id": "E3D336A89BAD46F0A5E9034E243F5D92",
+      "item_b_id": "DC786E25B9AD449B86EF35F0F774B642",
+      "concept_score": 5,
+      "image_score": 5,
+      "solution_score": 3,
+      "overall_score": 4,
+      "reasoning": "두 문제 모두 평행사변형의 성질을 이용하여 각도를 구하는 문제로, 개념과 이미지가 매우 유사합니다. 그러나 문제 B는 추가적인 점 E와 관련된 각도 계산이 필요하여 풀이 방법이 약간 다릅니다.",
+      "embedding_similarity": 0.9445294116072985,
+      "usage": {
+        "prompt_tokens": 760,
+        "completion_tokens": 102
+      }
+    },
+    {
+      "item_a_id": "E3D336A89BAD46F0A5E9034E243F5D92",
+      "item_b_id": "A88C66DF5A314FFFA0576F9480514924",
+      "concept_score": 5,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 4,
+      "reasoning": "두 문항 모두 평행사변형의 성질을 이용하여 각도를 구하는 문제로, 개념적으로 동일하다. 이미지 구조는 비슷하지만, 문항 B는 추가적인 선과 각이 포함되어 있다. 풀이 방법은 평행사변형의 성질을 이용하지만, 문항 B는 추가적인 직각 삼각형의 성질을 사용해야 한다.",
+      "embedding_similarity": 0.9190921372056648,
+      "usage": {
+        "prompt_tokens": 759,
+        "completion_tokens": 128
+      }
+    },
+    {
+      "item_a_id": "E3D336A89BAD46F0A5E9034E243F5D92",
+      "item_b_id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+      "concept_score": 5,
+      "image_score": 5,
+      "solution_score": 5,
+      "overall_score": 5,
+      "reasoning": "두 문항 모두 평행사변형의 내각을 구하는 문제로, 동일한 수학 개념과 풀이 방법을 사용하며, 이미지도 거의 동일한 형태를 가지고 있다.",
+      "embedding_similarity": 0.9178999786386952,
+      "usage": {
+        "prompt_tokens": 731,
+        "completion_tokens": 86
+      }
+    },
+    {
+      "item_a_id": "E3D336A89BAD46F0A5E9034E243F5D92",
+      "item_b_id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 평행사변형의 내각을 구하는 문제이고, 문항 B는 이등변삼각형과 관련된 각을 구하는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.8435138304413495,
+      "usage": {
+        "prompt_tokens": 763,
+        "completion_tokens": 95
+      }
+    },
+    {
+      "item_a_id": "E3D336A89BAD46F0A5E9034E243F5D92",
+      "item_b_id": "4D72036FB3CF437B86D4C658D032D854",
+      "concept_score": 3,
+      "image_score": 5,
+      "solution_score": 2,
+      "overall_score": 3,
+      "reasoning": "두 문항 모두 평행사변형을 다루지만, 문항 A는 각도 계산, 문항 B는 길이 계산을 요구합니다. 이미지는 유사하지만 풀이 방법은 다릅니다.",
+      "embedding_similarity": 0.8338755155287614,
+      "usage": {
+        "prompt_tokens": 784,
+        "completion_tokens": 90
+      }
+    },
+    {
+      "item_a_id": "E3D336A89BAD46F0A5E9034E243F5D92",
+      "item_b_id": "75D6A18B7A664FC0B35942B943FD16FC",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 3,
+      "reasoning": "두 문항 모두 평행사변형을 다루지만, 하나는 각도 계산, 다른 하나는 넓이 계산을 요구합니다. 이미지 구조는 비슷하지만 내용이 다르고, 풀이 방법도 다릅니다.",
+      "embedding_similarity": 0.8301859038004866,
+      "usage": {
+        "prompt_tokens": 738,
+        "completion_tokens": 94
+      }
+    },
+    {
+      "item_a_id": "E3D336A89BAD46F0A5E9034E243F5D92",
+      "item_b_id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "두 문항 모두 평행사변형을 다루지만, 문항 A는 각도 계산, 문항 B는 넓이 계산을 요구합니다. 이미지 구조는 비슷하지만 다른 요소를 포함하고 있으며, 풀이 방법도 다릅니다.",
+      "embedding_similarity": 0.8219385558122858,
+      "usage": {
+        "prompt_tokens": 809,
+        "completion_tokens": 99
+      }
+    },
+    {
+      "item_a_id": "E3D336A89BAD46F0A5E9034E243F5D92",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 평행사변형의 내각을 구하는 문제이고, 문항 B는 대각선이 직교하는 사각형의 변의 길이를 구하는 문제로, 개념과 풀이 방법이 다릅니다. 이미지는 둘 다 사각형을 포함하지만, 구조와 목적이 다릅니다.",
+      "embedding_similarity": 0.8188954415320601,
+      "usage": {
+        "prompt_tokens": 717,
+        "completion_tokens": 116
+      }
+    },
+    {
+      "item_a_id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+      "item_b_id": "66063A66864042448368E291FDCF44D5",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 부등식 문제이고, 문항 B는 일차함수의 그래프 문제로, 개념과 풀이 방법이 완전히 다릅니다. 이미지도 수직선과 좌표평면으로 전혀 유사하지 않습니다.",
+      "embedding_similarity": 0.7937654004910742,
+      "usage": {
+        "prompt_tokens": 720,
+        "completion_tokens": 99
+      }
+    },
+    {
+      "item_a_id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+      "item_b_id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 부등식을 다루고, 문항 B는 좌표평면에서의 기울기를 구하는 문제로, 개념과 풀이 방법이 완전히 다릅니다. 이미지도 수직선과 좌표평면으로 전혀 유사하지 않습니다.",
+      "embedding_similarity": 0.7814217491037976,
+      "usage": {
+        "prompt_tokens": 835,
+        "completion_tokens": 104
+      }
+    },
+    {
+      "item_a_id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+      "item_b_id": "5AD1D60463134A7AA56AA545EB347533",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 부등식과 수직선, 문항 B는 일차방정식과 좌표평면을 다루고 있어 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.7645949706751369,
+      "usage": {
+        "prompt_tokens": 770,
+        "completion_tokens": 88
+      }
+    },
+    {
+      "item_a_id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+      "item_b_id": "F94806629A674E4B81126B3264A320C5",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 부등식을 다루고, 문항 B는 기하급수적 감소를 다루는 문제로, 개념과 풀이 방법이 완전히 다릅니다. 이미지도 수직선과 끈의 분할 과정으로 전혀 유사하지 않습니다.",
+      "embedding_similarity": 0.7285528460012792,
+      "usage": {
+        "prompt_tokens": 752,
+        "completion_tokens": 105
+      }
+    },
+    {
+      "item_a_id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+      "item_b_id": "2F63FE75EC4E4A32887455C839BD2C1E",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 부등식을 다루고, 문항 B는 기하학적 도형의 둘레를 구하는 문제로, 개념, 이미지, 풀이 방법 모두 유사하지 않습니다.",
+      "embedding_similarity": 0.686046611055031,
+      "usage": {
+        "prompt_tokens": 708,
+        "completion_tokens": 88
+      }
+    },
+    {
+      "item_a_id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+      "item_b_id": "AE50A202C3384AFD9C52678B6BA7833A",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 부등식을 다루고, 문항 B는 도형의 넓이를 구하는 문제로, 개념, 이미지, 풀이 방법 모두 유사하지 않습니다.",
+      "embedding_similarity": 0.6768396108237414,
+      "usage": {
+        "prompt_tokens": 860,
+        "completion_tokens": 84
+      }
+    },
+    {
+      "item_a_id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+      "item_b_id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 부등식을 다루고, 문항 B는 색칠하기 문제로 서로 다른 수학적 개념을 포함하고 있습니다. 이미지와 풀이 방법도 완전히 다릅니다.",
+      "embedding_similarity": 0.6757804846548806,
+      "usage": {
+        "prompt_tokens": 749,
+        "completion_tokens": 88
+      }
+    },
+    {
+      "item_a_id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 부등식을 다루고, 문항 B는 기하학적 도형의 성질을 다룹니다. 이미지와 풀이 방법도 완전히 다릅니다.",
+      "embedding_similarity": 0.6743959847244819,
+      "usage": {
+        "prompt_tokens": 668,
+        "completion_tokens": 85
+      }
+    },
+    {
+      "item_a_id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+      "item_b_id": "E8A959E017454D1A83E17ED3064C282F",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 부등식을 다루고, 문항 B는 삼각형의 각도와 길이를 이용한 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.6711522567539583,
+      "usage": {
+        "prompt_tokens": 754,
+        "completion_tokens": 86
+      }
+    },
+    {
+      "item_a_id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+      "item_b_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 부등식을 다루고, 문항 B는 도형의 비율을 다루므로 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.6683242912370254,
+      "usage": {
+        "prompt_tokens": 755,
+        "completion_tokens": 81
+      }
+    },
+    {
+      "item_a_id": "4D72036FB3CF437B86D4C658D032D854",
+      "item_b_id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 평행사변형의 대각선과 삼각형의 둘레를 다루고, 문항 B는 직사각형의 성질을 다룹니다. 이미지는 둘 다 사각형이지만, 형태와 정보가 다릅니다. 풀이 방법도 서로 다릅니다.",
+      "embedding_similarity": 0.9574454941717836,
+      "usage": {
+        "prompt_tokens": 850,
+        "completion_tokens": 112
+      }
+    },
+    {
+      "item_a_id": "4D72036FB3CF437B86D4C658D032D854",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 3,
+      "reasoning": "문항 A와 B는 모두 도형의 성질을 다루지만, A는 평행사변형의 대각선과 둘레를, B는 대각선이 직교하는 사각형의 성질을 다룹니다. 이미지와 풀이 방법은 일부 유사하지만, 문제의 초점이 다릅니다.",
+      "embedding_similarity": 0.9189167272704849,
+      "usage": {
+        "prompt_tokens": 790,
+        "completion_tokens": 117
+      }
+    },
+    {
+      "item_a_id": "4D72036FB3CF437B86D4C658D032D854",
+      "item_b_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 도형을 다루지만, 문항 A는 평행사변형의 대각선과 둘레를, 문항 B는 직각을 포함한 사각형의 변의 길이를 구하는 문제입니다. 개념과 풀이 방법에서 일부 유사점이 있지만, 문제의 초점과 접근 방식이 다릅니다.",
+      "embedding_similarity": 0.9156533954859638,
+      "usage": {
+        "prompt_tokens": 831,
+        "completion_tokens": 120
+      }
+    },
+    {
+      "item_a_id": "4D72036FB3CF437B86D4C658D032D854",
+      "item_b_id": "3128064044C64F4A8F9296D235F94ACB",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A는 평행사변형의 대각선과 삼각형의 둘레를 다루고, 문항 B는 직사각형 내 점과 거리 계산을 다룹니다. 두 문제 모두 도형의 성질을 사용하지만, 개념과 풀이 방법이 다릅니다. 이미지는 도형을 포함하지만 형태가 다릅니다.",
+      "embedding_similarity": 0.888206346451035,
+      "usage": {
+        "prompt_tokens": 859,
+        "completion_tokens": 123
+      }
+    },
+    {
+      "item_a_id": "4D72036FB3CF437B86D4C658D032D854",
+      "item_b_id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 3,
+      "reasoning": "두 문항 모두 평행사변형을 다루지만, 하나는 둘레를 구하고 다른 하나는 넓이를 구하는 문제입니다. 이미지 구조는 비슷하지만 다른 요소를 포함하고 있으며, 풀이 방법도 다릅니다.",
+      "embedding_similarity": 0.8863504322407504,
+      "usage": {
+        "prompt_tokens": 882,
+        "completion_tokens": 97
+      }
+    },
+    {
+      "item_a_id": "4D72036FB3CF437B86D4C658D032D854",
+      "item_b_id": "A88C66DF5A314FFFA0576F9480514924",
+      "concept_score": 3,
+      "image_score": 5,
+      "solution_score": 2,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 평행사변형을 다루지만, 하나는 둘레를 구하고 다른 하나는 각도를 구하는 문제입니다. 이미지는 유사하지만 풀이 방법은 다릅니다.",
+      "embedding_similarity": 0.8611941463504447,
+      "usage": {
+        "prompt_tokens": 832,
+        "completion_tokens": 87
+      }
+    },
+    {
+      "item_a_id": "4D72036FB3CF437B86D4C658D032D854",
+      "item_b_id": "75D6A18B7A664FC0B35942B943FD16FC",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 평행사변형을 다루지만, 하나는 둘레를 구하고 다른 하나는 넓이를 구하는 문제입니다. 이미지 구조는 비슷하지만 다른 정보를 포함하고 있으며, 풀이 방법도 다릅니다.",
+      "embedding_similarity": 0.8572021013036555,
+      "usage": {
+        "prompt_tokens": 811,
+        "completion_tokens": 95
+      }
+    },
+    {
+      "item_a_id": "4D72036FB3CF437B86D4C658D032D854",
+      "item_b_id": "AB202E4A636A4DA288A841F393E51704",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A는 평행사변형의 대각선과 삼각형의 둘레를 다루고, 문항 B는 사다리꼴의 대각선과 평행선의 길이를 다룹니다. 두 문제 모두 도형의 성질을 사용하지만, 개념과 풀이 방법이 다릅니다.",
+      "embedding_similarity": 0.8538811582528889,
+      "usage": {
+        "prompt_tokens": 908,
+        "completion_tokens": 116
+      }
+    },
+    {
+      "item_a_id": "4D72036FB3CF437B86D4C658D032D854",
+      "item_b_id": "B58161E49AC641CAAC6C4E8259122859",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 도형을 다루지만, 문항 A는 평행사변형의 성질을 이용한 둘레 계산이고, 문항 B는 평행선과 비례식을 이용한 비율 계산이다. 이미지와 풀이 방법은 일부 유사하지만, 문제의 핵심 개념은 다르다.",
+      "embedding_similarity": 0.8526270303537136,
+      "usage": {
+        "prompt_tokens": 839,
+        "completion_tokens": 114
+      }
+    },
+    {
+      "item_a_id": "3128064044C64F4A8F9296D235F94ACB",
+      "item_b_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 직사각형 내의 점과 거리 관계를 다루고, 문항 B는 사각형 내의 직각과 변의 길이를 다룹니다. 두 문제는 다른 개념을 사용하며, 풀이 방법도 다릅니다. 이미지는 둘 다 사각형을 포함하지만, 구조와 내용이 다릅니다.",
+      "embedding_similarity": 0.916258943795066,
+      "usage": {
+        "prompt_tokens": 833,
+        "completion_tokens": 120
+      }
+    },
+    {
+      "item_a_id": "3128064044C64F4A8F9296D235F94ACB",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A는 직사각형 내의 점과 거리 관계를 다루고, 문항 B는 대각선이 직교하는 사각형의 성질을 다룹니다. 두 문제 모두 도형의 성질을 이용하지만, 개념과 풀이 방법이 다릅니다. 이미지는 사각형을 포함하지만 구조가 다릅니다.",
+      "embedding_similarity": 0.887205078201891,
+      "usage": {
+        "prompt_tokens": 792,
+        "completion_tokens": 122
+      }
+    },
+    {
+      "item_a_id": "3128064044C64F4A8F9296D235F94ACB",
+      "item_b_id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 3,
+      "reasoning": "두 문항 모두 직사각형과 관련된 문제이지만, 문항 A는 점과의 거리 계산, 문항 B는 각도와 변의 길이 관계를 다룹니다. 이미지 구조는 비슷하지만, 다른 정보를 포함하고 있습니다. 풀이 방법은 일부 유사하지만, 다른 수학적 개념을 사용합니다.",
+      "embedding_similarity": 0.8773526086848129,
+      "usage": {
+        "prompt_tokens": 852,
+        "completion_tokens": 118
+      }
+    },
+    {
+      "item_a_id": "3128064044C64F4A8F9296D235F94ACB",
+      "item_b_id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 직사각형의 대각선 길이를 구하는 문제이고, 문항 B는 평행사변형의 넓이를 구하는 문제로 개념과 풀이 방법이 다릅니다. 이미지는 둘 다 사각형을 포함하지만, 형태와 내용이 다릅니다.",
+      "embedding_similarity": 0.8678853624442968,
+      "usage": {
+        "prompt_tokens": 884,
+        "completion_tokens": 110
+      }
+    },
+    {
+      "item_a_id": "3128064044C64F4A8F9296D235F94ACB",
+      "item_b_id": "75D6A18B7A664FC0B35942B943FD16FC",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 직사각형의 대각선 길이를 구하는 문제이고, 문항 B는 평행사변형 내 삼각형의 넓이를 구하는 문제로 개념과 풀이 방법이 다릅니다. 이미지는 둘 다 사각형을 포함하지만, 형태와 목적이 다릅니다.",
+      "embedding_similarity": 0.8587841613552556,
+      "usage": {
+        "prompt_tokens": 813,
+        "completion_tokens": 114
+      }
+    },
+    {
+      "item_a_id": "3128064044C64F4A8F9296D235F94ACB",
+      "item_b_id": "AB202E4A636A4DA288A841F393E51704",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 직사각형 내의 점과 변의 길이를 다루고, 문항 B는 평행선과 대각선의 교점을 다루는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.8536218338680792,
+      "usage": {
+        "prompt_tokens": 910,
+        "completion_tokens": 97
+      }
+    },
+    {
+      "item_a_id": "3128064044C64F4A8F9296D235F94ACB",
+      "item_b_id": "A88C66DF5A314FFFA0576F9480514924",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 직사각형 내의 점과 거리 계산을 다루고, 문항 B는 평행사변형 내 각도 계산을 다룹니다. 이미지 형태는 비슷하지만 다른 도형을 사용하며, 풀이 방법도 다릅니다.",
+      "embedding_similarity": 0.8513944214504161,
+      "usage": {
+        "prompt_tokens": 834,
+        "completion_tokens": 102
+      }
+    },
+    {
+      "item_a_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 5,
+      "image_score": 5,
+      "solution_score": 5,
+      "overall_score": 5,
+      "reasoning": "두 문제 모두 대각선이 직교하는 사각형의 성질을 이용하여 길이를 구하는 문제로, 개념, 이미지, 풀이 방법이 매우 유사합니다.",
+      "embedding_similarity": 0.9338042153249808,
+      "usage": {
+        "prompt_tokens": 764,
+        "completion_tokens": 84
+      }
+    },
+    {
+      "item_a_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "item_b_id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문항 모두 도형의 성질을 이용한 문제로, 직각 삼각형과 관련된 개념을 다루고 있습니다. 이미지 형태는 다르지만, 도형의 대각선과 직각을 활용하는 점에서 유사합니다. 풀이 과정에서도 피타고라스 정리를 사용할 수 있어 일부 유사성이 있습니다.",
+      "embedding_similarity": 0.9068802813171734,
+      "usage": {
+        "prompt_tokens": 824,
+        "completion_tokens": 120
+      }
+    },
+    {
+      "item_a_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "item_b_id": "B58161E49AC641CAAC6C4E8259122859",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 도형의 변 길이를 구하는 문제이고, 문항 B는 비율을 구하는 문제로 개념과 풀이 방법이 다릅니다. 이미지는 둘 다 도형을 포함하지만, 구조와 목적이 다릅니다.",
+      "embedding_similarity": 0.8663567019843434,
+      "usage": {
+        "prompt_tokens": 813,
+        "completion_tokens": 99
+      }
+    },
+    {
+      "item_a_id": "66063A66864042448368E291FDCF44D5",
+      "item_b_id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+      "concept_score": 5,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 4,
+      "reasoning": "두 문항 모두 일차함수와 관련된 문제로, 개념적으로 동일하다. 이미지에서는 그래프와 도형이 다르지만, 둘 다 좌표평면을 사용한다. 풀이 방법은 함수의 기울기와 관련된 계산이 필요하여 일부 유사하다.",
+      "embedding_similarity": 0.8992686877864335,
+      "usage": {
+        "prompt_tokens": 942,
+        "completion_tokens": 107
+      }
+    },
+    {
+      "item_a_id": "66063A66864042448368E291FDCF44D5",
+      "item_b_id": "5AD1D60463134A7AA56AA545EB347533",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A와 B는 모두 일차함수와 관련이 있지만, A는 함수의 그래프 위의 점을 찾는 문제이고, B는 두 직선과 x축으로 둘러싸인 삼각형의 넓이를 구하는 문제입니다. 이미지와 풀이 방법이 다소 다르며, 개념적으로는 관련이 있지만 직접적인 유사성은 낮습니다.",
+      "embedding_similarity": 0.8931842340150489,
+      "usage": {
+        "prompt_tokens": 877,
+        "completion_tokens": 128
+      }
+    },
+    {
+      "item_a_id": "66063A66864042448368E291FDCF44D5",
+      "item_b_id": "E8A959E017454D1A83E17ED3064C282F",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 일차함수의 그래프와 관련된 문제이고, 문항 B는 삼각형의 각도와 길이를 이용한 문제로, 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.7616056418769657,
+      "usage": {
+        "prompt_tokens": 861,
+        "completion_tokens": 97
+      }
+    },
+    {
+      "item_a_id": "66063A66864042448368E291FDCF44D5",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 일차함수와 관련된 문제이고, 문항 B는 기하학적 도형의 성질을 다루고 있어 개념, 이미지, 풀이 방법 모두 유사하지 않습니다.",
+      "embedding_similarity": 0.7615375689858556,
+      "usage": {
+        "prompt_tokens": 775,
+        "completion_tokens": 90
+      }
+    },
+    {
+      "item_a_id": "66063A66864042448368E291FDCF44D5",
+      "item_b_id": "AE50A202C3384AFD9C52678B6BA7833A",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 일차함수의 그래프와 관련된 문제이고, 문항 B는 도형의 넓이를 구하는 문제로, 두 문제는 개념, 이미지, 풀이 방법에서 모두 다릅니다.",
+      "embedding_similarity": 0.7585286738241733,
+      "usage": {
+        "prompt_tokens": 967,
+        "completion_tokens": 93
+      }
+    },
+    {
+      "item_a_id": "66063A66864042448368E291FDCF44D5",
+      "item_b_id": "3128064044C64F4A8F9296D235F94ACB",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 일차함수와 관련된 문제이고, 문항 B는 도형의 길이를 구하는 문제로, 개념, 이미지, 풀이 방법 모두 유사하지 않습니다.",
+      "embedding_similarity": 0.7481073436430798,
+      "usage": {
+        "prompt_tokens": 844,
+        "completion_tokens": 86
+      }
+    },
+    {
+      "item_a_id": "66063A66864042448368E291FDCF44D5",
+      "item_b_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 함수와 그래프를 다루고, 문항 B는 기하학적 도형을 다루므로 개념, 이미지, 풀이 방법 모두 유사하지 않습니다.",
+      "embedding_similarity": 0.7451643781629789,
+      "usage": {
+        "prompt_tokens": 816,
+        "completion_tokens": 85
+      }
+    },
+    {
+      "item_a_id": "66063A66864042448368E291FDCF44D5",
+      "item_b_id": "1001AC6A482E4383B34E5476DFA3A9C2",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 일차함수와 관련된 문제이고, 문항 B는 기하학적 도형과 관련된 문제로, 두 문제는 개념, 이미지, 풀이 방법에서 모두 유사하지 않습니다.",
+      "embedding_similarity": 0.7400477971271143,
+      "usage": {
+        "prompt_tokens": 794,
+        "completion_tokens": 92
+      }
+    },
+    {
+      "item_a_id": "66063A66864042448368E291FDCF44D5",
+      "item_b_id": "AD550B4E409F4EC097E610BB3615C98B",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 일차함수와 관련된 문제이고, 문항 B는 삼각형의 각도와 관련된 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.7360738109295661,
+      "usage": {
+        "prompt_tokens": 794,
+        "completion_tokens": 87
+      }
+    },
+    {
+      "item_a_id": "2CC59E14574C4F0094BC50DDFC326734",
+      "item_b_id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 평행사변형과 관련된 문제로, 도형의 넓이를 구하는 것이 공통점입니다. 그러나 문제의 조건과 요구하는 바가 다르며, 이미지도 비슷한 유형이지만 다른 구조를 가지고 있습니다. 풀이 방법도 일부 단계에서 유사할 수 있지만, 전체적으로는 다른 접근이 필요합니다.",
+      "embedding_similarity": 0.9176474796320733,
+      "usage": {
+        "prompt_tokens": 840,
+        "completion_tokens": 121
+      }
+    },
+    {
+      "item_a_id": "2CC59E14574C4F0094BC50DDFC326734",
+      "item_b_id": "B58161E49AC641CAAC6C4E8259122859",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 도형의 비율과 평행선 관련 문제를 다루고 있으며, 이미지 구조도 비슷한 유형의 도형을 포함하고 있습니다. 풀이 과정에서 비율과 평행선의 성질을 이용하는 점에서 유사성이 있습니다.",
+      "embedding_similarity": 0.8991953507574777,
+      "usage": {
+        "prompt_tokens": 839,
+        "completion_tokens": 102
+      }
+    },
+    {
+      "item_a_id": "2CC59E14574C4F0094BC50DDFC326734",
+      "item_b_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 도형의 넓이와 비율을 다루고 있으며, 삼각형과 평행사변형을 포함한 도형의 성질을 이용합니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 문제의 구체적인 설정과 요구 사항이 다릅니다.",
+      "embedding_similarity": 0.8830516489553084,
+      "usage": {
+        "prompt_tokens": 877,
+        "completion_tokens": 110
+      }
+    },
+    {
+      "item_a_id": "2CC59E14574C4F0094BC50DDFC326734",
+      "item_b_id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 평행사변형과 관련된 문제로, 도형의 넓이를 구하는 것이 공통점입니다. 그러나 문제의 조건과 풀이 과정이 다소 다릅니다. 이미지도 비슷한 유형이지만 다른 구조를 가지고 있습니다.",
+      "embedding_similarity": 0.8768884487122393,
+      "usage": {
+        "prompt_tokens": 882,
+        "completion_tokens": 101
+      }
+    },
+    {
+      "item_a_id": "2CC59E14574C4F0094BC50DDFC326734",
+      "item_b_id": "75D6A18B7A664FC0B35942B943FD16FC",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 평행사변형과 삼각형의 넓이를 다루지만, 문제의 조건과 해결 방법이 다릅니다. 이미지도 비슷한 유형의 도형을 포함하지만, 구성과 목적이 다릅니다.",
+      "embedding_similarity": 0.8712299636921544,
+      "usage": {
+        "prompt_tokens": 811,
+        "completion_tokens": 96
+      }
+    },
+    {
+      "item_a_id": "2CC59E14574C4F0094BC50DDFC326734",
+      "item_b_id": "AB202E4A636A4DA288A841F393E51704",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 도형의 성질을 이용한 문제로, 평행선과 비율을 다루고 있습니다. 이미지 형태는 다르지만, 평행선과 비율 계산이 포함되어 있어 풀이 방법에 일부 유사성이 있습니다.",
+      "embedding_similarity": 0.8680345342907237,
+      "usage": {
+        "prompt_tokens": 908,
+        "completion_tokens": 98
+      }
+    },
+    {
+      "item_a_id": "2CC59E14574C4F0094BC50DDFC326734",
+      "item_b_id": "AD550B4E409F4EC097E610BB3615C98B",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 평행사변형과 넓이 비율을 다루고, 문항 B는 삼각형의 각도 계산을 다루므로 개념, 이미지, 풀이 방법 모두 유사하지 않습니다.",
+      "embedding_similarity": 0.8362198483903232,
+      "usage": {
+        "prompt_tokens": 809,
+        "completion_tokens": 93
+      }
+    },
+    {
+      "item_a_id": "2CC59E14574C4F0094BC50DDFC326734",
+      "item_b_id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A와 B는 모두 평행사변형을 다루지만, A는 넓이와 비율을, B는 각도를 구하는 문제로 개념과 풀이가 다릅니다. 이미지는 평행사변형을 포함하지만 다른 구성 요소가 있어 유사성이 중간 정도입니다.",
+      "embedding_similarity": 0.8278575598412791,
+      "usage": {
+        "prompt_tokens": 804,
+        "completion_tokens": 112
+      }
+    },
+    {
+      "item_a_id": "2CC59E14574C4F0094BC50DDFC326734",
+      "item_b_id": "E8A959E017454D1A83E17ED3064C282F",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 도형의 넓이와 비율을 다루고, 문항 B는 삼각형의 각도와 길이를 이용한 거리 계산 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.8272451896472106,
+      "usage": {
+        "prompt_tokens": 876,
+        "completion_tokens": 95
+      }
+    },
+    {
+      "item_a_id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+      "item_b_id": "AB202E4A636A4DA288A841F393E51704",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 평행선과 도형의 성질을 다루고 있으며, 이미지에서 평행사변형과 사다리꼴이 사용되었습니다. 풀이 과정에서 평행선의 성질을 이용하는 점에서 유사성이 있습니다.",
+      "embedding_similarity": 0.8908575088870916,
+      "usage": {
+        "prompt_tokens": 891,
+        "completion_tokens": 99
+      }
+    },
+    {
+      "item_a_id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+      "item_b_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 도형의 넓이와 관련된 문제이지만, 문항 A는 평행사변형과 사각형의 넓이를 다루고, 문항 B는 삼각형의 비율을 다룹니다. 이미지 구조는 다르지만 도형을 포함하고 있으며, 풀이 방법은 일부 유사한 점이 있지만 전체적으로 다릅니다.",
+      "embedding_similarity": 0.8840487132663566,
+      "usage": {
+        "prompt_tokens": 860,
+        "completion_tokens": 126
+      }
+    },
+    {
+      "item_a_id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+      "item_b_id": "B58161E49AC641CAAC6C4E8259122859",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 평행선과 도형의 성질을 다루고 있으며, 평행선 사이의 비율과 넓이 계산이 포함되어 있습니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 문제의 구체적인 내용과 목표는 다릅니다.",
+      "embedding_similarity": 0.8769826379681448,
+      "usage": {
+        "prompt_tokens": 822,
+        "completion_tokens": 105
+      }
+    },
+    {
+      "item_a_id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+      "item_b_id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 평행사변형의 넓이와 관련된 문제로, 도형의 성질을 이용해 넓이를 구하는 문제입니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 구체적인 조건과 계산 과정이 다릅니다.",
+      "embedding_similarity": 0.8715078827265699,
+      "usage": {
+        "prompt_tokens": 865,
+        "completion_tokens": 103
+      }
+    },
+    {
+      "item_a_id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+      "item_b_id": "75D6A18B7A664FC0B35942B943FD16FC",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 평행사변형의 넓이와 관련된 문제로, 도형의 성질을 이용해 넓이를 구하는 문제입니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 구체적인 조건과 계산 과정이 다릅니다.",
+      "embedding_similarity": 0.8630979125915388,
+      "usage": {
+        "prompt_tokens": 794,
+        "completion_tokens": 103
+      }
+    },
+    {
+      "item_a_id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+      "item_b_id": "B433ED8101A14DF88CADA9116F0CDB97",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A와 B는 모두 평행사변형을 다루지만, 문항 A는 넓이 계산을, 문항 B는 각도 계산을 요구합니다. 이미지 구조는 비슷하지만 다른 요소를 포함하고 있으며, 풀이 방법도 다릅니다.",
+      "embedding_similarity": 0.8536607066169378,
+      "usage": {
+        "prompt_tokens": 812,
+        "completion_tokens": 103
+      }
+    },
+    {
+      "item_a_id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+      "item_b_id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A와 B는 모두 평행사변형을 다루지만, A는 넓이 계산, B는 각도 계산을 요구합니다. 이미지는 평행사변형을 포함하지만, 세부 내용이 다릅니다. 풀이 방법도 서로 다릅니다.",
+      "embedding_similarity": 0.847188728466056,
+      "usage": {
+        "prompt_tokens": 787,
+        "completion_tokens": 105
+      }
+    },
+    {
+      "item_a_id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+      "item_b_id": "DC786E25B9AD449B86EF35F0F774B642",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 평행사변형을 다루지만, 하나는 넓이 계산, 다른 하나는 각도 계산을 요구합니다. 이미지는 비슷한 구조를 가지지만, 문제의 초점이 다릅니다. 풀이 방법도 다르며, 일부 기하학적 성질을 공유할 뿐입니다.",
+      "embedding_similarity": 0.8309544845849928,
+      "usage": {
+        "prompt_tokens": 816,
+        "completion_tokens": 114
+      }
+    },
+    {
+      "item_a_id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+      "item_b_id": "A88C66DF5A314FFFA0576F9480514924",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 평행사변형을 다루지만, 문항 A는 넓이 계산을, 문항 B는 각도 계산을 요구합니다. 이미지 구조는 비슷하지만, 다른 요소들이 포함되어 있습니다. 풀이 방법은 다르지만, 평행사변형의 성질을 활용한다는 점에서 일부 유사성이 있습니다.",
+      "embedding_similarity": 0.8293236161655326,
+      "usage": {
+        "prompt_tokens": 815,
+        "completion_tokens": 120
+      }
+    },
+    {
+      "item_a_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "item_b_id": "B58161E49AC641CAAC6C4E8259122859",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 도형의 비율과 평행선의 성질을 다루지만, 구체적인 개념과 풀이 방법은 다소 다릅니다. 이미지도 삼각형을 포함하지만 구조가 다릅니다.",
+      "embedding_similarity": 0.9196849555350459,
+      "usage": {
+        "prompt_tokens": 859,
+        "completion_tokens": 94
+      }
+    },
+    {
+      "item_a_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "item_b_id": "AB202E4A636A4DA288A841F393E51704",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 도형의 성질을 이용한 문제로, 삼각형과 사다리꼴의 비율과 길이를 구하는 문제입니다. 이미지와 풀이 방법에서 일부 유사점이 있지만, 다루는 도형과 구체적인 조건이 다릅니다.",
+      "embedding_similarity": 0.9114930143303571,
+      "usage": {
+        "prompt_tokens": 928,
+        "completion_tokens": 106
+      }
+    },
+    {
+      "item_a_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "item_b_id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A는 삼각형의 비율과 합동을 다루고, 문항 B는 평행사변형의 넓이를 다룹니다. 두 문제 모두 도형을 포함하지만, 다루는 개념과 풀이 방법이 다릅니다.",
+      "embedding_similarity": 0.8548440186448752,
+      "usage": {
+        "prompt_tokens": 902,
+        "completion_tokens": 102
+      }
+    },
+    {
+      "item_a_id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+      "item_b_id": "75D6A18B7A664FC0B35942B943FD16FC",
+      "concept_score": 5,
+      "image_score": 3,
+      "solution_score": 4,
+      "overall_score": 4,
+      "reasoning": "두 문제 모두 평행사변형 내의 삼각형의 넓이를 구하는 문제로, 개념적으로 동일하다. 이미지는 비슷한 유형이지만 다른 점이 있다. 풀이 방법은 평행사변형의 성질을 이용하여 삼각형의 넓이를 구하는 점에서 유사하다.",
+      "embedding_similarity": 0.9376036771669334,
+      "usage": {
+        "prompt_tokens": 836,
+        "completion_tokens": 115
+      }
+    },
+    {
+      "item_a_id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+      "item_b_id": "A88C66DF5A314FFFA0576F9480514924",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 3,
+      "reasoning": "두 문항 모두 평행사변형을 다루지만, 하나는 넓이 계산, 다른 하나는 각도 계산을 요구합니다. 이미지는 비슷한 구조를 가지지만, 다른 요소를 포함하고 있습니다. 풀이 방법은 다르지만, 평행사변형의 성질을 이용한다는 점에서 일부 유사합니다.",
+      "embedding_similarity": 0.89092089550402,
+      "usage": {
+        "prompt_tokens": 857,
+        "completion_tokens": 119
+      }
+    },
+    {
+      "item_a_id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+      "item_b_id": "B58161E49AC641CAAC6C4E8259122859",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A는 평행사변형의 넓이와 삼각형의 넓이를 다루고, 문항 B는 평행선과 비율을 다룹니다. 두 문제 모두 도형을 사용하지만, 개념과 풀이 방법이 다릅니다.",
+      "embedding_similarity": 0.8605483165328941,
+      "usage": {
+        "prompt_tokens": 864,
+        "completion_tokens": 104
+      }
+    },
+    {
+      "item_a_id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+      "item_b_id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "두 문항 모두 평행사변형을 다루지만, 문항 A는 넓이 계산, 문항 B는 각도 계산을 요구합니다. 이미지는 비슷한 도형을 사용하지만, 문제의 초점이 다릅니다. 풀이 방법도 완전히 다릅니다.",
+      "embedding_similarity": 0.8584004564894007,
+      "usage": {
+        "prompt_tokens": 829,
+        "completion_tokens": 108
+      }
+    },
+    {
+      "item_a_id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+      "item_b_id": "AB202E4A636A4DA288A841F393E51704",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 도형의 성질을 이용하지만, 문항 A는 평행사변형의 넓이와 삼각형의 넓이를 다루고, 문항 B는 평행선과 비례식을 다룹니다. 이미지와 풀이 방법은 일부 유사하지만, 문제의 핵심 개념은 다릅니다.",
+      "embedding_similarity": 0.8565255162927867,
+      "usage": {
+        "prompt_tokens": 933,
+        "completion_tokens": 118
+      }
+    },
+    {
+      "item_a_id": "51EFF604353C41E8A0AE820C04A25DD7",
+      "item_b_id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A는 원의 반지름과 직사각형의 변의 관계를 다루고, 문항 B는 직사각형의 대각선과 각도를 다룹니다. 두 문제 모두 직사각형을 포함하지만, 다루는 개념과 풀이 방법이 다릅니다.",
+      "embedding_similarity": 0.8295911462386494,
+      "usage": {
+        "prompt_tokens": 828,
+        "completion_tokens": 111
+      }
+    },
+    {
+      "item_a_id": "51EFF604353C41E8A0AE820C04A25DD7",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 기하학적 도형 내 원의 반지름을 구하는 문제이고, 문항 B는 대각선이 직교하는 사각형의 변의 길이를 구하는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.8255019731821982,
+      "usage": {
+        "prompt_tokens": 768,
+        "completion_tokens": 103
+      }
+    },
+    {
+      "item_a_id": "51EFF604353C41E8A0AE820C04A25DD7",
+      "item_b_id": "4D72036FB3CF437B86D4C658D032D854",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 기하학적 도형 내의 원의 반지름을 구하는 문제이고, 문항 B는 평행사변형 내 삼각형의 둘레를 구하는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.8194118716358294,
+      "usage": {
+        "prompt_tokens": 835,
+        "completion_tokens": 102
+      }
+    },
+    {
+      "item_a_id": "51EFF604353C41E8A0AE820C04A25DD7",
+      "item_b_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 기하학적 도형 내 원의 반지름을 구하는 문제이고, 문항 B는 사각형 내에서 직각 삼각형의 변의 길이를 구하는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.8139096798881171,
+      "usage": {
+        "prompt_tokens": 809,
+        "completion_tokens": 103
+      }
+    },
+    {
+      "item_a_id": "51EFF604353C41E8A0AE820C04A25DD7",
+      "item_b_id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 기하학적 도형과 비율을 다루고, 문항 B는 색칠하기와 확률을 다룹니다. 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.800362334595024,
+      "usage": {
+        "prompt_tokens": 849,
+        "completion_tokens": 95
+      }
+    },
+    {
+      "item_a_id": "51EFF604353C41E8A0AE820C04A25DD7",
+      "item_b_id": "6C3E301AFD69401FAA960C8C55361238",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 기하학적 도형과 비율을 다루고, 문항 B는 피타고라스 정리를 이용한 직각삼각형 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.797535451007552,
+      "usage": {
+        "prompt_tokens": 798,
+        "completion_tokens": 86
+      }
+    },
+    {
+      "item_a_id": "51EFF604353C41E8A0AE820C04A25DD7",
+      "item_b_id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 기하학적 도형과 원의 반지름을 다루고, 문항 B는 좌표평면에서의 일차함수와 사각형을 다룹니다. 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.7903540277329126,
+      "usage": {
+        "prompt_tokens": 935,
+        "completion_tokens": 106
+      }
+    },
+    {
+      "item_a_id": "51EFF604353C41E8A0AE820C04A25DD7",
+      "item_b_id": "3128064044C64F4A8F9296D235F94ACB",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 기하학적 도형의 성질과 비율을 다루고, 문항 B는 직사각형 내의 점과 거리 계산을 다룹니다. 이미지는 둘 다 직사각형을 포함하지만, 내용과 목적이 다릅니다. 풀이 방법도 완전히 다릅니다.",
+      "embedding_similarity": 0.7898547648775809,
+      "usage": {
+        "prompt_tokens": 837,
+        "completion_tokens": 114
+      }
+    },
+    {
+      "item_a_id": "51EFF604353C41E8A0AE820C04A25DD7",
+      "item_b_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 기하학적 도형의 성질을 이용한 문제이고, 문항 B는 삼각형의 비율과 합동을 이용한 문제로, 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 거의 없습니다.",
+      "embedding_similarity": 0.7797157841283525,
+      "usage": {
+        "prompt_tokens": 855,
+        "completion_tokens": 101
+      }
+    },
+    {
+      "item_a_id": "AB202E4A636A4DA288A841F393E51704",
+      "item_b_id": "B58161E49AC641CAAC6C4E8259122859",
+      "concept_score": 5,
+      "image_score": 3,
+      "solution_score": 4,
+      "overall_score": 4,
+      "reasoning": "두 문제 모두 평행선과 비례를 이용한 도형 문제로, 개념적으로 유사하다. 이미지는 다른 도형이지만 평행선과 비례 관계를 다루고 있어 일부 유사하다. 풀이 방법은 비례식을 활용하는 점에서 유사하다.",
+      "embedding_similarity": 0.9086371510810551,
+      "usage": {
+        "prompt_tokens": 890,
+        "completion_tokens": 107
+      }
+    },
+    {
+      "item_a_id": "AB202E4A636A4DA288A841F393E51704",
+      "item_b_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 평행선과 비례를 이용한 문제이고, 문항 B는 직각삼각형의 피타고라스 정리를 이용한 문제입니다. 두 문제는 도형을 다루지만, 개념과 풀이 방법이 다릅니다. 이미지는 둘 다 사각형을 포함하지만, 구조와 목적이 다릅니다.",
+      "embedding_similarity": 0.8635933267082143,
+      "usage": {
+        "prompt_tokens": 882,
+        "completion_tokens": 122
+      }
+    },
+    {
+      "item_a_id": "AB202E4A636A4DA288A841F393E51704",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 평행선과 비례를 이용한 도형 문제이고, 문항 B는 대각선이 직교하는 사각형의 성질을 이용한 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.8462462887235364,
+      "usage": {
+        "prompt_tokens": 841,
+        "completion_tokens": 98
+      }
+    },
+    {
+      "item_a_id": "AB202E4A636A4DA288A841F393E51704",
+      "item_b_id": "AD550B4E409F4EC097E610BB3615C98B",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 도형의 비례와 평행선의 성질을 이용한 문제이고, 문항 B는 삼각형의 각도 계산 문제로, 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 거의 없습니다.",
+      "embedding_similarity": 0.8391203086715935,
+      "usage": {
+        "prompt_tokens": 860,
+        "completion_tokens": 99
+      }
+    },
+    {
+      "item_a_id": "DC786E25B9AD449B86EF35F0F774B642",
+      "item_b_id": "A88C66DF5A314FFFA0576F9480514924",
+      "concept_score": 5,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 4,
+      "reasoning": "두 문제 모두 평행사변형의 성질과 각도를 다루고 있어 개념적으로 유사합니다. 이미지는 평행사변형을 포함하지만, 구성 요소가 다소 다릅니다. 풀이 방법은 각도 계산을 포함하여 일부 유사한 단계가 있습니다.",
+      "embedding_similarity": 0.9073638332192093,
+      "usage": {
+        "prompt_tokens": 808,
+        "completion_tokens": 107
+      }
+    },
+    {
+      "item_a_id": "DC786E25B9AD449B86EF35F0F774B642",
+      "item_b_id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+      "concept_score": 5,
+      "image_score": 5,
+      "solution_score": 3,
+      "overall_score": 4,
+      "reasoning": "두 문항 모두 평행사변형의 성질을 다루고 있으며, 각도 계산을 요구합니다. 이미지는 거의 동일한 형태의 평행사변형을 포함하고 있습니다. 풀이 방법은 일부 단계가 유사하지만, 문항 A는 추가적인 각도 계산이 필요합니다.",
+      "embedding_similarity": 0.9027541674565095,
+      "usage": {
+        "prompt_tokens": 780,
+        "completion_tokens": 110
+      }
+    },
+    {
+      "item_a_id": "DC786E25B9AD449B86EF35F0F774B642",
+      "item_b_id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A와 B는 모두 평행사변형을 다루지만, 문항 A는 각도 계산, 문항 B는 넓이 계산을 요구합니다. 이미지는 평행사변형을 포함하지만, 세부 내용이 다릅니다. 풀이 방법도 각도와 넓이 계산으로 다릅니다.",
+      "embedding_similarity": 0.8307581660513937,
+      "usage": {
+        "prompt_tokens": 858,
+        "completion_tokens": 116
+      }
+    },
+    {
+      "item_a_id": "DC786E25B9AD449B86EF35F0F774B642",
+      "item_b_id": "B58161E49AC641CAAC6C4E8259122859",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 각도 계산 문제이고, 문항 B는 비율 계산 문제로 개념이 다릅니다. 이미지는 둘 다 도형을 포함하지만, 구조와 목적이 다릅니다. 풀이 방법도 완전히 다릅니다.",
+      "embedding_similarity": 0.8298045221039693,
+      "usage": {
+        "prompt_tokens": 815,
+        "completion_tokens": 98
+      }
+    },
+    {
+      "item_a_id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+      "item_b_id": "2F63FE75EC4E4A32887455C839BD2C1E",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 색칠하기 문제로 조합론을 다루고, 문항 B는 도형의 둘레를 구하는 문제로 기하학을 다룹니다. 이미지와 풀이 방법도 완전히 다릅니다.",
+      "embedding_similarity": 0.8001937190363578,
+      "usage": {
+        "prompt_tokens": 844,
+        "completion_tokens": 95
+      }
+    },
+    {
+      "item_a_id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+      "item_b_id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 색칠하기 문제로, 조합론적 사고를 요구하며, 문항 B는 기하학적 분석과 일차함수의 기울기를 다루고 있어 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.8000600810481905,
+      "usage": {
+        "prompt_tokens": 971,
+        "completion_tokens": 98
+      }
+    },
+    {
+      "item_a_id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+      "item_b_id": "8953FEB42A4343648F0811C21B5CF162",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 색칠하기 문제로 조합론을 다루고, 문항 B는 직육면체의 부피와 높이를 구하는 문제로 기하학을 다룹니다. 이미지와 풀이 방법도 완전히 다릅니다.",
+      "embedding_similarity": 0.7956713839066679,
+      "usage": {
+        "prompt_tokens": 858,
+        "completion_tokens": 99
+      }
+    },
+    {
+      "item_a_id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+      "item_b_id": "2CC59E14574C4F0094BC50DDFC326734",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 색칠하기 문제로, 조합론적 접근이 필요하며, 문항 B는 평행사변형의 접기와 넓이 비율을 다루는 문제로 기하학적 접근이 필요합니다. 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.7857177192279148,
+      "usage": {
+        "prompt_tokens": 871,
+        "completion_tokens": 114
+      }
+    },
+    {
+      "item_a_id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+      "item_b_id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 색칠하기 문제로 조합론을 다루고, 문항 B는 평행사변형의 넓이를 구하는 문제로 기하학을 다룹니다. 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.7800975743599091,
+      "usage": {
+        "prompt_tokens": 854,
+        "completion_tokens": 104
+      }
+    },
+    {
+      "item_a_id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+      "item_b_id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 색칠하기 문제로 조합론을 다루고, 문항 B는 평행사변형의 각도를 구하는 문제로 기하학을 다룹니다. 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.7761325078737638,
+      "usage": {
+        "prompt_tokens": 818,
+        "completion_tokens": 103
+      }
+    },
+    {
+      "item_a_id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+      "item_b_id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 색칠하기와 확률 문제이고, 문항 B는 평행사변형의 넓이와 관련된 기하 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.7758446632046696,
+      "usage": {
+        "prompt_tokens": 896,
+        "completion_tokens": 91
+      }
+    },
+    {
+      "item_a_id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+      "item_b_id": "F94806629A674E4B81126B3264A320C5",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 색칠하기 문제로 조합론을 다루고, 문항 B는 끈의 길이를 다루는 문제로 수열과 기하급수를 포함합니다. 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.7752692935334801,
+      "usage": {
+        "prompt_tokens": 888,
+        "completion_tokens": 103
+      }
+    },
+    {
+      "item_a_id": "2C9A3CACEBC54E4DB8FE4B1180447B72",
+      "item_b_id": "75D6A18B7A664FC0B35942B943FD16FC",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 색칠하기 문제로 조합론을 다루고, 문항 B는 평행사변형의 넓이와 관련된 기하 문제입니다. 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.7739769511521284,
+      "usage": {
+        "prompt_tokens": 825,
+        "completion_tokens": 100
+      }
+    },
+    {
+      "item_a_id": "AE50A202C3384AFD9C52678B6BA7833A",
+      "item_b_id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 도형의 넓이 계산을 다루고, 문항 B는 일차함수의 기울기를 다루므로 개념과 풀이 방법이 다릅니다. 이미지도 삼각형과 직사각형, 좌표평면으로 완전히 다릅니다.",
+      "embedding_similarity": 0.8315293469308562,
+      "usage": {
+        "prompt_tokens": 1082,
+        "completion_tokens": 108
+      }
+    },
+    {
+      "item_a_id": "AE50A202C3384AFD9C52678B6BA7833A",
+      "item_b_id": "6C3E301AFD69401FAA960C8C55361238",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A는 도형의 넓이를 구하는 문제이고, 문항 B는 피타고라스 정리를 이용한 문제로 개념이 다르지만, 둘 다 도형을 다루고 있어 약간의 관련성이 있다. 이미지와 풀이 방법은 일부 유사하지만, 전체적으로 다른 유형의 문제이다.",
+      "embedding_similarity": 0.8017585917047321,
+      "usage": {
+        "prompt_tokens": 945,
+        "completion_tokens": 116
+      }
+    },
+    {
+      "item_a_id": "AE50A202C3384AFD9C52678B6BA7833A",
+      "item_b_id": "8953FEB42A4343648F0811C21B5CF162",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 도형의 넓이와 길이를 구하는 문제이고, 문항 B는 직육면체의 부피와 높이를 구하는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.7989123847989296,
+      "usage": {
+        "prompt_tokens": 969,
+        "completion_tokens": 94
+      }
+    },
+    {
+      "item_a_id": "AE50A202C3384AFD9C52678B6BA7833A",
+      "item_b_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 도형의 넓이를 구하는 문제이고, 문항 B는 도형의 변의 길이를 구하는 문제로, 개념과 풀이 방법이 다릅니다. 이미지도 삼각형과 사각형으로 완전히 다릅니다.",
+      "embedding_similarity": 0.794690568922542,
+      "usage": {
+        "prompt_tokens": 956,
+        "completion_tokens": 102
+      }
+    },
+    {
+      "item_a_id": "AE50A202C3384AFD9C52678B6BA7833A",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 도형의 넓이와 길이를 구하는 문제이고, 문항 B는 대각선이 직교하는 사각형의 변의 길이를 구하는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.7906445360135141,
+      "usage": {
+        "prompt_tokens": 915,
+        "completion_tokens": 99
+      }
+    },
+    {
+      "item_a_id": "AE50A202C3384AFD9C52678B6BA7833A",
+      "item_b_id": "3128064044C64F4A8F9296D235F94ACB",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 도형의 넓이 계산을 다루고, 문항 B는 도형 내 점의 거리 계산을 다루며, 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.7877480745190012,
+      "usage": {
+        "prompt_tokens": 984,
+        "completion_tokens": 94
+      }
+    },
+    {
+      "item_a_id": "AE50A202C3384AFD9C52678B6BA7833A",
+      "item_b_id": "46ACB9139B444F578F9A7DC9B54175CB",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 도형의 넓이 계산을 다루고, 문항 B는 삼각형의 변 길이를 구하는 문제로, 개념과 풀이 방법이 다릅니다. 이미지도 서로 다른 유형의 도형을 포함하고 있습니다.",
+      "embedding_similarity": 0.7795410991886847,
+      "usage": {
+        "prompt_tokens": 978,
+        "completion_tokens": 100
+      }
+    },
+    {
+      "item_a_id": "AE50A202C3384AFD9C52678B6BA7833A",
+      "item_b_id": "5AD1D60463134A7AA56AA545EB347533",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 도형의 넓이를 구하는 문제이고, 문항 B는 일차방정식의 교점을 이용해 삼각형의 넓이를 구하는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.7755331811149393,
+      "usage": {
+        "prompt_tokens": 1017,
+        "completion_tokens": 98
+      }
+    },
+    {
+      "item_a_id": "AE50A202C3384AFD9C52678B6BA7833A",
+      "item_b_id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 도형의 넓이 계산을 다루고, 문항 B는 직각삼각형의 변의 길이를 구하는 문제로 개념과 풀이 방법이 다릅니다. 이미지는 둘 다 삼각형을 포함하지만, 내용과 목적이 다릅니다.",
+      "embedding_similarity": 0.7716136625205645,
+      "usage": {
+        "prompt_tokens": 965,
+        "completion_tokens": 108
+      }
+    },
+    {
+      "item_a_id": "AE50A202C3384AFD9C52678B6BA7833A",
+      "item_b_id": "F94806629A674E4B81126B3264A320C5",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 도형의 넓이와 길이를 구하는 문제이고, 문항 B는 반복적인 분할을 통한 길이 계산 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.7657634027267031,
+      "usage": {
+        "prompt_tokens": 999,
+        "completion_tokens": 91
+      }
+    },
+    {
+      "item_a_id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+      "item_b_id": "A88C66DF5A314FFFA0576F9480514924",
+      "concept_score": 5,
+      "image_score": 4,
+      "solution_score": 3,
+      "overall_score": 4,
+      "reasoning": "두 문항 모두 평행사변형의 성질을 다루고 있으며, 각도 계산을 요구합니다. 이미지는 평행사변형을 포함하지만, 문항 B는 추가적인 선과 각도가 포함되어 있습니다. 풀이 방법은 각도 계산이지만, 문항 B는 추가적인 삼각형 성질을 사용해야 합니다.",
+      "embedding_similarity": 0.897334288204807,
+      "usage": {
+        "prompt_tokens": 779,
+        "completion_tokens": 120
+      }
+    },
+    {
+      "item_a_id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+      "item_b_id": "75D6A18B7A664FC0B35942B943FD16FC",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A와 B는 모두 평행사변형을 다루지만, A는 각도 계산, B는 넓이 계산을 요구합니다. 이미지는 평행사변형을 포함하지만, 세부 내용이 다릅니다. 풀이 방법도 각도와 넓이로 달라 유사성이 낮습니다.",
+      "embedding_similarity": 0.8605405903276984,
+      "usage": {
+        "prompt_tokens": 758,
+        "completion_tokens": 115
+      }
+    },
+    {
+      "item_a_id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+      "item_b_id": "4D72036FB3CF437B86D4C658D032D854",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 평행사변형을 다루지만, 하나는 각도 계산, 다른 하나는 길이 계산을 요구합니다. 이미지는 비슷한 구조지만, 주어진 정보가 다릅니다. 풀이 방법도 다르며, 하나는 각도 비율, 다른 하나는 길이 합산을 사용합니다.",
+      "embedding_similarity": 0.8363162701656066,
+      "usage": {
+        "prompt_tokens": 804,
+        "completion_tokens": 115
+      }
+    },
+    {
+      "item_a_id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+      "item_b_id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 평행사변형의 내각을 다루고, 문항 B는 이등변삼각형의 각을 다루므로 개념과 풀이 방법이 다릅니다. 이미지도 서로 다른 도형을 포함하고 있습니다.",
+      "embedding_similarity": 0.8296478332034998,
+      "usage": {
+        "prompt_tokens": 783,
+        "completion_tokens": 99
+      }
+    },
+    {
+      "item_a_id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문제 모두 도형의 성질을 다루지만, 하나는 직사각형의 성질을, 다른 하나는 대각선이 직교하는 사각형의 성질을 다룹니다. 이미지와 풀이 방법은 일부 유사하지만, 문제의 초점이 다릅니다.",
+      "embedding_similarity": 0.9174443942200381,
+      "usage": {
+        "prompt_tokens": 783,
+        "completion_tokens": 109
+      }
+    },
+    {
+      "item_a_id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+      "item_b_id": "A88C66DF5A314FFFA0576F9480514924",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 직사각형의 성질을, 문항 B는 평행사변형의 성질을 다루고 있어 개념이 다릅니다. 이미지는 둘 다 사각형을 포함하지만, 다른 유형의 도형입니다. 풀이 방법도 서로 다릅니다.",
+      "embedding_similarity": 0.8486874991152338,
+      "usage": {
+        "prompt_tokens": 825,
+        "completion_tokens": 108
+      }
+    },
+    {
+      "item_a_id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+      "item_b_id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 직사각형의 성질을, 문항 B는 평행사변형의 넓이를 다루고 있어 개념이 다릅니다. 이미지는 둘 다 사각형을 포함하지만, 형태와 내용이 다릅니다. 풀이 방법도 서로 다른 접근이 필요합니다.",
+      "embedding_similarity": 0.848025436484955,
+      "usage": {
+        "prompt_tokens": 875,
+        "completion_tokens": 111
+      }
+    },
+    {
+      "item_a_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "item_b_id": "B58161E49AC641CAAC6C4E8259122859",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 도형의 대각선 직교를 이용한 계산 문제이고, 문항 B는 평행선과 비례를 이용한 문제로 개념과 풀이 방법이 다릅니다. 이미지는 둘 다 도형을 포함하지만, 구조와 내용이 다릅니다.",
+      "embedding_similarity": 0.8464738688853924,
+      "usage": {
+        "prompt_tokens": 772,
+        "completion_tokens": 107
+      }
+    },
+    {
+      "item_a_id": "75D6A18B7A664FC0B35942B943FD16FC",
+      "item_b_id": "A88C66DF5A314FFFA0576F9480514924",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A와 B는 모두 평행사변형을 다루지만, 문항 A는 넓이 계산, 문항 B는 각도 계산을 요구합니다. 이미지는 평행사변형과 관련된 점에서 유사하지만, 세부 내용이 다릅니다. 풀이 방법도 넓이와 각도 계산으로 다릅니다.",
+      "embedding_similarity": 0.8910438785108796,
+      "usage": {
+        "prompt_tokens": 786,
+        "completion_tokens": 121
+      }
+    },
+    {
+      "item_a_id": "75D6A18B7A664FC0B35942B943FD16FC",
+      "item_b_id": "B433ED8101A14DF88CADA9116F0CDB97",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A와 B는 모두 평행사변형을 다루지만, 문항 A는 넓이 계산, 문항 B는 각도 계산을 요구합니다. 이미지 구조는 비슷하지만 다른 요소를 포함하고 있으며, 풀이 방법도 다릅니다.",
+      "embedding_similarity": 0.8339297424356245,
+      "usage": {
+        "prompt_tokens": 783,
+        "completion_tokens": 102
+      }
+    },
+    {
+      "item_a_id": "75D6A18B7A664FC0B35942B943FD16FC",
+      "item_b_id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 평행사변형의 넓이와 삼각형의 넓이를 다루고, 문항 B는 직사각형의 성질을 다룹니다. 이미지는 둘 다 사각형을 포함하지만, 형태와 목적이 다릅니다. 풀이 방법도 완전히 다릅니다.",
+      "embedding_similarity": 0.826545153773822,
+      "usage": {
+        "prompt_tokens": 804,
+        "completion_tokens": 114
+      }
+    },
+    {
+      "item_a_id": "2F63FE75EC4E4A32887455C839BD2C1E",
+      "item_b_id": "8953FEB42A4343648F0811C21B5CF162",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 도형의 둘레를 구하는 문제이고, 문항 B는 직육면체의 부피와 높이를 다루는 문제로, 개념과 풀이 방법이 완전히 다릅니다. 이미지도 사다리꼴과 직육면체로 전혀 유사하지 않습니다.",
+      "embedding_similarity": 0.8241888941507076,
+      "usage": {
+        "prompt_tokens": 817,
+        "completion_tokens": 112
+      }
+    },
+    {
+      "item_a_id": "2F63FE75EC4E4A32887455C839BD2C1E",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 사다리꼴의 둘레를 구하는 문제이고, 문항 B는 대각선이 직교하는 사각형의 변의 제곱을 구하는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.8080703432018808,
+      "usage": {
+        "prompt_tokens": 763,
+        "completion_tokens": 101
+      }
+    },
+    {
+      "item_a_id": "2F63FE75EC4E4A32887455C839BD2C1E",
+      "item_b_id": "4D72036FB3CF437B86D4C658D032D854",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 사다리꼴의 둘레를 구하는 문제이고, 문항 B는 평행사변형 내 삼각형의 둘레를 구하는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.8016399745092535,
+      "usage": {
+        "prompt_tokens": 830,
+        "completion_tokens": 97
+      }
+    },
+    {
+      "item_a_id": "2F63FE75EC4E4A32887455C839BD2C1E",
+      "item_b_id": "2CC59E14574C4F0094BC50DDFC326734",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 사다리꼴의 둘레를 구하는 문제이고, 문항 B는 평행사변형의 접기와 넓이 비율을 다루는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.7892425355797386,
+      "usage": {
+        "prompt_tokens": 830,
+        "completion_tokens": 100
+      }
+    },
+    {
+      "item_a_id": "2F63FE75EC4E4A32887455C839BD2C1E",
+      "item_b_id": "F94806629A674E4B81126B3264A320C5",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 도형의 둘레를 구하는 문제이고, 문항 B는 반복적인 분할 과정을 통해 남은 길이를 구하는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.7880983724997062,
+      "usage": {
+        "prompt_tokens": 847,
+        "completion_tokens": 92
+      }
+    },
+    {
+      "item_a_id": "2F63FE75EC4E4A32887455C839BD2C1E",
+      "item_b_id": "AB202E4A636A4DA288A841F393E51704",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 도형의 둘레를 구하는 문제이고, 문항 B는 평행선과 대각선의 성질을 이용한 문제로 개념이 다릅니다. 이미지는 둘 다 사다리꼴을 포함하지만, 내용과 구조가 다릅니다. 풀이 방법도 완전히 다릅니다.",
+      "embedding_similarity": 0.7745364780310281,
+      "usage": {
+        "prompt_tokens": 881,
+        "completion_tokens": 116
+      }
+    },
+    {
+      "item_a_id": "2F63FE75EC4E4A32887455C839BD2C1E",
+      "item_b_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 사다리꼴의 둘레를 구하는 문제이고, 문항 B는 삼각형의 비율을 이용한 길이 계산 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.7729872664651307,
+      "usage": {
+        "prompt_tokens": 850,
+        "completion_tokens": 94
+      }
+    },
+    {
+      "item_a_id": "2F63FE75EC4E4A32887455C839BD2C1E",
+      "item_b_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 사다리꼴의 둘레를 구하는 문제이고, 문항 B는 사각형의 변의 길이를 구하는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.768680457284416,
+      "usage": {
+        "prompt_tokens": 804,
+        "completion_tokens": 92
+      }
+    },
+    {
+      "item_a_id": "2F63FE75EC4E4A32887455C839BD2C1E",
+      "item_b_id": "1001AC6A482E4383B34E5476DFA3A9C2",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 사다리꼴의 둘레를 구하는 문제이고, 문항 B는 원과 직사각형의 대각선을 구하는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.7678969052888618,
+      "usage": {
+        "prompt_tokens": 782,
+        "completion_tokens": 94
+      }
+    },
+    {
+      "item_a_id": "027A1DBAAD4B4715B86256B9F614F840",
+      "item_b_id": "AD550B4E409F4EC097E610BB3615C98B",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 3,
+      "overall_score": 3,
+      "reasoning": "두 문항 모두 이등변삼각형의 성질을 다루고 있으며, 이미지도 삼각형을 포함하고 있다. 풀이 과정에서 삼각형의 합동과 각도 계산이 필요하므로 일부 유사성이 있다.",
+      "embedding_similarity": 0.8525192214365886,
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 97
+      }
+    },
+    {
+      "item_a_id": "027A1DBAAD4B4715B86256B9F614F840",
+      "item_b_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A는 이등변삼각형의 성질을 다루고, 문항 B는 삼각형의 비율을 다루며, 개념적으로 관련이 있지만 다릅니다. 이미지 구조는 삼각형을 포함하지만 다른 구성입니다. 풀이 방법도 다릅니다.",
+      "embedding_similarity": 0.8338699947046506,
+      "usage": {
+        "prompt_tokens": 1028,
+        "completion_tokens": 108
+      }
+    },
+    {
+      "item_a_id": "027A1DBAAD4B4715B86256B9F614F840",
+      "item_b_id": "E8A959E017454D1A83E17ED3064C282F",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 이등변삼각형의 성질을 다루고, 문항 B는 삼각형의 각도와 길이를 이용한 문제로 개념이 다릅니다. 이미지는 삼각형을 포함하지만, 내용이 다릅니다. 풀이 방법도 서로 다릅니다.",
+      "embedding_similarity": 0.8280625199483354,
+      "usage": {
+        "prompt_tokens": 1027,
+        "completion_tokens": 110
+      }
+    },
+    {
+      "item_a_id": "027A1DBAAD4B4715B86256B9F614F840",
+      "item_b_id": "B58161E49AC641CAAC6C4E8259122859",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 이등변삼각형의 성질을 다루고, 문항 B는 평행선과 비례식을 다루고 있어 개념이 다릅니다. 이미지와 풀이 방법도 완전히 다릅니다.",
+      "embedding_similarity": 0.8260265626099704,
+      "usage": {
+        "prompt_tokens": 990,
+        "completion_tokens": 96
+      }
+    },
+    {
+      "item_a_id": "027A1DBAAD4B4715B86256B9F614F840",
+      "item_b_id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 이등변삼각형의 성질을 다루고, 문항 B는 직각삼각형의 성질을 다룹니다. 이미지는 삼각형이라는 점에서 유사하지만, 문제 해결 방법과 개념은 다릅니다.",
+      "embedding_similarity": 0.8201148250045542,
+      "usage": {
+        "prompt_tokens": 991,
+        "completion_tokens": 102
+      }
+    },
+    {
+      "item_a_id": "027A1DBAAD4B4715B86256B9F614F840",
+      "item_b_id": "B433ED8101A14DF88CADA9116F0CDB97",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A는 이등변삼각형의 성질을, 문항 B는 평행사변형의 성질을 다루고 있어 관련된 개념이지만 다릅니다. 이미지도 삼각형과 평행사변형으로 비슷한 유형이지만 다른 도형입니다. 풀이 방법은 각도와 선분의 성질을 이용하지만, 접근 방식이 다릅니다.",
+      "embedding_similarity": 0.818441951929992,
+      "usage": {
+        "prompt_tokens": 980,
+        "completion_tokens": 132
+      }
+    },
+    {
+      "item_a_id": "027A1DBAAD4B4715B86256B9F614F840",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 이등변삼각형의 성질을 다루고, 문항 B는 대각선이 직교하는 사각형의 성질을 다룹니다. 이미지 형태는 삼각형과 사각형으로 다르지만, 일부 도형 요소가 유사합니다. 풀이 방법은 완전히 다릅니다.",
+      "embedding_similarity": 0.8170209563792429,
+      "usage": {
+        "prompt_tokens": 941,
+        "completion_tokens": 118
+      }
+    },
+    {
+      "item_a_id": "027A1DBAAD4B4715B86256B9F614F840",
+      "item_b_id": "2CC59E14574C4F0094BC50DDFC326734",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 이등변삼각형의 성질을 다루고, 문항 B는 평행사변형과 넓이 비율을 다루므로 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.8149502660624209,
+      "usage": {
+        "prompt_tokens": 1008,
+        "completion_tokens": 94
+      }
+    },
+    {
+      "item_a_id": "027A1DBAAD4B4715B86256B9F614F840",
+      "item_b_id": "6C3E301AFD69401FAA960C8C55361238",
+      "concept_score": 1,
+      "image_score": 3,
+      "solution_score": 1,
+      "overall_score": 2,
+      "reasoning": "문항 A는 이등변삼각형의 성질을, 문항 B는 직각삼각형의 피타고라스 정리를 다룹니다. 이미지는 삼각형이라는 점에서 유사하지만, 문제 해결 방법과 개념은 다릅니다.",
+      "embedding_similarity": 0.8141769024726045,
+      "usage": {
+        "prompt_tokens": 971,
+        "completion_tokens": 103
+      }
+    },
+    {
+      "item_a_id": "F94806629A674E4B81126B3264A320C5",
+      "item_b_id": "8953FEB42A4343648F0811C21B5CF162",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 수열과 분수의 개념을 다루고, 문항 B는 부피와 직육면체의 개념을 다룹니다. 이미지와 풀이 방법도 완전히 다릅니다.",
+      "embedding_similarity": 0.7719915311277518,
+      "usage": {
+        "prompt_tokens": 861,
+        "completion_tokens": 92
+      }
+    },
+    {
+      "item_a_id": "F94806629A674E4B81126B3264A320C5",
+      "item_b_id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 수열과 분수 계산을 다루고, 문항 B는 기하와 일차함수의 교점을 다룹니다. 이미지와 풀이 방법도 완전히 다릅니다.",
+      "embedding_similarity": 0.7499045963294184,
+      "usage": {
+        "prompt_tokens": 974,
+        "completion_tokens": 89
+      }
+    },
+    {
+      "item_a_id": "F94806629A674E4B81126B3264A320C5",
+      "item_b_id": "E8A959E017454D1A83E17ED3064C282F",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 수열과 분수의 개념을 다루고, 문항 B는 삼각형의 각도와 삼각비를 다룹니다. 이미지와 풀이 방법도 완전히 다릅니다.",
+      "embedding_similarity": 0.7439323848562884,
+      "usage": {
+        "prompt_tokens": 893,
+        "completion_tokens": 92
+      }
+    },
+    {
+      "item_a_id": "F94806629A674E4B81126B3264A320C5",
+      "item_b_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 수열과 분수의 개념을 다루고, 문항 B는 삼각형의 성질과 비율을 다룹니다. 이미지와 풀이 방법도 완전히 다릅니다.",
+      "embedding_similarity": 0.7298984526784182,
+      "usage": {
+        "prompt_tokens": 894,
+        "completion_tokens": 91
+      }
+    },
+    {
+      "item_a_id": "F94806629A674E4B81126B3264A320C5",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 수열과 분수의 개념을 다루고, 문항 B는 기하학적 도형의 성질을 다룹니다. 이미지와 풀이 방법도 완전히 다릅니다.",
+      "embedding_similarity": 0.7267640887115983,
+      "usage": {
+        "prompt_tokens": 807,
+        "completion_tokens": 91
+      }
+    },
+    {
+      "item_a_id": "F94806629A674E4B81126B3264A320C5",
+      "item_b_id": "AB202E4A636A4DA288A841F393E51704",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 수열과 분수의 개념을 다루고, 문항 B는 기하학적 도형과 비례식을 다룹니다. 이미지와 풀이 방법도 완전히 다릅니다.",
+      "embedding_similarity": 0.7099031906726803,
+      "usage": {
+        "prompt_tokens": 925,
+        "completion_tokens": 91
+      }
+    },
+    {
+      "item_a_id": "5AD1D60463134A7AA56AA545EB347533",
+      "item_b_id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+      "concept_score": 3,
+      "image_score": 3,
+      "solution_score": 2,
+      "overall_score": 2,
+      "reasoning": "문항 A와 B는 모두 일차함수와 관련이 있지만, A는 삼각형의 넓이를 구하는 문제이고 B는 기울기의 범위를 찾는 문제입니다. 이미지도 둘 다 좌표평면을 사용하지만, A는 삼각형, B는 사각형을 다룹니다. 풀이 방법도 다소 다릅니다.",
+      "embedding_similarity": 0.8662106551702331,
+      "usage": {
+        "prompt_tokens": 992,
+        "completion_tokens": 123
+      }
+    },
+    {
+      "item_a_id": "5AD1D60463134A7AA56AA545EB347533",
+      "item_b_id": "B433ED8101A14DF88CADA9116F0CDB97",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 일차방정식과 삼각형의 넓이를 다루고, 문항 B는 평행사변형과 각도를 다룹니다. 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.7826880157343313,
+      "usage": {
+        "prompt_tokens": 864,
+        "completion_tokens": 94
+      }
+    },
+    {
+      "item_a_id": "5AD1D60463134A7AA56AA545EB347533",
+      "item_b_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 일차방정식과 그래프를 다루고, 문항 B는 도형의 비율과 길이를 다루므로 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.7777681041058631,
+      "usage": {
+        "prompt_tokens": 912,
+        "completion_tokens": 89
+      }
+    },
+    {
+      "item_a_id": "5AD1D60463134A7AA56AA545EB347533",
+      "item_b_id": "AD550B4E409F4EC097E610BB3615C98B",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 일차방정식과 삼각형의 넓이를 다루고, 문항 B는 삼각형의 각도를 구하는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.7752627759361036,
+      "usage": {
+        "prompt_tokens": 844,
+        "completion_tokens": 93
+      }
+    },
+    {
+      "item_a_id": "5AD1D60463134A7AA56AA545EB347533",
+      "item_b_id": "6C3E301AFD69401FAA960C8C55361238",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 일차방정식과 삼각형의 넓이를 다루고, 문항 B는 직각삼각형의 피타고라스 정리를 다룹니다. 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.7695853948218881,
+      "usage": {
+        "prompt_tokens": 855,
+        "completion_tokens": 99
+      }
+    },
+    {
+      "item_a_id": "5AD1D60463134A7AA56AA545EB347533",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 일차방정식과 그래프를 다루고, 문항 B는 기하학적 도형의 성질을 다룹니다. 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.7633526616508455,
+      "usage": {
+        "prompt_tokens": 825,
+        "completion_tokens": 97
+      }
+    },
+    {
+      "item_a_id": "5AD1D60463134A7AA56AA545EB347533",
+      "item_b_id": "4D72036FB3CF437B86D4C658D032D854",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 일차방정식과 그래프를 다루고, 문항 B는 평행사변형과 삼각형의 둘레를 구하는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.7599674465810193,
+      "usage": {
+        "prompt_tokens": 892,
+        "completion_tokens": 96
+      }
+    },
+    {
+      "item_a_id": "8953FEB42A4343648F0811C21B5CF162",
+      "item_b_id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 직육면체의 부피와 높이를 다루고, 문항 B는 좌표평면 위의 사각형과 일차함수의 기울기를 다룹니다. 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.7672561670893083,
+      "usage": {
+        "prompt_tokens": 944,
+        "completion_tokens": 106
+      }
+    },
+    {
+      "item_a_id": "8953FEB42A4343648F0811C21B5CF162",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 직육면체의 부피와 높이를 다루고, 문항 B는 도형의 대각선과 관련된 문제로, 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.7664993778111588,
+      "usage": {
+        "prompt_tokens": 777,
+        "completion_tokens": 96
+      }
+    },
+    {
+      "item_a_id": "8953FEB42A4343648F0811C21B5CF162",
+      "item_b_id": "51EFF604353C41E8A0AE820C04A25DD7",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 직육면체의 부피와 높이를 다루고, 문항 B는 원의 반지름과 직사각형을 다루므로 개념, 이미지, 풀이 방법 모두 유사하지 않습니다.",
+      "embedding_similarity": 0.756629117836972,
+      "usage": {
+        "prompt_tokens": 822,
+        "completion_tokens": 94
+      }
+    },
+    {
+      "item_a_id": "8953FEB42A4343648F0811C21B5CF162",
+      "item_b_id": "E8A959E017454D1A83E17ED3064C282F",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 기하학적 부피 계산 문제이고, 문항 B는 삼각법을 이용한 거리 계산 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.7525661426182186,
+      "usage": {
+        "prompt_tokens": 863,
+        "completion_tokens": 86
+      }
+    },
+    {
+      "item_a_id": "8953FEB42A4343648F0811C21B5CF162",
+      "item_b_id": "4D72036FB3CF437B86D4C658D032D854",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 직육면체의 부피와 높이를 다루고, 문항 B는 평행사변형의 대각선과 삼각형의 둘레를 다룹니다. 두 문제는 개념, 이미지, 풀이 방법 모두에서 유사성이 없습니다.",
+      "embedding_similarity": 0.7486062478813371,
+      "usage": {
+        "prompt_tokens": 844,
+        "completion_tokens": 105
+      }
+    },
+    {
+      "item_a_id": "8953FEB42A4343648F0811C21B5CF162",
+      "item_b_id": "3128064044C64F4A8F9296D235F94ACB",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 직육면체의 부피와 높이를 다루고, 문항 B는 직사각형 내의 점과 거리 관계를 다루므로 개념, 이미지, 풀이 방법 모두 유사하지 않다.",
+      "embedding_similarity": 0.7480967524273503,
+      "usage": {
+        "prompt_tokens": 846,
+        "completion_tokens": 95
+      }
+    },
+    {
+      "item_a_id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+      "item_b_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 일차함수의 기울기를 다루고, 문항 B는 도형의 변의 길이를 구하는 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.852343704485629,
+      "usage": {
+        "prompt_tokens": 931,
+        "completion_tokens": 89
+      }
+    },
+    {
+      "item_a_id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+      "item_b_id": "3128064044C64F4A8F9296D235F94ACB",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 일차함수와 좌표평면의 기울기를 다루고, 문항 B는 직사각형 내의 점과 거리 계산을 다루므로 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.8366376810784844,
+      "usage": {
+        "prompt_tokens": 959,
+        "completion_tokens": 96
+      }
+    },
+    {
+      "item_a_id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+      "item_b_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 일차함수와 좌표평면의 기울기를 다루고, 문항 B는 도형의 대각선과 관련된 문제로 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.83570751911976,
+      "usage": {
+        "prompt_tokens": 890,
+        "completion_tokens": 93
+      }
+    },
+    {
+      "item_a_id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+      "item_b_id": "E8A959E017454D1A83E17ED3064C282F",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 좌표평면에서의 기울기와 일차함수를 다루고, 문항 B는 삼각형의 각도와 길이를 이용한 문제로, 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.8251401908569542,
+      "usage": {
+        "prompt_tokens": 976,
+        "completion_tokens": 97
+      }
+    },
+    {
+      "item_a_id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+      "item_b_id": "AB202E4A636A4DA288A841F393E51704",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 일차함수의 기울기를 다루고, 문항 B는 도형의 비례 관계를 다루므로 개념과 풀이 방법이 다릅니다. 이미지도 서로 다른 유형입니다.",
+      "embedding_similarity": 0.8145018249074897,
+      "usage": {
+        "prompt_tokens": 1008,
+        "completion_tokens": 92
+      }
+    },
+    {
+      "item_a_id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+      "item_b_id": "4D72036FB3CF437B86D4C658D032D854",
+      "concept_score": 1,
+      "image_score": 1,
+      "solution_score": 1,
+      "overall_score": 1,
+      "reasoning": "문항 A는 일차함수와 좌표평면을 다루고, 문항 B는 평행사변형의 성질을 다루므로 개념, 이미지, 풀이 방법 모두 다릅니다.",
+      "embedding_similarity": 0.8133725699166297,
+      "usage": {
+        "prompt_tokens": 957,
+        "completion_tokens": 91
+      }
+    }
+  ]
+}
