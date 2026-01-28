@@ -10,6 +10,10 @@ models/
 # Binary results (keep JSON)
 results/*.npz
 
+# Large embedding files (>100MB)
+results/qwen_vl_embeddings_full_8b.json
+results/qwen_embeddings_full_2b_multimodal.json
+
 # Python cache
 __pycache__/
 *.pyc
