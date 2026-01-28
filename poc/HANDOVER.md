@@ -682,6 +682,36 @@ except Exception as e:
 - 평가 결과: `poc/results/8b_vs_2b_evaluation.json`
 - 8B 임베딩: `poc/results/qwen_embeddings_8b.json`
 
+### 9.3 전체 문항 임베딩 생성 ✅ 완료
+
+#### 실행 정보
+
+| 항목 | 값 |
+|------|------|
+| 모델 | Qwen3-VL-Embedding-2B |
+| 모드 | **멀티모달 (텍스트+이미지)** |
+| Pooling | Mean pooling |
+| GPU | RTX 2070 SUPER (8GB) |
+
+#### 결과
+
+| 항목 | 값 |
+|------|------|
+| 총 문항 | **10,952개** |
+| 성공 | 10,951개 |
+| 에러 | 1개 |
+| 이미지 포함 | **3,769개** (34.4%) |
+| 임베딩 차원 | 2048 |
+| 소요 시간 | **11.9분** |
+| 처리 속도 | 15.37 items/sec |
+| 결과 파일 | `poc/results/qwen_embeddings_full_2b_multimodal.json` (480MB) |
+
+#### 다음 단계
+
+1. pgvector에 전체 임베딩 저장
+2. 대규모 검색 성능 테스트
+3. 프로덕션 API 개발
+
 ---
 
 ## 10. 연락처 및 참고 문서
@@ -741,3 +771,8 @@ except Exception as e:
 | | | - Hybrid GT: 8B(71.9%) < 2B텍스트(83.7%) **-11.9%p** | |
 | | | - 결론: 2B 모델 유지 권장, 8B 텍스트 모델 성능 향상 없음 | |
 | | | - 원인: Qwen3-Embedding-8B는 텍스트 전용 (VL 아님) | |
+| v1.8.0 | 2026-01-28 | 전체 문항 임베딩 생성 완료 | AI TF |
+| | | - 2B 멀티모달 모델로 10,952건 전체 임베딩 생성 | |
+| | | - 이미지 포함 3,769개 (34.4%) | |
+| | | - 소요 시간: 11.9분, 처리 속도: 15.37 items/sec | |
+| | | - 결과 파일: qwen_embeddings_full_2b_multimodal.json (480MB) | |
