@@ -618,7 +618,7 @@ except Exception as e:
 | 임베딩 차원 | 4096 (2B는 2048) |
 | VRAM 사용 | 15.17 GB |
 | 생성 시간 | ~10분 |
-| 결과 파일 | `poc/results/qwen_embeddings_8b.json` (9.2MB) |
+| 결과 파일 | ~~`poc/results/qwen_embeddings_8b.json`~~ (삭제됨) |
 
 #### 주요 이슈 및 해결
 
@@ -634,7 +634,7 @@ except Exception as e:
 - [x] 상세 가이드 문서 작성 (`poc/VASTAI-GUIDE.md`)
 - [x] RTX 3090 Ti 인스턴스 대여
 - [x] 8B 모델 임베딩 생성 (100건, 4096차원)
-- [x] 결과 다운로드 (`qwen_embeddings_8b.json`)
+- [x] 결과 다운로드 (~~`qwen_embeddings_8b.json`~~ 삭제됨)
 - [x] 성능 평가 및 2B vs 8B 비교
 
 ### 9.2 8B vs 2B 성능 비교 결과 ✅ 완료
@@ -685,11 +685,11 @@ except Exception as e:
 
 **최종 권장**: **2B 모델 유지** - 8B 텍스트 모델은 성능 향상 없음
 
-**추가 실험 옵션**: `Qwen3-VL-Embedding-8B` (멀티모달 8B) 테스트 시 개선 가능성 있음
+> ℹ️ 후속 실험: `Qwen3-VL-Embedding-8B` (멀티모달 8B) 테스트 완료 → 섹션 9.5, 9.6 참조 (역시 2B보다 낮은 성능)
 
 #### 관련 파일
-- 평가 결과: `poc/results/8b_vs_2b_evaluation.json`
-- 8B 임베딩: `poc/results/qwen_embeddings_8b.json`
+- ~~평가 결과: `poc/results/8b_vs_2b_evaluation.json`~~ (삭제됨)
+- ~~8B 임베딩: `poc/results/qwen_embeddings_8b.json`~~ (삭제됨)
 
 ### 9.3 전체 문항 임베딩 생성 ✅ 완료
 
@@ -713,13 +713,11 @@ except Exception as e:
 | 임베딩 차원 | 2048 |
 | 소요 시간 | **11.9분** |
 | 처리 속도 | 15.37 items/sec |
-| 결과 파일 | `poc/results/qwen_embeddings_full_2b_multimodal.json` (480MB) |
+| 결과 파일 | ~~`poc/results/qwen_embeddings_full_2b_multimodal.json`~~ (삭제됨, 전체 과목 NPZ로 대체) |
 
 #### 다음 단계
 
-1. pgvector에 전체 임베딩 저장
-2. 대규모 검색 성능 테스트
-3. 프로덕션 API 개발
+> ✅ 이 작업은 섹션 9.7에서 전체 과목(176,443건) 임베딩으로 대체됨
 
 ### 9.4 전체 과목 데이터 전처리 ✅ 완료
 
@@ -816,19 +814,12 @@ except Exception as e:
 
 #### 출력 파일 정보
 
-```python
-# 파일 로드 예시
-import numpy as np
+> ⚠️ **참고**: 8B VL 임베딩 파일은 성능 평가 후 2B보다 낮은 성능으로 확인되어 **삭제됨** (섹션 9.6 참조)
 
+~~```python
+# 파일 로드 예시 (삭제됨)
 data = np.load("poc/results/qwen_vl_embeddings_full_8b_multimodal.npz", allow_pickle=True)
-item_ids = data['item_ids']       # 176,443개 item ID
-embeddings = data['embeddings']   # (176,443, 4096) float32
-errors = data['errors']           # 에러 목록
-
-print(f"임베딩 수: {len(item_ids)}")
-print(f"임베딩 차원: {embeddings.shape[1]}")
-print(f"Norm: {np.linalg.norm(embeddings[0]):.4f}")  # 1.0 (정규화됨)
-```
+```~~
 
 #### 주요 스크립트
 
@@ -921,7 +912,7 @@ print(f"Norm: {np.linalg.norm(embeddings[0]):.4f}")  # 1.0 (정규화됨)
 
 | 파일 | 설명 |
 |------|------|
-| `poc/results/qwen_vl_embeddings_8b_sample_1000.json` | 1000개 샘플 (Qwen3VLEmbedder) |
+| ~~`poc/results/qwen_vl_embeddings_8b_sample_1000.json`~~ | 1000개 샘플 (삭제됨, 검증 완료) |
 | `poc/scripts/vastai_8b_vl_sample_test.py` | 올바른 방식 테스트 스크립트 |
 | `poc/results/8b_vl_multimodal_evaluation.json` | 평가 결과 |
 
@@ -973,9 +964,8 @@ print(f"임베딩 차원: {embeddings.shape[1]}")  # 2048
 
 | 파일 | 설명 |
 |------|------|
-| `poc/results/qwen_embeddings_all_subjects_2b_multimodal.npz` | 2B 멀티모달 전체 임베딩 |
+| `poc/results/qwen_embeddings_all_subjects_2b_multimodal.npz` | **최종 2B 멀티모달 임베딩** |
 | `poc/scripts/generate_full_embeddings.py` | 생성 스크립트 |
-| `poc/results/embedding_log_all.txt` | 실행 로그 |
 
 ---
 
@@ -997,14 +987,14 @@ print(f"임베딩 차원: {embeddings.shape[1]}")  # 2048
 
 #### 관련 파일
 
-| 파일 | 위치 |
-|------|------|
-| **2B 멀티모달 임베딩 (권장)** | `poc/results/qwen_embeddings_all_subjects_2b_multimodal.npz` |
-| 8B VL 임베딩 | `poc/results/qwen_vl_embeddings_full_8b_multimodal.npz` |
-| 2B 생성 스크립트 | `poc/scripts/generate_full_embeddings.py` |
-| 8B 생성 스크립트 | `poc/scripts/vastai_8b_vl_multimodal.py` |
-| 검증 스크립트 | `poc/scripts/validate_image_data.py` |
-| 작업 TODO | `TODO.md` |
+| 파일 | 위치 | 상태 |
+|------|------|------|
+| **2B 멀티모달 임베딩 (권장)** | `poc/results/qwen_embeddings_all_subjects_2b_multimodal.npz` | ✅ 유지 |
+| ~~8B VL 임베딩~~ | ~~`poc/results/qwen_vl_embeddings_full_8b_multimodal.npz`~~ | ❌ 삭제됨 |
+| 2B 생성 스크립트 | `poc/scripts/generate_full_embeddings.py` | ✅ 유지 |
+| 8B 생성 스크립트 | `poc/scripts/vastai_8b_vl_multimodal.py` | ✅ 참고용 |
+| 검증 스크립트 | `poc/scripts/validate_image_data.py` | ✅ 유지 |
+| 작업 TODO | `TODO.md` | ✅ 유지 |
 
 ---
 
@@ -1096,3 +1086,9 @@ print(f"임베딩 차원: {embeddings.shape[1]}")  # 2048
 | | | - 이미지 포함: 41,322건 (23.4%) | |
 | | | - 소요 시간: 766분 (~12.8시간), 에러: 0건 | |
 | | | - 결과 파일: qwen_embeddings_all_subjects_2b_multimodal.npz | |
+| v2.3.0 | 2026-01-29 | **불필요 파일 정리 및 문서 정합성 확보** | AI TF |
+| | | - 8B VL 임베딩 파일 삭제 (2.5GB, 성능 낮음) | |
+| | | - 중복 JSON 파일 삭제 (NPZ로 대체) | |
+| | | - 로그 파일 삭제 | |
+| | | - 총 3.0GB 용량 확보, 최종 파일만 유지 | |
+| | | - HANDOVER.md 파일 경로 정합성 업데이트 | |
