@@ -1,0 +1,685 @@
+{
+  "report_info": {
+    "title": "Qwen3-VL-Embedding-2B 최종 임베딩 성능 평가 보고서",
+    "created_at": "2026-01-29T12:24:39.661010",
+    "embedding_file": "qwen_embeddings_all_subjects_2b_multimodal.npz"
+  },
+  "embedding_info": {
+    "model": "Qwen3-VL-Embedding-2B",
+    "mode": "multimodal (text + image)",
+    "pooling": "mean pooling",
+    "total_items": 176443,
+    "embedding_dim": 2048,
+    "file_size_gb": 1.24
+  },
+  "evaluation_setup": {
+    "test_items": 100,
+    "image_gt_queries": 27,
+    "hybrid_gt_queries": 61,
+    "note": "Ground Truth는 100개 테스트 아이템 기준으로 생성됨"
+  },
+  "results": {
+    "image_gt": {
+      "description": "이미지 기반 유사 문항 검색 (GPT-4o 평가)",
+      "metrics": {
+        "top_1": 85.19,
+        "top_3": 92.59,
+        "top_5": 100.0,
+        "top_10": 100.0,
+        "mrr": 90.56,
+        "count": 27
+      },
+      "details": [
+        {
+          "query_id": "E8A959E017454D1A83E17ED3064C282F",
+          "category": "image",
+          "target_count": 2,
+          "first_target_rank": 5,
+          "top_similarity": 0.8795023560523987
+        },
+        {
+          "query_id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "category": "image",
+          "target_count": 3,
+          "first_target_rank": 1,
+          "top_similarity": 0.9243687391281128
+        },
+        {
+          "query_id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "category": "image",
+          "target_count": 4,
+          "first_target_rank": 1,
+          "top_similarity": 0.8999769687652588
+        },
+        {
+          "query_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "category": "image",
+          "target_count": 6,
+          "first_target_rank": 1,
+          "top_similarity": 0.9346528053283691
+        },
+        {
+          "query_id": "6C3E301AFD69401FAA960C8C55361238",
+          "category": "image",
+          "target_count": 5,
+          "first_target_rank": 1,
+          "top_similarity": 0.9243687391281128
+        },
+        {
+          "query_id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "category": "image",
+          "target_count": 7,
+          "first_target_rank": 1,
+          "top_similarity": 0.9471677541732788
+        },
+        {
+          "query_id": "DC786E25B9AD449B86EF35F0F774B642",
+          "category": "image",
+          "target_count": 6,
+          "first_target_rank": 1,
+          "top_similarity": 0.9471677541732788
+        },
+        {
+          "query_id": "AD550B4E409F4EC097E610BB3615C98B",
+          "category": "image",
+          "target_count": 4,
+          "first_target_rank": 1,
+          "top_similarity": 0.9294198155403137
+        },
+        {
+          "query_id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "category": "image",
+          "target_count": 6,
+          "first_target_rank": 1,
+          "top_similarity": 0.9426313638687134
+        },
+        {
+          "query_id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "category": "image",
+          "target_count": 5,
+          "first_target_rank": 1,
+          "top_similarity": 0.9202170968055725
+        },
+        {
+          "query_id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "category": "image",
+          "target_count": 3,
+          "first_target_rank": 1,
+          "top_similarity": 0.9290571212768555
+        },
+        {
+          "query_id": "A88C66DF5A314FFFA0576F9480514924",
+          "category": "image",
+          "target_count": 7,
+          "first_target_rank": 1,
+          "top_similarity": 0.9169247150421143
+        },
+        {
+          "query_id": "2644AB4D3AE94CF29AFCD7A69A068B83",
+          "category": "image",
+          "target_count": 7,
+          "first_target_rank": 1,
+          "top_similarity": 0.9357954859733582
+        },
+        {
+          "query_id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "category": "image",
+          "target_count": 3,
+          "first_target_rank": 1,
+          "top_similarity": 0.9079660177230835
+        },
+        {
+          "query_id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "category": "image",
+          "target_count": 4,
+          "first_target_rank": 2,
+          "top_similarity": 0.9573656320571899
+        },
+        {
+          "query_id": "027A1DBAAD4B4715B86256B9F614F840",
+          "category": "image",
+          "target_count": 2,
+          "first_target_rank": 1,
+          "top_similarity": 0.8928876519203186
+        },
+        {
+          "query_id": "9E4522B95A9E424EB1AB312B7887AF2A",
+          "category": "image",
+          "target_count": 4,
+          "first_target_rank": 1,
+          "top_similarity": 0.9346528053283691
+        },
+        {
+          "query_id": "4D72036FB3CF437B86D4C658D032D854",
+          "category": "image",
+          "target_count": 8,
+          "first_target_rank": 2,
+          "top_similarity": 0.9573658108711243
+        },
+        {
+          "query_id": "75D6A18B7A664FC0B35942B943FD16FC",
+          "category": "image",
+          "target_count": 5,
+          "first_target_rank": 1,
+          "top_similarity": 0.9357954859733582
+        },
+        {
+          "query_id": "B58161E49AC641CAAC6C4E8259122859",
+          "category": "image",
+          "target_count": 5,
+          "first_target_rank": 1,
+          "top_similarity": 0.9192833304405212
+        },
+        {
+          "query_id": "3128064044C64F4A8F9296D235F94ACB",
+          "category": "image",
+          "target_count": 1,
+          "first_target_rank": 4,
+          "top_similarity": 0.9131220579147339
+        },
+        {
+          "query_id": "66063A66864042448368E291FDCF44D5",
+          "category": "image",
+          "target_count": 1,
+          "first_target_rank": 1,
+          "top_similarity": 0.9076616764068604
+        },
+        {
+          "query_id": "3AF3E7634DA148CC8FC60DD5D2AC31CE",
+          "category": "image",
+          "target_count": 1,
+          "first_target_rank": 1,
+          "top_similarity": 0.9076617360115051
+        },
+        {
+          "query_id": "2CC59E14574C4F0094BC50DDFC326734",
+          "category": "image",
+          "target_count": 6,
+          "first_target_rank": 1,
+          "top_similarity": 0.9146844148635864
+        },
+        {
+          "query_id": "5E38A5E2CEC246E6A78C4E75537E5EBF",
+          "category": "image",
+          "target_count": 8,
+          "first_target_rank": 1,
+          "top_similarity": 0.9146844148635864
+        },
+        {
+          "query_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "category": "image",
+          "target_count": 4,
+          "first_target_rank": 1,
+          "top_similarity": 0.9192835092544556
+        },
+        {
+          "query_id": "AB202E4A636A4DA288A841F393E51704",
+          "category": "image",
+          "target_count": 5,
+          "first_target_rank": 1,
+          "top_similarity": 0.9112651348114014
+        }
+      ]
+    },
+    "hybrid_gt": {
+      "description": "복합 유형 유사 문항 검색 (TF-IDF ∩ LLM)",
+      "metrics": {
+        "top_1": 29.51,
+        "top_3": 77.05,
+        "top_5": 85.25,
+        "top_10": 88.52,
+        "mrr": 54.38,
+        "count": 61
+      },
+      "details": [
+        {
+          "query_id": "46ACB9139B444F578F9A7DC9B54175CB",
+          "category": "image",
+          "target_count": 1,
+          "first_target_rank": 1,
+          "top_similarity": 0.8999769687652588
+        },
+        {
+          "query_id": "B433ED8101A14DF88CADA9116F0CDB97",
+          "category": "image",
+          "target_count": 2,
+          "first_target_rank": 2,
+          "top_similarity": 0.9471677541732788
+        },
+        {
+          "query_id": "AD550B4E409F4EC097E610BB3615C98B",
+          "category": "image",
+          "target_count": 2,
+          "first_target_rank": 1,
+          "top_similarity": 0.9294198155403137
+        },
+        {
+          "query_id": "1001AC6A482E4383B34E5476DFA3A9C2",
+          "category": "image",
+          "target_count": 1,
+          "first_target_rank": 2,
+          "top_similarity": 0.9079660177230835
+        },
+        {
+          "query_id": "8DDF17D1DDBB4041ACB647A4F87F0FF6",
+          "category": "image",
+          "target_count": 1,
+          "first_target_rank": 2,
+          "top_similarity": 0.9243687391281128
+        },
+        {
+          "query_id": "A95BFE176E7A48F7ABE4873067FF9BF0",
+          "category": "image",
+          "target_count": 1,
+          "first_target_rank": 2,
+          "top_similarity": 0.9290571212768555
+        },
+        {
+          "query_id": "6C3E301AFD69401FAA960C8C55361238",
+          "category": "image",
+          "target_count": 2,
+          "first_target_rank": 2,
+          "top_similarity": 0.9243687391281128
+        },
+        {
+          "query_id": "E3D336A89BAD46F0A5E9034E243F5D92",
+          "category": "image",
+          "target_count": 2,
+          "first_target_rank": 1,
+          "top_similarity": 0.9426313638687134
+        },
+        {
+          "query_id": "6F8C205C5D9D48B9A6A4D88C4B68CB78",
+          "category": "image",
+          "target_count": 2,
+          "first_target_rank": 31,
+          "top_similarity": 0.7904409170150757
+        },
+        {
+          "query_id": "3128064044C64F4A8F9296D235F94ACB",
+          "category": "image",
+          "target_count": 2,
+          "first_target_rank": 3,
+          "top_similarity": 0.9131220579147339
+        },
+        {
+          "query_id": "2B13A8DD57C7472EB723A35BC0FE7A3A",
+          "category": "image",
+          "target_count": 1,
+          "first_target_rank": 1,
+          "top_similarity": 0.9346528053283691
+        },
+        {
+          "query_id": "66063A66864042448368E291FDCF44D5",
+          "category": "image",
+          "target_count": 1,
+          "first_target_rank": 4,
+          "top_similarity": 0.9076616764068604
+        },
+        {
+          "query_id": "9F38081988CA4E8EB2F67B6AF9D31796",
+          "category": "image",
+          "target_count": 3,
+          "first_target_rank": 5,
+          "top_similarity": 0.9192835092544556
+        },
+        {
+          "query_id": "51EFF604353C41E8A0AE820C04A25DD7",
+          "category": "image",
+          "target_count": 2,
+          "first_target_rank": 3,
+          "top_similarity": 0.8542376756668091
+        },
+        {
+          "query_id": "AB202E4A636A4DA288A841F393E51704",
+          "category": "image",
+          "target_count": 2,
+          "first_target_rank": 1,
+          "top_similarity": 0.9112651348114014
+        },
+        {
+          "query_id": "DC786E25B9AD449B86EF35F0F774B642",
+          "category": "image",
+          "target_count": 1,
+          "first_target_rank": 4,
+          "top_similarity": 0.9471677541732788
+        },
+        {
+          "query_id": "AE50A202C3384AFD9C52678B6BA7833A",
+          "category": "image",
+          "target_count": 1,
+          "first_target_rank": 11,
+          "top_similarity": 0.8175418376922607
+        },
+        {
+          "query_id": "493AE1FB8EBF4AA6B580ABB3E98B8102",
+          "category": "image",
+          "target_count": 2,
+          "first_target_rank": 1,
+          "top_similarity": 0.9202170968055725
+        },
+        {
+          "query_id": "7A3E0EA7C3A449488AEB9E2DC2E1A6BB",
+          "category": "image",
+          "target_count": 1,
+          "first_target_rank": 1,
+          "top_similarity": 0.9573656320571899
+        },
+        {
+          "query_id": "75D6A18B7A664FC0B35942B943FD16FC",
+          "category": "image",
+          "target_count": 2,
+          "first_target_rank": 4,
+          "top_similarity": 0.9357954859733582
+        },
+        {
+          "query_id": "027A1DBAAD4B4715B86256B9F614F840",
+          "category": "image",
+          "target_count": 2,
+          "first_target_rank": 4,
+          "top_similarity": 0.8928876519203186
+        },
+        {
+          "query_id": "A88C66DF5A314FFFA0576F9480514924",
+          "category": "image",
+          "target_count": 2,
+          "first_target_rank": 1,
+          "top_similarity": 0.9169247150421143
+        },
+        {
+          "query_id": "F94806629A674E4B81126B3264A320C5",
+          "category": "image",
+          "target_count": 1,
+          "first_target_rank": 45,
+          "top_similarity": 0.7851996421813965
+        },
+        {
+          "query_id": "8953FEB42A4343648F0811C21B5CF162",
+          "category": "image",
+          "target_count": 1,
+          "first_target_rank": 2,
+          "top_similarity": 0.8234882950782776
+        },
+        {
+          "query_id": "AB56E85712904550A62A39027F9FFB68",
+          "category": "text_only",
+          "target_count": 1,
+          "first_target_rank": 29,
+          "top_similarity": 0.9429888129234314
+        },
+        {
+          "query_id": "AB1E7C8E41F14335ABB108B08D509FF3",
+          "category": "text_only",
+          "target_count": 2,
+          "first_target_rank": 2,
+          "top_similarity": 1.0
+        },
+        {
+          "query_id": "D1D6F4DD3327483B8C128978E321A984",
+          "category": "text_only",
+          "target_count": 2,
+          "first_target_rank": 3,
+          "top_similarity": 0.978845477104187
+        },
+        {
+          "query_id": "4EEA29416564497A91346D3457D4C87F",
+          "category": "text_only",
+          "target_count": 2,
+          "first_target_rank": 1,
+          "top_similarity": 0.9339733123779297
+        },
+        {
+          "query_id": "5F8D37AB72804C418FFAD219CA29DD52",
+          "category": "text_only",
+          "target_count": 2,
+          "first_target_rank": 6,
+          "top_similarity": 0.9013936519622803
+        },
+        {
+          "query_id": "BBEBEF54DE6E4C04BAACE9E6E89D1308",
+          "category": "text_only",
+          "target_count": 2,
+          "first_target_rank": 3,
+          "top_similarity": 0.978845477104187
+        },
+        {
+          "query_id": "3BE68CED94D548EF9C1FC122E18F49F3",
+          "category": "text_only",
+          "target_count": 2,
+          "first_target_rank": 2,
+          "top_similarity": 0.7894241213798523
+        },
+        {
+          "query_id": "E45A58F169EF4D07A691871F807BFAD0",
+          "category": "text_only",
+          "target_count": 1,
+          "first_target_rank": 1,
+          "top_similarity": 0.8079382181167603
+        },
+        {
+          "query_id": "99FE13B09A0E48DB89A5E8465944CC19",
+          "category": "text_only",
+          "target_count": 2,
+          "first_target_rank": 2,
+          "top_similarity": 0.9665884375572205
+        },
+        {
+          "query_id": "B3321AD022474BAD888A8496B48EAE92",
+          "category": "text_only",
+          "target_count": 1,
+          "first_target_rank": 2,
+          "top_similarity": 0.8552675247192383
+        },
+        {
+          "query_id": "43DA19AE34574C43AB1912BB2F48AFC2",
+          "category": "text_only",
+          "target_count": 1,
+          "first_target_rank": 1,
+          "top_similarity": 0.8224794864654541
+        },
+        {
+          "query_id": "81925C731BF644D8B5B51D57034EF074",
+          "category": "text_only",
+          "target_count": 1,
+          "first_target_rank": 2,
+          "top_similarity": 0.927680253982544
+        },
+        {
+          "query_id": "65E3BB5494B34C1C8289DEDE63C2F68D",
+          "category": "text_only",
+          "target_count": 2,
+          "first_target_rank": 2,
+          "top_similarity": 0.9665884375572205
+        },
+        {
+          "query_id": "32EB59561EEC43BBB6AFE66FD5A77D67",
+          "category": "text_only",
+          "target_count": 1,
+          "first_target_rank": 2,
+          "top_similarity": 0.8355510234832764
+        },
+        {
+          "query_id": "19B56562F5AD4ECCA68A8FF9D51A445E",
+          "category": "text_only",
+          "target_count": 2,
+          "first_target_rank": 2,
+          "top_similarity": 0.84850013256073
+        },
+        {
+          "query_id": "6D28AB8080074BF1AC157C90EEFAC301",
+          "category": "text_only",
+          "target_count": 1,
+          "first_target_rank": 1,
+          "top_similarity": 0.942988932132721
+        },
+        {
+          "query_id": "9A3A8A6D4131465C9549B7D2F7F0F7BE",
+          "category": "text_only",
+          "target_count": 2,
+          "first_target_rank": 3,
+          "top_similarity": 1.0
+        },
+        {
+          "query_id": "1FCB1D636A01499CA6072319786229AB",
+          "category": "text_only",
+          "target_count": 2,
+          "first_target_rank": 2,
+          "top_similarity": 0.876227617263794
+        },
+        {
+          "query_id": "4571CE49715F4599A720038136A255A4",
+          "category": "text_only",
+          "target_count": 2,
+          "first_target_rank": 2,
+          "top_similarity": 1.0
+        },
+        {
+          "query_id": "72D59B348C22410AB71A08CA16EA24CD",
+          "category": "latex",
+          "target_count": 2,
+          "first_target_rank": 1,
+          "top_similarity": 0.8478182554244995
+        },
+        {
+          "query_id": "1B73CF5B8E274FBDB18ACEBA105BE1A6",
+          "category": "latex",
+          "target_count": 1,
+          "first_target_rank": 1,
+          "top_similarity": 0.9448846578598022
+        },
+        {
+          "query_id": "8414DC7576484155866A351B3B436D8C",
+          "category": "latex",
+          "target_count": 1,
+          "first_target_rank": 2,
+          "top_similarity": 0.9448846578598022
+        },
+        {
+          "query_id": "1C26FF6D401C4070821EC3DE8FA440A6",
+          "category": "latex",
+          "target_count": 4,
+          "first_target_rank": 1,
+          "top_similarity": 0.8774415254592896
+        },
+        {
+          "query_id": "38A9C868EA3E44C58E501DC193A1FA8E",
+          "category": "latex",
+          "target_count": 1,
+          "first_target_rank": 18,
+          "top_similarity": 0.897580623626709
+        },
+        {
+          "query_id": "410C0A8C87D74B78A66C8DBBC6802E4C",
+          "category": "latex",
+          "target_count": 1,
+          "first_target_rank": 3,
+          "top_similarity": 0.9013935327529907
+        },
+        {
+          "query_id": "0533E6E14C514571B8FE88E524550438",
+          "category": "latex",
+          "target_count": 1,
+          "first_target_rank": 2,
+          "top_similarity": 0.8782020807266235
+        },
+        {
+          "query_id": "715256BA1D9A46589C17C0BA9E65F85F",
+          "category": "latex",
+          "target_count": 1,
+          "first_target_rank": 17,
+          "top_similarity": 0.8461538553237915
+        },
+        {
+          "query_id": "F48BBE62C7964BAE92A06D075EBE09F8",
+          "category": "latex",
+          "target_count": 1,
+          "first_target_rank": 1,
+          "top_similarity": 0.7995080351829529
+        },
+        {
+          "query_id": "DE1E9E4943D641B1BDA68EE63BE82D60",
+          "category": "latex",
+          "target_count": 1,
+          "first_target_rank": 2,
+          "top_similarity": 0.9361459016799927
+        },
+        {
+          "query_id": "9B6BD5C274E347098DF7AC098C7E06DA",
+          "category": "latex",
+          "target_count": 1,
+          "first_target_rank": 2,
+          "top_similarity": 0.9824063777923584
+        },
+        {
+          "query_id": "6375D1D173274F808E4961A5D0F52473",
+          "category": "latex",
+          "target_count": 2,
+          "first_target_rank": 2,
+          "top_similarity": 0.8710485696792603
+        },
+        {
+          "query_id": "9786B12616DF41F5B614B49078961AD4",
+          "category": "latex",
+          "target_count": 1,
+          "first_target_rank": 8,
+          "top_similarity": 0.9361459016799927
+        },
+        {
+          "query_id": "EF59D406E05D4D3885CB6DCB8E41A7E5",
+          "category": "latex",
+          "target_count": 2,
+          "first_target_rank": 1,
+          "top_similarity": 0.884013831615448
+        },
+        {
+          "query_id": "E91BA85F84D84C0892780CDDB19C2DA6",
+          "category": "latex",
+          "target_count": 1,
+          "first_target_rank": 20,
+          "top_similarity": 0.9491878747940063
+        },
+        {
+          "query_id": "DC0FA60E4C1D4084A1281B9DC491D577",
+          "category": "latex",
+          "target_count": 1,
+          "first_target_rank": 2,
+          "top_similarity": 0.9824062585830688
+        },
+        {
+          "query_id": "FFC898D3218140B5A3C3B6FC0DD454F6",
+          "category": "latex",
+          "target_count": 1,
+          "first_target_rank": 3,
+          "top_similarity": 0.8840136528015137
+        },
+        {
+          "query_id": "FB17AAD57C3B4547AA5EFFF13F6F18DB",
+          "category": "latex",
+          "target_count": 1,
+          "first_target_rank": 1,
+          "top_similarity": 0.8232595920562744
+        }
+      ]
+    }
+  },
+  "summary": {
+    "image_gt_top5": 100.0,
+    "image_gt_mrr": 90.56,
+    "hybrid_gt_top5": 85.25,
+    "hybrid_gt_mrr": 54.38,
+    "target_top5": 80.0,
+    "pass_image_gt": true,
+    "pass_hybrid_gt": true,
+    "overall_pass": true
+  },
+  "conclusion": {
+    "status": "PASS",
+    "recommendation": "2B Multimodal 임베딩 프로덕션 사용 권장",
+    "notes": [
+      "Image GT Top-5 100.0% 달성 (목표 80% 초과)",
+      "Hybrid GT Top-5 85.2% 달성 (목표 80% 초과)",
+      "176,443개 전체 문항 임베딩 완료",
+      "8B VL 모델 대비 2B가 더 높은 성능"
+    ]
+  }
+}
