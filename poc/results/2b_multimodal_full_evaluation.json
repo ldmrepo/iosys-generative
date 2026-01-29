@@ -1,0 +1,38 @@
+{
+  "model": "Qwen3-VL-Embedding-2B",
+  "mode": "multimodal_meanpool",
+  "total_embeddings": 176443,
+  "embedding_dim": 2048,
+  "results": {
+    "image_gt": {
+      "total_queries": 27,
+      "top_1": 24.889770723104053,
+      "top_3": 51.39770723104056,
+      "top_5": 77.72045855379189,
+      "top_10": 94.93827160493828,
+      "mrr": 90.55555555555556,
+      "by_category": {
+        "unknown": {
+          "top_5": 77.72045855379189,
+          "mrr": 90.55555555555556,
+          "count": 27
+        }
+      }
+    },
+    "hybrid_gt": {
+      "total_queries": 61,
+      "top_1": 24.18032786885246,
+      "top_3": 66.80327868852459,
+      "top_5": 80.8743169398907,
+      "top_10": 89.6174863387978,
+      "mrr": 56.92215410754465,
+      "by_category": {
+        "unknown": {
+          "top_5": 80.8743169398907,
+          "mrr": 56.92215410754465,
+          "count": 61
+        }
+      }
+    }
+  }
+}

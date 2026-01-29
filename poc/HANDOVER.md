@@ -967,6 +967,50 @@ print(f"임베딩 차원: {embeddings.shape[1]}")  # 2048
 | `poc/results/qwen_embeddings_all_subjects_2b_multimodal.npz` | **최종 2B 멀티모달 임베딩** |
 | `poc/scripts/generate_full_embeddings.py` | 생성 스크립트 |
 
+### 9.8 이미지 전용 검색 평가 (Image-Only Query)
+
+#### 테스트 개요
+- **목적**: 이미지만으로 유사 문항 검색 가능 여부 확인
+- **쿼리 방식**: 이미지만 (텍스트 제외)
+- **대상 코퍼스**: 전체 176,443건 (텍스트+이미지 임베딩)
+- **Ground Truth**: Image GT (27 queries)
+
+#### 결과
+
+| Metric | Image-Only | Multimodal | 차이 |
+|--------|------------|------------|------|
+| Top-1 | **0.0%** | 24.9% | -24.9%p |
+| Top-5 | **0.0%** | 77.7% | -77.7%p |
+| Top-10 | **0.0%** | 94.9% | -94.9%p |
+| MRR | **0.0%** | 90.6% | -90.6%p |
+
+#### 원인 분석
+
+**Image-Only 임베딩과 Multimodal 임베딩의 표현 공간 불일치:**
+
+- Image-Only 쿼리: 시각적 특징만 추출
+- Multimodal 코퍼스: 텍스트+이미지 의미적 특징 포함
+- Self-similarity (같은 문항): ~0.88 (완전 일치 아님)
+- 시각적 유사성 ≠ 개념적 유사성
+
+#### 결론
+
+| 검색 시나리오 | 지원 여부 | 권장 |
+|--------------|----------|------|
+| 텍스트+이미지 → 유사 문항 | ✅ 지원 | **권장** |
+| 텍스트만 → 유사 문항 | ✅ 지원 | 권장 |
+| **이미지만 → 유사 문항** | ❌ 미지원 | **비권장** |
+
+**권장**: 이미지 검색 시 반드시 텍스트와 함께 쿼리 구성
+
+#### 관련 파일
+
+| 파일 | 설명 |
+|------|------|
+| `poc/results/image_only_search_evaluation.json` | 평가 결과 |
+| `poc/scripts/evaluate_image_only_search.py` | 평가 스크립트 |
+| `poc/scripts/debug_image_only_search.py` | 디버깅 스크립트 |
+
 ---
 
 ## 10. 향후 작업
