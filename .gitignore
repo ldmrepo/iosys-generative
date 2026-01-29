@@ -1,11 +1,38 @@
-# Raw data (large files)
+# ===========================================
+# IOSYS ItemBank AI - Git Ignore
+# ===========================================
+
+# -------------------------------------------
+# Data files (large)
+# -------------------------------------------
 data/raw/
+*.npz
+*.pkl
+*.npy
+*.json.gz
 
 # Preprocessing intermediate files
 preprocessing/output/items_parsed.json
 preprocessing/output/items.json
 
+# POC result files (large embeddings)
+poc/results/qwen_embeddings_full_2b_multimodal.json
+poc/results/qwen_vl_embeddings_8b_sample_1000.json
+
+# -------------------------------------------
+# Models (downloaded, large)
+# -------------------------------------------
+poc/models/
+models/
+*.safetensors
+*.bin
+*.onnx
+*.pt
+*.pth
+
+# -------------------------------------------
 # Python
+# -------------------------------------------
 __pycache__/
 *.py[cod]
 *$py.class
@@ -26,28 +53,84 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+.pytest_cache/
+.coverage
+htmlcov/
 
+# -------------------------------------------
 # Virtual environments
+# -------------------------------------------
+.venv/
 venv/
 ENV/
 env/
-.venv/
+.venv_backup*/
 
-# IDE
+# -------------------------------------------
+# Environment variables
+# -------------------------------------------
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# -------------------------------------------
+# IDE / Editor
+# -------------------------------------------
 .idea/
 .vscode/
 *.swp
 *.swo
 *~
+*.sublime-project
+*.sublime-workspace
 
-# OS
+# -------------------------------------------
+# OS generated
+# -------------------------------------------
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 
+# -------------------------------------------
+# Logs
+# -------------------------------------------
+*.log
+logs/
+*.log.*
+
+# -------------------------------------------
 # Local tool configs
+# -------------------------------------------
 .agent/
 .agents/
 .claude/
+.sisyphus/
 node_modules/
-poc/results/qwen_embeddings_full_2b_multimodal.json
-poc/results/qwen_vl_embeddings_8b_sample_1000.json
+
+# -------------------------------------------
+# Docker
+# -------------------------------------------
+.docker/
+
+# -------------------------------------------
+# SSL certificates
+# -------------------------------------------
+*.pem
+*.key
+*.crt
+nginx/ssl/
+
+# -------------------------------------------
+# Temporary files
+# -------------------------------------------
+*.tmp
+*.temp
+*.bak
+*.backup
+tmp/
+temp/
