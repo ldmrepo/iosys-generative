@@ -925,15 +925,67 @@ print(f"Norm: {np.linalg.norm(embeddings[0]):.4f}")  # 1.0 (정규화됨)
 | `poc/scripts/vastai_8b_vl_sample_test.py` | 올바른 방식 테스트 스크립트 |
 | `poc/results/8b_vl_multimodal_evaluation.json` | 평가 결과 |
 
+### 9.7 2B Multimodal 전체 임베딩 생성 ✅ 완료 (2026-01-29)
+
+#### 배경
+- 8B VL 모델이 2B보다 성능이 낮음을 확인 (섹션 9.6)
+- 176,443건 전체 문항에 대한 **2B 멀티모달 임베딩** 생성 필요
+- 로컬 RTX 2070 SUPER (8GB)로 실행
+
+#### 실행 환경
+
+| 항목 | 값 |
+|------|------|
+| GPU | RTX 2070 SUPER (8GB) |
+| 모델 | Qwen3-VL-Embedding-2B |
+| Pooling | Mean pooling |
+| 저장 형식 | NPZ (압축) |
+
+#### 실행 결과
+
+| 항목 | 값 |
+|------|------|
+| 총 임베딩 수 | **176,443개** |
+| 임베딩 차원 | **2048** |
+| 이미지 포함 | 41,322개 (23.4%) |
+| 에러 | 0개 |
+| 파일 크기 | **1.3GB** (.npz 압축) |
+| 소요 시간 | **766분 (~12.8시간)** |
+| 처리 속도 | 3.84 items/sec |
+
+#### 출력 파일 정보
+
+```python
+# 파일 로드 예시
+import numpy as np
+import json
+
+data = np.load("poc/results/qwen_embeddings_all_subjects_2b_multimodal.npz", allow_pickle=True)
+embeddings = data['embeddings']   # (176,443, 2048) float32
+item_ids = data['ids']            # 176,443개 item ID
+metadata = json.loads(data['metadata'][0])
+
+print(f"임베딩 수: {len(item_ids)}")      # 176,443
+print(f"임베딩 차원: {embeddings.shape[1]}")  # 2048
+```
+
+#### 관련 파일
+
+| 파일 | 설명 |
+|------|------|
+| `poc/results/qwen_embeddings_all_subjects_2b_multimodal.npz` | 2B 멀티모달 전체 임베딩 |
+| `poc/scripts/generate_full_embeddings.py` | 생성 스크립트 |
+| `poc/results/embedding_log_all.txt` | 실행 로그 |
+
 ---
 
 ## 10. 향후 작업
 
 ### 권장 사항
 
-1. **2B Multimodal 임베딩 유지**
+1. **2B Multimodal 임베딩 사용** ✅
    - 현재 최고 성능 (Image GT Top-5: 100%, Hybrid GT MRR: 53.2%)
-   - 176,443건 임베딩 재생성 시 2B 모델 사용
+   - **176,443건 임베딩 생성 완료** (1.3GB NPZ)
 
 2. **pgvector 저장**
    - 2B 멀티모달 임베딩으로 PostgreSQL 저장
@@ -947,8 +999,10 @@ print(f"Norm: {np.linalg.norm(embeddings[0]):.4f}")  # 1.0 (정규화됨)
 
 | 파일 | 위치 |
 |------|------|
+| **2B 멀티모달 임베딩 (권장)** | `poc/results/qwen_embeddings_all_subjects_2b_multimodal.npz` |
 | 8B VL 임베딩 | `poc/results/qwen_vl_embeddings_full_8b_multimodal.npz` |
-| 생성 스크립트 | `poc/scripts/vastai_8b_vl_multimodal.py` |
+| 2B 생성 스크립트 | `poc/scripts/generate_full_embeddings.py` |
+| 8B 생성 스크립트 | `poc/scripts/vastai_8b_vl_multimodal.py` |
 | 검증 스크립트 | `poc/scripts/validate_image_data.py` |
 | 작업 TODO | `TODO.md` |
 
@@ -1035,3 +1089,10 @@ print(f"Norm: {np.linalg.norm(embeddings[0]):.4f}")  # 1.0 (정규화됨)
 | | | - **결과: 8B VL < 2B Multimodal (Image GT -7.4%p, Hybrid GT -13.1%p)** | |
 | | | - 원인: 8B 모델의 보수적 유사도 산출 특성 | |
 | | | - **결론: 2B Multimodal 유지 권장, 8B 재생성 불필요** | |
+| v2.2.0 | 2026-01-29 | **2B Multimodal 전체 임베딩 생성 완료** | AI TF |
+| | | - 로컬 RTX 2070으로 176,443건 전체 임베딩 생성 | |
+| | | - 모델: Qwen3-VL-Embedding-2B (멀티모달, mean pooling) | |
+| | | - 임베딩 차원: 2048, 파일 크기: 1.3GB (.npz) | |
+| | | - 이미지 포함: 41,322건 (23.4%) | |
+| | | - 소요 시간: 766분 (~12.8시간), 에러: 0건 | |
+| | | - 결과 파일: qwen_embeddings_all_subjects_2b_multimodal.npz | |
