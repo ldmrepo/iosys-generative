@@ -86,3 +86,11 @@ class ErrorResponse(BaseModel):
 
     error: str = Field(..., description="Error message")
     detail: Optional[str] = Field(None, description="Detailed error information")
+
+
+class ImlContentResponse(BaseModel):
+    """IML content response schema."""
+
+    item_id: str = Field(..., description="Item identifier")
+    iml_content: str = Field(..., description="Raw IML XML content")
+    source_file: str = Field(..., description="Source file path")

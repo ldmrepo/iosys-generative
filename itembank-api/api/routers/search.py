@@ -7,9 +7,11 @@ from typing import List
 
 from fastapi import APIRouter, HTTPException
 
+from ..core.config import get_settings
 from ..models import (
     BatchSearchRequest,
     BatchSearchResponse,
+    ImlContentResponse,
     ItemResponse,
     SearchRequest,
     SearchResponse,
@@ -18,6 +20,7 @@ from ..models import (
 from ..services.database import DatabaseService
 from ..services.embedding import get_embedding_service
 from ..services.qwen3vl import get_qwen3vl_service
+from utils.iml_reader import read_iml_file, find_iml_file
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/search", tags=["search"])
@@ -166,4 +169,53 @@ async def get_item(item_id: str) -> ItemResponse:
         question_text=item.get("question_text"),
         has_image=item.get("has_image", False),
         metadata=item.get("metadata") or {},
+    )
+
+
+@router.get("/items/{item_id}/iml", response_model=ImlContentResponse)
+async def get_item_iml(item_id: str) -> ImlContentResponse:
+    """
+    Get raw IML content for an item.
+
+    Returns the original IML XML source file content for client-side parsing.
+    """
+    item = await DatabaseService.get_item_by_id(item_id)
+
+    if item is None:
+        raise HTTPException(status_code=404, detail=f"Item {item_id} not found")
+
+    source_file = item.get("source_file")
+    if not source_file:
+        raise HTTPException(
+            status_code=404, detail=f"Source file not found for item {item_id}"
+        )
+
+    settings = get_settings()
+    full_path = find_iml_file(settings.iml_data_path, source_file)
+
+    if full_path is None:
+        logger.warning(f"IML file not found: {source_file} (base: {settings.iml_data_path})")
+        raise HTTPException(
+            status_code=404,
+            detail=f"IML file not found: {source_file}",
+        )
+
+    try:
+        iml_content = read_iml_file(full_path)
+    except FileNotFoundError:
+        raise HTTPException(
+            status_code=404,
+            detail=f"IML file not found: {source_file}",
+        )
+    except Exception as e:
+        logger.error(f"Error reading IML file {full_path}: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error reading IML file: {str(e)}",
+        )
+
+    return ImlContentResponse(
+        item_id=item_id,
+        iml_content=iml_content,
+        source_file=source_file,
     )

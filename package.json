@@ -1,0 +1,12 @@
+{
+  "name": "iosys-generative",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:qti": "pnpm --filter @iosys/qti-core build && pnpm --filter @iosys/qti-ui build && pnpm --filter @iosys/qti-viewer build",
+    "dev:web": "pnpm --filter itembank-web dev",
+    "build:web": "pnpm --filter itembank-web build"
+  },
+  "packageManager": "pnpm@9.15.0"
+}

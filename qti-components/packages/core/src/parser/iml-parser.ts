@@ -37,7 +37,6 @@ import {
   getBooleanAttribute,
   getChildElement,
   getChildElements,
-  getInnerHtml,
   generateId,
 } from './xml-utils'
 
@@ -48,45 +47,97 @@ export function parseIml(xmlString: string): ImlItem {
   const doc = parseXmlString(xmlString)
   const root = doc.documentElement
 
-  // Get item type from root element or attribute
-  const itemTypeCode = getItemTypeCode(root)
+  // Navigate to the actual item element
+  // Structure: <문항종류> -> <단위문항> -> <문항>
+  const itemElement = findItemElement(root)
+
+  // Get item type from element attribute
+  const itemTypeCode = getItemTypeCode(itemElement)
 
   switch (itemTypeCode) {
     case IML_ITEM_TYPES.CHOICE:
-      return parseChoiceItem(root, itemTypeCode)
+      return parseChoiceItem(itemElement, itemTypeCode)
     case IML_ITEM_TYPES.TRUE_FALSE:
-      return parseTrueFalseItem(root, itemTypeCode)
+      return parseTrueFalseItem(itemElement, itemTypeCode)
     case IML_ITEM_TYPES.SHORT_ANSWER:
-      return parseShortAnswerItem(root, itemTypeCode)
+      return parseShortAnswerItem(itemElement, itemTypeCode)
     case IML_ITEM_TYPES.FILL_BLANK:
-      return parseFillBlankItem(root, itemTypeCode)
+      return parseFillBlankItem(itemElement, itemTypeCode)
     case IML_ITEM_TYPES.MATCHING:
-      return parseMatchingItem(root, itemTypeCode)
+      return parseMatchingItem(itemElement, itemTypeCode)
     case IML_ITEM_TYPES.ESSAY_SHORT:
-      return parseEssayItem(root, itemTypeCode) as ImlEssayShortItem
+      return parseEssayItem(itemElement, itemTypeCode) as ImlEssayShortItem
     case IML_ITEM_TYPES.ESSAY_LONG:
-      return parseEssayItem(root, itemTypeCode) as ImlEssayLongItem
+      return parseEssayItem(itemElement, itemTypeCode) as ImlEssayLongItem
     default:
       throw new Error(`Unsupported item type: ${itemTypeCode}`)
   }
 }
 
 /**
- * Extract item type code from root element
+ * Find the actual item element in the IML document
+ * Handles structures like: <문항종류> -> <단위문항> -> <문항>
  */
-function getItemTypeCode(root: Element): ImlItemTypeCode {
+function findItemElement(root: Element): Element {
+  // Direct <문항> element
+  if (root.tagName === '문항' || root.tagName === 'item') {
+    return root
+  }
+
+  // Look for <문항> in children
+  const itemEl = getChildElement(root, '문항') || getChildElement(root, 'item')
+  if (itemEl) {
+    return itemEl
+  }
+
+  // Look inside <단위문항> wrapper
+  const wrapperEl = getChildElement(root, '단위문항')
+  if (wrapperEl) {
+    const innerItemEl = getChildElement(wrapperEl, '문항') || getChildElement(wrapperEl, 'item')
+    if (innerItemEl) {
+      return innerItemEl
+    }
+    return wrapperEl
+  }
+
+  // Return root if no specific element found
+  return root
+}
+
+/**
+ * Extract item type code from element
+ */
+function getItemTypeCode(element: Element): ImlItemTypeCode {
+  // Try qt attribute (format: "34 완결형" -> extract "34")
+  const qtAttr = getAttribute(element, 'qt')
+  if (qtAttr) {
+    const typeCode = qtAttr.split(' ')[0]
+    if (isValidItemType(typeCode)) {
+      return typeCode
+    }
+  }
+
+  // Try vt attribute (variant type)
+  const vtAttr = getAttribute(element, 'vt')
+  if (vtAttr) {
+    const typeCode = vtAttr.split(' ')[0]
+    if (isValidItemType(typeCode)) {
+      return typeCode
+    }
+  }
+
   // Try different attribute names
   const typeAttr =
-    getAttribute(root, '문항유형') ||
-    getAttribute(root, 'itemType') ||
-    getAttribute(root, 'type')
+    getAttribute(element, '문항유형') ||
+    getAttribute(element, 'itemType') ||
+    getAttribute(element, 'type')
 
   if (typeAttr && isValidItemType(typeAttr)) {
     return typeAttr
   }
 
   // Try to find 문항종류 element
-  const typeElement = getChildElement(root, '문항종류')
+  const typeElement = getChildElement(element, '문항종류')
   if (typeElement) {
     const typeCode = getTextContent(typeElement)
     if (isValidItemType(typeCode)) {
@@ -98,8 +149,8 @@ function getItemTypeCode(root: Element): ImlItemTypeCode {
   return IML_ITEM_TYPES.CHOICE
 }
 
-function isValidItemType(code: string): code is ImlItemTypeCode {
-  return ['11', '21', '31', '34', '37', '41', '51'].includes(code)
+function isValidItemType(code: string | undefined): code is ImlItemTypeCode {
+  return code !== undefined && ['11', '21', '31', '34', '37', '41', '51'].includes(code)
 }
 
 /**
@@ -108,26 +159,43 @@ function isValidItemType(code: string): code is ImlItemTypeCode {
 function parseCommonProps(root: Element, itemType: ImlItemTypeCode) {
   const id = getAttribute(root, 'id') || generateId('item')
 
-  // Parse question
+  // Parse question: <문제> -> <물음>
   const questionEl = getChildElement(root, '문제') || getChildElement(root, 'question')
-  const question: ImlQuestion = {
-    content: questionEl ? parseBlockContent(questionEl) : [],
+  let questionContent: ImlBlockContent[] = []
+
+  if (questionEl) {
+    // Check for <물음> inside <문제>
+    const questionBodyEl = getChildElement(questionEl, '물음')
+    if (questionBodyEl) {
+      questionContent = parseBlockContent(questionBodyEl)
+    } else {
+      questionContent = parseBlockContent(questionEl)
+    }
   }
 
-  // Parse explanation
-  const explanationEl = getChildElement(root, '해설') || getChildElement(root, 'explanation')
+  const question: ImlQuestion = {
+    content: questionContent,
+  }
+
+  // Parse explanation: <문제> -> <해설> or top-level <해설>
+  let explanationEl = getChildElement(root, '해설') || getChildElement(root, 'explanation')
+  if (!explanationEl && questionEl) {
+    explanationEl = getChildElement(questionEl, '해설')
+  }
   const explanation: ImlExplanation | undefined = explanationEl
     ? { content: parseBlockContent(explanationEl) }
     : undefined
 
-  // Parse metadata
-  const score = getNumberAttribute(root, '배점') || getNumberAttribute(root, 'score')
-  const difficultyAttr = getAttribute(root, '난이도') || getAttribute(root, 'difficulty')
+  // Parse metadata from attributes
+  const dfAttr = getAttribute(root, 'df')
+  const difficultyAttr = dfAttr?.split(' ')[1] || getAttribute(root, '난이도') || getAttribute(root, 'difficulty')
   const difficulty: 'high' | 'medium' | 'low' = difficultyAttr === '상' || difficultyAttr === 'high'
     ? 'high'
     : difficultyAttr === '하' || difficultyAttr === 'low'
       ? 'low'
       : 'medium'
+
+  const score = getNumberAttribute(root, '배점') || getNumberAttribute(root, 'score')
 
   return {
     id,
@@ -136,7 +204,7 @@ function parseCommonProps(root: Element, itemType: ImlItemTypeCode) {
     explanation,
     score: score || undefined,
     difficulty,
-    curriculum: getAttribute(root, '교육과정') || undefined,
+    curriculum: getAttribute(root, 'cls1')?.split(' ')[1] || getAttribute(root, '교육과정') || undefined,
     achievementStandard: getAttribute(root, '성취기준') || undefined,
     source: getAttribute(root, '출처') || undefined,
   }
@@ -170,6 +238,19 @@ function parseBlockContent(parent: Element): ImlBlockContent[] {
       case 'table':
         content.push(parseTable(child))
         break
+      case '보기':
+        // Parse <보기> (example box) - contains paragraphs inside
+        const boxTitle = getAttribute(child, 'title') || '<보기>'
+        content.push({
+          type: 'paragraph',
+          content: [`[${boxTitle}]`],
+        })
+        // Recursively parse content inside <보기>
+        content.push(...parseBlockContent(child))
+        break
+      case '형판':
+        // Skip template element (formatting instruction)
+        break
       default:
         // Wrap unknown elements as paragraphs
         if (child.textContent?.trim()) {
@@ -193,11 +274,57 @@ function parseBlockContent(parent: Element): ImlBlockContent[] {
 }
 
 function parseParagraph(element: Element): ImlParagraph {
-  const align = getAttribute(element, 'align') as ImlParagraph['align'] | ''
+  const align = getAttribute(element, 'align') || getAttribute(element, 'justv')
+  const alignValue = align === '1' ? 'center' : align === '2' ? 'right' : undefined
+
+  // Parse mixed content: <문자열>, <수식>, <그림> elements
+  const content: Array<string | ImlMath | ImlImage> = []
+
+  for (const child of Array.from(element.childNodes)) {
+    if (child.nodeType === 3) { // Text node
+      const text = child.textContent?.trim()
+      if (text) {
+        content.push(text)
+      }
+    } else if (child.nodeType === 1) { // Element node
+      const el = child as Element
+      const tagName = el.tagName
+
+      if (tagName === '문자열') {
+        const text = getTextContent(el)
+        if (text) {
+          content.push(text)
+        }
+      } else if (tagName === '수식') {
+        content.push({
+          type: 'math',
+          latex: getTextContent(el) || getAttribute(el, 'latex') || '',
+          display: 'inline',
+        })
+      } else if (tagName === '그림' || tagName === 'img') {
+        content.push({
+          type: 'image',
+          src: getAttribute(el, 'src') || getAttribute(el, '경로') || '',
+          alt: getAttribute(el, 'alt') || getAttribute(el, '설명') || undefined,
+          width: getNumberAttribute(el, 'width') || getNumberAttribute(el, 'w') || undefined,
+          height: getNumberAttribute(el, 'height') || getNumberAttribute(el, 'h') || undefined,
+        })
+      }
+    }
+  }
+
+  // Fallback: if no content parsed, get text content
+  if (content.length === 0) {
+    const text = getTextContent(element)
+    if (text) {
+      content.push(text)
+    }
+  }
+
   return {
     type: 'paragraph',
-    align: align || undefined,
-    content: [getInnerHtml(element) || getTextContent(element)],
+    align: alignValue as ImlParagraph['align'],
+    content,
   }
 }
 
@@ -222,15 +349,32 @@ function parseMathElement(element: Element): ImlMath {
 function parseTable(element: Element): ImlTable {
   const rows: ImlTableRow[] = []
 
-  for (const tr of getChildElements(element, 'tr')) {
+  // Handle both <TR> and <tr> elements
+  const trElements = getChildElements(element, 'TR').length > 0
+    ? getChildElements(element, 'TR')
+    : getChildElements(element, 'tr')
+
+  for (const tr of trElements) {
     const cells: ImlTableCell[] = []
 
     for (const cell of Array.from(tr.children)) {
-      if (cell.tagName.toLowerCase() === 'td' || cell.tagName.toLowerCase() === 'th') {
+      const cellTagName = cell.tagName.toUpperCase()
+      // Handle CELL (IML format) and TD/TH (standard HTML)
+      if (cellTagName === 'CELL' || cellTagName === 'TD' || cellTagName === 'TH') {
+        // For CELL elements, parse the content inside (may have <물음> wrapper)
+        let cellContent: ImlBlockContent[]
+        const innerContent = getChildElement(cell, '물음')
+        if (innerContent) {
+          cellContent = parseBlockContent(innerContent)
+        } else {
+          cellContent = parseBlockContent(cell)
+        }
+
         cells.push({
-          type: cell.tagName.toLowerCase() as 'td' | 'th',
-          content: parseBlockContent(cell),
-          colspan: getNumberAttribute(cell, 'colspan') || undefined,
+          type: cellTagName === 'TH' ? 'th' : 'td',
+          content: cellContent,
+          colspan: getNumberAttribute(cell, 'colspan') ||
+                   (getNumberAttribute(cell, 'cnt')?.toString().split(',')[0] ? undefined : undefined),
           rowspan: getNumberAttribute(cell, 'rowspan') || undefined,
         })
       }
@@ -244,7 +388,7 @@ function parseTable(element: Element): ImlTable {
   return {
     type: 'table',
     rows,
-    border: getNumberAttribute(element, 'border') || undefined,
+    border: getNumberAttribute(element, 'border') || 1,
     width: getAttribute(element, 'width') || undefined,
   }
 }
@@ -255,15 +399,17 @@ function parseTable(element: Element): ImlTable {
 function parseChoiceItem(root: Element, itemType: '11'): ImlChoiceItem {
   const common = parseCommonProps(root, itemType)
 
-  // Parse choices
-  const choicesEl = getChildElement(root, '답항목록') || getChildElement(root, 'choices')
+  // Parse choices from <문제> element
+  // IML structure: <문항> -> <문제> -> <답항>*
+  const questionEl = getChildElement(root, '문제') || getChildElement(root, 'question')
   const choices: ImlChoiceAnswer[] = []
 
-  if (choicesEl) {
-    for (const choiceEl of getChildElements(choicesEl, '답항').concat(
-      getChildElements(choicesEl, 'choice')
-    )) {
-      const id = getAttribute(choiceEl, 'id') || generateId('choice')
+  if (questionEl) {
+    // <답항> elements are direct children of <문제>
+    const choiceElements = getChildElements(questionEl, '답항')
+
+    choiceElements.forEach((choiceEl, i) => {
+      const id = getAttribute(choiceEl, 'id') || `choice_${i + 1}`
       const isCorrect =
         getBooleanAttribute(choiceEl, '정답') || getBooleanAttribute(choiceEl, 'correct')
 
@@ -272,24 +418,63 @@ function parseChoiceItem(root: Element, itemType: '11'): ImlChoiceItem {
         content: parseBlockContent(choiceEl),
         isCorrect,
       })
+    })
+  }
+
+  // Also check for choices wrapper (alternative format)
+  if (choices.length === 0) {
+    const choicesEl = getChildElement(root, '답항목록') || getChildElement(root, 'choices')
+    if (choicesEl) {
+      for (const choiceEl of getChildElements(choicesEl, '답항').concat(
+        getChildElements(choicesEl, 'choice')
+      )) {
+        const id = getAttribute(choiceEl, 'id') || generateId('choice')
+        const isCorrect =
+          getBooleanAttribute(choiceEl, '정답') || getBooleanAttribute(choiceEl, 'correct')
+
+        choices.push({
+          id,
+          content: parseBlockContent(choiceEl),
+          isCorrect,
+        })
+      }
     }
   }
 
-  // Parse correct answer from 정답 element if not marked in choices
-  const correctEl = getChildElement(root, '정답')
-  if (correctEl && choices.every(c => !c.isCorrect)) {
-    const correctId = getTextContent(correctEl)
-    const correctChoice = choices.find(c => c.id === correctId)
-    if (correctChoice) {
-      correctChoice.isCorrect = true
+  // Parse correct answer from 정답 element
+  // Format could be: "1:번호" where 1 is the choice number
+  const correctEl = getChildElement(root, '정답') ||
+                   (questionEl && getChildElement(questionEl, '정답'))
+  if (correctEl) {
+    const correctText = getTextContent(correctEl)
+    // Handle format like "1:7\\,일곱" - extract the choice number
+    const match = correctText.match(/^(\d+):/)
+    if (match && match[1]) {
+      const correctNum = parseInt(match[1], 10)
+      if (correctNum > 0 && correctNum <= choices.length) {
+        const targetChoice = choices[correctNum - 1]
+        if (targetChoice) {
+          targetChoice.isCorrect = true
+        }
+      }
+    } else if (choices.every(c => !c.isCorrect)) {
+      // Try to find choice by id
+      const correctChoice = choices.find(c => c.id === correctText)
+      if (correctChoice) {
+        correctChoice.isCorrect = true
+      }
     }
   }
+
+  // daps attribute indicates number of correct answers
+  const dapsAttr = getAttribute(root, 'daps')
+  const multipleAnswers = dapsAttr ? parseInt(dapsAttr, 10) > 1 : choices.filter(c => c.isCorrect).length > 1
 
   return {
     ...common,
     itemType,
     choices,
-    multipleAnswers: choices.filter(c => c.isCorrect).length > 1,
+    multipleAnswers,
     shuffle: getBooleanAttribute(root, 'shuffle'),
   }
 }

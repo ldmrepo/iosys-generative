@@ -32,6 +32,9 @@ class Settings(BaseSettings):
     embeddings_dir: str = "../poc/results"
     embedding_dim: int = 2048
 
+    # IML Data
+    iml_data_path: str = "/mnt/sda/worker/dev_ldm/iosys-generative"
+
     # Search defaults
     default_top_k: int = 10
     default_threshold: float = 0.5

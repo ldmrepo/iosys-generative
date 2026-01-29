@@ -82,7 +82,16 @@ function blockContentToHtml(content: ImlBlockContent[]): string {
 
 function paragraphToHtml(p: ImlParagraph): string {
   const style = p.align ? ` style="text-align: ${p.align}"` : ''
-  const content = p.content.map(c => (typeof c === 'string' ? c : '')).join('')
+  const content = p.content.map(c => {
+    if (typeof c === 'string') {
+      return c
+    } else if (c.type === 'math') {
+      return mathToHtml(c)
+    } else if (c.type === 'image') {
+      return imageToHtml(c)
+    }
+    return ''
+  }).join('')
   return `<p${style}>${content}</p>`
 }
 

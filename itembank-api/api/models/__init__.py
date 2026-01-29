@@ -9,6 +9,7 @@ from .schemas import (
     BatchSearchResponse,
     ItemResponse,
     ErrorResponse,
+    ImlContentResponse,
 )
 
 __all__ = [
@@ -21,4 +22,5 @@ __all__ = [
     "BatchSearchResponse",
     "ItemResponse",
     "ErrorResponse",
+    "ImlContentResponse",
 ]

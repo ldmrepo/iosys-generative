@@ -1,0 +1,4 @@
+packages:
+  - 'qti-components/packages/*'
+  - 'qti-components/apps/*'
+  - 'itembank-web'
