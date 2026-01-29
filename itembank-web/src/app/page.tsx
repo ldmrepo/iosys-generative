@@ -1,15 +1,26 @@
 'use client'
 
-import { useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
+import { useState, useRef, useEffect, useCallback } from 'react'
+import { useSearchParams, useRouter } from 'next/navigation'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { motion, AnimatePresence } from 'framer-motion'
 import { api } from '@/lib/api'
 import { useAppStore } from '@/lib/store'
-import { MathText } from '@/components/MathText'
-import { QtiItemViewer } from '@/components/QtiItemViewer'
 import type { SearchResultItem } from '@/types/api'
+
+// Components
+import { SearchIcon, SparklesIcon, ChevronLeftIcon } from '@/components/icons'
+import { EmptyState, LoadingState, NoResultsState, SimilarItemsLoadingSkeleton } from '@/components/StateViews'
+import { SearchResultCard, SimilarItemCard, SelectedItemCard } from '@/components/cards'
+import { GenerationModal } from '@/components/modals/GenerationModal'
 
 export default function HomePage() {
   const [inputValue, setInputValue] = useState('')
+  const [isHydrated, setIsHydrated] = useState(false)
+  const hasInitializedRef = useRef(false)
+  const urlInitializedRef = useRef(false)
+  const searchParams = useSearchParams()
+  const router = useRouter()
   const {
     selectedItem,
     setSelectedItem,
@@ -17,6 +28,65 @@ export default function HomePage() {
     setSearchQuery,
     addToHistory
   } = useAppStore()
+
+  // Generation modal state
+  const [generationModalOpen, setGenerationModalOpen] = useState(false)
+  const [generationSourceItem, setGenerationSourceItem] = useState<SearchResultItem | null>(null)
+  const queryClient = useQueryClient()
+
+  // Update URL when selectedItem changes
+  const updateUrl = useCallback((itemId: string | null) => {
+    const params = new URLSearchParams(searchParams.toString())
+    if (itemId) {
+      params.set('selected', itemId)
+    } else {
+      params.delete('selected')
+    }
+    const newUrl = params.toString() ? `?${params.toString()}` : '/'
+    router.replace(newUrl, { scroll: false })
+  }, [searchParams, router])
+
+  // Restore selected item from URL on page load
+  useEffect(() => {
+    if (urlInitializedRef.current) return
+    const selectedId = searchParams.get('selected')
+    if (selectedId && !selectedItem) {
+      api.getItem(selectedId).then((item) => {
+        if (item) {
+          setSelectedItem({
+            item_id: item.item_id,
+            similarity: 1.0,
+            subject: item.metadata?.subject,
+            grade: item.metadata?.grade,
+            difficulty: item.difficulty,
+            question_type: item.question_type,
+            has_image: item.has_image,
+          })
+        }
+        urlInitializedRef.current = true
+      }).catch(() => {
+        urlInitializedRef.current = true
+        updateUrl(null)
+      })
+    } else {
+      urlInitializedRef.current = true
+    }
+  }, [searchParams, selectedItem, setSelectedItem, updateUrl])
+
+  // Sync URL when selectedItem changes (after initialization)
+  useEffect(() => {
+    if (!urlInitializedRef.current) return
+    updateUrl(selectedItem?.item_id ?? null)
+  }, [selectedItem, updateUrl])
+
+  // Hydrate input value from persisted searchQuery
+  useEffect(() => {
+    if (!hasInitializedRef.current && searchQuery) {
+      setInputValue(searchQuery)
+      hasInitializedRef.current = true
+    }
+    setIsHydrated(true)
+  }, [searchQuery])
 
   // Search query
   const { data: searchResults, isLoading: isSearching } = useQuery({
@@ -35,6 +105,7 @@ export default function HomePage() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
     if (inputValue.trim()) {
+      setSelectedItem(null)
       setSearchQuery(inputValue.trim())
       addToHistory(inputValue.trim())
     }
@@ -48,323 +119,266 @@ export default function HomePage() {
     }
   }
 
+  const handleSimilarItemClick = (item: SearchResultItem) => {
+    setSelectedItem(item)
+  }
+
+  const handleGenerateSimilar = (item: SearchResultItem, e: React.MouseEvent) => {
+    e.stopPropagation()
+    setGenerationSourceItem(item)
+    setGenerationModalOpen(true)
+  }
+
+  const handleCloseGenerationModal = () => {
+    setGenerationModalOpen(false)
+    setGenerationSourceItem(null)
+  }
+
+  const handleSaveSuccess = async () => {
+    // Clear cache and refetch all queries after saving new items
+    queryClient.removeQueries({ queryKey: ['iml'] })
+    queryClient.removeQueries({ queryKey: ['search'] })
+    queryClient.removeQueries({ queryKey: ['similar'] })
+  }
+
+  const handleDeleteItem = async (item: SearchResultItem, e: React.MouseEvent) => {
+    e.stopPropagation()
+
+    if (!item.is_ai_generated) {
+      alert('AI 생성 문항만 삭제할 수 있습니다.')
+      return
+    }
+
+    if (!confirm(`"${item.item_id}" 문항을 삭제하시겠습니까?`)) {
+      return
+    }
+
+    try {
+      await api.deleteItem(item.item_id)
+
+      // If the deleted item was selected, clear selection
+      if (selectedItem?.item_id === item.item_id) {
+        setSelectedItem(null)
+      }
+
+      // Refresh queries
+      queryClient.invalidateQueries({ queryKey: ['search'] })
+      queryClient.invalidateQueries({ queryKey: ['similar'] })
+
+      alert('문항이 삭제되었습니다.')
+    } catch (error) {
+      alert(`삭제 실패: ${error instanceof Error ? error.message : 'Unknown error'}`)
+    }
+  }
+
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen bg-slate-50 overflow-hidden">
       {/* Header with Search */}
-      <header className="bg-white border-b px-4 py-3 shadow-sm">
+      <header className="shrink-0 bg-slate-700 border-b-2 border-slate-600 px-4 py-2">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-xl font-bold text-gray-900 mb-3">IOSYS 문항은행</h1>
-          <form onSubmit={handleSearch} className="flex gap-2">
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              placeholder="자연어로 문항을 검색하세요 (예: 삼각형의 넓이를 구하는 문제)"
-              className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button
-              type="submit"
-              disabled={isSearching}
-              className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors"
-            >
-              {isSearching ? '검색 중...' : '검색'}
-            </button>
-          </form>
-          {searchResults && (
-            <p className="mt-2 text-sm text-gray-500">
-              {searchResults.total_count}개 결과 ({searchResults.query_time_ms.toFixed(1)}ms)
-            </p>
-          )}
+          <div className="flex items-center gap-4">
+            {/* Logo */}
+            <div className="flex items-center gap-2 shrink-0">
+              <div className="w-7 h-7 bg-primary-600 flex items-center justify-center">
+                <span className="text-white font-semibold text-sm">Q</span>
+              </div>
+              <span className="text-sm font-medium text-white hidden sm:block">문항은행</span>
+            </div>
+
+            {/* Search Form */}
+            <form onSubmit={handleSearch} className="flex-1 flex gap-2">
+              <div className="relative flex-1">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                  <SearchIcon />
+                </div>
+                <input
+                  type="text"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  placeholder="자연어로 문항 검색..."
+                  className="w-full pl-10 pr-3 py-2 text-sm bg-slate-600 text-white placeholder:text-slate-400 border border-slate-500 focus:outline-none focus:border-slate-400 transition-fast"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={isSearching || !inputValue.trim()}
+                className="btn btn-primary px-4 py-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSearching ? (
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white animate-spin" />
+                ) : (
+                  <SearchIcon />
+                )}
+              </button>
+            </form>
+
+            {/* Search Stats */}
+            {searchResults && (
+              <div className="hidden md:flex items-center gap-2 text-xs text-slate-300 shrink-0">
+                <span className="font-medium text-white">
+                  {searchResults.total_count.toLocaleString()}건
+                </span>
+                <span className="text-slate-500">|</span>
+                <span>{searchResults.query_time_ms.toFixed(0)}ms</span>
+              </div>
+            )}
+          </div>
         </div>
       </header>
 
       {/* Main Content */}
       <main className="flex-1 overflow-hidden">
-        <div className={`h-full flex ${selectedItem ? 'divide-x' : ''}`}>
-          {/* Search Results */}
-          <div className={`${selectedItem ? 'w-1/2' : 'w-full'} overflow-y-auto p-4 transition-all`}>
-            {!searchQuery ? (
-              <div className="flex items-center justify-center h-full text-gray-400">
-                <p>검색어를 입력하세요</p>
-              </div>
-            ) : isSearching ? (
-              <div className="flex items-center justify-center h-full">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
-              </div>
-            ) : searchResults?.results.length === 0 ? (
-              <div className="flex items-center justify-center h-full text-gray-400">
-                <p>검색 결과가 없습니다</p>
-              </div>
-            ) : (
-              <div className="space-y-3">
-                <h2 className="font-semibold text-gray-700 sticky top-0 bg-gray-50 py-2">
-                  검색 결과
-                </h2>
-                {searchResults?.results.map((item) => (
-                  <ItemCard
-                    key={item.item_id}
-                    item={item}
-                    isSelected={selectedItem?.item_id === item.item_id}
-                    onClick={() => handleItemClick(item)}
+        <AnimatePresence mode="wait">
+          {selectedItem ? (
+            // Selected Item View: 1:3 layout
+            <motion.div
+              key="selected-view"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="flex h-full max-w-7xl mx-auto"
+            >
+              {/* Selected Item Panel - 1/4 width */}
+              <motion.div
+                className="w-1/4 min-w-[280px] h-full overflow-y-auto border-r border-slate-200 bg-white"
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+              >
+                <div className="p-4">
+                  <button
+                    onClick={() => setSelectedItem(null)}
+                    className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-700 mb-3 transition-fast"
+                  >
+                    <ChevronLeftIcon />
+                    검색 결과로
+                  </button>
+                  <SelectedItemCard
+                    item={selectedItem}
+                    onGenerate={(e) => handleGenerateSimilar(selectedItem, e)}
+                    onDelete={(e) => handleDeleteItem(selectedItem, e)}
                   />
-                ))}
-              </div>
-            )}
-          </div>
+                </div>
+              </motion.div>
 
-          {/* Selected Item Detail & Similar Items Panel */}
-          {selectedItem && (
-            <div className="w-1/2 overflow-y-auto p-4 bg-gray-100">
-              <div className="flex items-center justify-between mb-3 sticky top-0 bg-gray-100 py-2 z-10">
-                <h2 className="font-semibold text-gray-700">문항 상세</h2>
-                <button
-                  onClick={() => setSelectedItem(null)}
-                  className="text-gray-400 hover:text-gray-600 text-xl leading-none"
-                >
-                  ✕
-                </button>
-              </div>
-
-              {/* Selected Item Full View */}
-              <ItemDetailView item={selectedItem} />
-
-              {/* Similar Items */}
-              <div className="mt-6">
-                <h3 className="font-semibold text-gray-700 mb-3">유사 문항</h3>
-                {isSimilarLoading ? (
-                  <div className="flex items-center justify-center h-32">
-                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600" />
+              {/* Similar Items Panel - 3/4 width */}
+              <motion.div
+                className="flex-1 h-full overflow-y-auto bg-slate-50"
+                initial={{ x: 20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.3, ease: 'easeOut', delay: 0.1 }}
+              >
+                <div className="p-4">
+                  <div className="flex items-center gap-1.5 mb-4">
+                    <SparklesIcon />
+                    <h3 className="text-sm font-medium text-slate-600">유사 문항</h3>
+                    {similarResults && (
+                      <span className="text-xs text-slate-400 ml-1">
+                        ({similarResults.results.filter(i => i.item_id !== selectedItem.item_id).length}건)
+                      </span>
+                    )}
                   </div>
-                ) : similarResults?.results.length === 0 ? (
-                  <p className="text-gray-400 text-center py-8">유사 문항이 없습니다</p>
+
+                  {isSimilarLoading ? (
+                    <SimilarItemsLoadingSkeleton />
+                  ) : similarResults?.results.filter(i => i.item_id !== selectedItem.item_id).length === 0 ? (
+                    <p className="text-sm text-slate-400 text-center py-8">유사 문항이 없습니다</p>
+                  ) : (
+                    <motion.div
+                      className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3"
+                      initial="hidden"
+                      animate="visible"
+                      variants={{
+                        visible: { transition: { staggerChildren: 0.05 } },
+                      }}
+                    >
+                      {similarResults?.results
+                        .filter((item) => item.item_id !== selectedItem.item_id)
+                        .slice(0, 9)
+                        .map((item) => (
+                          <motion.div
+                            key={item.item_id}
+                            variants={{
+                              hidden: { opacity: 0, y: 20 },
+                              visible: { opacity: 1, y: 0 },
+                            }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <SimilarItemCard
+                              item={item}
+                              onClick={() => handleSimilarItemClick(item)}
+                              onGenerate={(e) => handleGenerateSimilar(item, e)}
+                              onDelete={(e) => handleDeleteItem(item, e)}
+                            />
+                          </motion.div>
+                        ))}
+                    </motion.div>
+                  )}
+                </div>
+              </motion.div>
+            </motion.div>
+          ) : (
+            // Search Results View: Full width grid
+            <motion.div
+              key="search-view"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="h-full overflow-y-auto"
+            >
+              <div className="p-4 max-w-7xl mx-auto">
+                {!searchQuery ? (
+                  <EmptyState />
+                ) : isSearching ? (
+                  <LoadingState />
+                ) : searchResults?.results.length === 0 ? (
+                  <NoResultsState query={searchQuery} />
                 ) : (
-                  <div className="space-y-3">
-                    {similarResults?.results
-                      .filter((item) => item.item_id !== selectedItem.item_id)
-                      .map((item) => (
-                        <ItemCard
-                          key={item.item_id}
+                  <motion.div
+                    className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3"
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      visible: { transition: { staggerChildren: 0.03 } },
+                    }}
+                  >
+                    {searchResults?.results.map((item) => (
+                      <motion.div
+                        key={item.item_id}
+                        variants={{
+                          hidden: { opacity: 0, y: 10 },
+                          visible: { opacity: 1, y: 0 },
+                        }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <SearchResultCard
                           item={item}
-                          isSelected={false}
-                          onClick={() => setSelectedItem(item)}
-                          compact
+                          onClick={() => handleItemClick(item)}
+                          onGenerate={(e) => handleGenerateSimilar(item, e)}
+                          onDelete={(e) => handleDeleteItem(item, e)}
                         />
-                      ))}
-                  </div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
                 )}
               </div>
-            </div>
+            </motion.div>
           )}
-        </div>
+        </AnimatePresence>
       </main>
-    </div>
-  )
-}
 
-// Item Detail View Component
-function ItemDetailView({ item }: { item: SearchResultItem }) {
-  const [showAnswer, setShowAnswer] = useState(false)
-
-  return (
-    <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
-      {/* Header with metadata */}
-      <div className="px-4 py-3 border-b bg-gray-50 rounded-t-lg">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-xs font-mono text-gray-500">{item.item_id}</span>
-          <span className={`
-            text-xs px-2 py-0.5 rounded-full
-            ${item.similarity >= 0.8 ? 'bg-green-100 text-green-700' :
-              item.similarity >= 0.6 ? 'bg-yellow-100 text-yellow-700' :
-              'bg-gray-100 text-gray-600'}
-          `}>
-            유사도 {(item.similarity * 100).toFixed(1)}%
-          </span>
-        </div>
-        <div className="flex flex-wrap gap-1">
-          {item.subject && (
-            <span className="text-xs px-2 py-0.5 bg-blue-100 text-blue-700 rounded">
-              {item.subject}
-            </span>
-          )}
-          {item.grade && (
-            <span className="text-xs px-2 py-0.5 bg-blue-100 text-blue-700 rounded">
-              {item.grade}
-            </span>
-          )}
-          {item.difficulty && (
-            <span className={`text-xs px-2 py-0.5 rounded
-              ${item.difficulty === '상' ? 'bg-red-100 text-red-700' :
-                item.difficulty === '중' ? 'bg-yellow-100 text-yellow-700' :
-                'bg-green-100 text-green-700'}
-            `}>
-              난이도: {item.difficulty}
-            </span>
-          )}
-          {item.question_type && (
-            <span className="text-xs px-2 py-0.5 bg-purple-100 text-purple-700 rounded">
-              {item.question_type}
-            </span>
-          )}
-          {item.unit_large && (
-            <span className="text-xs px-2 py-0.5 bg-gray-100 text-gray-600 rounded">
-              {item.unit_large}
-            </span>
-          )}
-        </div>
-      </div>
-
-      {/* QTI Viewer - Full item rendering */}
-      <div className="p-4">
-        <QtiItemViewer
-          itemId={item.item_id}
-          showAnswer={showAnswer}
-          showExplanation={showAnswer}
-        />
-      </div>
-
-      {/* Answer & Explanation Toggle */}
-      <div className="border-t">
-        <button
-          onClick={() => setShowAnswer(!showAnswer)}
-          className="w-full px-4 py-2 text-sm text-blue-600 hover:bg-blue-50 flex items-center justify-center gap-1"
-        >
-          {showAnswer ? '정답/해설 숨기기' : '정답/해설 보기'}
-          <span className="text-xs">{showAnswer ? '▲' : '▼'}</span>
-        </button>
-      </div>
-    </div>
-  )
-}
-
-// Item Card Component - Full content view
-function ItemCard({
-  item,
-  isSelected,
-  onClick,
-  compact = false,
-}: {
-  item: SearchResultItem
-  isSelected: boolean
-  onClick: () => void
-  compact?: boolean
-}) {
-  return (
-    <div
-      onClick={onClick}
-      className={`
-        rounded-lg border cursor-pointer transition-all overflow-hidden
-        ${isSelected
-          ? 'border-blue-500 ring-2 ring-blue-200'
-          : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'
-        }
-      `}
-    >
-      {/* Header with metadata */}
-      <div className={`px-3 py-2 border-b ${isSelected ? 'bg-blue-50' : 'bg-gray-50'}`}>
-        <div className="flex items-center justify-between mb-1">
-          <span className="text-xs font-mono text-gray-400">
-            {item.item_id.slice(0, 8)}...
-          </span>
-          <span className={`
-            text-xs px-2 py-0.5 rounded-full
-            ${item.similarity >= 0.8 ? 'bg-green-100 text-green-700' :
-              item.similarity >= 0.6 ? 'bg-yellow-100 text-yellow-700' :
-              'bg-gray-100 text-gray-600'}
-          `}>
-            {(item.similarity * 100).toFixed(1)}%
-          </span>
-        </div>
-        <div className="flex flex-wrap gap-1">
-          {item.subject && (
-            <span className="text-xs px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded">
-              {item.subject}
-            </span>
-          )}
-          {item.grade && (
-            <span className="text-xs px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded">
-              {item.grade}
-            </span>
-          )}
-          {item.difficulty && (
-            <span className={`text-xs px-1.5 py-0.5 rounded
-              ${item.difficulty === '상' ? 'bg-red-100 text-red-700' :
-                item.difficulty === '중' ? 'bg-yellow-100 text-yellow-700' :
-                'bg-green-100 text-green-700'}
-            `}>
-              {item.difficulty}
-            </span>
-          )}
-          {item.question_type && (
-            <span className="text-xs px-1.5 py-0.5 bg-purple-100 text-purple-700 rounded">
-              {item.question_type}
-            </span>
-          )}
-          {item.has_image && (
-            <span className="text-xs px-1.5 py-0.5 bg-orange-100 text-orange-700 rounded">
-              이미지
-            </span>
-          )}
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className={`p-3 ${isSelected ? 'bg-blue-50/50' : 'bg-white'} ${compact ? 'text-sm' : ''}`}>
-        {/* Question */}
-        <div className="mb-3">
-          <h4 className="text-xs font-semibold text-gray-500 mb-1">물음</h4>
-          <div className={`text-gray-800 leading-relaxed ${compact ? 'line-clamp-3' : ''}`}>
-            {item.question_text ? (
-              <MathText text={item.question_text} />
-            ) : (
-              <span className="text-gray-400">(문항 내용 없음)</span>
-            )}
-          </div>
-        </div>
-
-        {/* Choices (for 선택형) */}
-        {item.choices && item.choices.length > 0 && !compact && (
-          <div className="mb-3">
-            <h4 className="text-xs font-semibold text-blue-600 mb-1">선택지</h4>
-            <ol className="list-none space-y-1 text-sm text-gray-700">
-              {item.choices.map((choice, idx) => (
-                <li key={idx} className="flex gap-2">
-                  <span className="text-gray-400 w-5 flex-shrink-0">{'①②③④⑤⑥⑦⑧⑨⑩'[idx] || (idx + 1)}</span>
-                  <MathText text={choice} />
-                </li>
-              ))}
-            </ol>
-          </div>
+      {/* Generation Modal */}
+      <AnimatePresence>
+        {generationModalOpen && generationSourceItem && (
+          <GenerationModal
+            sourceItem={generationSourceItem}
+            onClose={handleCloseGenerationModal}
+            onSaveSuccess={handleSaveSuccess}
+          />
         )}
-
-        {/* Answer */}
-        {item.answer_text && !compact && (
-          <div className="mb-3">
-            <h4 className="text-xs font-semibold text-green-600 mb-1">정답</h4>
-            <div className="p-2 bg-green-50 rounded text-gray-800 text-sm">
-              <MathText text={item.answer_text} />
-            </div>
-          </div>
-        )}
-
-        {/* Explanation */}
-        {item.explanation_text && !compact && (
-          <div>
-            <h4 className="text-xs font-semibold text-amber-600 mb-1">해설</h4>
-            <div className="p-2 bg-amber-50 rounded text-gray-800 text-sm leading-relaxed">
-              <MathText text={item.explanation_text} />
-            </div>
-          </div>
-        )}
-
-        {/* Compact mode: show indicator if has answer/explanation/choices */}
-        {compact && (item.answer_text || item.explanation_text || item.choices) && (
-          <div className="text-xs text-gray-400 mt-2">
-            {item.choices && `${item.choices.length}지선다 `}
-            {item.answer_text && '| 정답 '}
-            {item.explanation_text && '| 해설'}
-          </div>
-        )}
-      </div>
+      </AnimatePresence>
     </div>
   )
 }

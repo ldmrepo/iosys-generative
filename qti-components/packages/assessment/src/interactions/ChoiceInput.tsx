@@ -55,7 +55,7 @@ export function ChoiceInput({
   return (
     <div
       className={
-        orientation === 'horizontal' ? 'flex flex-wrap gap-4' : 'flex flex-col gap-2'
+        orientation === 'horizontal' ? 'flex flex-wrap gap-2' : 'flex flex-col gap-1'
       }
       role={isMultiple ? 'group' : 'radiogroup'}
     >
@@ -71,17 +71,18 @@ export function ChoiceInput({
             disabled={disabled}
             onClick={() => handleSelect(choice.identifier)}
             className={`
-              flex items-start gap-3 p-3 rounded-lg border text-left transition-colors
-              ${isSelected ? 'border-qti-primary bg-blue-50' : 'border-gray-200 hover:border-gray-300'}
+              flex items-baseline gap-2 py-1 px-1.5 -mx-1.5 rounded text-left transition-colors
+              ${isSelected ? 'bg-blue-50' : 'hover:bg-gray-50'}
               ${disabled ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}
             `}
           >
             <ChoiceLabel
               index={index}
+              style="number"
               selected={isSelected}
             />
             <div
-              className="flex-1 prose prose-sm max-w-none"
+              className="flex-1 prose prose-sm max-w-none [&>p]:my-0"
               dangerouslySetInnerHTML={{ __html: choice.content }}
             />
           </button>

@@ -3,6 +3,18 @@
  * Converts ImlItem objects to QTI AssessmentItem format
  */
 
+export interface ImlToQtiOptions {
+  /** Base URL for image paths (e.g., '/api/search/images/') */
+  imageBaseUrl?: string
+}
+
+// Module-level options that can be set before conversion
+let globalOptions: ImlToQtiOptions = {}
+
+export function setImlToQtiOptions(options: ImlToQtiOptions) {
+  globalOptions = { ...globalOptions, ...options }
+}
+
 import type {
   ImlItem,
   ImlChoiceItem,
@@ -17,6 +29,7 @@ import type {
   ImlImage,
   ImlMath,
   ImlTable,
+  ImlExampleBox,
 } from '../types/iml'
 
 import type {
@@ -74,6 +87,8 @@ function blockContentToHtml(content: ImlBlockContent[]): string {
         return mathToHtml(block)
       case 'table':
         return tableToHtml(block)
+      case 'exampleBox':
+        return exampleBoxToHtml(block)
       default:
         return ''
     }
@@ -81,7 +96,7 @@ function blockContentToHtml(content: ImlBlockContent[]): string {
 }
 
 function paragraphToHtml(p: ImlParagraph): string {
-  const style = p.align ? ` style="text-align: ${p.align}"` : ''
+  // Note: Ignoring p.align - all content should be left-aligned by default
   const content = p.content.map(c => {
     if (typeof c === 'string') {
       return c
@@ -89,23 +104,87 @@ function paragraphToHtml(p: ImlParagraph): string {
       return mathToHtml(c)
     } else if (c.type === 'image') {
       return imageToHtml(c)
+    } else if (c.type === 'blank') {
+      // 완성형 문항의 빈칸 렌더링
+      const width = c.size ? `${c.size * 10}px` : '80px'
+      return `<span class="qti-blank" data-blank-id="${c.id}" style="display: inline-block; min-width: ${width}; border-bottom: 1px solid currentColor; margin: 0 2px;">&nbsp;</span>`
     }
     return ''
   }).join('')
-  return `<p${style}>${content}</p>`
+  return `<p>${content}</p>`
 }
 
 function imageToHtml(img: ImlImage): string {
-  const attrs = [`src="${img.src}"`]
+  // Resolve image src with optional base URL
+  let src = img.src || ''
+
+  // Convert Windows backslashes to forward slashes
+  src = src.replace(/\\/g, '/')
+
+  // Trim whitespace and newlines from path
+  src = src.trim()
+
+  if (src && globalOptions.imageBaseUrl) {
+    // Don't modify absolute URLs or data URLs
+    if (!src.startsWith('http://') && !src.startsWith('https://') && !src.startsWith('data:')) {
+      // Remove leading slash if present to avoid double slashes
+      const cleanSrc = src.startsWith('/') ? src.slice(1) : src
+      const baseUrl = globalOptions.imageBaseUrl.endsWith('/')
+        ? globalOptions.imageBaseUrl
+        : globalOptions.imageBaseUrl + '/'
+      src = baseUrl + cleanSrc
+    }
+  }
+
+  const attrs = [`src="${src}"`]
   if (img.alt) attrs.push(`alt="${img.alt}"`)
   if (img.width) attrs.push(`width="${img.width}"`)
   if (img.height) attrs.push(`height="${img.height}"`)
+
+  // Add style for responsive display and alignment
+  const styles = ['max-width: 100%', 'height: auto']
+
+  // Handle alignment (already normalized to left/center/right in parser)
+  if (img.align === 'center') {
+    styles.push('display: block', 'margin: 0 auto')
+  } else if (img.align === 'right') {
+    styles.push('display: block', 'margin-left: auto')
+  }
+
+  attrs.push(`style="${styles.join('; ')}"`)
+
   return `<img ${attrs.join(' ')} />`
 }
 
 function mathToHtml(math: ImlMath): string {
   const displayClass = math.display === 'block' ? 'math-block' : 'math-inline'
   return `<span class="math ${displayClass}" data-latex="${math.latex}"></span>`
+}
+
+function exampleBoxToHtml(box: ImlExampleBox): string {
+  const title = box.title || '보기'
+  const innerContent = blockContentToHtml(box.content)
+
+  // Build inline styles
+  const boxStyles: string[] = []
+  if (box.border === false) {
+    boxStyles.push('border: none')
+  }
+  if (box.backgroundColor) {
+    boxStyles.push(`background-color: ${box.backgroundColor}`)
+  }
+  const boxStyleAttr = boxStyles.length > 0 ? ` style="${boxStyles.join('; ')}"` : ''
+
+  // Title alignment
+  const titleStyles: string[] = []
+  if (box.titleAlign === 'center') {
+    titleStyles.push('text-align: center')
+  } else if (box.titleAlign === 'right') {
+    titleStyles.push('text-align: right')
+  }
+  const titleStyleAttr = titleStyles.length > 0 ? ` style="${titleStyles.join('; ')}"` : ''
+
+  return `<div class="example-box"${boxStyleAttr}><div class="example-box-title"${titleStyleAttr}>${title}</div><div class="example-box-content">${innerContent}</div></div>`
 }
 
 function tableToHtml(table: ImlTable): string {
@@ -115,17 +194,49 @@ function tableToHtml(table: ImlTable): string {
       const attrs: string[] = []
       if (cell.colspan) attrs.push(`colspan="${cell.colspan}"`)
       if (cell.rowspan) attrs.push(`rowspan="${cell.rowspan}"`)
+
+      // Build cell styles
+      const styles: string[] = []
+      if (cell.w) styles.push(`width: ${cell.w}%`)
+      if (cell.h) styles.push(`height: ${cell.h}%`)
+      if (cell.valign) {
+        const valignMap = { top: 'top', middle: 'middle', bottom: 'bottom' }
+        styles.push(`vertical-align: ${valignMap[cell.valign]}`)
+      }
+      if (cell.backgroundColor) {
+        styles.push(`background-color: ${cell.backgroundColor}`)
+      }
+      if (cell.borderInfo) {
+        const [left, top, right, bottom] = cell.borderInfo
+        const borderStyle = (val: number) => val === 0 ? 'none' : val === 2 ? 'dotted' : 'solid'
+        styles.push(`border-left-style: ${borderStyle(left)}`)
+        styles.push(`border-top-style: ${borderStyle(top)}`)
+        styles.push(`border-right-style: ${borderStyle(right)}`)
+        styles.push(`border-bottom-style: ${borderStyle(bottom)}`)
+      }
+
+      if (styles.length > 0) {
+        attrs.push(`style="${styles.join('; ')}"`)
+      }
+
       const content = blockContentToHtml(cell.content)
       return `<${tag}${attrs.length ? ' ' + attrs.join(' ') : ''}>${content}</${tag}>`
     }).join('')
     return `<tr>${cells}</tr>`
   }).join('\n')
 
-  const tableAttrs: string[] = []
-  if (table.border) tableAttrs.push(`border="${table.border}"`)
+  const tableAttrs: string[] = ['class="iml-table"']
+  if (table.border !== undefined) tableAttrs.push(`border="${table.border}"`)
   if (table.width) tableAttrs.push(`width="${table.width}"`)
 
-  return `<table${tableAttrs.length ? ' ' + tableAttrs.join(' ') : ''}>\n${rows}\n</table>`
+  // Add colgroup for column widths
+  let colgroup = ''
+  if (table.colWidths && table.colWidths.length > 0) {
+    const cols = table.colWidths.map(w => `<col style="width: ${w}%">`).join('')
+    colgroup = `<colgroup>${cols}</colgroup>\n`
+  }
+
+  return `<table ${tableAttrs.join(' ')}>\n${colgroup}${rows}\n</table>`
 }
 
 /**
@@ -169,7 +280,7 @@ function createBaseItem(item: ImlItem, interactions: Interaction[]): AssessmentI
 
   return {
     identifier: item.id,
-    title: `Item ${item.id}`,
+    title: '',
     responseDeclarations,
     outcomeDeclarations,
     itemBody,
@@ -264,6 +375,8 @@ function convertChoiceItem(item: ImlChoiceItem): AssessmentItem {
     maxChoices: item.multipleAnswers ? 0 : 1,
     shuffle: item.shuffle,
     simpleChoices,
+    // Pass columns info for grid layout (1=vertical, 2+=grid)
+    columns: item.choiceColumns,
   }
 
   return createBaseItem(item, [interaction])

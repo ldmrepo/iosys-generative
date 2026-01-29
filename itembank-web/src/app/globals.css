@@ -2,54 +2,240 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import QTI component styles */
+@import '@iosys/qti-ui/styles.css';
+
+/* Fonts - Inter + Pretendard */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+
+/* ============================================
+   FLAT DESIGN SYSTEM - No Shadows, Clean Lines
+   ============================================ */
+
 :root {
-  --foreground: #171717;
-  --background: #ffffff;
+  /* Primary Colors - Indigo */
+  --color-primary: #4F46E5;
+  --color-primary-light: #EEF2FF;
+  --color-primary-dark: #3730A3;
+
+  /* Accent - Emerald */
+  --color-accent: #10B981;
+  --color-accent-light: #ECFDF5;
+
+  /* Neutrals */
+  --color-text: #1E293B;
+  --color-text-muted: #64748B;
+  --color-bg: #FFFFFF;
+  --color-bg-subtle: #F8FAFC;
+  --color-border: #E2E8F0;
+  --color-border-strong: #CBD5E1;
+}
+
+html {
+  font-size: 120%;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg-subtle);
+  font-feature-settings: 'ss01' on, 'ss02' on;
+  letter-spacing: -0.02em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar */
+/* Minimal scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: var(--color-border-strong);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1a1;
+  background: var(--color-text-muted);
 }
 
-/* Item card hover effect */
-.item-card {
-  @apply transition-all duration-150;
+/* Focus states - Clean ring */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
 }
 
-.item-card:hover {
-  @apply bg-gray-50;
+/* Selection */
+::selection {
+  background: #C7D2FE;
+  color: #312E81;
 }
 
-.item-card.selected {
-  @apply bg-primary-50 border-primary-500;
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+@layer utilities {
+  .transition-fast {
+    @apply transition-colors duration-150 ease-out;
+  }
 }
 
-/* Similarity bar */
-.similarity-bar {
-  @apply h-1.5 rounded-full bg-gray-200 overflow-hidden;
+/* ============================================
+   COMPONENTS - Flat Design
+   ============================================ */
+
+@layer components {
+  /* Badge - Flat, no shadow */
+  .badge {
+    @apply inline-flex items-center px-1.5 py-0.5 text-xs font-medium rounded-sm;
+  }
+
+  .badge-primary {
+    @apply bg-primary-100 text-primary-700;
+  }
+
+  .badge-accent {
+    @apply bg-emerald-100 text-emerald-700;
+  }
+
+  .badge-warning {
+    @apply bg-amber-100 text-amber-700;
+  }
+
+  .badge-danger {
+    @apply bg-red-100 text-red-700;
+  }
+
+  .badge-neutral {
+    @apply bg-slate-100 text-slate-600;
+  }
+
+  /* Card - Flat with border only */
+  .card {
+    @apply bg-white border border-slate-200 rounded-none;
+  }
+
+  .card-hover {
+    @apply hover:border-primary-400 hover:bg-slate-50 transition-fast cursor-pointer;
+  }
+
+  /* Button - Flat design */
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 px-3 py-1.5
+           text-sm font-medium rounded-none transition-fast cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 text-white border border-primary-600
+           hover:bg-primary-700 hover:border-primary-700
+           active:bg-primary-800;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-slate-700 border border-slate-300
+           hover:bg-slate-50 hover:border-slate-400
+           active:bg-slate-100;
+  }
+
+  .btn-ghost {
+    @apply text-slate-600 border border-transparent
+           hover:text-slate-900 hover:bg-slate-100;
+  }
+
+  /* Input - Flat, clean borders */
+  .input {
+    @apply w-full px-3 py-2 text-sm bg-white
+           border border-slate-300 rounded-none
+           placeholder:text-slate-400
+           focus:outline-none focus:border-primary-500 focus:ring-0
+           transition-fast;
+  }
 }
 
-.similarity-bar-fill {
-  @apply h-full rounded-full transition-all duration-300;
+/* ============================================
+   QTI CONTENT STYLES
+   ============================================ */
+
+/* Prose - Clean typography */
+.prose {
+  @apply text-slate-700 text-sm leading-relaxed;
+}
+
+/* Question content - semi-bold */
+.qti-question {
+  @apply font-semibold;
+}
+
+.prose p {
+  @apply my-1.5;
+}
+
+.prose img {
+  @apply my-2 max-w-full h-auto;
+}
+
+/* Example Box (보기) - Flat Korean exam style */
+.example-box {
+  @apply my-3 border border-slate-400 bg-white;
+}
+
+.example-box-title {
+  @apply text-xs font-medium text-slate-600 -mt-[0.55rem] mx-auto px-2 bg-white w-fit;
+}
+
+.example-box-content {
+  @apply px-3 py-2;
+}
+
+.example-box-content p {
+  @apply my-1;
+}
+
+/* IML Table - Clean borders */
+.iml-table {
+  @apply border-collapse my-2 text-sm;
+}
+
+.iml-table td,
+.iml-table th {
+  @apply border border-slate-300 px-2 py-1.5;
+}
+
+.iml-table th {
+  @apply bg-slate-50 font-medium text-slate-700;
+}
+
+/* Skeleton - Subtle pulse */
+.skeleton {
+  @apply bg-slate-100 animate-pulse rounded-none;
+}
+
+/* ============================================
+   ANIMATION - Reduced motion respect
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 200ms ease-out;
 }

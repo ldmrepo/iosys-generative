@@ -17,9 +17,11 @@ import type {
   ImlParagraph,
   ImlImage,
   ImlMath,
+  ImlBlank,
   ImlTable,
   ImlTableRow,
   ImlTableCell,
+  ImlExampleBox,
   ImlChoiceAnswer,
   ImlMatchItem,
   ImlMatchPair,
@@ -239,14 +241,8 @@ function parseBlockContent(parent: Element): ImlBlockContent[] {
         content.push(parseTable(child))
         break
       case '보기':
-        // Parse <보기> (example box) - contains paragraphs inside
-        const boxTitle = getAttribute(child, 'title') || '<보기>'
-        content.push({
-          type: 'paragraph',
-          content: [`[${boxTitle}]`],
-        })
-        // Recursively parse content inside <보기>
-        content.push(...parseBlockContent(child))
+        // Parse <보기> (example box) as ImlExampleBox
+        content.push(parseExampleBox(child))
         break
       case '형판':
         // Skip template element (formatting instruction)
@@ -277,8 +273,8 @@ function parseParagraph(element: Element): ImlParagraph {
   const align = getAttribute(element, 'align') || getAttribute(element, 'justv')
   const alignValue = align === '1' ? 'center' : align === '2' ? 'right' : undefined
 
-  // Parse mixed content: <문자열>, <수식>, <그림> elements
-  const content: Array<string | ImlMath | ImlImage> = []
+  // Parse mixed content: <문자열>, <수식>, <그림>, <답박스> elements
+  const content: Array<string | ImlMath | ImlImage | ImlBlank> = []
 
   for (const child of Array.from(element.childNodes)) {
     if (child.nodeType === 3) { // Text node
@@ -301,13 +297,72 @@ function parseParagraph(element: Element): ImlParagraph {
           latex: getTextContent(el) || getAttribute(el, 'latex') || '',
           display: 'inline',
         })
-      } else if (tagName === '그림' || tagName === 'img') {
+      } else if (tagName === '그림' || tagName === '문자그림' || tagName === 'img') {
+        // IML image: text content contains actual file path (e.g., "ItemID\DrawObjPic\image.jpg")
+        const textContent = el.textContent?.trim() || ''
+        const hasPathInfo = textContent.includes('\\') || textContent.includes('/') ||
+                            /\.(jpg|jpeg|png|gif|bmp|webp|svg)$/i.test(textContent)
+
+        const imgSrc = (hasPathInfo ? textContent : '') ||
+                       getAttribute(el, 'original') ||
+                       getAttribute(el, 'preview') ||
+                       getAttribute(el, 'src') ||
+                       getAttribute(el, '경로') ||
+                       textContent || ''
+
+        // Convert percentage to pixels based on standard item width
+        const BASE_WIDTH = 600
+        const wPct = getNumberAttribute(el, 'w')
+        const hPct = getNumberAttribute(el, 'h')
+        const owVal = getNumberAttribute(el, 'ow')
+        const ohVal = getNumberAttribute(el, 'oh')
+
+        let imgWidth: number | undefined
+        let imgHeight: number | undefined
+
+        if (wPct && hPct) {
+          imgWidth = Math.round((wPct / 100) * BASE_WIDTH)
+          imgHeight = Math.round((hPct / 100) * BASE_WIDTH)
+        } else if (owVal && ohVal) {
+          const maxD = 400
+          if (owVal > maxD || ohVal > maxD) {
+            const sc = Math.min(maxD / owVal, maxD / ohVal)
+            imgWidth = Math.round(owVal * sc)
+            imgHeight = Math.round(ohVal * sc)
+          } else {
+            imgWidth = owVal
+            imgHeight = ohVal
+          }
+        }
+
+        // Extract alignment
+        const justh = getAttribute(el, 'justh')
+        const center = getAttribute(el, 'Center')
+        let imgAlign: 'left' | 'center' | 'right' | undefined
+        if (justh === 'C' || center === '1') {
+          imgAlign = 'center'
+        } else if (justh === 'R') {
+          imgAlign = 'right'
+        } else if (justh === 'L') {
+          imgAlign = 'left'
+        }
+
         content.push({
           type: 'image',
-          src: getAttribute(el, 'src') || getAttribute(el, '경로') || '',
+          src: imgSrc,
           alt: getAttribute(el, 'alt') || getAttribute(el, '설명') || undefined,
-          width: getNumberAttribute(el, 'width') || getNumberAttribute(el, 'w') || undefined,
-          height: getNumberAttribute(el, 'height') || getNumberAttribute(el, 'h') || undefined,
+          width: imgWidth,
+          height: imgHeight,
+          align: imgAlign,
+        })
+      } else if (tagName === '답박스') {
+        // 완성형 문항의 빈칸 (did: 답박스 순서 ID, iLenEng: 영문 기준 길이)
+        const did = getAttribute(el, 'did') || generateId('blank')
+        const iLenEng = getNumberAttribute(el, 'iLenEng')
+        content.push({
+          type: 'blank',
+          id: did,
+          size: iLenEng,
         })
       }
     }
@@ -329,12 +384,73 @@ function parseParagraph(element: Element): ImlParagraph {
 }
 
 function parseImage(element: Element): ImlImage {
+  // IML image path priority:
+  // 1. Text content (actual file path like "ItemID\DrawObjPic\image.jpg")
+  // 2. original/preview attributes (full path)
+  // 3. src/경로 attributes (standard)
+  // 4. name attribute (just identifier, not actual path - avoid using)
+  const textContent = element.textContent?.trim() || ''
+
+  // Text content is the actual file path if it contains path separators or file extension
+  const hasPathInfo = textContent.includes('\\') || textContent.includes('/') ||
+                      /\.(jpg|jpeg|png|gif|bmp|webp|svg)$/i.test(textContent)
+
+  const src = (hasPathInfo ? textContent : '') ||
+              getAttribute(element, 'original') ||
+              getAttribute(element, 'preview') ||
+              getAttribute(element, 'src') ||
+              getAttribute(element, '경로') ||
+              textContent || ''
+
+  // IML size attributes:
+  // - w, h: percentage of item width (use this for display)
+  // - ow, oh: original image pixel size (too large, only use for aspect ratio)
+  // Convert percentage to pixels based on standard item width (~600px)
+  const BASE_ITEM_WIDTH = 600
+  const wPercent = getNumberAttribute(element, 'w')
+  const hPercent = getNumberAttribute(element, 'h')
+  const ow = getNumberAttribute(element, 'ow')
+  const oh = getNumberAttribute(element, 'oh')
+
+  let width: number | undefined
+  let height: number | undefined
+
+  if (wPercent && hPercent) {
+    // Use percentage values converted to pixels
+    width = Math.round((wPercent / 100) * BASE_ITEM_WIDTH)
+    height = Math.round((hPercent / 100) * BASE_ITEM_WIDTH)
+  } else if (ow && oh) {
+    // Fallback to original size but cap at reasonable max
+    const maxDim = 400
+    if (ow > maxDim || oh > maxDim) {
+      const scale = Math.min(maxDim / ow, maxDim / oh)
+      width = Math.round(ow * scale)
+      height = Math.round(oh * scale)
+    } else {
+      width = ow
+      height = oh
+    }
+  }
+
+  // IML alignment: justh (L=left, C=center, R=right), Center (1=center)
+  const justh = getAttribute(element, 'justh')
+  const center = getAttribute(element, 'Center')
+  let align: 'left' | 'center' | 'right' | undefined
+  if (justh === 'C' || center === '1') {
+    align = 'center'
+  } else if (justh === 'R') {
+    align = 'right'
+  } else if (justh === 'L') {
+    align = 'left'
+  }
+
   return {
     type: 'image',
-    src: getAttribute(element, 'src') || getAttribute(element, '경로'),
+    src,
     alt: getAttribute(element, 'alt') || getAttribute(element, '설명') || undefined,
-    width: getNumberAttribute(element, 'width') || undefined,
-    height: getNumberAttribute(element, 'height') || undefined,
+    width,
+    height,
+    align,
   }
 }
 
@@ -348,6 +464,14 @@ function parseMathElement(element: Element): ImlMath {
 
 function parseTable(element: Element): ImlTable {
   const rows: ImlTableRow[] = []
+
+  // Parse column width ratios (format: "width1;width2;...;widthN")
+  const colWidthsAttr = getAttribute(element, 'colBaseWidthRates')
+  let colWidths: number[] | undefined
+  if (colWidthsAttr) {
+    colWidths = colWidthsAttr.split(';').map(w => parseFloat(w)).filter(w => !isNaN(w))
+    if (colWidths.length === 0) colWidths = undefined
+  }
 
   // Handle both <TR> and <tr> elements
   const trElements = getChildElements(element, 'TR').length > 0
@@ -370,13 +494,74 @@ function parseTable(element: Element): ImlTable {
           cellContent = parseBlockContent(cell)
         }
 
-        cells.push({
+        // Parse cell position/size (IML uses percentage)
+        const x = getNumberAttribute(cell, 'x')
+        const y = getNumberAttribute(cell, 'y')
+        const w = getNumberAttribute(cell, 'w')
+        const h = getNumberAttribute(cell, 'h')
+
+        // Parse colspan/rowspan from cnt attribute (format: "cols,rows")
+        const cntAttr = getAttribute(cell, 'cnt')
+        let colspan: number | undefined
+        let rowspan: number | undefined
+        if (cntAttr) {
+          const parts = cntAttr.split(',')
+          if (parts[0]) colspan = parseInt(parts[0], 10)
+          if (parts[1]) rowspan = parseInt(parts[1], 10)
+          if (colspan === 1) colspan = undefined
+          if (rowspan === 1) rowspan = undefined
+        }
+        // Also check standard HTML attributes
+        colspan = colspan || getNumberAttribute(cell, 'colspan') || undefined
+        rowspan = rowspan || getNumberAttribute(cell, 'rowspan') || undefined
+
+        // Parse vertical alignment (cjustv: 1=top, 2=bottom, 3=center)
+        const cjustv = getAttribute(cell, 'cjustv')
+        let valign: 'top' | 'middle' | 'bottom' | undefined
+        if (cjustv === '1') valign = 'top'
+        else if (cjustv === '2') valign = 'bottom'
+        else if (cjustv === '3') valign = 'middle'
+
+        // Parse background color (RGB integer)
+        const colbk = getAttribute(cell, 'colbk')
+        let backgroundColor: string | undefined
+        if (colbk) {
+          const colorNum = parseInt(colbk, 10)
+          if (!isNaN(colorNum)) {
+            const r = colorNum & 0xff
+            const g = (colorNum >> 8) & 0xff
+            const b = (colorNum >> 16) & 0xff
+            backgroundColor = `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`
+          }
+        }
+
+        // Parse border info (format: "left,top,right,bottom")
+        const borderInfoAttr = getAttribute(cell, 'borderinfo')
+        let borderInfo: [number, number, number, number] | undefined
+        if (borderInfoAttr) {
+          const parts = borderInfoAttr.split(',').map(p => parseInt(p, 10))
+          if (parts.length === 4 && parts.every(p => !isNaN(p))) {
+            borderInfo = parts as [number, number, number, number]
+          }
+        }
+
+        const cellData: ImlTableCell = {
           type: cellTagName === 'TH' ? 'th' : 'td',
           content: cellContent,
-          colspan: getNumberAttribute(cell, 'colspan') ||
-                   (getNumberAttribute(cell, 'cnt')?.toString().split(',')[0] ? undefined : undefined),
-          rowspan: getNumberAttribute(cell, 'rowspan') || undefined,
-        })
+        }
+
+        // Only add optional properties if they have values
+        if (x !== undefined) cellData.x = x
+        if (y !== undefined) cellData.y = y
+        if (w !== undefined) cellData.w = w
+        if (h !== undefined) cellData.h = h
+        if (colspan) cellData.colspan = colspan
+        if (rowspan) cellData.rowspan = rowspan
+        if (valign) cellData.valign = valign
+        if (backgroundColor) cellData.backgroundColor = backgroundColor
+        if (borderInfo) cellData.borderInfo = borderInfo
+
+        cells.push(cellData)
       }
     }
 
@@ -385,12 +570,89 @@ function parseTable(element: Element): ImlTable {
     }
   }
 
-  return {
+  const result: ImlTable = {
     type: 'table',
     rows,
-    border: getNumberAttribute(element, 'border') || 1,
-    width: getAttribute(element, 'width') || undefined,
   }
+
+  if (colWidths) result.colWidths = colWidths
+
+  // Legacy attributes
+  const border = getNumberAttribute(element, 'border')
+  if (border !== undefined) result.border = border
+  const width = getAttribute(element, 'width')
+  if (width) result.width = width
+
+  return result
+}
+
+/**
+ * Parse example box (보기)
+ */
+function parseExampleBox(element: Element): ImlExampleBox {
+  // Get title attribute
+  const title = getAttribute(element, 'title') || '보기'
+
+  // Get title alignment: 0=left, 1=center, 2=right
+  const titlejust = getAttribute(element, 'titlejust')
+  let titleAlign: 'left' | 'center' | 'right' | undefined
+  if (titlejust === '1') {
+    titleAlign = 'center'
+  } else if (titlejust === '2') {
+    titleAlign = 'right'
+  } else if (titlejust === '0') {
+    titleAlign = 'left'
+  }
+
+  // Get border attribute (0=no border, non-zero=has border)
+  const borderAttr = getAttribute(element, 'border')
+  const border = borderAttr ? borderAttr !== '0' : true // default to border
+
+  // Get background color (colbk attribute, RGB value)
+  const colbk = getAttribute(element, 'colbk')
+  let backgroundColor: string | undefined
+  if (colbk) {
+    // Convert RGB number to hex if needed
+    const colorNum = parseInt(colbk, 10)
+    if (!isNaN(colorNum)) {
+      // Convert RGB integer to hex color
+      const r = colorNum & 0xff
+      const g = (colorNum >> 8) & 0xff
+      const b = (colorNum >> 16) & 0xff
+      backgroundColor = `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`
+    } else {
+      backgroundColor = colbk
+    }
+  }
+
+  // Parse content: <보기> contains <물음> elements
+  let boxContent: ImlBlockContent[] = []
+  const questionElements = getChildElements(element, '물음')
+  if (questionElements.length > 0) {
+    for (const qEl of questionElements) {
+      boxContent.push(...parseBlockContent(qEl))
+    }
+  } else {
+    // Fallback: parse direct children
+    boxContent = parseBlockContent(element)
+  }
+
+  const result: ImlExampleBox = {
+    type: 'exampleBox',
+    title,
+    border,
+    content: boxContent,
+  }
+
+  // Only add optional properties if they have values
+  if (titleAlign) {
+    result.titleAlign = titleAlign
+  }
+  if (backgroundColor) {
+    result.backgroundColor = backgroundColor
+  }
+
+  return result
 }
 
 /**
@@ -470,12 +732,18 @@ function parseChoiceItem(root: Element, itemType: '11'): ImlChoiceItem {
   const dapsAttr = getAttribute(root, 'daps')
   const multipleAnswers = dapsAttr ? parseInt(dapsAttr, 10) > 1 : choices.filter(c => c.isCorrect).length > 1
 
+  // dcols attribute specifies number of columns for choice layout
+  // 1 = vertical, 2+ = grid layout
+  const dcolsAttr = getNumberAttribute(root, 'dcols')
+  const choiceColumns = dcolsAttr && dcolsAttr > 0 ? dcolsAttr : undefined
+
   return {
     ...common,
     itemType,
     choices,
     multipleAnswers,
     shuffle: getBooleanAttribute(root, 'shuffle'),
+    choiceColumns,
   }
 }
 
@@ -536,26 +804,51 @@ function parseShortAnswerItem(root: Element, itemType: '31'): ImlShortAnswerItem
 function parseFillBlankItem(root: Element, itemType: '34'): ImlFillBlankItem {
   const common = parseCommonProps(root, itemType)
 
-  const blanksEl = getChildElement(root, '빈칸목록') || getChildElement(root, 'blanks')
-  const blanks: ImlFillBlankItem['blanks'] = []
-
-  if (blanksEl) {
-    for (const blankEl of getChildElements(blanksEl, '빈칸').concat(
-      getChildElements(blanksEl, 'blank')
-    )) {
-      const id = getAttribute(blankEl, 'id') || generateId('blank')
-      const answersText = getTextContent(blankEl)
-      const correctAnswers = answersText.includes('|')
-        ? answersText.split('|').map(s => s.trim())
-        : [answersText]
-
-      blanks.push({
-        id,
-        correctAnswers,
-        caseSensitive: getBooleanAttribute(blankEl, 'caseSensitive'),
-      })
+  // Extract blanks from question content (답박스 elements)
+  const blankIds: string[] = []
+  const extractBlanks = (content: ImlBlockContent[]) => {
+    for (const block of content) {
+      if (block.type === 'paragraph') {
+        for (const inline of block.content) {
+          if (typeof inline === 'object' && 'type' in inline && inline.type === 'blank') {
+            blankIds.push(inline.id)
+          }
+        }
+      } else if (block.type === 'exampleBox') {
+        extractBlanks(block.content)
+      } else if (block.type === 'table') {
+        for (const row of block.rows) {
+          for (const cell of row.cells) {
+            extractBlanks(cell.content)
+          }
+        }
+      }
     }
   }
+  extractBlanks(common.question.content)
+
+  // Parse correct answers from 정답 element
+  const answerEl = getChildElement(root, '정답')
+  const answerMap: Record<string, string[]> = {}
+
+  if (answerEl) {
+    // Parse answer content - may contain multiple answers separated by delimiters
+    const answerText = getTextContent(answerEl).trim()
+    const answers = answerText.split(/[,;|]/).map(s => s.trim()).filter(Boolean)
+
+    // Map answers to blank IDs in order
+    blankIds.forEach((id, index) => {
+      if (answers[index]) {
+        answerMap[id] = [answers[index]]
+      }
+    })
+  }
+
+  // Build blanks array
+  const blanks: ImlFillBlankItem['blanks'] = blankIds.map(id => ({
+    id,
+    correctAnswers: answerMap[id] || [''],
+  }))
 
   return {
     ...common,

@@ -11,30 +11,22 @@ export interface ExtendedTextViewerProps {
 }
 
 export function ExtendedTextViewer({
-  interaction,
+  interaction: _interaction,
   sampleAnswer,
   response,
   showAnswer = false,
 }: ExtendedTextViewerProps) {
+  void _interaction // Preserve for future use
   const userAnswer = response ? String(response) : ''
 
   return (
     <div className="space-y-3">
-      {/* User's answer */}
-      <div
-        className={`
-          w-full min-h-[100px] p-3 rounded-lg border
-          ${userAnswer ? 'border-gray-300 bg-white' : 'border-gray-200 bg-gray-50'}
-        `}
-      >
-        {userAnswer ? (
+      {/* User's answer - only show if there's a response */}
+      {userAnswer && (
+        <div className="w-full min-h-[60px] p-3 border border-gray-300 bg-white">
           <div className="whitespace-pre-wrap">{userAnswer}</div>
-        ) : (
-          <span className="text-gray-400">
-            {interaction.placeholderText || '응답이 없습니다'}
-          </span>
-        )}
-      </div>
+        </div>
+      )}
 
       {/* Sample answer */}
       {showAnswer && sampleAnswer && (

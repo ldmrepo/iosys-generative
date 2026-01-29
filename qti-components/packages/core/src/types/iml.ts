@@ -61,6 +61,8 @@ export interface ImlMath {
 export interface ImlTable {
   type: 'table'
   rows: ImlTableRow[]
+  /** 컬럼 너비 비율 (%;%;...%) */
+  colWidths?: number[]
   border?: number | undefined
   width?: string | undefined
 }
@@ -72,10 +74,22 @@ export interface ImlTableRow {
 export interface ImlTableCell {
   type: 'td' | 'th'
   content: ImlBlockContent[]
+  /** 위치 X (%) */
+  x?: number
+  /** 위치 Y (%) */
+  y?: number
+  /** 너비 (%) */
+  w?: number
+  /** 높이 (%) */
+  h?: number
   colspan?: number | undefined
   rowspan?: number | undefined
   align?: 'left' | 'center' | 'right' | undefined
   valign?: 'top' | 'middle' | 'bottom' | undefined
+  /** 배경색 (hex) */
+  backgroundColor?: string
+  /** 테두리 정보 [left, top, right, bottom] (0:없음, 1:실선, 2:점선) */
+  borderInfo?: [number, number, number, number]
 }
 
 /** 동영상 (Video) */
@@ -97,6 +111,12 @@ export interface ImlAudio {
 export interface ImlExampleBox {
   type: 'exampleBox'
   title?: string
+  /** 제목 정렬: 'left' | 'center' | 'right' */
+  titleAlign?: 'left' | 'center' | 'right'
+  /** 테두리 표시 여부 */
+  border?: boolean
+  /** 배경색 (RGB hex) */
+  backgroundColor?: string
   content: ImlBlockContent[]
 }
 
@@ -228,6 +248,8 @@ export interface ImlChoiceItem extends ImlItemBase {
   multipleAnswers?: boolean | undefined
   /** 정답 섞기 여부 */
   shuffle?: boolean | undefined
+  /** 답항 컬럼 수 (1=세로배열, 2이상=그리드) */
+  choiceColumns?: number | undefined
 }
 
 /** 진위형 문항 (21) */

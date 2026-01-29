@@ -41,11 +41,11 @@ export function ChoiceLabel({
   return (
     <span
       className={clsx(
-        'flex items-center justify-center w-7 h-7 rounded-full',
-        'text-sm font-medium flex-shrink-0 transition-colors',
+        'inline-flex items-center justify-center w-5 h-5 rounded',
+        'text-xs font-semibold flex-shrink-0 transition-colors leading-none',
         {
           // Default state
-          'bg-gray-100 text-gray-700': !selected && status === 'neutral',
+          'bg-gray-100 text-gray-600': !selected && status === 'neutral',
           // Selected state
           'bg-qti-primary text-white': selected && status === 'neutral',
           // Correct state

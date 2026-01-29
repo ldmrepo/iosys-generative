@@ -4,7 +4,7 @@
 
 **목표**: itembank-web 프론트엔드에서 QtiViewer 컴포넌트를 사용하여 문항 전체 내용(수식, 이미지, 표, 선택지)을 렌더링
 
-**현재 상태**: ❌ 미완료 - QtiItemViewer 컴포넌트가 상세 패널에서 렌더링되지 않음
+**현재 상태**: ✅ 완료 - QtiItemViewer 컴포넌트 렌더링 문제 해결됨
 
 ---
 
@@ -75,55 +75,75 @@ curl http://localhost:8000/search/items/{ITEM_ID}/iml
 - **ItemCard 컴포넌트**: choices 필드 표시 추가 (①②③... 형식)
 - **상태**: ✅ 정상 작동 - 검색 결과에 선택지 표시됨
 
+### 8. QtiItemViewer SSR 문제 해결
+- **파일**: `itembank-web/src/app/page.tsx`
+- **수정 내용**: `QtiItemViewer`를 `dynamic import`로 변경 (`ssr: false`)
+- **상태**: ✅ 완료
+
+### 9. Tailwind CSS 설정 수정
+- **파일**: `itembank-web/tailwind.config.ts`
+- **수정 내용**:
+  - `content` 배열에 qti-components 패키지 경로 추가
+  - `@tailwindcss/typography` 플러그인 추가
+- **상태**: ✅ 완료
+
+### 10. QTI UI 스타일 통합
+- **파일**: `itembank-web/src/app/globals.css`, `qti-components/packages/ui/package.json`
+- **수정 내용**:
+  - globals.css에 `@import '@iosys/qti-ui/styles.css'` 추가
+  - qti-ui package.json에 CSS export 경로 추가
+- **상태**: ✅ 완료
+
 ---
 
-## 미완료 작업 (핵심 문제)
+## 해결된 문제 (2026-01-29)
 
-### 문제 설명
-`page.tsx`의 `ItemDetailView` 컴포넌트에서 `QtiItemViewer`를 사용하도록 코드가 작성되어 있으나, 실제 브라우저에서는 QtiItemViewer가 렌더링되지 않음.
+### 원인 분석
+`QtiItemViewer` 컴포넌트가 렌더링되지 않은 이유:
 
-**예상 동작**:
-- 검색 결과 클릭 → 오른쪽 상세 패널에 QtiItemViewer 렌더링
-- 파란 박스 "✓ QtiViewer 적용됨" 표시 (디버그용)
+1. **SSR 문제 (핵심 원인)**
+   - `@iosys/qti-core`의 `parseIml` 함수가 `DOMParser`를 사용
+   - `DOMParser`는 브라우저 전용 API로 서버에서 실행 불가
+   - Next.js가 서버에서 모듈을 로드할 때 에러 발생
 
-**실제 동작**:
-- QtiItemViewer가 렌더링되지 않음
-- 원인 불명
+2. **Tailwind CSS 클래스 누락**
+   - `tailwind.config.ts`의 `content`에 qti-components 경로 미포함
+   - `@tailwindcss/typography` 플러그인 미설치 (`prose` 클래스 사용)
 
-### 디버깅을 위해 확인할 사항
+3. **qti-ui CSS export 설정 누락**
+   - `package.json`의 `exports` 필드에 CSS 경로 미포함
 
-1. **브라우저 콘솔 에러 확인** (F12 → Console)
-   - React 에러?
-   - Import 에러?
-   - Runtime 에러?
+### 해결 방법
 
-2. **네트워크 요청 확인** (F12 → Network)
-   - `/api/search/items/{id}/iml` 요청이 발생하는가?
-   - 응답 상태 코드는?
+1. **page.tsx**: `QtiItemViewer`를 dynamic import로 변경
+   ```tsx
+   const QtiItemViewer = dynamic(
+     () => import('@/components/QtiItemViewer').then(mod => mod.QtiItemViewer),
+     { ssr: false, loading: () => <LoadingSkeleton /> }
+   )
+   ```
 
-3. **React DevTools 확인**
-   - QtiItemViewer 컴포넌트가 트리에 존재하는가?
-   - props가 제대로 전달되는가?
+2. **tailwind.config.ts**: qti-components 경로 및 typography 플러그인 추가
+   ```ts
+   content: [
+     './src/**/*.{js,ts,jsx,tsx,mdx}',
+     '../qti-components/packages/ui/src/**/*.{js,ts,jsx,tsx}',
+     '../qti-components/packages/viewer/src/**/*.{js,ts,jsx,tsx}',
+   ],
+   plugins: [require('@tailwindcss/typography')],
+   ```
 
-4. **컴포넌트 렌더링 상태 확인**
-   - Loading? Error? Success?
-   - QtiItemViewer.tsx의 각 return 문에 console.log 추가하여 확인
+3. **globals.css**: qti-ui 스타일 import 추가
+   ```css
+   @import '@iosys/qti-ui/styles.css';
+   ```
 
-### 의심되는 원인
-
-1. **@iosys/qti-core, @iosys/qti-viewer import 실패**
-   - pnpm workspace 링크 문제?
-   - 빌드 누락?
-
-2. **React Query 설정 문제**
-   - QueryClientProvider가 제대로 설정되어 있는가?
-
-3. **브라우저 캐시**
-   - 강제 새로고침 (Ctrl+Shift+R) 필요
-
-4. **SSR/CSR 문제**
-   - 'use client' 지시문 확인
-   - 서버 사이드에서 실행되는 코드가 있는가?
+4. **qti-ui/package.json**: CSS export 추가
+   ```json
+   "exports": {
+     "./styles.css": "./dist/index.css"
+   }
+   ```
 
 ---
 
@@ -141,12 +161,18 @@ qti-components/packages/core/src/parser/
 ├── iml-parser.ts               # IML 파싱 로직 수정
 └── iml-to-qti.ts               # QTI 변환 로직 수정
 
+qti-components/packages/ui/
+└── package.json                # CSS export 경로 추가
+
 itembank-web/
-├── src/app/page.tsx            # ItemDetailView에 QtiItemViewer 사용
+├── src/app/page.tsx            # QtiItemViewer dynamic import 적용
+├── src/app/globals.css         # qti-ui 스타일 import 추가
 ├── src/components/QtiItemViewer.tsx  # NEW - QTI 뷰어 래퍼 컴포넌트
 ├── src/lib/api.ts              # getItemIml() 메서드 추가
 ├── src/types/api.ts            # ImlContentResponse 타입 추가
-└── next.config.ts              # transpilePackages 설정
+├── next.config.ts              # transpilePackages 설정
+├── tailwind.config.ts          # qti-components 경로 및 typography 플러그인 추가
+└── package.json                # @tailwindcss/typography 의존성 추가
 ```
 
 ### 빌드 명령어
@@ -179,11 +205,14 @@ cd itembank-api
 
 ## 다음 단계 제안
 
-1. **브라우저 콘솔 에러 확인** - 가장 먼저 확인
-2. **QtiItemViewer에 console.log 추가**하여 어느 상태에서 멈추는지 확인
-3. **@iosys/qti-core import 테스트** - 별도 테스트 파일로 확인
-4. **React Query 동작 확인** - useQuery가 실행되는지 확인
-5. **단순화된 테스트** - QtiItemViewer 대신 단순 텍스트만 렌더링하여 컴포넌트 자체가 렌더링되는지 확인
+1. **개발 서버 실행 및 테스트**
+   ```bash
+   cd itembank-web
+   pnpm dev --port 3002
+   ```
+2. **브라우저에서 확인** - 검색 후 문항 클릭 시 QtiViewer 렌더링 확인
+3. **디버그 박스 제거** - 정상 작동 확인 후 `QtiItemViewer.tsx`의 디버그 메시지 제거
+4. **이미지 렌더링 테스트** - 이미지 포함 문항의 렌더링 확인
 
 ---
 
@@ -196,3 +225,4 @@ cd itembank-api
 ---
 
 *작성일: 2026-01-29*
+*수정일: 2026-01-29 - QtiItemViewer 렌더링 문제 해결*

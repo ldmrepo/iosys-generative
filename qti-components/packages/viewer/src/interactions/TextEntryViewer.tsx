@@ -11,11 +11,12 @@ export interface TextEntryViewerProps {
 }
 
 export function TextEntryViewer({
-  interaction,
+  interaction: _interaction,
   correctAnswers = [],
   response,
   showAnswer = false,
 }: TextEntryViewerProps) {
+  void _interaction // Preserve for future use
   const userAnswer = response ? String(response) : ''
   const isCorrect = correctAnswers.some(
     ans => ans.toLowerCase() === userAnswer.toLowerCase()
@@ -25,21 +26,22 @@ export function TextEntryViewer({
     ? isCorrect ? 'correct' : 'incorrect'
     : 'neutral'
 
+  // Don't render anything if no response in view mode
+  if (!userAnswer) {
+    return null
+  }
+
   return (
     <span className="inline-flex items-center gap-2">
       <span
         className={`
-          inline-block min-w-[120px] px-2 py-1 border-b-2
+          inline-block min-w-[80px] px-2 py-1 border-b-2
           ${status === 'correct' ? 'border-qti-correct bg-green-50' : ''}
           ${status === 'incorrect' ? 'border-qti-incorrect bg-red-50' : ''}
           ${status === 'neutral' ? 'border-gray-300' : ''}
         `}
       >
-        {userAnswer || (
-          <span className="text-gray-400">
-            {interaction.placeholderText || '답을 입력하세요'}
-          </span>
-        )}
+        {userAnswer}
       </span>
       {showAnswer && !isCorrect && correctAnswers.length > 0 && (
         <span className="text-sm text-qti-correct">

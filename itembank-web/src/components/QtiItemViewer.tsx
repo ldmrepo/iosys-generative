@@ -2,9 +2,13 @@
 
 import { useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { parseIml, imlToQti } from '@iosys/qti-core'
+import { parseIml, imlToQti, setImlToQtiOptions } from '@iosys/qti-core'
 import { QtiViewer } from '@iosys/qti-viewer'
 import { api } from '@/lib/api'
+
+// Set image base URL for IML to QTI conversion
+// Images are served from the backend at /api/search/images/
+setImlToQtiOptions({ imageBaseUrl: '/api/search/images/' })
 
 interface QtiItemViewerProps {
   itemId: string
@@ -100,15 +104,11 @@ export function QtiItemViewer({
 
   // Render QTI item
   return (
-    <div className={className}>
-      <div className="mb-4 p-2 bg-blue-100 text-blue-800 text-xs rounded">
-        ✓ QtiViewer 적용됨 | ID: {itemId.slice(0, 8)}...
-      </div>
-      <QtiViewer
-        item={assessmentItem}
-        showAnswer={showAnswer}
-        showExplanation={showExplanation}
-      />
-    </div>
+    <QtiViewer
+      item={assessmentItem}
+      showAnswer={showAnswer}
+      showExplanation={showExplanation}
+      className={className}
+    />
   )
 }

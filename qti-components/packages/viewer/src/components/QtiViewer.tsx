@@ -11,6 +11,7 @@ import {
   ExtendedTextViewer,
   MatchViewer,
   OrderViewer,
+  GapMatchViewer,
 } from '../interactions'
 
 export interface QtiViewerProps {
@@ -109,6 +110,17 @@ export function QtiViewer({
           />
         )
 
+      case 'gapMatchInteraction':
+        return (
+          <GapMatchViewer
+            key={responseIdentifier}
+            interaction={interaction}
+            correctAnswers={correctAnswers}
+            response={response}
+            showAnswer={showAnswer}
+          />
+        )
+
       default:
         return (
           <div key={responseIdentifier} className="p-4 bg-gray-100 rounded-lg text-gray-500">
@@ -122,16 +134,16 @@ export function QtiViewer({
     <div className={`qti-viewer ${className ?? ''}`}>
       {/* Item Title */}
       {item.title && (
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">{item.title}</h2>
+        <h2 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h2>
       )}
 
-      {/* Item Body Content */}
-      <div className="prose prose-lg max-w-none mb-6">
+      {/* Item Body Content (Question) */}
+      <div className="prose prose-sm max-w-none mb-3 [&>p]:my-1 qti-question">
         <div dangerouslySetInnerHTML={{ __html: itemBody.content }} />
       </div>
 
       {/* Interactions */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         {itemBody.interactions.map(renderInteraction)}
       </div>
 

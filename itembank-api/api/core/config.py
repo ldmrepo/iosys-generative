@@ -28,7 +28,7 @@ class Settings(BaseSettings):
         return f"postgresql://{self.db_user}:{self.db_password}@{self.db_host}:{self.db_port}/{self.db_name}"
 
     # Embeddings
-    embeddings_path: str = "/app/data/qwen_embeddings_all_subjects_2b_multimodal.npz"
+    embeddings_path: str = "/mnt/sda/worker/dev_ldm/iosys-generative/poc/results/qwen_embeddings_all_subjects_2b_multimodal_compat.npz"
     embeddings_dir: str = "../poc/results"
     embedding_dim: int = 2048
 
@@ -59,6 +59,13 @@ class Settings(BaseSettings):
     qwen3vl_model_path: str = "/mnt/sda/worker/dev_ldm/iosys-generative/poc/models/qwen3-vl-embedding-2b"
     qwen3vl_instruction: str = "Represent this educational question item for retrieval."
     qwen3vl_lazy_load: bool = True
+
+    # Qwen3-VL Reranker Configuration
+    use_reranker: bool = True
+    reranker_model_path: str = "/mnt/sda/worker/dev_ldm/iosys-generative/poc/models/qwen3-vl-reranker-2b"
+    reranker_top_k: int = 100  # Initial retrieval count before reranking
+    reranker_final_k: int = 20  # Final count after reranking
+    reranker_lazy_load: bool = True
 
     class Config:
         env_file = ".env"

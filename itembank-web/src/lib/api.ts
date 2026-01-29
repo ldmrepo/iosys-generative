@@ -48,6 +48,7 @@ function normalizeSearchResponse(raw: ApiSearchResponse): SearchResponse {
         answer_text: item.metadata.answer_text,
         explanation_text: item.metadata.explanation_text,
         choices,
+        is_ai_generated: item.metadata.is_ai_generated,
       }
     }),
     query_time_ms: raw.query_time_ms,
@@ -127,6 +128,15 @@ class ApiClient {
    */
   async getItemIml(itemId: string): Promise<ImlContentResponse> {
     return this.fetch<ImlContentResponse>(`/search/items/${itemId}/iml`)
+  }
+
+  /**
+   * Delete an AI-generated item
+   */
+  async deleteItem(itemId: string): Promise<{ item_id: string; success: boolean; message: string }> {
+    return this.fetch(`/generate/item/${itemId}`, {
+      method: 'DELETE',
+    })
   }
 }
 

@@ -81,7 +81,7 @@ class DatabaseService:
                    semester, unit_large, unit_medium, unit_small,
                    question_text, choices, answer_text, explanation_text,
                    question_images, explanation_images, has_image,
-                   keywords, year, source, exam_name
+                   keywords, year, source, exam_name, is_ai_generated
             FROM items
             WHERE id = $1
         """
@@ -120,7 +120,7 @@ class DatabaseService:
                    semester, unit_large, unit_medium, unit_small,
                    question_text, choices, answer_text, explanation_text,
                    question_images, explanation_images, has_image,
-                   keywords, year, source, exam_name
+                   keywords, year, source, exam_name, is_ai_generated
             FROM items
             WHERE id = ANY($1)
         """
@@ -162,3 +162,51 @@ class DatabaseService:
         except Exception as e:
             logger.error(f"Count failed: {e}")
             return 0
+
+    @staticmethod
+    async def search_by_keyword(keyword: str, limit: int = 10) -> List[Dict[str, Any]]:
+        """
+        Search items by keyword in question_text, keywords, or unit fields.
+
+        Args:
+            keyword: Search keyword
+            limit: Maximum number of results
+
+        Returns:
+            List of SearchResult-compatible dictionaries
+        """
+        query = """
+            SELECT id, source_file,
+                   question_type, question_type_code, difficulty, difficulty_code,
+                   curriculum, school_level, grade, subject, subject_detail,
+                   semester, unit_large, unit_medium, unit_small,
+                   question_text, choices, answer_text, explanation_text,
+                   question_images, explanation_images, has_image,
+                   keywords, year, source, exam_name, is_ai_generated
+            FROM items
+            WHERE question_text ILIKE $1
+               OR keywords ILIKE $1
+               OR unit_large ILIKE $1
+               OR unit_medium ILIKE $1
+               OR subject ILIKE $1
+            LIMIT $2
+        """
+        search_pattern = f"%{keyword}%"
+
+        try:
+            async with get_db_connection() as conn:
+                rows = await conn.fetch(query, search_pattern, limit)
+                results = []
+                for row in rows:
+                    item = dict(row)
+                    item["category"] = "image" if item.get("has_image") else "text_only"
+                    # Return in SearchResult format
+                    results.append({
+                        "item_id": item["id"],
+                        "score": 0.8,  # Fixed score for keyword search
+                        "metadata": item
+                    })
+                return results
+        except Exception as e:
+            logger.error(f"Keyword search failed: {e}")
+            raise

@@ -18,4 +18,5 @@ export {
 export { parseIml } from './iml-parser'
 
 // IML to QTI converter
-export { imlToQti } from './iml-to-qti'
+export { imlToQti, setImlToQtiOptions } from './iml-to-qti'
+export type { ImlToQtiOptions } from './iml-to-qti'

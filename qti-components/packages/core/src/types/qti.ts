@@ -143,6 +143,8 @@ export interface ChoiceInteraction extends BaseInteraction {
   maxChoices?: number | undefined
   minChoices?: number | undefined
   orientation?: 'horizontal' | 'vertical' | undefined
+  /** Number of columns for grid layout (1=vertical, 2+=grid) */
+  columns?: number | undefined
   simpleChoices: SimpleChoice[]
 }
 

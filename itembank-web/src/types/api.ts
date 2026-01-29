@@ -36,6 +36,8 @@ export interface ApiSearchResultItem {
     keywords?: string
     year?: number
     choices?: string[] | string | null
+    is_ai_generated?: boolean
+    ai_metadata_id?: string
   }
 }
 
@@ -55,6 +57,7 @@ export interface SearchResultItem {
   answer_text?: string
   explanation_text?: string
   choices?: string[]
+  is_ai_generated?: boolean
 }
 
 // Raw API response

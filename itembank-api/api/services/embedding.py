@@ -3,9 +3,11 @@ Embedding service for loading and managing embeddings.
 """
 import logging
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Dict, List, Optional
 
 import numpy as np
+
+from ..core.config import get_settings
 
 logger = logging.getLogger(__name__)
 
@@ -158,6 +160,87 @@ class EmbeddingService:
             results.append((item_id, score))
 
         return results
+
+    def add_embedding(self, item_id: str, embedding: np.ndarray) -> bool:
+        """
+        Add a new embedding to the in-memory store.
+
+        Args:
+            item_id: Item identifier
+            embedding: Embedding vector (must match existing dimension)
+
+        Returns:
+            True if added successfully
+        """
+        if not self._loaded:
+            logger.warning("Cannot add embedding: service not loaded")
+            return False
+
+        if self._embeddings is None:
+            logger.warning("Cannot add embedding: no embeddings loaded")
+            return False
+
+        # Check dimension
+        if embedding.shape[0] != self.dimension:
+            logger.error(
+                f"Embedding dimension mismatch: expected {self.dimension}, got {embedding.shape[0]}"
+            )
+            return False
+
+        # Check if ID already exists
+        if item_id in self._id_to_idx:
+            # Update existing embedding
+            idx = self._id_to_idx[item_id]
+            self._embeddings[idx] = embedding
+            logger.info(f"Updated embedding for item {item_id}")
+            return True
+
+        # Add new embedding
+        self._embeddings = np.vstack([self._embeddings, embedding.reshape(1, -1)])
+        if self._ids is not None:
+            self._ids = np.append(self._ids, item_id)
+        new_idx = len(self._embeddings) - 1
+        self._id_to_idx[item_id] = new_idx
+
+        logger.info(f"Added embedding for item {item_id} (total: {self.count})")
+        return True
+
+    def remove_embedding(self, item_id: str) -> bool:
+        """
+        Remove an embedding from the in-memory store.
+
+        Args:
+            item_id: Item identifier
+
+        Returns:
+            True if removed successfully
+        """
+        if not self._loaded or self._embeddings is None:
+            return False
+
+        if item_id not in self._id_to_idx:
+            logger.warning(f"Cannot remove embedding: item {item_id} not found")
+            return False
+
+        idx = self._id_to_idx[item_id]
+
+        # Remove from embeddings array
+        self._embeddings = np.delete(self._embeddings, idx, axis=0)
+
+        # Remove from ids array
+        if self._ids is not None:
+            self._ids = np.delete(self._ids, idx)
+
+        # Rebuild index mapping
+        del self._id_to_idx[item_id]
+
+        # Update indices for items after the removed one
+        for id_, old_idx in list(self._id_to_idx.items()):
+            if old_idx > idx:
+                self._id_to_idx[id_] = old_idx - 1
+
+        logger.info(f"Removed embedding for item {item_id} (total: {self.count})")
+        return True
 
 
 # Global embedding service instance
