@@ -110,7 +110,16 @@ logs/
 .agents/
 .claude/
 .sisyphus/
+.codex/
+skills/
 node_modules/
+
+# -------------------------------------------
+# Next.js / React
+# -------------------------------------------
+.next/
+out/
+*.tsbuildinfo
 
 # -------------------------------------------
 # Docker
