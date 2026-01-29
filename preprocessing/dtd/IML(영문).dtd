@@ -1,0 +1,946 @@
+<?xml version="1.0" encoding="ksc5601" standalone="yes"?>
+<!-- IML DTD for edWord / Gitae Kim / IOSYS / 2002. -->
+
+<!-- 문항 데이타 -->
+<!-- [ 속성 생략 가능 : 이하 기본 ] -->
+<!-- [ 속성 생략 불가 : 이하 선택 ] -->
+<!-- 기본값( 디폴트 : 값 앞에 *있는 경우 )이면 태그 및 값 생략됨 -->
+
+<!-- mode  - "IML" : IML 데이타
+           - "FML" : Flash IML for TNARA		// "FML" 모드에서만 사용( 이하, "FML" )
+     
+	# 단위 : 이하, x, y : 차상위 객체폭에 대한 옵셋 비율(%)     "IML"
+	                      각 페이지 원점에 대한 절대값( TWIP )  "FML"
+	                      
+		       w, h : 현재 문항폭에 대한 크기 비율(%)    "IML"
+		              크기 절대값( TWIP )                "FML"
+	-->
+
+
+<!-- 한글(ENG) 태그명 매치
+
+	문항종류(QUIZZES)	단위문항(QUIZUNIT)	그룹문항(QUIZGROUP)
+	지문(JIMUN) 		문항(QUIZ)		개념(CONCEPT)
+	
+	문제(QUESTION) 		힌트(HINT)	 	해설(SOLUTION)		정답(RIGHTANSWER)	가필(CORRECT)
+	해석(TRANS2HAN)		어휘(VOCABULARY) 	예문(EXAMPLE) 		안내(GUIDE) 		공식(FORMULA)
+	지시(DIRECTION) 	채점기준(CHEJUM) 	오류유형(ERROR) 	별해(SPECIALDAP)	가변부(DYNAPART)
+	발견술(DISCOVER)	참고(REFERENCE)		스크립트(SCRIPT)	유사정답(SIMILAR_JUNGDAP) 유의사항(CARE_ITEM)
+	선수학습(PRE_STUDY)	주요어(MAIN_WORDS)	수업진행절차(LESSON_PROCESS)	정답임시(RIGHTANSTER_TEMP)
+	
+	물음(QUEST)		답항(ANSITEM)
+	형판(TEMPLATE)		줄긋기(DOT)		단락(P)		그림(PIC)	메타(META)
+	도형(DRAW4HWP)		MS03도형(MS03DRAW)	보기(VIEWBOX)	동영상(VIDEO)	오디오(AUDIO)
+	Flash동영상(FVIDEO)	Flash오디오(FAUDIO)
+	
+	단락(P)			문자열(S)		고어(ARCHAIC)	문자그림(CPIC)	문자메타(CMETA)
+	문자보기(CVIEW)		수식(MATH)		문장(SENT)	답박스(ANS4USER) 객체(OBJECT)
+	
+	-->
+	
+
+
+<!ELEMENT 문항종류 ( HEADER? | 단위문항 | 그룹문항 )>
+<!ELEMENT HEADER ( PAGEINFO? )>
+<!ATTLIST HEADER 
+	mode	CDATA	#IMPLIED
+	width	CDATA	#IMPLIED>
+
+	<!ELEMENT PAGEINFO (#PCDATA)>
+	<-- iDanCount : 페이지내 단 갯수
+	    iDanWidth : 페이지내 단의 폭( mm )
+	    iDanGan   : 단간격( mm )
+	    -->
+	<!ATTLIST PAGEINFO
+		iDanCount	CDATA	#REQUIRED
+		iDanWidth	CDATA	#REQUIRED
+		iDanGan		CDATA	#IMPLIED>
+	
+<!ELEMENT 단위문항 문항>
+<!ELEMENT 그룹문항 (지문*, 문항+)>	
+
+<!ELEMENT 문항 ( QUIZTAGLIST2?, QUIZLINK?, FONTLIST?, 문제 | 힌트? | 해설? | 정답? | 가필? | 해석? | 어휘? | 예문? | 안내? | 공식? | 지시? | 채점기준? | 오류유형? | 별해? | 가변부? | 발견술? | 참고? | 스크립트? | 유사정답? | 유의사항? | 선수학습? | 주요어? | 수업진행절차? | 정답임시? )>
+<!-- 문항종류( _XML_QUIZTAG_QUIZ_KIND:하단참조 ) : "1":지문, "2":문항, "3":개념 -->
+<!-- 채점유형( _XML_QUIZTAG_QUIZ_TYPE:하단참조 ) : "11":선다형, "21":진위형, "31":단답형
+					  	   "34":완성형, "37":배합형, "41":서술형, "51":논술형 
+	-->
+<!-- id:문항ID, qt:채점유형, iOrder:문항번호, 
+	pageno : 대조시 페이지 번호( 디폴트 0 : 소조 상태 ),
+	bj:배점(실수), 
+	dnt  :"선다형" 일때 답항 번호 종류( 하단, "답항 번호 종류" 참조 )
+	dcols:"선다형" 일때 문항내 답항의 컬럼수,
+	drows:"선다형" 일때 문항내 답항의 행수,
+	dhs  :"선다형" 일때 문항내 답항의 전체 갯수( 변형된 선다형 포함 ),
+	daps :"선다형" 일때 문항내 정답의 갯수( 1번과 3번이 정답이면 2 ) : HTML에서 라디오/체크 선택 정보,
+	pageno : 대조된 문항일 경우 시험지 페이지 번호
+	combined : 일체형 여부( "1": 일체( 독립세트 )형, "0" 또는 없으면 분산( 연결세트 : 기존 그룹문항 )형
+	iQuizWidth : 문항의 실제폭( html로 변환시 사용함 ) : twip, cm, mm, inch 적용가
+	iQuizWidthHTML : 문항의 실제폭( html로 변환시 사용자 정답 박스에 사용함 )
+	//===> 그외, "추가 가능한 문항 정보" 하단 참조
+	-->
+	
+<!ATTLIST 문항
+	id    CDATA	#REQUIRED
+	qt    CDATA	#REQUIRED
+	iOrder CDATA	#IMPLIED
+	bj    CDATA	#IMPLIED
+	dcols CDATA	#IMPLIED
+	drows CDATA	#IMPLIED
+	dhs   CDATA	#IMPLIED
+	daps  CDATA	#IMPLIED
+	pageno CDATA	#IMPLIED
+	combined CDATA	#IMPLIED
+	iQuizWidth CDATA #IMPLIED>
+
+
+
+    <!ELEMENT QUIZTAGLIST2 (USEDLIST2?, REFBOOKLIST2?)>
+    <!-- 문항메타중 멀티항목을 가지는 자식들만을 위하여 추가 정의 -->
+    <!-- 자식 항목들의 모든 태그명에 "2" 가 붙음 -->
+    
+	<!ELEMENT USEDLIST2 (USED2*)>
+	<!-- 기출정보 리스트 -->
+	
+		<!ELEMENT USED2 (#PCDATA)>
+		<!-- 	기출정보
+			UYEAR 	: 출제년도
+			UDEGREE : 출제회차
+			UQNO	: 문제번호
+			UWRITER	: 출제자
+			-->
+		<!ATTLIST USED2
+			uyear 	CDATA	#IMPLIED
+			udegree CDATA	#IMPLIED
+			uqno	CDATA	#IMPLIED
+			uwriter	CDATA	#IMPLIED>
+
+
+	<!ELEMENT REFBOOKLIST2 (REFBOOK2*)>
+	<!-- 참고도서 리스트 -->
+	
+		<!ELEMENT REFBOOK2 (#PCDATA)>
+		<!-- 	참고도서
+			RBOOK 	: 참고도서명
+			RDEGREE : 권수
+			RPG	: 페이지
+			RWR	: 저자
+			RPB	: 출판사
+			RPBYEAR	: 출판년도
+			-->
+		<!ATTLIST REFBOOK2
+			RBOOK 	CDATA	#IMPLIED
+			RDEGREE CDATA	#IMPLIED
+			RPG CDATA	#IMPLIED
+			RWR CDATA	#IMPLIED
+			RPB CDATA	#IMPLIED
+			RPBYEAR CDATA	#IMPLIED>
+
+	<!ELEMENT ATTACHEDFILES2 (AF2*)>
+	<!-- 첨부파일 리스트 -->
+	
+		<!ELEMENT AF2 (#PCDATA)>
+		<!-- 	첨부파일
+			OFFSETPATH: 첨부MM파일옵셋( IML 이하 옵셋 ) 
+				포멧) "문항코드(IML파일명)/Attach/미디어파일명"
+				예)   IML파일명이 "1234.iml"일 때 : "1234/Attach/sample.pdf"
+			TYPE 	: 첨부타입( 05:URL, 10:파일첨부 )
+			GUBUN	: 첨부구분( 04:일반첨부, 05:문제풀이 )
+			FORMAT	: 첨부형식( 01:동영상, 02:오디오, 03:플래시, 04:이미지, 06:문서 )
+			-->
+		<!ATTLIST AF2
+			OFFSETPATH	CDATA 	#REQUIRED
+			TYPE		CDATA	#IMPLIED
+			GUBUN 		CDATA	#IMPLIED
+			FORMAT		CDATA	#IMPLIED>
+
+
+
+    <!ELEMENT QUIZLINK (LINK*)>
+    <!-- [선택] : 그룹 문제일 경우 사용
+		iCount : LINK의 갯수 -->
+    <!ATTLIST QUIZLINK iCount CDATA #REQUIRED>
+	<!ELEMENT LINK (#PCDATA)>
+	<!-- id : 문항의 ID -->
+	<!ATTLIST LINK id CDATA #REQUIRED>
+
+
+
+    <!-- [선택] : 관련단원 정보 
+		메인 분류와 중복되지 않도록 추가 분류만 표기필요.
+	-->
+    <!ELEMENT DEPENDLIST (DEPEND*)>
+	<!ELEMENT DEPEND (#PCDATA)>
+    <!-- [선택] : 분류합 : c1-c2-c3-c4-c5-c6-c7-c8-c8-c10-c11-c12 -->
+    <!-- [선택] : 유효한 내용까지만 표기한다. 끝의 0 허용함.
+		<DEPENDLIST>
+			<DEPEND>A7-92-62-03-MT01-S1-06-03-05</DEPEND>			// 바른 예
+			<DEPEND>A7-92-62-03-MT01-S1-06-03-06</DEPEND>			// 바른 예
+			<DEPEND>A7-92-62-03-MT01-S1-06-03-07-0</DEPEND>			// 끝의 0 허용
+			<DEPEND>A7-92-62-03-MT01-S1-06-03-08-0-0</DEPEND>		// 끝의 0 허용
+			<DEPEND>A7-92-62-03-MT01-S1-06-03-09-0-0-0</DEPEND>		// 끝의 0 허용
+		</DEPENDLIST>
+	-->
+
+
+
+    <!ELEMENT FONTLIST (FONT*)>
+	<!ELEMENT FONT (#PCDATA)>
+	<!-- 각종 크기 비율 기준 : 10 포인트가 100%
+	     *** 모든 값은 디폴트값일 경우 생략됨.
+		
+		id	: font id        : 폰트 번호( 1 ~ )
+		n 	: font name      : 서체명
+		w 	: width          : 가로 크기( TWIP )           : 디폴트 200
+		h 	: height         : 세로 크기( TWIP )           : 디폴트 200
+		
+		hz 	: horz           : 1:가로방향, 0:세로방향폰트  : 디폴트 1
+		f 	: full           : 1:전각, 0:반각              : 디폴트 1
+		han 	: hangul         : 1:한글, 0:영문              : 디폴트 1
+		rp 	: rate of pyeong : 평( 1~511% )                : 디폴트 100%
+		rj	: rate of jang   : 장( 1~255% )                : 디폴트 100%
+		
+		m 	: math           : 1:수식노드폰트, 0:일반폰트  : 디폴트 0
+		i 	: italic         : 1:기울이기, 0:세움          : 디폴트 0
+		u 	: underline      : 1:밑줄,     0:밑줄없음      : 디폴트 0
+		b 	: bold           : 1:강조,     0:비강조        : 디폴트 0
+		s 	: stroke         : 1:외곽선    0:아님          : 디폴트 0
+		
+		sp 	: superscript    : 1:윗첨자,   0:아님          : 디폴트 0
+		sb 	: subscript      : 1:아래첨자, 0:아님          : 디폴트 0
+		hid 	: hidden         : 1:감추기,   0:아님          : 디폴트 0
+		r 	: reverse        : 1:역상      0:아님          : 디폴트 0
+		bx	: box char       : 1:박스문자, 2:라인문자      : 디폴트 0
+		
+		c 	: color    : 색깔( RGB : hexa )                : 디폴트 0 (흑색)
+		ric 	: rate of inter char : 자간 비율( -50 ~ 200% ) : 디폴트 0 
+		        : 한글에만 적용됨( han=1 일때만 적용함 )
+			: 현재 문자크기(w.h)에 대한 비율
+			: 예1) w=200, ric=-10이면 실서체 폭은 200 + 200*-0.1 = 180 twip
+			: 예2) w=300, ric= 10이면 실서체 폭은 300 + 300* 0.1 = 330 twip
+	-->
+	<!ATTLIST FONT 
+		id	CDATA #REQUIRED
+		n 	CDATA #REQUIRED
+		w 	CDATA #IMPLIED
+		h 	CDATA #IMPLIED
+		
+		hz 	CDATA #IMPLIED
+		f 	CDATA #IMPLIED
+		han 	CDATA #IMPLIED
+		rp 	CDATA #IMPLIED
+		rj 	CDATA #IMPLIED
+		
+		m 	CDATA #IMPLIED
+		i 	CDATA #IMPLIED
+		u 	CDATA #IMPLIED
+		b 	CDATA #IMPLIED
+		s 	CDATA #IMPLIED
+		
+		sp 	CDATA #IMPLIED
+		sb 	CDATA #IMPLIED
+		hid 	CDATA #IMPLIED
+		r 	CDATA #IMPLIED
+		bx 	CDATA #IMPLIED
+		
+		c 	CDATA #IMPLIED
+		ric 	CDATA #IMPLIED>
+	
+   <!ELEMENT 문제 ( 물음? | 답항* | DHTITLE* )>
+   <!-- "IML" : 없음 -->
+   <!-- "FML" : [선택] w, h - 페이지의 절대폭, 높이 ( 단위 : TWIP ) -->
+   <!-- DHTITLE :답항제목 : 답항의 상태에 종속적이므로 답항 다음에 위치함 -->
+   <!ATTLIST 문제 x    CDATA	#IMPLIED
+	          y    CDATA	#IMPLIED>
+   
+	<!ELEMENT 물음 ( ( 형판? | 줄긋기* | 단락* | 그림* | 메타* | 도형* | MS03도형* | STICKER2* | 보기* | TABLE* | 동영상* | 오디오* | Flash동영상* | Flash오디오* )*>
+	   <!ELEMENT 형판 (#PCDATA)>
+	
+<!-- #if mode == "IML" -->
+	   <!ELEMENT 단락 ( 문자열* | FlowDH*  | 고어* | 문자그림* | 문자메타* | 문자보기* | 수식* | DECO* )*>
+	   <!-- justh : 좌우 정열 정보 : 값 0:양끝 맞춤(기본생략), 1:왼쪽 맞춤, 2:가운데 맞춤, 3:오른쪽 맞춤, 4:균등 분할 맞춤 -->
+	   <!-- justv : 상하 정열 정보 : 값 0:하단, 1:상단 맞춤, 2:중앙 맞춤 -->
+	   <!-- tidt  : Top Indent ( 상단 들여쓰기 : TWIP ) : 첫행만 들여쓰기 -->
+	   <!-- bidt  : Bottom Indent ( 하단 들여쓰기 : TWIP ) : 첫행 제외 둘째행 이하 모두 들여쓰기 -->
+	   <!ATTLIST 단락 
+	   	justh 	CDATA 	#IMPLIED
+	   	justv 	CDATA 	#REQUIRED
+	   	tidt 	CDATA 	#REQUIRED
+	   	bidt 	CDATA 	#REQUIRED>
+	   
+<!-- #else if mode == "FML" -->
+	   <!ELEMENT 줄긋기 (#PCDATA)>
+	   <!-- x, y : "IML" : 현재 차상위 객체폭에 대한 옵셋 비율(%) -->
+	   <!--        "FML" : 현재 페이지에 대한 옵셋 절대값( 단위 : TWIP ) -->
+	   <!-- w, h : "IML" : 현재 차상위 객체폭에 대한 크기 비율(%) -->
+	   <!--        "FML" : 크기 절대값( 단위 : TWIP ) -->	   
+	   <!-- id   : 박스 식별자  -->
+	   <!-- kind : 점 종류( "START":시작점, "MID":중계점, "END":종료점 -->
+	   <!-- pos  : 점 위치( "CENTER":중앙(기본), 
+	   				"LT":좌상단(모서리), 	"LB":좌하단
+	   				"RT":우상단, 		"RB":우하단,
+	   				"TOP":상단(중앙),	"BOTTOM":하단,
+					"LEFT":좌단,		"RIGHT":우단  -->
+	   <!-- size  : 점의 크기 : "NONE":없음, "SMALL":작음(기본), "MIDDLE":중간, "LARGE":크게 -->
+	   <!-- shape : 점의 모양 : "CIRCLE":평면원(기본), "RECT":평면사각형 -->
+	   <!ATTLIST 줄긋기
+		x    	CDATA	#REQUIRED
+		y    	CDATA	#REQUIRED
+		w    	CDATA	#REQUIRED
+		h    	CDATA	#REQUIRED
+	   	id	CDATA	#REQUIRED
+	   	kind	CDATA	#REQUIRED
+	   	pos	CDATA	#IMPLIED
+	   	size	CDATA	#IMPLIED
+	   	shape	CDATA	#IMPLIED>
+	   	
+	   <!ELEMENT 단락 (문장+) >
+	   	<!ELEMENT 문장 ( 문자열* | 답박스* | 객체* | 고어* | 문자그림* | 문자메타* | 문자보기* | 수식* | DECO* )*>
+		<!-- "FML" : x, y : 원점에 대한 옵셋 절대값( 단위 : TWIP ) -->
+	   	<!ATTLIST 문장
+		   	x    CDATA	#IMPLIED
+		   	y    CDATA	#IMPLIED>
+<!-- #endif -->
+			<!ELEMENT 문자열 ( COLOR* | B* | I* | U* | GB* | GU* )>
+			<!-- fid : 서체정보 ID 
+				*** 서체정보 ID가 존재시 문자열 내부의 COLOR/B/I/U/GB/GU 정보는 없어짐.			
+			-->
+			<!ATTLIST 문자열 fid	CDATA	#IMPLIED>
+			
+				<!ELEMENT COLOR (#PCDATA)>
+				<!-- COLOR fore:글자색, Bold, Italic, Underline, Group Box, Group Underline -->
+				<!ATTLIST COLOR fore CDATA #REQUIRED>
+				
+				<!ELEMENT B (#PCDATA)>
+				<!ELEMENT I (#PCDATA)>
+				<!ELEMENT U (#PCDATA)>
+				<!ELEMENT GB (#PCDATA)>
+				<!ELEMENT GU (#PCDATA)>
+
+			<!ELEMENT UC (#PCDATA)>
+			<!- 유니코드로 문자단위 Import / ***유니코드 버젼에서 Import만 지원 -->
+			
+			<!ELEMENT FlowDH ( 문자열+ )>
+			<!-- dnum : 답항번호 : 다른 행(문장)에 있는 답항번호가 같으면 행이 바뀌더라도 동일 답항으로 처리해야함 -->
+			<!ATTLIST FlowDH dnum	CDATA	#REQUIRED>
+			
+			<!ELEMENT 고어 (#PCDATA)>
+			<!- 고어코드:문자 한개만 유지 : TEAMS고어 서체 기준 -->
+
+			<!ELEMENT 답박스 (#PCDATA)>
+			<!-- 답박스 : 이미지, 수식 내부에 존재 가능 -->
+			<!-- x, y : "IML" : 현재 차상위 객체폭에 대한 옵셋 비율(%) -->
+			<!--        "FML" : 현재 페이지에 대한 옵셋 절대값( 단위 : TWIP ) -->
+			<!-- w, h : "IML" : 현재 차상위 객체폭에 대한 크기 비율(%) -->
+			<!--        "FML" : 크기 절대값( 단위 : TWIP ) -->	   
+			<!-- did : 답박스의 순서 ID : 정답 내부 번호와 연관됨 -->
+			<!-- just : 좌우 정열 : 1:왼쪽 맞춤, 2:가운데 맞춤, 3:오른쪽 맞춤 -->
+			<!-- iLenEng : 영문 기준 길이 -->
+			<!-- bdkind : 테두리 종류 : 0이 아닌 값일 때 존재함 - 3:원( 답박스를 에워쌈 ) -->
+			<!-- border : 테두리 정보 : bdkind가 없을때( bdkind==0 기본값 ) 의미있음 : 사변의 누적값 : 아래:1, 위:2, 왼쪽:4, 오른쪽:8 : 예) 0:없음, 1: 밑줄만 있음, 15:전체테두리 있음 -->
+			<!-- bin : 수식 binary 데이타 -->
+			<!ATTLIST 답박스
+				x    CDATA	#REQUIRED
+				y    CDATA	#REQUIRED
+				w    CDATA	#REQUIRED
+				h    CDATA	#REQUIRED
+				did  CDATA	#REQUIRED
+				just CDATA	#REQUIRED
+				iLenEng CDATA	#REQUIRED
+				bdkind	CDATA   #IMPLIED
+				border  CDATA   #IMPLIED
+				bin	CDATA   	#IMPLIED>
+
+			<!ELEMENT 객체 (#PCDATA)>
+			<!-- 객체 : 
+				ll : line left 	: 좌단선 여부 : "1" 이면 존재, "0"이거나 미존재시 없음
+				lt : line top 	: 상단선 여부	상동
+				lr : line right : 우단선 여부	상동
+				lb : line bottom: 하단선 여부	상동
+			-->
+			<!ATTLIST 객체 
+				ll   CDATA	#IMPLIED
+				lt   CDATA	#IMPLIED
+				lr   CDATA	#IMPLIED
+				lb   CDATA	#IMPLIED>
+
+
+			<!ELEMENT 문자그림 ( 답박스* )>
+		    	<!-- 내용 : 이미지 옵V 경로-->
+			<!-- x, y : "IML" : 현재 차상위 객체폭에 대한 옵셋 비율(%) -->
+			<!--        "FML" : 현재 페이지에 대한 옵셋 절대값( 단위 : TWIP ) -->
+			<!-- ow, oh : "IML" : 이미지의 원본 크기  -->
+			<!--        "FML" : 크기 절대값( 단위 : TWIP ) -->
+			<!-- *path : 내용과 동일한 이미지 옵V 경로 : 기존버젼 호완용 -->
+		    	<!-- name : 원본파일명(확장자 제외) -->
+		   	<!ATTLIST 문자그림
+			   	path  CDATA	#IMPLIED
+				x    CDATA	#REQUIRED
+				y    CDATA	#REQUIRED
+			   	ow    CDATA	#REQUIRED
+			   	oh    CDATA	#REQUIRED
+			   	name CDATA	#REQUIRED>
+
+			<!ELEMENT 문자보기 (#PCDATA)>
+			
+			<!ELEMENT 수식 (#PCDATA : EQN  스트링)>
+			<!-- fid  : 서체정보 ID -->
+			<!-- w, h : Export시 조판된 크기( twip 절대크기 ) 
+				  : Import시 크기 의미 없음 -->
+			<!-- BOX??   : 01~20 수식내 네모 답박스의 길이 -->
+			<!-- CBOX?? : 01~20 수식내 원형 답박스의 길이 -->
+		   	<!ATTLIST 수식
+				fid  CDATA	#IMPLIED		   	
+				w    CDATA	#IMPLIED
+				h    CDATA	#IMPLIED>
+
+<!-- #if mode == "IML" (1) -->			   	
+			<!ELEMENT 문자메타 (#PCDATA)>
+		    	<!-- 내용 : 이미지 옵V 경로-->
+			<!-- w, h : "IML" : 현재 문항폭에 대한 크기 비율(%)
+				    "FML" : 크기 절대값( 단위 : TWIP ) -->
+			<!-- path : 경로 : 현재 iml파일 이하 옵셋 -->
+		   	<!ATTLIST 문자메타
+			   	w    CDATA	#IMPLIED
+			   	h    CDATA	#IMPLIED
+			   	path CDATA	#REQUIRED>
+<!-- #endif (1) -->
+
+			<!ELEMENT DECO (#PCDATA)>
+			<!-- kind : 장식문자의 종류 : 0:보통원문자, 1:보통원문자(역상), 2:괄호(좌우), 3:괄호(상하), 4:괄호(우), 5:박스, 6:박스(역상) -->
+			<!ATTLIST DECO kind CDATA #IMPLIED>
+			
+			
+			
+			
+	   <!ELEMENT 그림?( 답박스* )>
+	   <!-- 내용 : 옵셋 경로 -->
+	   <!-- [선택] x, y : "IML" : 현재 문항폭에 대한 옵셋 비율(%) -->
+	   <!--               "FML" : 현재 페이지에 대한 옵셋 절대값( 단위 : TWIP ) -->
+	   <!-- [선택] w, h : "IML" : 현재 문항폭에 대한 비율(%) -->
+	   <!--               "FML" : 크기 절대값( 단위 : TWIP ) -->
+	   <!-- [선택] ow, oh : "IML" : 입력기상의 크기 절대값( 단위 : twip, cm, mm, inch 적용가 : 2017.11.7. ) -->
+	   <!-- [선택] Center : "IML" : *1:가운데(디폴트), 0:좌상단 
+	   	[선택] FillType : "IML" : 1:꽉채우기, 2:"1:1"보기, *3:비율로 채우기(디폴트)
+ 		-->
+	   <!-- [선택] : colFore : 테두리색 RGB( 흰색:RGB(255,255,255) )이면 생략 -->
+	   <!-- name : 원본파일명(확장자 제외) -->
+	   <!-- original : 원본 이미지 파일명( 옵V ) for BOD -->
+	   <!-- preview  : 미리보기 이미지 파일명( 옵V ) for BOD -->
+   	   <!ATTLIST 그림
+	   	x    CDATA	#IMPLIED
+	   	y    CDATA	#IMPLIED
+	   	w    CDATA	#IMPLIED
+	   	h    CDATA	#IMPLIED
+	   	ow   CDATA	#IMPLIED
+	   	oh   CDATA	#IMPLIED
+	   	colFore	  CDATA #IMPLIED
+	   	Center    CDATA	#REQUIRED
+	   	FillType  CDATA	#REQUIRED
+	   	name 	  CDATA	#REQUIRED
+	   	original  CDATA	#REQUIRED
+	   	preview   CDATA	#REQUIRED>
+
+	   <!ELEMENT 동영상 (#PCDATA)>
+	   <!-- (멀티미디어)내용 : 옵셋 경로 -->
+	   <!-- [선택] x, y : "IML" : 현재 차상위 객체폭에 대한 옵셋 비율(%) -->
+	   <!--               "FML" : 현재 페이지에 대한 옵셋 절대값( 단위 : TWIP ) -->
+	   <!-- [선택] w, h : "IML" : 현재 문항폭에 대한 비율(%) -->
+	   <!--               "FML" : 크기 절대값( 단위 : TWIP ) -->	   
+	   <!ATTLIST 동영상 
+	   	x    CDATA	#IMPLIED
+	   	y    CDATA	#IMPLIED
+	   	w    CDATA	#IMPLIED
+	   	h    CDATA	#IMPLIED>
+
+	   <!ELEMENT 오디오 (#PCDATA)>
+	   <!-- (멀티미디어)내용 : 옵셋 경로 -->
+	   <!-- [선택] x, y : "IML" : 현재 차상위 객체폭에 대한 옵셋 비율(%) -->
+	   <!--               "FML" : 현재 페이지에 대한 옵셋 절대값( 단위 : TWIP ) -->
+	   <!-- [선택] w, h : "IML" : 현재 문항폭에 대한 비율(%) -->
+	   <!--               "FML" : 크기 절대값( 단위 : TWIP ) -->	   
+	   <!ATTLIST 오디오 
+	   	x    CDATA	#IMPLIED
+	   	y    CDATA	#IMPLIED
+	   	w    CDATA	#IMPLIED
+	   	h    CDATA	#IMPLIED>
+
+	   <!ELEMENT Flash동영상 (#PCDATA)>
+	   <!-- 내용 : 옵셋 경로 -->
+	   <!-- [선택] x, y : "IML" : 현재 차상위 객체폭에 대한 옵셋 비율(%) -->
+	   <!--               "FML" : 현재 페이지에 대한 옵셋 절대값( 단위 : TWIP ) -->
+	   <!-- [선택] w, h : "IML" : 현재 문항폭에 대한 비율(%) -->
+	   <!--               "FML" : 크기 절대값( 단위 : TWIP ) -->	   
+	   <!ATTLIST Flash동영상
+	   	x    CDATA	#IMPLIED
+	   	y    CDATA	#IMPLIED
+	   	w    CDATA	#IMPLIED
+	   	h    CDATA	#IMPLIED>
+
+	   <!ELEMENT Flash오디오 (#PCDATA)>
+	   <!-- 내용 : 옵셋 경로 -->
+	   <!-- [선택] x, y : "IML" : 현재 차상위 객체폭에 대한 옵셋 비율(%) -->
+	   <!--               "FML" : 현재 페이지에 대한 옵셋 절대값( 단위 : TWIP ) -->
+	   <!-- [선택] w, h : "IML" : 현재 문항폭에 대한 비율(%) -->
+	   <!--               "FML" : 크기 절대값( 단위 : TWIP ) -->	   
+	   <!ATTLIST Flash오디오 
+	   	x    CDATA	#IMPLIED
+	   	y    CDATA	#IMPLIED
+	   	w    CDATA	#IMPLIED
+	   	h    CDATA	#IMPLIED>
+
+<!-- #if mode == "IML" (2) -->
+	   <!ELEMENT 메타 (#PCDATA)>
+	   <!-- 내용 : 옵셋 경로 -->
+	   <!-- [선택] x, y : "IML" : 현재 차상위 객체폭에 대한 옵셋 비율(%) -->
+	   <!--               "FML" : 현재 페이지에 대한 옵셋 절대값( 단위 : TWIP ) -->
+	   <!-- [선택] w, h : "IML" : 현재 문항폭에 대한 비율(%) -->
+	   <!--               "FML" : 크기 절대값( 단위 : TWIP ) -->	   
+	   <!-- name : 원본파일명(확장자 제외) -->
+	   <!ATTLIST 메타
+	   	x    CDATA	#IMPLIED
+	   	y    CDATA	#IMPLIED
+	   	w    CDATA	#IMPLIED
+	   	h    CDATA	#IMPLIED
+	   	name CDATA	#IMPLIED>
+
+	   <!ELEMENT 도형 (#PCDATA)>
+	   <!-- 아래아 한글의 그리기 마당 데이타 -->
+	   <!-- [선택] x, y : "IML" : 현재 차상위 객체폭에 대한 옵셋 비율(%) -->
+	   <!--               "FML" : 현재 페이지에 대한 옵셋 절대값( 단위 : TWIP ) -->
+	   <!-- [기본] w, h : "IML" : 현재 차상위 객체폭에 대한 크기 비율(%) -->
+	   <!--               "FML" : 크기 절대값( 단위 : TWIP ) -->	   
+   	   <!ATTLIST 도형
+	   	x    CDATA	#IMPLIED
+	   	y    CDATA	#IMPLIED
+	   	w    CDATA	#REQUIRED
+	   	h    CDATA	#REQUIRED>
+
+	   <!ELEMENT MS03도형 (#PCDATA)>
+	   <!-- MS-Word 2003 XML 데이타 -->
+	   <!-- [선택] x, y : "IML" : 현재 차상위 객체폭에 대한 옵셋 비율(%) -->
+	   <!--               "FML" : 현재 페이지에 대한 옵셋 절대값( 단위 : TWIP ) -->
+	   <!-- [기본] w, h : "IML" : 현재 차상위 객체폭에 대한 크기 비율(%) -->
+	   <!--               "FML" : 크기 절대값( 단위 : TWIP ) -->	   
+   	   <!ATTLIST MS03도형
+	   	x    CDATA	#IMPLIED
+	   	y    CDATA	#IMPLIED
+	   	w    CDATA	#REQUIRED
+	   	h    CDATA	#REQUIRED>
+
+	   <!ELEMENT STICKER2 (#PCDATA)>
+	   <!-- 스티커2 XML 데이타 -->
+	   <!-- [선택] x, y : "IML" : 현재 차상위 객체폭에 대한 옵셋 비율(%) -->
+	   <!--               "FML" : 현재 페이지에 대한 옵셋 절대값( 단위 : TWIP ) -->
+	   <!-- [기본] w, h : "IML" : 현재 차상위 객체폭에 대한 크기 비율(%) -->
+	   <!--               "FML" : 크기 절대값( 단위 : TWIP ) -->	   
+   	   <!ATTLIST STICKER2
+	   	x    CDATA	#IMPLIED
+	   	y    CDATA	#IMPLIED
+	   	w    CDATA	#REQUIRED
+	   	h    CDATA	#REQUIRED>
+	   	
+	   	<!-- 내용 : 스티커 모듈 자체 포멧에 따름 -->
+
+	   <!ELEMENT 보기 ( 물음+ )>
+	   <!-- [선택] x, y : "IML" : 현재 차상위 객체폭에 대한 옵셋 비율(%) -->
+	   <!--               "FML" : 현재 페이지에 대한 옵셋 절대값( 단위 : TWIP ) -->
+	   <!-- [선택] w, h : "IML" : 현재 문항폭에 대한 비율(%) -->
+	   <!--               "FML" : 크기 절대값( 단위 : TWIP ) -->
+	   <!-- [선택] title : 보기박스 제목 -->
+	   <!-- [선택] titlejust : 보기박스 제목 정열 : 0:좌, 1:중, 2:우정렬 -->
+	   <!-- [선택] border : 테두리 정보 : 0:없음, 0아니면 존재 -->
+	   <!-- [선택] borderinfo( Left, Top, Right, Bottom ) : 디폴트(1,1,1,1) 생략
+	    	: 값(선종류) : 0:선이 없다, 1:실선, 2:점선 등 -->
+	   <!-- [선택] : colbk : 바탕색 RGB( 흰색:RGB(255,255,255) )이면 생략 -->
+	   <!ATTLIST 보기
+	   	x    CDATA	#IMPLIED
+	   	y    CDATA	#IMPLIED
+	   	w    CDATA	#IMPLIED
+	   	h    CDATA	#IMPLIED
+		title  CDATA   	#IMPLIED
+		titlejust  CDATA  #IMPLIED
+		border  CDATA   #IMPLIED
+	   	borderinfo CDATA #IMPLIED
+	   	colbk	CDATA	#IMPLIED>
+	   <!-- 물음 Recursive -->
+	   
+	   <!-- TABLE
+		[선택] : cnt : siCount	셀 수( 가로, 세로 )
+		[선택] : colBWRs( Base Width Rates for Column Cells ) : 셀병합 전 기본 셀들의 폭비율들( 부모 100% 기준, 포멧:"셀폭1;셀폭2;...;셀폭n" )
+		-->
+	   <!ELEMENT TABLE ( TR+ )>
+	   <!ATTLIST TABLE	
+	   	cnt			CDATA	#IMPLIED
+	   	colBaseWidthRates	CDATA	#IMPLIED>
+	   
+	   	<!ELEMENT TR ( CELL+ )>
+	   	    <!ELEMENT CELL ( 객체?, 물음+ )>
+		    <!-- 물음 Recursive -->
+		    <!-- [기본] : x, y, w, h : 표에 대한 현재 셀의 위치 크기 비율(%) -->
+		    <!-- 각 행에 걸친 셀들의 폭의 합은 100, 각 열에 걸친 셀들의 합은 100이 되어야 한다. -->
+		    <!-- 각각 셀의 위치 역시 100을 기준으로 한 정수 위치임 -->
+	   	    <!--               "FML" : 현재 페이지에 대한 옵셋 / 크기 절대값( 단위 : TWIP ) -->
+		    <!-- [선택] : cnt	: siGrpCount : ( x,y ) 셀병합시 합쳐진 셀의 수 : 디폴트(1,1) 생략
+		                : [기본] :x,y,w,h 의 요약 정보( 중복 ) -->
+		    <!-- [선택] : cross : 대각선 정보 : 1:좌상->우하, 2:좌하->우상, 3:모두  -->
+		    <!-- [선택] : cjustv : 셀내달락들 상중하 정보 : 1:상단, 2:하단, 3:중앙정열  -->
+		    <!-- [선택] borderinfo( Left, Top, Right, Bottom ) : 디폴트(1,1,1,1) 생략
+		    	: 값(선종류) : 0:선이 없다, 1:실선, 2:점선 등
+		    	: 좌상단셀 : 사방 모두 의미 있음, 상단셀들:왼쪽경계는 의미 없음,
+						왼쪽셀들:상단경계는 의미 없음, 그외 모든셀들:오른쪽 및 하단경계만 의미 있음
+			-->
+		    <!-- [선택] : colbk : 바탕색 RGB( 흰색:RGB(255,255,255) )이면 생략 -->
+	   	    <!ATTLIST CELL
+		   	x    CDATA	#REQUIRED
+		   	y    CDATA	#REQUIRED
+		   	w    CDATA	#REQUIRED
+		   	h    CDATA	#REQUIRED
+		   	cnt   CDATA	#IMPLIED
+		   	cross CDATA	#IMPLIED
+		   	cjustv	CDATA	#IMPLIED
+   		   	borderinfo CDATA #IMPLIED
+		   	colbk	CDATA	#IMPLIED>
+
+
+    <!-- GROUP(그룹)
+        절대위치를 가지는 객체들을 위함( 예, 이미지 문항 )
+		    -->
+    <!ELEMENT GROUP ( FREEDAP*, FREEQNUM?, PIC* )>
+    <!ATTLIST GROUP (#PCDATA)>
+
+
+    <!-- FREEDAP(자유답항) : 그룹박스내 자유위치를 가지는 선다형 답항항목 -->
+    <!ELEMENT FREEDAP (#PCDATA)>
+      <!-- xr, yr, wr, hr : 차상위객체 내용폭(테두리폭 아님)에 대한 크기비율( ~ 100%) : 이미지 문항에서 이미지에 대항 상대위치 기술
+		   xa, ya, wa, ha : 절대 단위 크기( twip, cm,mm, inch ) : 2017.11.7.
+			      -->
+      <!ATTLIST FREEDAP
+		      xr   	CDATA	#REQUIRED
+		      yr   	CDATA	#REQUIRED
+		      wr   	CDATA	#REQUIRED
+		      hr   	CDATA	#REQUIRED>
+
+
+      <!-- FREEQNUM(자유문번) : 그룹박스내 자유위치를 가지는 문항번호
+                  영역포기 또는 원이미지 문항번호를 감추기할 때 사용함 
+          -->
+      <!ELEMENT FREEQNUM (#PCDATA)>
+      <!ATTLIST FREEDAP
+		            xr   	CDATA	#REQUIRED
+		            yr   	CDATA	#REQUIRED
+		            wr   	CDATA	#REQUIRED
+		            hr   	CDATA	#REQUIRED>
+
+<!-- #endif (2) -->
+	
+	<!ELEMENT 답항 ( 단락* | 그림* | 메타* | 보기* | TABLE* | 동영상* | 오디오* | Flash동영상* | Flash오디오* )*>
+
+	<!-- 답항 제목 -->   
+	<!ELEMENT DHTITLE ( 단락* | 그림* | 메타* | 보기* | TABLE* | 동영상* | 오디오* | Flash동영상* | Flash오디오* )*>
+	
+   <!ELEMENT 힌트 ( 단락* | 그림* | 메타* | 보기* | TABLE* | 동영상* | 오디오* | Flash동영상* | Flash오디오* )*>
+   <!-- "FML"모드 : [선택] w, h - 페이지의 절대폭, 높이 ( 단위 : TWIP ) -->
+   <!ATTLIST 힌트 x    CDATA	#IMPLIED
+	          y    CDATA	#IMPLIED>
+
+   <!ELEMENT 해설 ( 단락* | 그림* | 메타* | 보기* | TABLE* | 동영상* | 오디오* | Flash동영상* | Flash오디오* )*>
+   <!-- "FML"모드 : [선택] w, h - 페이지의 절대폭, 높이 ( 단위 : TWIP ) -->
+   <!ATTLIST 해설 x    CDATA	#IMPLIED
+	          y    CDATA	#IMPLIED>
+
+   <!ELEMENT 정답 ( 단락* | 그림* | 메타* | 보기* | TABLE* | 동영상* | 오디오* | Flash동영상* | Flash오디오* )*>
+   <!-- "FML"모드 : [선택] w, h - 페이지의 절대폭, 높이 ( 단위 : TWIP ) -->
+   <!ATTLIST 정답 x    CDATA	#IMPLIED
+	          y    CDATA	#IMPLIED>
+
+   <!ELEMENT 가필 ( 단락* | 그림* | 메타* | 보기* | TABLE* | 동영상* | 오디오* | Flash동영상* | Flash오디오* )*>
+   <!-- "FML"모드 : [선택] w, h - 페이지의 절대폭, 높이 ( 단위 : TWIP ) -->
+   <!ATTLIST 가필 x    CDATA	#IMPLIED
+	          y    CDATA	#IMPLIED>
+
+   <!ELEMENT 해석 ( 단락* | 그림* | 메타* | 보기* | TABLE* | 동영상* | 오디오* | Flash동영상* | Flash오디오* )*>
+   <!-- "FML"모드 : [선택] w, h - 페이지의 절대폭, 높이 ( 단위 : TWIP ) -->
+   <!ATTLIST 해석 x    CDATA	#IMPLIED
+	          y    CDATA	#IMPLIED>
+
+   <!ELEMENT 어휘 ( 단락* | 그림* | 메타* | 보기* | TABLE* | 동영상* | 오디오* | Flash동영상* | Flash오디오* )*>
+   <!-- "FML"모드 : [선택] w, h - 페이지의 절대폭, 높이 ( 단위 : TWIP ) -->
+   <!ATTLIST 어휘 x    CDATA	#IMPLIED
+	          y    CDATA	#IMPLIED>
+
+   <!ELEMENT 예문 ( 단락* | 그림* | 메타* | 보기* | TABLE* | 동영상* | 오디오* | Flash동영상* | Flash오디오* )*>
+   <!-- "FML"모드 : [선택] w, h - 페이지의 절대폭, 높이 ( 단위 : TWIP ) -->
+   <!ATTLIST 예문 x    CDATA	#IMPLIED
+	          y    CDATA	#IMPLIED>
+
+<!ELEMENT 지문 ( 안내? | 지시? | 본문? | 해설? | 해석? | 어휘? | 예문? )>
+   <!ELEMENT 안내 ( 단락* | 그림* | 메타* | 보기* | TABLE* | 동영상* | 오디오* | Flash동영상* | Flash오디오* )*>
+   <!-- "FML"모드 : [선택] w, h - 페이지의 절대폭, 높이 ( 단위 : TWIP ) -->
+   <!ATTLIST 안내 x    CDATA	#IMPLIED
+	          y    CDATA	#IMPLIED>
+
+   <!ELEMENT 지시 ( 단락* | 그림* | 메타* | 보기* | TABLE* | 동영상* | 오디오* | Flash동영상* | Flash오디오* )*>
+   <!-- "FML"모드 : [선택] w, h - 페이지의 절대폭, 높이 ( 단위 : TWIP ) -->
+   <!ATTLIST 지시 x    CDATA	#IMPLIED
+	          y    CDATA	#IMPLIED>
+
+   <!ELEMENT 본문 ( 단락* | 그림* | 메타* | 보기* | TABLE* | 동영상* | 오디오* | Flash동영상* | Flash오디오* )*>
+   <!-- "FML"모드 : [선택] w, h - 페이지의 절대폭, 높이 ( 단위 : TWIP ) -->
+   <!ATTLIST 본문 x    CDATA	#IMPLIED
+	          y    CDATA	#IMPLIED>
+   
+<!ELEMENT 개념 ( 안내? | 개요? | 공식? | 해석? | 어휘? | 예문? )>
+   <!ELEMENT 안내 ( 단락* | 그림* | 메타* | 보기* | TABLE* | 동영상* | 오디오* | Flash동영상* | Flash오디오* )*>
+   <!-- "FML"모드 : [선택] w, h - 페이지의 절대폭, 높이 ( 단위 : TWIP ) -->
+   <!ATTLIST 안내 x    CDATA	#IMPLIED
+	          y    CDATA	#IMPLIED>
+
+   <!ELEMENT 개요 ( 단락* | 그림* | 메타* | 보기* | TABLE* | 동영상* | 오디오* | Flash동영상* | Flash오디오* )*>
+   <!-- "FML"모드 : [선택] w, h - 페이지의 절대폭, 높이 ( 단위 : TWIP ) -->
+   <!ATTLIST 개요 x    CDATA	#IMPLIED
+	          y    CDATA	#IMPLIED>
+
+   <!ELEMENT 공식 ( 단락* | 그림* | 메타* | 보기* | TABLE* | 동영상* | 오디오* | Flash동영상* | Flash오디오* )*>
+   <!-- "FML"모드 : [선택] w, h - 페이지의 절대폭, 높이 ( 단위 : TWIP ) -->
+   <!ATTLIST 공식 x    CDATA	#IMPLIED
+	          y    CDATA	#IMPLIED>
+
+
+
+
+<!-- 이하, 참고용
+
+	//=======================
+	// 추가 가능한 문항 정보
+	//=======================
+	#define _XML_QUIZ_ID				_T("id")			// 문항코드
+	#define _XML_QUIZ_ORDER				_T("iOrder")		// 문항번호
+	#define _XML_QUIZ_BAEJUM			_T("bj")			// 배점
+	#define _XML_QUIZ_MARGIN			_T("mg")
+	#define _XML_QUIZ_GROUP				_T("groupflag")
+	#define _XML_QUIZ_DAPNUM_TYPE		_T("dnt")			// 객관식 답항 번호 타입
+	#define _XML_QUIZ_DAPCOLS			_T("dcols")			// 객관식 답항 컬럼수
+	#define _XML_QUIZ_DAPROWS			_T("drows")			// 객관식 답항 열수
+	#define _XML_QUIZ_DAPHANGS			_T("dhs")			// 객관식 답항의 갯수
+	#define _XML_QUIZ_DAPS				_T("daps")			// 객관식 정답 갯수
+	#define _XML_QUIZ_JUNGDAP_RATE		_T("jdr")			// 정답률 for 유웨이
+
+	#define _XML_QUIZ_PAGENO			_T("pageno")		// 시험지의 페이지 번호
+	#define _XML_QUIZ_WIDTH				_T("iQuizWidth")	// 문항의 실제 폭( 2005.2.21 )  -- twip
+	#define _XML_QUIZ_WIDTH_4HTML		_T("iQuizWidthHTML")	// 문항의 전체폭( 2006.3.21 )
+	#define _XML_QUIZ_HEIGHT_4HTML		_T("iQuizHeightHTML")	// 문항의 높이( 2007.8.22 ) : 디지탈 교과서
+
+	#define _XML_QUIZ_IMAGE_ORG			_T("imageOrg")		// 2017.10.24. 원본이미지 경로(페이지급 캡쳐)
+
+	#define _XML_QUIZ_COMBINED			_T("combined")		// 일체형 문항( 2005.12.19. )
+	#define _XML_QUIZTAG_SOURCE_ID		_T("srcid")			// 2005.12.20. COD-ID
+
+	#define _XML_QUIZTAG_DESC			_T("desc")			// 설명
+	#define _XML_QUIZTAG_VERSION		_T("ver")			// 문항버젼
+	#define _XML_QUIZTAG_QUIZ_KIND		_T("qk")			// 문항종류
+	#define _XML_QUIZTAG_CUST_QUIZ_NO	_T("qn")			// 문항번호
+	#define _XML_QUIZTAG_GROUPNO		_T("gn")			// 그룹번호
+	#define _XML_QUIZTAG_OPTIONAL_PAGE	_T("op")			// 문항내 페이지들
+	#define _XML_QUIZTAG_QUIZ_SOURCE	_T("qs")			// 문항출처	: 2005.8.1. KERIS문항 변환시 추가됨
+	#define _XML_QUIZTAG_EXPORT_OPTION_EBSi	_T("opEBS")		// 내보내기 옵션 : 2017.2.2.
+	#define _XML_QUIZTAG_SITE			_T("site")			// 사이트키
+
+	#define _XML_QUIZTAG_TITLE			_T("title")			// 제목
+	#define _XML_QUIZTAG_JISA			_T("js")			// 지사
+	#define _XML_QUIZTAG_HAKWON			_T("hw")			// 학원
+
+	#define _XML_QUIZTAG_GROUP_KIND		_T("gk")			// 그룹종류
+	#define _XML_QUIZTAG_QUIZ_TYPE		_T("qt")			// 채점유형
+	#define _XML_QUIZTAG_VIRTUAL_TYPE	_T("vt")			// 문항유형
+	#define _XML_QUIZTAG_SUB_QUIZ_TYPE	_T("tmc")			// Transformed Multiful Choice Type( 변형된 선다형 ) : "1"
+	#define _XML_QUIZTAG_DIFFICULTY		_T("df")			// 난이도
+	#define _XML_QUIZTAG_EXT_HARD1		_T("hard1")			// 심화구분
+	#define _XML_QUIZTAG_LEVEL			_T("lv")			// 단계 [HARD3]
+	#define _XML_QUIZTAG_LEVEL_TOTAL	_T("tcls")			// 종합분류( 2019.1.29. )
+
+	#define _XML_QUIZTAG_IOSFORMAT		_T("iof")			// 2019.1.25. 문항포멧( 팀스워드, 한글 )
+	#define _XML_QUIZTAG_SERVICE		_T("sv")			// 서비스종류(문항구분)( 일반, 플래시, 이미지, 얼개 )
+	#define _XML_QUIZTAG_SERVICE_USE	_T("svu")			// 서비스용도 for 유웨이
+	#define _XML_QUIZTAG_DATATYPE		_T("dt")			// 데이타 타입
+	#define _XML_QUIZTAG_CLINIC			_T("cn")			// 클리닉
+	#define _XML_QUIZTAG_TIME			_T("tm")			// 문항시간
+	#define _XML_QUIZTAG_COUNT			_T("chasi")			// 차시
+
+	#define _XML_QUIZTAG_SUPERVISOR		_T("su")			// 검수자
+	#define _XML_QUIZTAG_SUPERDATE		_T("sdt")			// 검수일
+	#define _XML_QUIZTAG_SUPERSTATUS	_T("sstat")			// 검수상태
+	#define _XML_QUIZTAG_SUPERVISOR_STATUS	_T("qstat")		// 문항상태
+	#define _XML_QUIZTAG_WRITER			_T("wr")			// 출제자( or ID )
+	#define _XML_QUIZTAG_WRITER_NAME	_T("wrnm")			// 출제자명( 명칭만 )
+	#define _XML_QUIZTAG_WRITER_DATETIME	_T("wrdt")		// 출제일시
+	#define _XML_QUIZTAG_COPYRIGHT		_T("cr")			// 저작권
+	#define _XML_QUIZTAG_YMD			_T("ymd")			// 기출일자
+	#define _XML_QUIZTAG_AREA			_T("ar")			// 기출지역
+	#define _XML_QUIZTAG_MAIN			_T("mn")			// 기출주체
+
+	#define _XML_QUIZTAG_PUBLISH		_T("pb")			// 출판사
+	#define _XML_QUIZTAG_REMARKS		_T("rm")			// 비고
+	#define _XML_QUIZTAG_DEPTL			_T("dl")			// 출제자소속대
+	#define _XML_QUIZTAG_DEPTM			_T("dm")			// 중
+	#define _XML_QUIZTAG_DEPTS			_T("ds")			// 소
+
+	#define _XML_QUIZTAG_PRODUCT		_T("pd")			// 제품명
+	#define _XML_QUIZTAG_DEVUSE			_T("du")			// 개발용도
+	#define _XML_QUIZTAG_DEVYEAR		_T("dyear")			// 개발년도
+	#define _XML_QUIZTAG_NEWTRENDYY		_T("ntyear")		// 신경향년도
+	#define _XML_QUIZTAG_QUIZ_CONT		_T("qc")			// 문항내용
+	#define _XML_QUIZTAG_SITUATION		_T("stt")			// 상황
+	#define _XML_QUIZTAG_PROCESS_TYPE	_T("pt")			// 처리유형
+	#define _XML_QUIZTAG_FREQUENCY		_T("fr")			// 빈출도
+	#define _XML_QUIZTAG_IMPORTANCE		_T("im")			// 중요도
+	#define _XML_QUIZTAG_COMMENTATOR	_T("ct")			// 해설자
+	#define _XML_QUIZTAG_INPUTERID		_T("iid")			// 입력자ID
+	#define _XML_QUIZTAG_LOGINID		_T("logid")			// 로그인ID
+
+	#define _XML_QUIZTAG_MUNJONG1		_T("mj1")			// 문종1
+	#define _XML_QUIZTAG_MUNJONG2		_T("mj2")			// 문종2
+	#define _XML_QUIZTAG_MUNJONG3		_T("mj3")			// 문종3
+	#define _XML_QUIZTAG_GYOGWA1		_T("gg1")			// 교과영역1
+	#define _XML_QUIZTAG_GYOGWA2		_T("gg2")			// 교과영역2
+	#define _XML_QUIZTAG_GYOGWA3		_T("gg3")			// 교과영역3
+
+	#define _XML_QUIZTAG_EDUNUM			_T("en")			// 교육과정
+	#define _XML_QUIZTAG_SCHOOL_GRADE	_T("sg")			// 학교급(초/중/고)
+	#define _XML_QUIZTAG_GRADE			_T("gd")			// 학년(초1,초2../중2..)
+	#define _XML_QUIZTAG_SUBJECT		_T("sj")			// 과목(교과)
+	#define _XML_QUIZTAG_GYOGWASEO		_T("ggs")			// 교과서명
+	#define _XML_QUIZTAG_HAKGI			_T("hk")			// 학기
+
+	#define _XML_QUIZTAG_LARGE			_T("cl")			// 대분류
+	#define _XML_QUIZTAG_MIDDLE			_T("cm")			// 중분류
+	#define _XML_QUIZTAG_SMALL			_T("cs")			// 소분류
+	#define _XML_QUIZTAG_TINY			_T("tn")			// 세분류
+	#define _XML_QUIZTAG_TINY2			_T("tn2")			// 세세분류
+	#define _XML_QUIZTAG_TINY3			_T("tn3")			// 세세세분류
+
+	#define _XML_QUIZTAG_QUIZNUM_STR	_T("qns")			// 문항번호(스트링) - 사용자 문항번호
+	#define _XML_QUIZTAG_SOOHAENG		_T("sh")			// 교과별수행형
+	#define _XML_QUIZTAG_CONT_LEVEL		_T("clv")			// 교과별내용수준
+	#define _XML_QUIZTAG_PYEONGGA_ITEM	_T("pgi")			// 평가요소
+	#define _XML_QUIZTAG_EXT_DATA_URL	_T("durl")			// 자료URL -- KEDI
+	#define _XML_QUIZTAG_EXT_SOLU_URL	_T("surl")			// 해설URL -- KEDI
+
+	#define _XML_QUIZTAG_HAENGDONG1		_T("hd1")			// 행동영역1
+	#define _XML_QUIZTAG_HAENGDONG2		_T("hd2")			// 행돋영역2
+	#define _XML_QUIZTAG_HAENGDONG3		_T("hd3")			// 행동영역3
+	#define _XML_QUIZTAG_HAENGDONG4		_T("hd4")			// 행동영역4
+	#define _XML_QUIZTAG_HAENGDONG5		_T("hd5")			// 행동영역5
+	#define _XML_QUIZTAG_YONGDO_KIND	_T("yk")			// 용도분류
+	#define _XML_QUIZTAG_PAGE_ATTR		_T("pa")			// 교재구성(본지/간지/클리닉)
+	#define _XML_QUIZTAG_BOOKCD			_T("bk")			// 교재명 for 유웨이
+
+	#define _XML_QUIZTAG_WEB_SERVICE	_T("ws")			// 웹서비스여부
+	#define _XML_QUIZTAG_CHECK_YESNO	_T("cyn")			// 채점여부
+	#define _XML_QUIZTAG_POD			_T("pod")			// POD 확장
+	#define _XML_QUIZTAG_FLASH			_T("flash")			// 플래시 저장
+	#define _XML_QUIZTAG_FLASH_QUIZ		_T("flashQuiz")		// 플래시용 문항 저장
+	#define _XML_QUIZTAG_HTML			_T("html")			// HTML 저장( html 원본이 전송됨 )
+	#define _XML_QUIZTAG_XIML			_T("iml")			// IML 저장( html 시험을 위하여 iml이 전송 )
+	#define _XML_QUIZTAG_PUBLIC			_T("public")		// 공개여부
+	#define _XML_QUIZTAG_ANOTHER_SOL	_T("anos")			// 다른풀이여부 for 유웨이
+
+	#define _XML_QUIZTAG_JIMUN_KIND		_T("jmk")			// 지문종류(쟝르)
+	#define _XML_QUIZTAG_JIMUN_INTRO	_T("jmi")			// 지문소재
+	#define _XML_QUIZTAG_JIMUN_DIFFICULTY	_T("jmd")		// 지문난이도
+	#define _XML_QUIZTAG_JIMUN_IMPORTANCE	_T("jmim")		// 지문중요도
+	#define _XML_QUIZTAG_JIMUN_SOURCE	_T("jms")			// 지문출처
+
+	#define _XML_QUIZTAG_EXT_NYTYPE		_T("ntype")			// 2012.3.28. NYTYPE 내용구분 - for 금융
+	#define _XML_QUIZTAG_EXT_ARRANGE_DH	_T("adh")			// 2012.12.18. 배열형 답항
+	#define _XML_QUIZTAG_EXT_CMSID		_T("cmsid")			// 2013.4.14.
+	#define _XML_QUIZTAG_EXT_CLUSETNO	_T("clstno")		// 클루?번호
+	#define _XML_QUIZTAG_EXT_CLASSB		_T("clsb")			// 클래스B
+	#define _XML_QUIZTAG_EXT_SCHCD		_T("schcd")			// 2015.3.27. 분류코드종류 <-- 2013.11.1. 학교코드
+	#define _XML_QUIZTAG_EXT_CSPCD		_T("cspcd")			// 2015.3.27. 분류코드솎아내는 방법
+	#define _XML_QUIZTAG_EXT_ENABLE_MIXDAP	_T("em")		// 2015.2.13. 답항섞음 가능여부\
+
+	#define _XML_QUIZTAG_EXT_SUBJECT_NAME	_T("sjm")		// 2015.4.6. 과목
+	#define _XML_QUIZTAG_EXT_SUBJ_KWCHECK	_T("skc")		// 2015.4.6. 주관식 핵심단어 채점
+	#define _XML_QUIZTAG_EXT_EIA			_T("eia")		// 2015.4.6. 관련성
+	#define _XML_QUIZTAG_EXT_KNOW_LEVEL		_T("kl")		// 2015.4.6. 지식수준
+	#define _XML_QUIZTAG_EXT_DEVELOPER		_T("dvp")		// 2015.4.6. 문항개발자
+			
+	#define _XML_QUIZTAG_CLASS1			_T("cls1")			// 클래스1
+	#define _XML_QUIZTAG_CLASS2			_T("cls2")			// 2
+	#define _XML_QUIZTAG_CLASS3			_T("cls3")			// 3
+	#define _XML_QUIZTAG_CLASS4			_T("cls4")			// ...
+	#define _XML_QUIZTAG_CLASS5			_T("cls5")
+	#define _XML_QUIZTAG_CLASS6			_T("cls6")
+	#define _XML_QUIZTAG_CLASS7			_T("cls7")
+	#define _XML_QUIZTAG_CLASS8			_T("cls8")
+	#define _XML_QUIZTAG_CLASS9			_T("cls9")
+	#define _XML_QUIZTAG_CLASS10		_T("cls10")
+	#define _XML_QUIZTAG_CLASS11		_T("cls11")
+	#define _XML_QUIZTAG_CLASS12		_T("cls12")
+	//#define _XML_QUIZTAG_CLASS13		_T("cls13")
+	//#define _XML_QUIZTAG_CLASS14		_T("cls14")
+	//#define _XML_QUIZTAG_CLASS15		_T("cls15")
+	//#define _XML_QUIZTAG_CLASS16		_T("cls16")
+
+	#define _XML_QUIZTAG_SEONGCHUI0		_T("sc0")			// 성취기준0(내용영역)
+	#define _XML_QUIZTAG_SEONGCHUI		_T("sc")			// 성취기준
+	#define _XML_QUIZTAG_PYEONGGA1		_T("pg1")			// 평가기준(상)-수
+	#define _XML_QUIZTAG_PYEONGGA2		_T("pg2")			// 평가기준(중)-우
+	#define _XML_QUIZTAG_PYEONGGA3		_T("pg3")			// 평가기준(하)-미
+	#define _XML_QUIZTAG_PYEONGGA4		_T("pg4")			// 평가기준(하2)-양
+	#define _XML_QUIZTAG_PYEONGGA5		_T("pg5")			// 평가기준(하3)-가
+
+	#define _XML_QUIZTAG_ANALYSIS_CA	_T("aca")			// 정답분석( Correct Answer )
+	#define _XML_QUIZTAG_ANALYSIS_WA	_T("awa")			// 오답분석( Wrong Answer )
+	#define _XML_QUIZTAG_STATUS			_T("stat")			// 각종 속성 상태값
+
+	#define _XML_QUIZTAG_EXT_GANGJWA_ID		_T("gjid")		// 강좌id : 2015.5.21. EBSi
+	#define _XML_QUIZTAG_EXT_GANGEUI_ID		_T("geid")		// 강의id : 2015.5.21. EBSi
+	#define _XML_QUIZTAG_EXT_TEST_SOURCE	_T("tsource")	// 시험지출처 : 2015.9.14.
+	#define _XML_QUIZTAG_EXT_BOOK_SOURCE	_T("bsource")	// 교재출처   : 2015.9.14.
+
+	#define _XML_QUIZTAG_DUMMY_STR1		_T("dmc1")		// 더미
+	#define _XML_QUIZTAG_DUMMY_STR2		_T("dmc2")
+	#define _XML_QUIZTAG_DUMMY_STR3		_T("dmc3")
+
+	#define _XML_QUIZTAG_DUMMY1			_T("dmn1")		// 더미
+	#define _XML_QUIZTAG_DUMMY2			_T("dmn2")
+	#define _XML_QUIZTAG_DUMMY3			_T("dmn3")
+
+
+	#define _XML_QUIZTAG4W_QUIZNO		_T("no")
+	#define _XML_QUIZTAG4W_QUIZRNO		_T("rno")		// 문항번호
+	#define _XML_QUIZTAG4W_QUIZRNO2		_T("rno2")		// 변형순번 : 2016.7.28.
+	#define _XML_QUIZTAG4W_STATUS		_T("st")
+	#define _XML_QUIZTAG4W_BOOKNO		_T("bno")
+	#define _XML_QUIZTAG4W_PAGENO		_T("pno")
+	#define _XML_QUIZTAG4W_PAGERNO		_T("prno")		// 페이지번호
+	#define _XML_QUIZTAG4W_EID			_T("eid")
+	#define _XML_QUIZTAG4W_EDATE		_T("edt")
+	#define _XML_QUIZTAG4W_ECONT		_T("ect")
+	#define _XML_QUIZTAG4W_ECONT_DATETIME		_T("ectdt")
+	#define _XML_QUIZTAG4W_SBASE		_T("sb")
+	#define _XML_QUIZTAG4W_EBASE		_T("eb")
+	#define _XML_QUIZTAG4W_RESULTS		_T("rt")
+	#define _XML_QUIZTAG4W_KEYWORD		_T("kw")			// 검색어(주제어)
+	#define _XML_QUIZTAG4W_KEYWORD2		_T("kw2")			// 검색어(주제어2)
+	#define _XML_QUIZTAG4W_KEYWORD3		_T("kw3")			// 검색어(주제어3)
+	#define _XML_QUIZTAG4W_KEYWORD4		_T("kw4")			// 검색어(주제어4)
+	#define _XML_QUIZTAG4W_KEYWORD5		_T("kw5")			// 검색어(주제어5)
+	#define _XML_QUIZTAG4W_ACCESSLEVEL	_T("al")
+	
+	//=================
+	// 답항 번호 종류	
+	//=================
+	#define	_NUM_PARAN_HAN		4				// 중괄호국문자( ㈎ ~ ㈛ ) 
+	#define	_NUM_CIR_HAN		5				// 원국문자    ( ㉮ ~ ㉻ )
+	#define _NUM_PAREN_CONS		6				// 중괄호자음  ( ㈀ ~ ㈍ ) 
+	#define	_NUM_CIR_CONS		7				// 원자음      ( ㉠ ~ ㉭ )
+	#define	_NUM_PARENTHESIS	9				// 중괄호숫자  ( ⑴ ~ ⒂ ~  ? )
+	#define	_NUM_CIR_NUMBER		10				// 원숫자      ( ① ~ ⑮ ~  ? )
+	#define	_NUM_PARAN_ALPHA	13				// 괄호영문자  ( ⒜ ~ ⒵ ) 
+	#define	_NUM_CIR_ALPHA		14				// 원영문자    ( ⓐ ~ ⓩ )
+	#define _NUM_PAREN_GAP_EUL	17				// 중괄호 갑을 ( (갑)(을)... )
+	#define _NUM_CIR_GAP_EUL	18				// 원문자 갑을
+-->
+
