@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* QTI Component Base Styles */
+@layer components {
+  /* Choice Interaction */
+  .qti-choice {
+    @apply flex items-start gap-3 p-3 rounded-lg border border-gray-200
+           hover:border-qti-primary hover:bg-blue-50/50
+           cursor-pointer transition-colors;
+  }
+
+  .qti-choice.selected {
+    @apply border-qti-primary bg-blue-50;
+  }
+
+  .qti-choice.correct {
+    @apply border-qti-correct bg-green-50;
+  }
+
+  .qti-choice.incorrect {
+    @apply border-qti-incorrect bg-red-50;
+  }
+
+  .qti-choice.disabled {
+    @apply cursor-not-allowed opacity-60 hover:border-gray-200 hover:bg-transparent;
+  }
+
+  /* Choice Label */
+  .qti-choice-label {
+    @apply flex items-center justify-center w-7 h-7 rounded-full
+           bg-gray-100 text-sm font-medium text-gray-700 flex-shrink-0;
+  }
+
+  .qti-choice.selected .qti-choice-label {
+    @apply bg-qti-primary text-white;
+  }
+
+  /* Text Entry */
+  .qti-text-entry {
+    @apply inline-block min-w-[120px] px-2 py-1 border-b-2 border-gray-300
+           bg-transparent outline-none focus:border-qti-primary transition-colors;
+  }
+
+  .qti-text-entry.correct {
+    @apply border-qti-correct;
+  }
+
+  .qti-text-entry.incorrect {
+    @apply border-qti-incorrect;
+  }
+
+  /* Extended Text */
+  .qti-extended-text {
+    @apply w-full min-h-[150px] p-3 border border-gray-200 rounded-lg
+           outline-none focus:border-qti-primary focus:ring-2 focus:ring-blue-100
+           resize-y transition-all;
+  }
+
+  /* Match Interaction */
+  .qti-match-item {
+    @apply p-3 rounded-lg border border-gray-200 bg-white;
+  }
+
+  .qti-match-connector {
+    @apply w-4 h-4 rounded-full border-2 border-gray-300 cursor-pointer
+           hover:border-qti-primary hover:bg-blue-50 transition-colors;
+  }
+
+  .qti-match-connector.connected {
+    @apply border-qti-primary bg-qti-primary;
+  }
+
+  /* Order Interaction */
+  .qti-order-item {
+    @apply flex items-center gap-3 p-3 rounded-lg border border-gray-200 bg-white
+           cursor-grab active:cursor-grabbing hover:shadow-md transition-shadow;
+  }
+
+  .qti-order-handle {
+    @apply text-gray-400;
+  }
+
+  /* Gap Match */
+  .qti-gap {
+    @apply inline-flex items-center justify-center min-w-[80px] h-8 px-2
+           border-2 border-dashed border-gray-300 rounded bg-gray-50;
+  }
+
+  .qti-gap.filled {
+    @apply border-solid border-qti-primary bg-blue-50;
+  }
+
+  .qti-gap-choice {
+    @apply inline-block px-3 py-1 rounded-full border border-gray-300 bg-white
+           cursor-grab active:cursor-grabbing hover:border-qti-primary transition-colors;
+  }
+
+  /* Hotspot */
+  .qti-hotspot {
+    @apply absolute cursor-pointer opacity-0 hover:opacity-30
+           bg-qti-primary transition-opacity;
+  }
+
+  .qti-hotspot.selected {
+    @apply opacity-40;
+  }
+
+  /* Feedback */
+  .qti-feedback {
+    @apply p-4 rounded-lg border;
+  }
+
+  .qti-feedback.correct {
+    @apply border-qti-correct bg-green-50 text-green-800;
+  }
+
+  .qti-feedback.incorrect {
+    @apply border-qti-incorrect bg-red-50 text-red-800;
+  }
+
+  .qti-feedback.partial {
+    @apply border-qti-partial bg-amber-50 text-amber-800;
+  }
+
+  /* Score Display */
+  .qti-score {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .qti-score.perfect {
+    @apply bg-green-100 text-green-800;
+  }
+
+  .qti-score.partial {
+    @apply bg-amber-100 text-amber-800;
+  }
+
+  .qti-score.zero {
+    @apply bg-red-100 text-red-800;
+  }
+}

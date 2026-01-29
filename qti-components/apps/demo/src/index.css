@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* QTI UI Base Styles */
+.qti-choice {
+  @apply flex items-start gap-3 p-3 rounded-lg border border-gray-200
+         hover:border-blue-500 hover:bg-blue-50/50
+         cursor-pointer transition-colors;
+}
+
+.qti-choice.selected {
+  @apply border-blue-500 bg-blue-50;
+}
+
+.qti-choice.correct {
+  @apply border-green-500 bg-green-50;
+}
+
+.qti-choice.incorrect {
+  @apply border-red-500 bg-red-50;
+}
+
+/* ProseMirror Editor Styles */
+.ProseMirror {
+  @apply outline-none;
+}
+
+.ProseMirror p {
+  @apply my-2;
+}
+
+.ProseMirror h1 {
+  @apply text-2xl font-bold my-4;
+}
+
+.ProseMirror h2 {
+  @apply text-xl font-bold my-3;
+}
+
+.ProseMirror h3 {
+  @apply text-lg font-bold my-2;
+}
