@@ -124,6 +124,7 @@ class GeneratedItemMetadata(BaseModel):
     generation_model: str
     generation_timestamp: str
     confidence_score: float
+    used_vision_api: bool = False
 
 
 class GeneratedItem(BaseModel):
@@ -135,6 +136,7 @@ class GeneratedItem(BaseModel):
     explanation_text: str = ""
     variation_note: str = ""
     uses_original_image: bool = False
+    image_reference_note: str = ""
     metadata: GeneratedItemMetadata
 
 
@@ -144,6 +146,7 @@ class GenerateSimilarResponse(BaseModel):
     generation_time_ms: float
     model: str
     tokens_used: Optional[int] = None
+    images_used: int = 0
 
 
 class GenerationStatusResponse(BaseModel):

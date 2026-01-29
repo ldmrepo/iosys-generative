@@ -1,12 +1,12 @@
 """
-Prompt Templates for Similar Question Generation
+Prompt Templates for Similar Question Generation with Vision Support
 """
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Optional
 
-# System Prompt
-SYSTEM_PROMPT = """당신은 한국 교육과정에 맞는 문항을 생성하는 전문가입니다.
+# System Prompt (Base)
+SYSTEM_PROMPT_BASE = """당신은 한국 교육과정에 맞는 문항을 생성하는 전문가입니다.
 주어진 원본 문항을 분석하고, 동일한 학습 목표를 평가하는 유사 문항을 생성합니다.
 
 ## 출력 형식
@@ -20,7 +20,9 @@ SYSTEM_PROMPT = """당신은 한국 교육과정에 맞는 문항을 생성하�
       "choices": ["① 보기1", "② 보기2", "③ 보기3", "④ 보기4", "⑤ 보기5"],
       "answer": "정답 (객관식: ①②③④⑤ 중 하나, 단답형: 답 텍스트)",
       "explanation": "해설",
-      "variation_note": "원본 대비 변경 사항 요약"
+      "variation_note": "원본 대비 변경 사항 요약",
+      "uses_original_image": true/false,
+      "image_reference_note": "이미지 참조 방식 설명 (이미지 문항인 경우)"
     }
   ]
 }
@@ -74,6 +76,47 @@ SYSTEM_PROMPT = """당신은 한국 교육과정에 맞는 문항을 생성하�
 - 가장 자연스러운 변형 선택"""
 
 
+# Vision-specific System Prompt Extension
+SYSTEM_PROMPT_VISION_EXT = """
+
+## 🖼️ 이미지 문항 생성 지침 (Vision)
+
+당신은 첨부된 이미지를 직접 분석할 수 있습니다.
+
+### 이미지 분석 절차
+1. **시각적 요소 파악**: 도형, 그래프, 표, 다이어그램 등 확인
+2. **수치/레이블 추출**: 이미지에 표시된 모든 숫자, 문자, 기호 정확히 읽기
+3. **관계 파악**: 요소들 간의 기하학적/논리적 관계 이해
+4. **검증**: 추출한 정보가 문제 텍스트와 일치하는지 확인
+
+### 이미지 기반 문항 생성 규칙
+1. **원본 이미지 유지**: 동일한 이미지를 사용하는 문항 생성 가능
+   - 이미지 내 요소(좌표, 길이, 각도 등)를 정확히 참조
+   - 다른 관점에서 질문 (예: "넓이를 구하시오" → "둘레를 구하시오")
+   - `uses_original_image: true` 설정
+
+2. **이미지 독립 문항**: 이미지 없이 성립하는 문항 생성
+   - 이미지의 개념만 차용하여 텍스트로 설명
+   - 새로운 수치로 유사한 구조의 문제 생성
+   - `uses_original_image: false` 설정
+
+3. **수학적 정확성**
+   - 이미지에서 읽은 수치를 기반으로 정답 계산
+   - 계산 과정을 해설에 포함
+   - 이미지와 모순되는 문항 생성 금지
+
+### image_reference_note 작성
+이미지를 참조하는 경우, 어떤 요소를 어떻게 활용했는지 명시:
+- "원본 그래프의 y절편을 활용하여 x절편을 묻는 문항으로 변형"
+- "삼각형 ABC의 변 길이를 유지하고 각도를 묻는 문항으로 변형"
+- "원본 표의 구조를 차용하여 새로운 수치로 독립 문항 생성"
+
+### 환각(Hallucination) 방지
+- 이미지에 **명시적으로 표시된 정보만** 사용
+- 이미지에 없는 수치를 추측하지 않음
+- 불확실한 경우 `uses_original_image: false`로 독립 문항 생성"""
+
+
 # User Prompt Template
 USER_PROMPT_TEMPLATE = """## 원본 문항
 
@@ -103,6 +146,26 @@ USER_PROMPT_TEMPLATE = """## 원본 문항
 - **추가 조건**: {additional_prompt}
 
 위 원본 문항을 기반으로 {count}개의 유사 문항을 생성해주세요."""
+
+
+# Vision-specific User Prompt Extension
+USER_PROMPT_VISION_EXT = """
+
+---
+
+## 🖼️ 이미지 정보
+
+이 문항에는 이미지가 포함되어 있습니다. 첨부된 이미지를 직접 분석하여 문항을 생성하세요.
+
+### 이미지 분석 요청
+1. 이미지에 표시된 모든 수치, 레이블, 기호를 파악하세요
+2. 도형/그래프/표의 구조와 관계를 이해하세요
+3. 원본 문제가 이미지의 어떤 요소를 묻고 있는지 확인하세요
+
+### 생성 시 주의사항
+- 이미지의 정보를 정확하게 참조하세요
+- 이미지에 없는 정보를 만들어내지 마세요
+- 각 문항에서 이미지를 어떻게 활용했는지 `image_reference_note`에 명시하세요"""
 
 
 # Variation Type Instructions
@@ -157,27 +220,42 @@ VARIATION_INSTRUCTIONS = {
 }
 
 
-# Image Handling Instructions
-IMAGE_HANDLING_INSTRUCTIONS = {
-    "required": """
-## 이미지 처리 (필수 참조형)
-이 문항은 이미지(그래프/도형/표)를 필수로 참조합니다.
-- 동일한 이미지를 사용한다고 가정합니다
-- 이미지 내용은 변경하지 않습니다
-- 질문이나 보기만 변형합니다
-- 응답에 "uses_original_image": true 를 포함하세요
-
-예시:
-- 원본: "꼭짓점의 좌표는?"
-- 변형: "x절편의 좌표는?" (같은 그래프 사용)
+# Vision-specific Variation Instructions (additional)
+VARIATION_INSTRUCTIONS_VISION = {
+    "numeric": """
+### 이미지 문항 숫자 변형
+- 이미지에 표시된 수치와 **다른** 수치로 새 문항 생성
+- 원본 이미지는 사용하지 않음 (`uses_original_image: false`)
+- 문제 텍스트에 필요한 조건을 모두 명시
 """,
 
-    "optional": """
-## 이미지 처리 (참고용)
-이 문항의 이미지는 참고용입니다.
-- 이미지 없이 텍스트만으로 문항을 생성합니다
-- 필요시 상황을 텍스트로 설명합니다
-- 응답에 "uses_original_image": false 를 포함하세요
+    "context": """
+### 이미지 문항 맥락 변형
+- 원본 이미지를 사용하되 **질문 관점**을 변경
+- 예: 넓이 → 둘레, x좌표 → y좌표
+- `uses_original_image: true` 권장
+""",
+
+    "structure": """
+### 이미지 문항 구조 변형
+- 같은 이미지로 다른 유형의 질문
+- 예: "구하시오" → "참/거짓 판별", 객관식 → 단답형
+- `uses_original_image: true` 권장
+""",
+
+    "mixed": """
+### 이미지 문항 복합 변형
+- 일부 문항: 원본 이미지 활용 (다른 관점 질문)
+- 일부 문항: 이미지 독립 (새 수치로 텍스트 문항)
+- 다양한 조합으로 문항 생성
+""",
+
+    "auto": """
+### 이미지 문항 자동 변형
+- 이미지 특성에 따라 최적 변형 방식 선택
+- 그래프: 다른 점/절편 질문
+- 도형: 다른 요소(변, 각, 넓이) 질문
+- 표: 다른 행/열 데이터 질문
 """
 }
 
@@ -199,13 +277,20 @@ class GenerationRequest:
     count: int = 3
     variation_type: str = "mixed"
     additional_prompt: str = ""
+    has_images: bool = False
 
 
 class PromptBuilder:
     """Build prompts for LLM generation"""
 
     def __init__(self):
-        self.system_prompt = SYSTEM_PROMPT
+        pass
+
+    def get_system_prompt(self, has_images: bool = False) -> str:
+        """Get system prompt, with Vision extension if images are present"""
+        if has_images:
+            return SYSTEM_PROMPT_BASE + SYSTEM_PROMPT_VISION_EXT
+        return SYSTEM_PROMPT_BASE
 
     def build_user_prompt(self, request: GenerationRequest) -> str:
         """Build user prompt from generation request"""
@@ -237,10 +322,16 @@ class PromptBuilder:
         )
         prompt += "\n\n" + variation_instruction
 
-        # Add image handling instructions if needed
-        if item.get("has_image"):
-            image_type = self._detect_image_type(item)
-            prompt += "\n\n" + IMAGE_HANDLING_INSTRUCTIONS.get(image_type, "")
+        # Add Vision-specific content if has images
+        if request.has_images:
+            prompt += USER_PROMPT_VISION_EXT
+
+            # Add Vision-specific variation instructions
+            vision_variation = VARIATION_INSTRUCTIONS_VISION.get(
+                request.variation_type,
+                VARIATION_INSTRUCTIONS_VISION["mixed"]
+            )
+            prompt += "\n\n" + vision_variation
 
         return prompt
 
@@ -253,26 +344,6 @@ class PromptBuilder:
             return choices
 
         if isinstance(choices, list):
-            return "\n".join(choices)
+            return "\n".join(str(c) for c in choices)
 
         return str(choices)
-
-    def _detect_image_type(self, item: dict) -> str:
-        """Detect image type (required or optional)"""
-        question_text = item.get("question_text", "").lower()
-
-        # Keywords indicating required image reference
-        required_keywords = [
-            "그래프", "좌표", "도형", "그림", "표", "차트",
-            "다이어그램", "위 그림", "아래 그림", "다음 그림"
-        ]
-
-        for keyword in required_keywords:
-            if keyword in question_text:
-                return "required"
-
-        return "optional"
-
-    def get_system_prompt(self) -> str:
-        """Get system prompt"""
-        return self.system_prompt

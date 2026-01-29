@@ -45,8 +45,9 @@ class Settings(BaseSettings):
 
     # OpenAI Configuration
     openai_api_key: str = ""
-    openai_model: str = "gpt-4o-mini"
-    openai_max_tokens: int = 1024
+    openai_model: str = "gpt-4o"  # Vision-capable model for image questions
+    openai_model_text_only: str = "gpt-4o-mini"  # Fallback for text-only
+    openai_max_tokens: int = 4096
     openai_temperature: float = 0.7
 
     # RAG Configuration
