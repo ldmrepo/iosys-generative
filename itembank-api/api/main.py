@@ -12,6 +12,7 @@ from .core.config import get_settings
 from .core.deps import close_db_pool, init_db_pool
 from .routers import health_router, search_router, rag_router
 from .services.embedding import get_embedding_service
+from .services.qwen3vl import init_qwen3vl_service
 
 # Configure logging
 logging.basicConfig(
@@ -42,6 +43,14 @@ async def lifespan(app: FastAPI):
         logger.info(f"Loaded {embedding_service.count} embeddings")
     else:
         logger.warning("Failed to load embeddings, search will be limited")
+
+    # Initialize Qwen3VL service (lazy loading by default)
+    init_qwen3vl_service(
+        model_path=settings.qwen3vl_model_path,
+        default_instruction=settings.qwen3vl_instruction,
+        lazy_load=settings.qwen3vl_lazy_load,
+    )
+    logger.info(f"Qwen3VL service initialized (lazy_load={settings.qwen3vl_lazy_load})")
 
     yield
 

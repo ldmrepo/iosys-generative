@@ -14,13 +14,22 @@ class Settings(BaseSettings):
     app_version: str = "1.0.0"
     debug: bool = False
 
-    # Database
-    database_url: str = "postgresql://poc_user:poc_password@db:5432/poc_itembank"
+    # Database (individual params)
+    db_user: str = "poc_user"
+    db_password: str = "poc_password"
+    db_name: str = "poc_itembank"
+    db_host: str = "localhost"
+    db_port: int = 5433
     db_pool_size: int = 5
     db_max_overflow: int = 10
 
+    @property
+    def database_url(self) -> str:
+        return f"postgresql://{self.db_user}:{self.db_password}@{self.db_host}:{self.db_port}/{self.db_name}"
+
     # Embeddings
     embeddings_path: str = "/app/data/qwen_embeddings_all_subjects_2b_multimodal.npz"
+    embeddings_dir: str = "../poc/results"
     embedding_dim: int = 2048
 
     # Search defaults
@@ -42,6 +51,11 @@ class Settings(BaseSettings):
     rag_system_prompt: str = """당신은 교육 문항 전문가입니다.
 주어진 검색 결과를 바탕으로 사용자의 질문에 정확하게 답변해주세요.
 검색된 문항 정보를 참고하여 답변하되, 없는 정보는 만들어내지 마세요."""
+
+    # Qwen3-VL Configuration
+    qwen3vl_model_path: str = "/mnt/sda/worker/dev_ldm/iosys-generative/poc/models/qwen3-vl-embedding-2b"
+    qwen3vl_instruction: str = "Represent this educational question item for retrieval."
+    qwen3vl_lazy_load: bool = True
 
     class Config:
         env_file = ".env"

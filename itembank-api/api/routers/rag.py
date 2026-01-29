@@ -3,7 +3,7 @@ RAG (Retrieval-Augmented Generation) endpoints.
 """
 import logging
 import time
-from typing import Optional
+from typing import List, Optional
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
@@ -40,7 +40,7 @@ class RAGQueryResponse(BaseModel):
 class GenerateQuestionRequest(BaseModel):
     """Question generation request schema."""
 
-    reference_item_ids: list[str] = Field(
+    reference_item_ids: List[str] = Field(
         ..., min_length=1, max_length=10, description="Reference item IDs"
     )
     instructions: Optional[str] = Field(None, description="Specific instructions")

@@ -17,6 +17,7 @@ from ..models import (
 )
 from ..services.database import DatabaseService
 from ..services.embedding import get_embedding_service
+from ..services.qwen3vl import get_qwen3vl_service
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/search", tags=["search"])
@@ -28,6 +29,9 @@ async def search_similar(request: SearchRequest) -> SearchResponse:
     Search for similar items using text query.
 
     Uses in-memory embedding search with cosine similarity.
+
+    - If use_model=True: Uses Qwen3VL model to encode query_text (and optionally query_image)
+    - If use_model=False: Treats query_text as item_id and looks up its embedding
     """
     start_time = time.perf_counter()
 
@@ -35,19 +39,43 @@ async def search_similar(request: SearchRequest) -> SearchResponse:
     if not embedding_service.is_loaded:
         raise HTTPException(status_code=503, detail="Embedding service not ready")
 
-    # For now, we search by item_id if the query matches an existing ID
-    # In production, this would use a text encoder to generate query embedding
-    query_embedding = embedding_service.get_embedding_by_id(request.query_text)
+    query_embedding = None
 
-    if query_embedding is None:
-        # If query is not an item ID, return empty results
-        # TODO: Implement text encoding for arbitrary queries
-        logger.warning(f"Query '{request.query_text}' not found as item ID")
-        return SearchResponse(
-            results=[],
-            query_time_ms=(time.perf_counter() - start_time) * 1000,
-            total_count=0,
-        )
+    if request.use_model:
+        # Use Qwen3VL model to encode natural language query
+        qwen3vl_service = get_qwen3vl_service()
+        if qwen3vl_service is None:
+            raise HTTPException(
+                status_code=503,
+                detail="Qwen3VL service not initialized. Check server configuration.",
+            )
+
+        if request.query_image:
+            # Multimodal encoding (text + image)
+            query_embedding = qwen3vl_service.encode_multimodal(
+                text=request.query_text,
+                image_path=request.query_image,
+            )
+        else:
+            # Text-only encoding
+            query_embedding = qwen3vl_service.encode_text(request.query_text)
+
+        if query_embedding is None:
+            raise HTTPException(
+                status_code=500,
+                detail="Failed to encode query with Qwen3VL model",
+            )
+    else:
+        # Legacy: treat query_text as item_id and look up embedding
+        query_embedding = embedding_service.get_embedding_by_id(request.query_text)
+
+        if query_embedding is None:
+            logger.warning(f"Query '{request.query_text}' not found as item ID")
+            return SearchResponse(
+                results=[],
+                query_time_ms=(time.perf_counter() - start_time) * 1000,
+                total_count=0,
+            )
 
     # Search in memory
     results = embedding_service.search_similar_in_memory(
@@ -80,10 +108,17 @@ async def search_similar(request: SearchRequest) -> SearchResponse:
 @router.post("/text", response_model=SearchResponse)
 async def search_by_text(request: SearchRequest) -> SearchResponse:
     """
-    Search items by text query.
+    Search items by natural language text query.
 
-    Currently uses item ID lookup. Will be enhanced with text encoding.
+    This endpoint always uses the Qwen3VL model to encode the query text.
+    Supports multimodal search when query_image is provided.
+
+    Example:
+        POST /search/text
+        {"query_text": "삼각형의 넓이를 구하시오", "top_k": 5}
     """
+    # Force use_model=True for text search endpoint
+    request.use_model = True
     return await search_similar(request)
 
 

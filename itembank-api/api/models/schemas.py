@@ -26,11 +26,15 @@ class SearchRequest(BaseModel):
 
     query_text: str = Field(..., min_length=1, description="Query text for search")
     query_image: Optional[str] = Field(
-        None, description="Base64 encoded image or URL (optional)"
+        None, description="Image path for multimodal search (optional)"
     )
     top_k: int = Field(default=10, ge=1, le=100, description="Number of results")
     threshold: float = Field(
         default=0.5, ge=0.0, le=1.0, description="Minimum similarity threshold"
+    )
+    use_model: bool = Field(
+        default=False,
+        description="If True, use Qwen3VL model for query embedding. If False, treat query_text as item_id.",
     )
 
 
