@@ -68,6 +68,28 @@ class GenerationService:
     def _resolve_image_paths(self, source_item: dict) -> List[str]:
         """Resolve image paths from source item"""
         image_paths = []
+        base_dir = Path(self._settings.iml_data_path)
+
+        # Helper to resolve relative paths
+        def resolve_path(img_path: str) -> str:
+            if os.path.isabs(img_path):
+                return img_path
+            # Try multiple base directories
+            candidates = [
+                base_dir / img_path,
+                base_dir / "data" / "raw" / img_path,
+            ]
+            # Also try using source_file's directory as base
+            source_file = source_item.get("source_file", "")
+            if source_file:
+                source_dir = Path(source_file).parent
+                candidates.append(base_dir / source_dir / img_path)
+
+            for candidate in candidates:
+                if candidate.exists():
+                    return str(candidate)
+            # Return with base_dir as fallback
+            return str(base_dir / img_path)
 
         # Check question_images field
         question_images = source_item.get("question_images")
@@ -77,46 +99,42 @@ class GenerationService:
                 try:
                     images = json.loads(question_images)
                     if isinstance(images, list):
-                        image_paths.extend(images)
+                        image_paths.extend([resolve_path(img) for img in images])
                     else:
-                        image_paths.append(str(images))
+                        image_paths.append(resolve_path(str(images)))
                 except json.JSONDecodeError:
-                    image_paths.append(question_images)
+                    image_paths.append(resolve_path(question_images))
             elif isinstance(question_images, list):
-                image_paths.extend(question_images)
+                image_paths.extend([resolve_path(img) for img in question_images])
 
         # Check metadata for additional images
         metadata = source_item.get("metadata", {})
         if isinstance(metadata, dict):
             meta_images = metadata.get("images", [])
             if isinstance(meta_images, list):
-                image_paths.extend(meta_images)
+                image_paths.extend([resolve_path(img) for img in meta_images])
 
-        # Also check source_file path for related images
-        source_file = source_item.get("source_file", "")
-        if source_file:
-            item_id = source_item.get("id") or source_item.get("item_id", "")
-            if item_id:
+        # If no images found from question_images, scan source_file directory
+        if not image_paths:
+            source_file = source_item.get("source_file", "")
+            if source_file:
                 # Look for DrawObjPic folder (common IML structure)
-                base_dir = Path(self._settings.iml_data_path)
-                possible_dirs = [
-                    base_dir / source_file.replace(".iml", "") / "DrawObjPic",
-                    base_dir / "data" / "raw" / "**" / item_id / "DrawObjPic",
-                ]
-                for dir_pattern in possible_dirs:
-                    if "*" in str(dir_pattern):
-                        import glob
-                        for match_dir in glob.glob(str(dir_pattern)):
-                            if os.path.isdir(match_dir):
-                                for img in os.listdir(match_dir):
-                                    if img.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
-                                        image_paths.append(os.path.join(match_dir, img))
-                    elif dir_pattern.exists():
-                        for img in os.listdir(dir_pattern):
-                            if img.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
-                                image_paths.append(str(dir_pattern / img))
+                draw_obj_pic_dir = base_dir / source_file.replace(".iml", "") / "DrawObjPic"
+                if draw_obj_pic_dir.exists():
+                    for img in os.listdir(draw_obj_pic_dir):
+                        if img.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp')):
+                            image_paths.append(str(draw_obj_pic_dir / img))
 
-        return list(set(image_paths))  # Remove duplicates
+        # Remove duplicates and filter to only existing files
+        unique_paths = []
+        seen = set()
+        for p in image_paths:
+            normalized = os.path.normpath(p)
+            if normalized not in seen and os.path.exists(normalized):
+                seen.add(normalized)
+                unique_paths.append(normalized)
+
+        return unique_paths
 
     def _build_vision_messages(
         self,
