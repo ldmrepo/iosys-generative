@@ -12,7 +12,9 @@
       "import": "./dist/index.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "vite build && tsc -p tsconfig.build.json --emitDeclarationOnly",
     "dev": "vite build --watch",
@@ -21,7 +23,8 @@
   },
   "dependencies": {
     "@iosys/qti-core": "workspace:*",
-    "@iosys/qti-ui": "workspace:*"
+    "@iosys/qti-ui": "workspace:*",
+    "katex": "^0.16.0"
   },
   "peerDependencies": {
     "react": ">=18.0.0",

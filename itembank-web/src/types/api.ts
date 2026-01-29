@@ -38,6 +38,8 @@ export interface ApiSearchResultItem {
     choices?: string[] | string | null
     is_ai_generated?: boolean
     ai_metadata_id?: string
+    question_images?: string[] | string | null
+    source_file?: string
   }
 }
 
@@ -58,6 +60,7 @@ export interface SearchResultItem {
   explanation_text?: string
   choices?: string[]
   is_ai_generated?: boolean
+  question_images?: string[] | string
 }
 
 // Raw API response

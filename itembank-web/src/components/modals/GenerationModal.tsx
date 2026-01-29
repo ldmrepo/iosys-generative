@@ -6,23 +6,20 @@ import { motion } from 'framer-motion'
 import { GenerateIcon, CloseIcon } from '@/components/icons'
 import { DifficultyBadge, AIBadge } from '@/components/badges'
 import type { SearchResultItem } from '@/types/api'
+import type { AssessmentItem } from '@iosys/qti-core'
 
 const QtiItemViewer = dynamic(
   () => import('@/components/QtiItemViewer').then(mod => mod.QtiItemViewer),
   { ssr: false }
 )
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8010'
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001'
 
-// Generated Item type matching API response
+// Generated Item type matching API response (QTI format)
 export interface GeneratedItem {
   temp_id: string
-  question_text: string
-  choices: string[]
-  answer_text: string
-  explanation_text: string
+  assessment_item: AssessmentItem
   variation_note: string
-  uses_original_image: boolean
   metadata: {
     source_item_id: string
     variation_type: string
@@ -30,6 +27,7 @@ export interface GeneratedItem {
     generation_model: string
     generation_timestamp: string
     confidence_score: number
+    used_vision_api: boolean
   }
 }
 
@@ -133,6 +131,40 @@ export function GenerationModal({ sourceItem, onClose, onSaveSuccess }: Generati
     }
   }
 
+  // Helper to extract flat data from QTI AssessmentItem
+  const extractFromQti = (item: GeneratedItem) => {
+    const ai = item.assessment_item
+    const itemBody = ai.itemBody || {}
+    const interactions = itemBody.interactions || []
+    const feedbackBlocks = itemBody.feedbackBlocks || []
+    const responseDecl = (ai.responseDeclarations || [])[0]
+    const correctValues = responseDecl?.correctResponse?.values || []
+
+    // Get question text (strip HTML tags for plain text)
+    const questionText = (itemBody.content || '').replace(/<[^>]*>/g, ' ').trim()
+
+    // Get choices from interaction
+    const choiceInteraction = interactions.find((i: { type?: string }) => i.type === 'choiceInteraction')
+    const simpleChoices = choiceInteraction?.simpleChoices || []
+    const choices = simpleChoices.map((c: { content?: string }) =>
+      (c.content || '').replace(/<[^>]*>/g, ' ').trim()
+    )
+
+    // Get answer text from correct response
+    const correctId = correctValues[0] || ''
+    const correctChoice = simpleChoices.find((c: { identifier?: string }) => c.identifier === correctId)
+    const answerText = correctChoice
+      ? (correctChoice.content || '').replace(/<[^>]*>/g, ' ').trim()
+      : ''
+
+    // Get explanation from feedback
+    const explanationText = feedbackBlocks[0]?.content
+      ? feedbackBlocks[0].content.replace(/<[^>]*>/g, ' ').trim()
+      : ''
+
+    return { questionText, choices, answerText, explanationText }
+  }
+
   const handleSave = async () => {
     if (selectedIds.size === 0) return
 
@@ -142,18 +174,21 @@ export function GenerationModal({ sourceItem, onClose, onSaveSuccess }: Generati
     try {
       const itemsToSave = generatedItems
         .filter(item => selectedIds.has(item.temp_id))
-        .map(item => ({
-          temp_id: item.temp_id,
-          question_text: item.question_text,
-          choices: item.choices,
-          answer_text: item.answer_text,
-          explanation_text: item.explanation_text,
-          source_item_id: item.metadata.source_item_id,
-          variation_type: item.metadata.variation_type,
-          generation_model: item.metadata.generation_model,
-          confidence_score: item.metadata.confidence_score,
-          additional_prompt: additionalPrompt,
-        }))
+        .map(item => {
+          const { questionText, choices, answerText, explanationText } = extractFromQti(item)
+          return {
+            temp_id: item.temp_id,
+            question_text: questionText,
+            choices: choices,
+            answer_text: answerText,
+            explanation_text: explanationText,
+            source_item_id: item.metadata.source_item_id,
+            variation_type: item.metadata.variation_type,
+            generation_model: item.metadata.generation_model,
+            confidence_score: item.metadata.confidence_score,
+            additional_prompt: additionalPrompt,
+          }
+        })
 
       const response = await fetch(`${API_BASE_URL}/generate/save`, {
         method: 'POST',
@@ -175,10 +210,11 @@ export function GenerationModal({ sourceItem, onClose, onSaveSuccess }: Generati
         const errorMessages = failedItems.map(item => item.error).join(', ')
         alert(`${data.total_saved}개 저장됨, ${data.total_failed}개 실패\n실패 원인: ${errorMessages}`)
       } else {
-        alert(`${data.total_saved}개의 문항이 저장되었습니다.\n\n(AI 생성 문항으로 표시됩니다)`)
+        alert(`${data.total_saved}개의 문항이 저장되었습니다.\n\n원본 문항(${sourceItem.item_id})의 유사 문항 목록에서 확인할 수 있습니다.`)
       }
 
-      // Trigger refresh before closing
+      // Trigger refresh before closing - wait a bit to ensure database is updated
+      await new Promise(resolve => setTimeout(resolve, 500))
       if (onSaveSuccess) {
         await onSaveSuccess()
       }
@@ -396,23 +432,16 @@ export function GenerationModal({ sourceItem, onClose, onSaveSuccess }: Generati
                           </span>
                         </div>
                         <div className="p-3">
-                          <p className="text-sm text-slate-700 whitespace-pre-wrap">{item.question_text}</p>
-                          {item.choices.length > 0 && (
-                            <div className="mt-2 space-y-1">
-                              {item.choices.map((choice, i) => (
-                                <p key={i} className="text-xs text-slate-600">{choice}</p>
-                              ))}
-                            </div>
+                          <QtiItemViewer
+                            item={item.assessment_item}
+                            showAnswer={true}
+                            showExplanation={true}
+                          />
+                          {item.variation_note && (
+                            <p className="text-xs text-primary-600 mt-2 pt-2 border-t border-slate-100">
+                              변형: {item.variation_note}
+                            </p>
                           )}
-                          <div className="mt-2 pt-2 border-t border-slate-100">
-                            <p className="text-xs text-slate-500">정답: {item.answer_text}</p>
-                            {item.explanation_text && (
-                              <p className="text-xs text-slate-400 mt-1">해설: {item.explanation_text}</p>
-                            )}
-                            {item.variation_note && (
-                              <p className="text-xs text-primary-600 mt-1">변형: {item.variation_note}</p>
-                            )}
-                          </div>
                         </div>
                       </motion.div>
                     ))}

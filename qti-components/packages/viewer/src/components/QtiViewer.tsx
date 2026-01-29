@@ -13,6 +13,8 @@ import {
   OrderViewer,
   GapMatchViewer,
 } from '../interactions'
+import { useMathRenderer } from '../hooks'
+import 'katex/dist/katex.min.css'
 
 export interface QtiViewerProps {
   /** Assessment item to display */
@@ -38,6 +40,7 @@ export function QtiViewer({
   className,
 }: QtiViewerProps) {
   const { itemBody, responseDeclarations } = item
+  const mathContainerRef = useMathRenderer<HTMLDivElement>()
 
   // Get correct answer for an interaction
   const getCorrectAnswer = (responseId: string): string[] => {
@@ -131,7 +134,7 @@ export function QtiViewer({
   }
 
   return (
-    <div className={`qti-viewer ${className ?? ''}`}>
+    <div ref={mathContainerRef} className={`qti-viewer ${className ?? ''}`}>
       {/* Item Title */}
       {item.title && (
         <h2 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h2>

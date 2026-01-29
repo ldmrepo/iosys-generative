@@ -158,7 +158,67 @@ function imageToHtml(img: ImlImage): string {
 
 function mathToHtml(math: ImlMath): string {
   const displayClass = math.display === 'block' ? 'math-block' : 'math-inline'
-  return `<span class="math ${displayClass}" data-latex="${math.latex}"></span>`
+  const normalizedLatex = normalizeImlLatex(math.latex || '')
+  // Escape quotes for HTML attribute
+  const escapedLatex = normalizedLatex.replace(/"/g, '&quot;')
+  return `<span class="math ${displayClass}" data-latex="${escapedLatex}"></span>`
+}
+
+/**
+ * Normalize IML LaTeX format for KaTeX compatibility
+ * - Remove excessive whitespace
+ * - Fix brace patterns
+ * - Handle Korean text in math
+ */
+function normalizeImlLatex(latex: string): string {
+  if (!latex) return ''
+
+  let result = latex
+
+  // Remove outer braces if the whole expression is wrapped: { { ... } } -> ...
+  result = result.trim()
+  while (result.startsWith('{ ') && result.endsWith(' }')) {
+    const inner = result.slice(2, -2).trim()
+    // Check if braces are balanced
+    if (areBracesBalanced(inner)) {
+      result = inner
+    } else {
+      break
+    }
+  }
+
+  // Normalize whitespace around braces and operators
+  result = result
+    // Fix spacing around braces: { { -> {{, } } -> }}
+    .replace(/\{\s+\{/g, '{{')
+    .replace(/\}\s+\}/g, '}}')
+    // Fix spacing inside braces: { x } -> {x}
+    .replace(/\{\s+/g, '{')
+    .replace(/\s+\}/g, '}')
+    // Fix multiple spaces -> single space
+    .replace(/\s{2,}/g, ' ')
+    // Fix spacing around operators
+    .replace(/\s*\^\s*/g, '^')
+    .replace(/\s*_\s*/g, '_')
+
+  // Handle Korean text - wrap in \text{} if not already
+  // Match Korean characters that are not inside \text{}
+  result = result.replace(
+    /([가-힣]+)/g,
+    (match) => `\\text{${match}}`
+  )
+
+  return result.trim()
+}
+
+function areBracesBalanced(str: string): boolean {
+  let count = 0
+  for (const char of str) {
+    if (char === '{') count++
+    else if (char === '}') count--
+    if (count < 0) return false
+  }
+  return count === 0
 }
 
 function exampleBoxToHtml(box: ImlExampleBox): string {

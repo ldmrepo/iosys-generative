@@ -12,7 +12,6 @@ from pydantic import BaseModel, Field
 from ..services.generation import get_generation_service
 from ..services.database import DatabaseService
 from ..services.qwen3vl import get_qwen3vl_service
-from ..services.embedding import get_embedding_service
 from ..core.config import get_settings
 from ..core.deps import get_db_connection
 
@@ -128,15 +127,10 @@ class GeneratedItemMetadata(BaseModel):
 
 
 class GeneratedItem(BaseModel):
-    """A single generated item"""
+    """A single generated item in QTI format"""
     temp_id: str
-    question_text: str
-    choices: List[str] = []
-    answer_text: str
-    explanation_text: str = ""
+    assessment_item: dict  # QTI AssessmentItem structure
     variation_note: str = ""
-    uses_original_image: bool = False
-    image_reference_note: str = ""
     metadata: GeneratedItemMetadata
 
 
@@ -265,9 +259,8 @@ async def save_generated_items(request: SaveGeneratedItemsRequest):
 
     import json as json_lib
 
-    # Get services for embedding generation
+    # Get Qwen3VL service for embedding generation
     qwen3vl_service = get_qwen3vl_service()
-    embedding_service = get_embedding_service()
 
     async with get_db_connection() as conn:
         for item in request.items:
@@ -352,9 +345,6 @@ async def save_generated_items(request: SaveGeneratedItemsRequest):
                                 ON CONFLICT (id) DO UPDATE SET embedding = $2::vector
                             """, item_id, embedding_str)
 
-                            # Also add to in-memory service for immediate searchability
-                            embedding_service.add_embedding(item_id, embedding)
-
                             embedding_stored = True
                             logger.info(f"Generated and stored embedding for AI item {item_id}")
                         else:
@@ -434,9 +424,7 @@ async def delete_item(item_id: str):
             iml_file.unlink()
             logger.info(f"Deleted IML file: {iml_file}")
 
-        # Remove from in-memory embedding service
-        embedding_service = get_embedding_service()
-        embedding_service.remove_embedding(item_id)
+        # Note: Embedding is automatically removed from pgvector when we delete from qwen_embeddings table above
 
         logger.info(f"Deleted AI item: {item_id}")
 

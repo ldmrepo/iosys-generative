@@ -45,7 +45,8 @@ class DatabaseService:
         Returns:
             List of (item_id, similarity_score) tuples
         """
-        embedding_list = embedding.tolist()
+        # Convert numpy array to pgvector string format "[0.1, 0.2, ...]"
+        embedding_str = "[" + ",".join(str(x) for x in embedding.tolist()) + "]"
 
         query = f"""
             SELECT id, 1 - (embedding <=> $1::vector) as similarity
@@ -57,11 +58,43 @@ class DatabaseService:
 
         try:
             async with get_db_connection() as conn:
-                rows = await conn.fetch(query, embedding_list, threshold, top_k)
+                rows = await conn.fetch(query, embedding_str, threshold, top_k)
                 return [(row["id"], float(row["similarity"])) for row in rows]
         except Exception as e:
             logger.error(f"Search failed: {e}")
             raise
+
+    @staticmethod
+    async def get_embedding_by_id(
+        item_id: str,
+        table_name: str = "qwen_embeddings"
+    ) -> Optional[np.ndarray]:
+        """
+        Get embedding vector by item ID from pgvector.
+
+        Args:
+            item_id: Item identifier
+            table_name: Table to query
+
+        Returns:
+            Embedding vector as numpy array or None
+        """
+        query = f"SELECT embedding FROM {table_name} WHERE id = $1"
+
+        try:
+            async with get_db_connection() as conn:
+                row = await conn.fetchrow(query, item_id)
+                if row:
+                    emb_str = row["embedding"]
+                    if isinstance(emb_str, str):
+                        emb_list = [float(x) for x in emb_str.strip("[]").split(",")]
+                        return np.array(emb_list, dtype=np.float32)
+                    else:
+                        return np.array(emb_str, dtype=np.float32)
+                return None
+        except Exception as e:
+            logger.error(f"Get embedding failed: {e}")
+            return None
 
     @staticmethod
     async def get_item_by_id(item_id: str) -> Optional[Dict[str, Any]]:
@@ -209,4 +242,68 @@ class DatabaseService:
                 return results
         except Exception as e:
             logger.error(f"Keyword search failed: {e}")
+            raise
+
+    @staticmethod
+    async def get_ai_generated_items(source_item_id: str, limit: int = 20) -> List[Dict[str, Any]]:
+        """
+        Get AI-generated items based on a source item.
+
+        Args:
+            source_item_id: The source item ID used for generation
+            limit: Maximum number of results
+
+        Returns:
+            List of SearchResult-compatible dictionaries
+        """
+        query = """
+            SELECT i.id, i.source_file,
+                   i.question_type, i.question_type_code, i.difficulty, i.difficulty_code,
+                   i.curriculum, i.school_level, i.grade, i.subject, i.subject_detail,
+                   i.semester, i.unit_large, i.unit_medium, i.unit_small,
+                   i.question_text, i.choices, i.answer_text, i.explanation_text,
+                   i.question_images, i.explanation_images, i.has_image,
+                   i.keywords, i.year, i.source, i.exam_name, i.is_ai_generated,
+                   a.generation_model, a.variation_type, a.confidence_score, a.created_at
+            FROM items i
+            JOIN ai_generated_items a ON i.ai_metadata_id = a.id
+            WHERE a.source_item_id = $1
+            ORDER BY a.created_at DESC
+            LIMIT $2
+        """
+
+        try:
+            async with get_db_connection() as conn:
+                rows = await conn.fetch(query, source_item_id, limit)
+                results = []
+                for row in rows:
+                    item = dict(row)
+                    item["category"] = "image" if item.get("has_image") else "text_only"
+                    results.append({
+                        "item_id": item["id"],
+                        "score": item.get("confidence_score", 0.85),
+                        "metadata": item
+                    })
+                return results
+        except Exception as e:
+            logger.error(f"Get AI items failed: {e}")
+            raise
+
+    @staticmethod
+    async def get_all_ai_items(limit: int = 50) -> List[Dict[str, Any]]:
+        """Get all AI-generated items with their source item IDs"""
+        query = """
+            SELECT i.id, i.question_text, a.source_item_id, a.created_at
+            FROM items i
+            JOIN ai_generated_items a ON i.ai_metadata_id = a.id
+            WHERE i.is_ai_generated = TRUE
+            ORDER BY a.created_at DESC
+            LIMIT $1
+        """
+        try:
+            async with get_db_connection() as conn:
+                rows = await conn.fetch(query, limit)
+                return [dict(row) for row in rows]
+        except Exception as e:
+            logger.error(f"Get all AI items failed: {e}")
             raise

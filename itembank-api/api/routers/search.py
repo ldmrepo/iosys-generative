@@ -20,7 +20,6 @@ from ..models import (
     SearchResult,
 )
 from ..services.database import DatabaseService
-from ..services.embedding import get_embedding_service
 from ..services.qwen3vl import get_qwen3vl_service
 from ..services.reranker import get_reranker_service
 from utils.iml_reader import read_iml_file, find_iml_file
@@ -43,10 +42,6 @@ async def search_similar(request: SearchRequest) -> SearchResponse:
     """
     start_time = time.perf_counter()
     settings = get_settings()
-
-    embedding_service = get_embedding_service()
-    if not embedding_service.is_loaded:
-        raise HTTPException(status_code=503, detail="Embedding service not ready")
 
     query_embedding = None
 
@@ -75,8 +70,8 @@ async def search_similar(request: SearchRequest) -> SearchResponse:
                 detail="Failed to encode query with Qwen3VL model",
             )
     else:
-        # Legacy: treat query_text as item_id and look up embedding
-        query_embedding = embedding_service.get_embedding_by_id(request.query_text)
+        # Legacy: treat query_text as item_id and look up embedding from pgvector
+        query_embedding = await DatabaseService.get_embedding_by_id(request.query_text)
 
         if query_embedding is None:
             logger.warning(f"Query '{request.query_text}' not found as item ID")
@@ -86,15 +81,16 @@ async def search_similar(request: SearchRequest) -> SearchResponse:
                 total_count=0,
             )
 
-    # Stage 1: Initial retrieval
+    # Stage 1: Initial retrieval using pgvector
     # If reranker is enabled, retrieve more candidates for reranking
     reranker_service = get_reranker_service()
     use_reranker = settings.use_reranker and reranker_service is not None and request.use_model
 
     initial_top_k = settings.reranker_top_k if use_reranker else request.top_k
 
-    results = embedding_service.search_similar_in_memory(
-        query_embedding=query_embedding,
+    # Use pgvector for search (includes AI-generated items)
+    results = await DatabaseService.search_similar(
+        embedding=query_embedding,
         top_k=initial_top_k,
         threshold=request.threshold,
     )
@@ -230,6 +226,88 @@ async def batch_search(request: BatchSearchRequest) -> BatchSearchResponse:
     return BatchSearchResponse(results=results, total_time_ms=total_elapsed_ms)
 
 
+@router.get("/ai-generated/{source_item_id}", response_model=SearchResponse)
+async def get_ai_generated_items(source_item_id: str, limit: int = 20) -> SearchResponse:
+    """
+    Get AI-generated items based on a source item.
+
+    Returns items that were generated using the specified source item.
+    """
+    start_time = time.perf_counter()
+
+    try:
+        results_raw = await DatabaseService.get_ai_generated_items(
+            source_item_id=source_item_id,
+            limit=limit
+        )
+
+        results = [
+            SearchResult(
+                item_id=r["item_id"],
+                score=r["score"],
+                metadata=r["metadata"]
+            )
+            for r in results_raw
+        ]
+
+        query_time_ms = (time.perf_counter() - start_time) * 1000
+
+        return SearchResponse(
+            results=results,
+            query_time_ms=query_time_ms,
+            total_count=len(results)
+        )
+    except Exception as e:
+        logger.error(f"Get AI generated items failed: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to get AI generated items: {e}"
+        )
+
+
+@router.get("/ai-generated", response_model=SearchResponse)
+async def list_all_ai_generated_items(limit: int = 50) -> SearchResponse:
+    """
+    List all AI-generated items with their source item IDs.
+
+    Returns recent AI-generated items for discovery purposes.
+    """
+    start_time = time.perf_counter()
+
+    try:
+        results_raw = await DatabaseService.get_all_ai_items(limit=limit)
+
+        # Convert to SearchResult format
+        results = []
+        for r in results_raw:
+            results.append(
+                SearchResult(
+                    item_id=r["id"],
+                    score=1.0,  # No similarity score for listing
+                    metadata={
+                        "question_text": r.get("question_text", ""),
+                        "source_item_id": r.get("source_item_id", ""),
+                        "created_at": str(r.get("created_at", "")),
+                        "is_ai_generated": True,
+                    }
+                )
+            )
+
+        query_time_ms = (time.perf_counter() - start_time) * 1000
+
+        return SearchResponse(
+            results=results,
+            query_time_ms=query_time_ms,
+            total_count=len(results)
+        )
+    except Exception as e:
+        logger.error(f"List all AI items failed: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to list AI generated items: {e}"
+        )
+
+
 @router.get("/items/{item_id}", response_model=ItemResponse)
 async def get_item(item_id: str) -> ItemResponse:
     """
@@ -247,7 +325,13 @@ async def get_item(item_id: str) -> ItemResponse:
         question_type=item.get("question_type"),
         question_text=item.get("question_text"),
         has_image=item.get("has_image", False),
-        metadata=item.get("metadata") or {},
+        metadata={
+            "subject": item.get("subject"),
+            "grade": item.get("grade"),
+            "school_level": item.get("school_level"),
+            "unit_large": item.get("unit_large"),
+            "is_ai_generated": item.get("is_ai_generated"),
+        },
     )
 
 

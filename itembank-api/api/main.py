@@ -11,7 +11,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from .core.config import get_settings
 from .core.deps import close_db_pool, init_db_pool
 from .routers import health_router, search_router, rag_router, generate_router
-from .services.embedding import get_embedding_service
 from .services.qwen3vl import init_qwen3vl_service
 from .services.reranker import init_reranker_service
 
@@ -38,35 +37,8 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         logger.error(f"Failed to initialize database: {e}")
 
-    # Load embeddings from NPZ
-    embedding_service = get_embedding_service()
-    if embedding_service.load_from_npz(settings.embeddings_path):
-        logger.info(f"Loaded {embedding_service.count} embeddings from NPZ")
-    else:
-        logger.warning("Failed to load embeddings, search will be limited")
-
-    # Load AI-generated embeddings from pgvector
-    try:
-        from .core.deps import get_db_connection
-        import numpy as np
-        async with get_db_connection() as conn:
-            rows = await conn.fetch(
-                "SELECT id, embedding FROM qwen_embeddings WHERE id LIKE 'AI_%'"
-            )
-            for row in rows:
-                item_id = row["id"]
-                # pgvector returns embedding as string, parse it
-                emb_str = row["embedding"]
-                if isinstance(emb_str, str):
-                    emb_list = [float(x) for x in emb_str.strip("[]").split(",")]
-                    embedding = np.array(emb_list, dtype=np.float32)
-                else:
-                    embedding = np.array(emb_str, dtype=np.float32)
-                embedding_service.add_embedding(item_id, embedding)
-            if rows:
-                logger.info(f"Loaded {len(rows)} AI embeddings from pgvector")
-    except Exception as e:
-        logger.warning(f"Failed to load AI embeddings from pgvector: {e}")
+    # Note: Embeddings are now stored in pgvector and searched directly from database
+    # No need to load into memory
 
     # Initialize Qwen3VL service (lazy loading by default)
     init_qwen3vl_service(

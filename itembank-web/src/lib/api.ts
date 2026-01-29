@@ -33,6 +33,20 @@ function normalizeSearchResponse(raw: ApiSearchResponse): SearchResponse {
         }
       }
 
+      // Parse question_images - can be string (JSON) or array
+      let question_images: string[] | undefined
+      if (item.metadata.question_images) {
+        if (typeof item.metadata.question_images === 'string') {
+          try {
+            question_images = JSON.parse(item.metadata.question_images)
+          } catch {
+            question_images = [item.metadata.question_images]
+          }
+        } else if (Array.isArray(item.metadata.question_images)) {
+          question_images = item.metadata.question_images
+        }
+      }
+
       return {
         item_id: item.item_id,
         similarity: item.score,
@@ -49,6 +63,7 @@ function normalizeSearchResponse(raw: ApiSearchResponse): SearchResponse {
         explanation_text: item.metadata.explanation_text,
         choices,
         is_ai_generated: item.metadata.is_ai_generated,
+        question_images,
       }
     }),
     query_time_ms: raw.query_time_ms,
@@ -137,6 +152,14 @@ class ApiClient {
     return this.fetch(`/generate/item/${itemId}`, {
       method: 'DELETE',
     })
+  }
+
+  /**
+   * Get AI-generated items for a source item
+   */
+  async getAiGeneratedItems(sourceItemId: string, limit = 20): Promise<SearchResponse> {
+    const raw = await this.fetch<ApiSearchResponse>(`/search/ai-generated/${sourceItemId}?limit=${limit}`)
+    return normalizeSearchResponse(raw)
   }
 }
 

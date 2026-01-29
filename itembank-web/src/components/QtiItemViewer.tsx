@@ -3,6 +3,7 @@
 import { useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { parseIml, imlToQti, setImlToQtiOptions } from '@iosys/qti-core'
+import type { AssessmentItem } from '@iosys/qti-core'
 import { QtiViewer } from '@iosys/qti-viewer'
 import { api } from '@/lib/api'
 
@@ -10,23 +11,77 @@ import { api } from '@/lib/api'
 // Images are served from the backend at /api/search/images/
 setImlToQtiOptions({ imageBaseUrl: '/api/search/images/' })
 
-interface QtiItemViewerProps {
+// Props for fetching by itemId
+interface QtiItemViewerByIdProps {
   itemId: string
+  item?: never
   showAnswer?: boolean
   showExplanation?: boolean
   className?: string
 }
 
+// Props for direct item data
+interface QtiItemViewerDirectProps {
+  itemId?: never
+  item: AssessmentItem
+  showAnswer?: boolean
+  showExplanation?: boolean
+  className?: string
+}
+
+type QtiItemViewerProps = QtiItemViewerByIdProps | QtiItemViewerDirectProps
+
 /**
- * Fetches IML content, parses to QTI format, and renders with QtiViewer.
- * Shows error details if parsing fails.
+ * QTI Item Viewer component.
+ *
+ * Usage:
+ * 1. Fetch by itemId: <QtiItemViewer itemId="xxx" />
+ * 2. Direct data: <QtiItemViewer item={assessmentItem} />
  */
-export function QtiItemViewer({
+export function QtiItemViewer(props: QtiItemViewerProps) {
+  const {
+    showAnswer = false,
+    showExplanation = false,
+    className,
+  } = props
+
+  // Direct item mode - render immediately
+  if ('item' in props && props.item) {
+    return (
+      <QtiViewer
+        item={props.item}
+        showAnswer={showAnswer}
+        showExplanation={showExplanation}
+        className={className}
+      />
+    )
+  }
+
+  // Fetch mode - requires itemId
+  return (
+    <QtiItemViewerById
+      itemId={(props as QtiItemViewerByIdProps).itemId}
+      showAnswer={showAnswer}
+      showExplanation={showExplanation}
+      className={className}
+    />
+  )
+}
+
+/**
+ * Internal component that fetches IML by itemId
+ */
+function QtiItemViewerById({
   itemId,
-  showAnswer = false,
-  showExplanation = false,
+  showAnswer,
+  showExplanation,
   className,
-}: QtiItemViewerProps) {
+}: {
+  itemId: string
+  showAnswer: boolean
+  showExplanation: boolean
+  className?: string
+}) {
   // Fetch IML content
   const { data, isLoading, error: fetchError } = useQuery({
     queryKey: ['iml', itemId],

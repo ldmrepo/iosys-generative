@@ -1,9 +1,9 @@
 'use client'
 
-import { useState, useRef, useEffect, useCallback } from 'react'
+import { useState, useRef, useEffect, useCallback, useMemo } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 import { api } from '@/lib/api'
 import { useAppStore } from '@/lib/store'
 import type { SearchResultItem } from '@/types/api'
@@ -102,6 +102,23 @@ export default function HomePage() {
     enabled: !!selectedItem,
   })
 
+  // AI-generated items query
+  const { data: aiGeneratedResults, isLoading: isAiLoading, error: aiError } = useQuery({
+    queryKey: ['ai-generated', selectedItem?.item_id],
+    queryFn: () => api.getAiGeneratedItems(selectedItem!.item_id, 10),
+    enabled: !!selectedItem,
+  })
+
+  // Combine similar items with AI-generated items (AI items first)
+  const combinedSimilarItems = useMemo(() => {
+    const aiItems = aiGeneratedResults?.results || []
+    const similarItems = similarResults?.results || []
+    // Filter out duplicates (in case AI items also appear in similar)
+    const aiItemIds = new Set(aiItems.map(i => i.item_id))
+    const filteredSimilar = similarItems.filter(i => !aiItemIds.has(i.item_id))
+    return [...aiItems, ...filteredSimilar]
+  }, [aiGeneratedResults, similarResults])
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
     if (inputValue.trim()) {
@@ -135,10 +152,18 @@ export default function HomePage() {
   }
 
   const handleSaveSuccess = async () => {
-    // Clear cache and refetch all queries after saving new items
-    queryClient.removeQueries({ queryKey: ['iml'] })
-    queryClient.removeQueries({ queryKey: ['search'] })
-    queryClient.removeQueries({ queryKey: ['similar'] })
+    // Invalidate and refetch all queries after saving new items
+    // Use refetchType: 'all' to ensure active queries are immediately refetched
+    await queryClient.invalidateQueries({
+      queryKey: ['ai-generated'],
+      refetchType: 'all'
+    })
+    await queryClient.invalidateQueries({
+      queryKey: ['similar'],
+      refetchType: 'all'
+    })
+    await queryClient.invalidateQueries({ queryKey: ['iml'] })
+    await queryClient.invalidateQueries({ queryKey: ['search'] })
   }
 
   const handleDeleteItem = async (item: SearchResultItem, e: React.MouseEvent) => {
@@ -228,24 +253,11 @@ export default function HomePage() {
 
       {/* Main Content */}
       <main className="flex-1 overflow-hidden">
-        <AnimatePresence mode="wait">
-          {selectedItem ? (
-            // Selected Item View: 1:3 layout
-            <motion.div
-              key="selected-view"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="flex h-full max-w-7xl mx-auto"
-            >
-              {/* Selected Item Panel - 1/4 width */}
-              <motion.div
-                className="w-1/4 min-w-[280px] h-full overflow-y-auto border-r border-slate-200 bg-white"
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-              >
+        {selectedItem ? (
+          // Selected Item View: 1:3 layout
+          <div className="flex h-full max-w-7xl mx-auto">
+            {/* Selected Item Panel - 1/4 width */}
+            <div className="w-1/4 min-w-[280px] h-full overflow-y-auto border-r border-slate-200 bg-white">
                 <div className="p-4">
                   <button
                     onClick={() => setSelectedItem(null)}
@@ -260,74 +272,65 @@ export default function HomePage() {
                     onDelete={(e) => handleDeleteItem(selectedItem, e)}
                   />
                 </div>
-              </motion.div>
+            </div>
 
-              {/* Similar Items Panel - 3/4 width */}
-              <motion.div
-                className="flex-1 h-full overflow-y-auto bg-slate-50"
-                initial={{ x: 20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.3, ease: 'easeOut', delay: 0.1 }}
-              >
+            {/* Similar Items Panel - 3/4 width */}
+            <div className="flex-1 h-full overflow-y-auto bg-slate-50">
                 <div className="p-4">
                   <div className="flex items-center gap-1.5 mb-4">
                     <SparklesIcon />
                     <h3 className="text-sm font-medium text-slate-600">유사 문항</h3>
-                    {similarResults && (
-                      <span className="text-xs text-slate-400 ml-1">
-                        ({similarResults.results.filter(i => i.item_id !== selectedItem.item_id).length}건)
-                      </span>
+                    {combinedSimilarItems.length > 0 && (
+                      <>
+                        <span className="text-xs text-slate-400 ml-1">
+                          ({combinedSimilarItems.filter(i => i.item_id !== selectedItem.item_id).length}건)
+                        </span>
+                        {isAiLoading && (
+                          <span className="text-xs bg-yellow-100 text-yellow-700 px-1.5 py-0.5 rounded-sm ml-1">
+                            AI 로딩중...
+                          </span>
+                        )}
+                        {aiError && (
+                          <span className="text-xs bg-red-100 text-red-700 px-1.5 py-0.5 rounded-sm ml-1">
+                            AI 오류
+                          </span>
+                        )}
+                        {aiGeneratedResults?.results && aiGeneratedResults.results.length > 0 && (
+                          <span className="text-xs bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-sm ml-1">
+                            AI 생성 {aiGeneratedResults.results.length}건
+                          </span>
+                        )}
+                      </>
                     )}
                   </div>
 
                   {isSimilarLoading ? (
                     <SimilarItemsLoadingSkeleton />
-                  ) : similarResults?.results.filter(i => i.item_id !== selectedItem.item_id).length === 0 ? (
+                  ) : combinedSimilarItems.filter(i => i.item_id !== selectedItem.item_id).length === 0 ? (
                     <p className="text-sm text-slate-400 text-center py-8">유사 문항이 없습니다</p>
                   ) : (
-                    <motion.div
-                      className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3"
-                      initial="hidden"
-                      animate="visible"
-                      variants={{
-                        visible: { transition: { staggerChildren: 0.05 } },
-                      }}
-                    >
-                      {similarResults?.results
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+                      {combinedSimilarItems
                         .filter((item) => item.item_id !== selectedItem.item_id)
-                        .slice(0, 9)
+                        .slice(0, 12)
                         .map((item) => (
-                          <motion.div
-                            key={item.item_id}
-                            variants={{
-                              hidden: { opacity: 0, y: 20 },
-                              visible: { opacity: 1, y: 0 },
-                            }}
-                            transition={{ duration: 0.3 }}
-                          >
+                          <div key={item.item_id}>
                             <SimilarItemCard
                               item={item}
                               onClick={() => handleSimilarItemClick(item)}
                               onGenerate={(e) => handleGenerateSimilar(item, e)}
                               onDelete={(e) => handleDeleteItem(item, e)}
                             />
-                          </motion.div>
+                          </div>
                         ))}
-                    </motion.div>
+                    </div>
                   )}
                 </div>
-              </motion.div>
-            </motion.div>
-          ) : (
-            // Search Results View: Full width grid
-            <motion.div
-              key="search-view"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="h-full overflow-y-auto"
-            >
+            </div>
+          </div>
+        ) : (
+          // Search Results View: Full width grid
+          <div className="h-full overflow-y-auto">
               <div className="p-4 max-w-7xl mx-auto">
                 {!searchQuery ? (
                   <EmptyState />
@@ -336,37 +339,22 @@ export default function HomePage() {
                 ) : searchResults?.results.length === 0 ? (
                   <NoResultsState query={searchQuery} />
                 ) : (
-                  <motion.div
-                    className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3"
-                    initial="hidden"
-                    animate="visible"
-                    variants={{
-                      visible: { transition: { staggerChildren: 0.03 } },
-                    }}
-                  >
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
                     {searchResults?.results.map((item) => (
-                      <motion.div
-                        key={item.item_id}
-                        variants={{
-                          hidden: { opacity: 0, y: 10 },
-                          visible: { opacity: 1, y: 0 },
-                        }}
-                        transition={{ duration: 0.2 }}
-                      >
+                      <div key={item.item_id}>
                         <SearchResultCard
                           item={item}
                           onClick={() => handleItemClick(item)}
                           onGenerate={(e) => handleGenerateSimilar(item, e)}
                           onDelete={(e) => handleDeleteItem(item, e)}
                         />
-                      </motion.div>
+                      </div>
                     ))}
-                  </motion.div>
+                  </div>
                 )}
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+          </div>
+        )}
       </main>
 
       {/* Generation Modal */}

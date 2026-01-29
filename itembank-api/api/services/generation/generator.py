@@ -12,11 +12,33 @@ from pathlib import Path
 from typing import Optional, List
 
 from openai import AsyncOpenAI
+from pydantic import BaseModel, Field
 
 from ...core.config import get_settings
 from .prompts import PromptBuilder, GenerationRequest
 
 logger = logging.getLogger(__name__)
+
+
+# Pydantic models for structured outputs
+class GeneratedItem(BaseModel):
+    """Single generated item structure"""
+    question: str = Field(description="Question text with LaTeX math in $...$ format")
+    choices: List[str] = Field(description="5 choices for multiple choice, empty for short answer")
+    correct_choice: int = Field(description="Correct answer index 1-5 for MC, 0 for short answer")
+    explanation: str = Field(description="Explanation with LaTeX math in $...$ format")
+    variation_note: str = Field(description="Summary of changes from original")
+
+    class Config:
+        extra = "forbid"  # This adds additionalProperties: false
+
+
+class GenerationResponse(BaseModel):
+    """Response structure for generation"""
+    items: List[GeneratedItem] = Field(description="List of generated items")
+
+    class Config:
+        extra = "forbid"  # This adds additionalProperties: false
 
 
 class GenerationService:
@@ -52,6 +74,47 @@ class GenerationService:
         except Exception as e:
             logger.error(f"Failed to encode image {image_path}: {e}")
             return None
+
+    def _extract_json(self, content: str) -> dict:
+        """Extract and parse JSON from LLM response with fallback handling"""
+        import re
+
+        # Try direct parse first
+        try:
+            return json.loads(content)
+        except json.JSONDecodeError:
+            pass
+
+        # Try to extract JSON from markdown code block
+        code_block_match = re.search(r'```(?:json)?\s*\n?(.*?)\n?```', content, re.DOTALL)
+        if code_block_match:
+            try:
+                return json.loads(code_block_match.group(1).strip())
+            except json.JSONDecodeError:
+                pass
+
+        # Try to find JSON object pattern
+        json_match = re.search(r'\{[\s\S]*"items"[\s\S]*\}', content)
+        if json_match:
+            try:
+                return json.loads(json_match.group(0))
+            except json.JSONDecodeError:
+                pass
+
+        # Last resort: try to fix common issues
+        cleaned = content.strip()
+        # Remove leading/trailing non-JSON text
+        start_idx = cleaned.find('{')
+        end_idx = cleaned.rfind('}')
+        if start_idx != -1 and end_idx != -1:
+            cleaned = cleaned[start_idx:end_idx + 1]
+            try:
+                return json.loads(cleaned)
+            except json.JSONDecodeError as e:
+                logger.error(f"JSON extraction failed. Content preview: {cleaned[:500]}...")
+                raise ValueError(f"Failed to parse LLM response as JSON: {e}")
+
+        raise ValueError("No valid JSON found in LLM response")
 
     def _get_image_media_type(self, image_path: str) -> str:
         """Get media type from image file extension"""
@@ -239,15 +302,45 @@ class GenerationService:
                 ]
                 logger.info("Calling API without images (text-only)")
 
+            # Use structured outputs with inline JSON schema (OpenAI doesn't support $ref)
+            json_schema = {
+                "name": "generation_response",
+                "strict": True,
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "items": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "question": {"type": "string"},
+                                    "choices": {
+                                        "type": "array",
+                                        "items": {"type": "string"}
+                                    },
+                                    "correct_choice": {"type": "integer"},
+                                    "explanation": {"type": "string"},
+                                    "variation_note": {"type": "string"}
+                                },
+                                "required": ["question", "choices", "correct_choice", "explanation", "variation_note"],
+                                "additionalProperties": False
+                            }
+                        }
+                    },
+                    "required": ["items"],
+                    "additionalProperties": False
+                }
+            }
             response = await self.client.chat.completions.create(
                 model=model,
                 messages=messages,
-                response_format={"type": "json_object"},
+                response_format={"type": "json_schema", "json_schema": json_schema},
                 temperature=0.7,
                 max_tokens=4000
             )
 
-            # Parse response
+            # Parse response - should always be valid JSON with strict mode
             content = response.choices[0].message.content
             result = json.loads(content)
 
@@ -286,36 +379,101 @@ class GenerationService:
         variation_type: str,
         has_images: bool = False
     ) -> dict:
-        """Process and enrich a single generated item"""
+        """Process and enrich a single generated item, converting to QTI format"""
         from datetime import datetime
 
         # Generate temp ID
         temp_id = f"gen_{int(time.time())}_{index}_{uuid.uuid4().hex[:8]}"
 
-        # Normalize choices
+        # Extract from simplified format (question, choices, correct_choice, explanation)
+        question_text = item.get("question", "")
         choices = item.get("choices", [])
-        if isinstance(choices, str):
-            choices = [choices] if choices else []
+        correct_choice = item.get("correct_choice", 0)  # 1-based index
+        explanation = item.get("explanation", "")
 
-        # Check if item uses original image
-        uses_original_image = item.get("uses_original_image", has_images)
+        # Convert $...$ math to HTML with data-latex for rendering
+        def convert_math_to_html(text: str) -> str:
+            """Convert $...$ LaTeX to <span class='math' data-latex='...'>"""
+            import re
+            # Match $...$ but not $$...$$
+            pattern = r'\$([^$]+)\$'
+            def replacer(match):
+                latex = match.group(1)
+                return f'<span class="math" data-latex="{latex}"></span>'
+            return re.sub(pattern, replacer, text)
+
+        # Build choice interactions for QTI
+        choice_interactions = []
+        correct_response_value = None
+
+        if choices:
+            simple_choices = []
+            for i, choice in enumerate(choices):
+                choice_id = f"choice_{i + 1}"
+                choice_html = convert_math_to_html(str(choice))
+                simple_choices.append({
+                    "identifier": choice_id,
+                    "content": choice_html
+                })
+                # correct_choice is 1-based
+                if i + 1 == correct_choice:
+                    correct_response_value = choice_id
+
+            choice_interactions.append({
+                "type": "choiceInteraction",
+                "responseIdentifier": "RESPONSE",
+                "shuffle": False,
+                "maxChoices": 1,
+                "simpleChoices": simple_choices
+            })
+
+        # Build QTI AssessmentItem
+        assessment_item = {
+            "identifier": temp_id,
+            "title": "",
+            "responseDeclarations": [
+                {
+                    "identifier": "RESPONSE",
+                    "cardinality": "single",
+                    "baseType": "identifier",
+                    "correctResponse": {
+                        "values": [correct_response_value] if correct_response_value else []
+                    }
+                }
+            ],
+            "outcomeDeclarations": [
+                {
+                    "identifier": "SCORE",
+                    "cardinality": "single",
+                    "baseType": "float",
+                    "defaultValue": 0
+                }
+            ],
+            "itemBody": {
+                "content": convert_math_to_html(question_text),
+                "interactions": choice_interactions,
+                "feedbackBlocks": [
+                    {
+                        "outcomeIdentifier": "SCORE",
+                        "identifier": "explanation",
+                        "showHide": "show",
+                        "content": convert_math_to_html(explanation)
+                    }
+                ] if explanation else None
+            }
+        }
 
         return {
             "temp_id": temp_id,
-            "question_text": item.get("question", ""),
-            "choices": choices,
-            "answer_text": item.get("answer", ""),
-            "explanation_text": item.get("explanation", ""),
+            "assessment_item": assessment_item,
             "variation_note": item.get("variation_note", ""),
-            "uses_original_image": uses_original_image,
-            "image_reference_note": item.get("image_reference_note", ""),
             "metadata": {
                 "source_item_id": source_item_id,
                 "variation_type": variation_type,
                 "is_ai_generated": True,
                 "generation_model": self.model if has_images else self.model_text_only,
                 "generation_timestamp": datetime.utcnow().isoformat() + "Z",
-                "confidence_score": 0.85,  # Placeholder, can be improved
+                "confidence_score": 0.85,
                 "used_vision_api": has_images
             }
         }
