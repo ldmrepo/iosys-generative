@@ -50,3 +50,4 @@ Thumbs.db
 .claude/
 node_modules/
 poc/results/qwen_embeddings_full_2b_multimodal.json
+poc/results/qwen_vl_embeddings_8b_sample_1000.json
