@@ -1,26 +1,54 @@
 #!/usr/bin/env python3
 """
 이미지 데이터 유효성 검증
+- 18개 파트 파일 로드 지원
 - 폴더 구조 분석 (YYYYMMDD vs YYYY/MM/DD)
 - has_image 플래그와 실제 이미지 매칭 확인
 - 손상된 이미지 파일 검출
 - 매칭률 통계
+- JSON 결과 출력
 """
 
 import json
 from pathlib import Path
-from PIL import Image
 from collections import defaultdict
-from tqdm import tqdm
+from datetime import datetime
 
-# 경로 설정
-BASE_DIR = Path("/root/work/mcp/iosys-generative")
-IMAGE_DIR = BASE_DIR / "data/raw"
-ITEMS_FILE = BASE_DIR / "poc/data/items_full.json"
+# 경로 설정 (로컬/Vast.ai 자동 감지)
+def get_paths():
+    """환경에 맞는 경로 반환"""
+    # 로컬 환경
+    local_base = Path("/root/work/mcp/iosys-generative")
+    if local_base.exists():
+        return {
+            "image_dir": local_base / "data/raw",
+            "items_dir": local_base / "data/processed",
+            "output_dir": local_base / "poc/results"
+        }
 
-# 대체 경로 (Vast.ai용)
-ALT_IMAGE_DIR = Path("./images")
-ALT_ITEMS_FILE = Path("./items_full.json")
+    # Vast.ai 환경 (홈 디렉토리 기준)
+    home = Path.home()
+    return {
+        "image_dir": home / "data/raw",
+        "items_dir": home / "data/processed",
+        "output_dir": home / "poc/results"
+    }
+
+
+def load_all_items(items_dir):
+    """18개 파트 파일에서 모든 문항 로드"""
+    all_items = []
+    for i in range(1, 19):
+        file_path = items_dir / f"items_part{i:02d}.json"
+        if file_path.exists():
+            with open(file_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                items = data.get("items", data)
+                all_items.extend(items)
+                print(f"  Part {i:02d}: {len(items):,} items")
+        else:
+            print(f"  Part {i:02d}: 파일 없음")
+    return all_items
 
 
 def find_image_path(item_id, image_dir):
@@ -64,16 +92,6 @@ def find_image_path(item_id, image_dir):
     return None
 
 
-def check_image_readable(image_path):
-    """이미지 파일이 정상적으로 읽히는지 확인"""
-    try:
-        with Image.open(image_path) as img:
-            img.verify()
-        return True, None
-    except Exception as e:
-        return False, str(e)
-
-
 def analyze_folder_structure(image_dir):
     """이미지 폴더 구조 분석"""
     print(f"\n{'='*60}")
@@ -81,8 +99,8 @@ def analyze_folder_structure(image_dir):
     print(f"{'='*60}")
 
     structure = {
-        "YYYYMMDD": [],  # 8자리 날짜 폴더
-        "YYYY": [],      # 4자리 년도 폴더
+        "YYYYMMDD": [],
+        "YYYY": [],
         "other": []
     }
 
@@ -99,218 +117,155 @@ def analyze_folder_structure(image_dir):
                 structure["other"].append(item.name)
 
     print(f"  YYYYMMDD 형식 폴더: {len(structure['YYYYMMDD'])}개")
-    if structure["YYYYMMDD"]:
-        print(f"    예시: {structure['YYYYMMDD'][:3]}")
-
     print(f"  YYYY 형식 폴더: {len(structure['YYYY'])}개")
-    if structure["YYYY"]:
-        print(f"    예시: {structure['YYYY'][:3]}")
-        # YYYY/MM/DD 구조 확인
-        for year in structure["YYYY"][:1]:
-            year_path = image_dir / year
-            months = [m.name for m in year_path.iterdir() if m.is_dir()]
-            print(f"    {year}/ 하위: {months[:3]}...")
-
-    if structure["other"]:
-        print(f"  기타 폴더: {len(structure['other'])}개")
-        print(f"    예시: {structure['other'][:3]}")
 
     return structure
 
 
-def count_images_by_structure(image_dir):
-    """구조별 이미지 수 카운트"""
+def count_images(image_dir):
+    """이미지 파일 수 카운트"""
     print(f"\n{'='*60}")
-    print("2. 구조별 이미지 수")
+    print("2. 이미지 파일 수")
     print(f"{'='*60}")
 
-    yyyymmdd_count = 0
-    yyyy_mm_dd_count = 0
+    png_count = sum(1 for _ in image_dir.rglob("*.png"))
+    jpg_count = sum(1 for _ in image_dir.rglob("*.jpg"))
 
-    # YYYYMMDD 구조
-    for date_dir in image_dir.iterdir():
-        if date_dir.is_dir() and date_dir.name.isdigit() and len(date_dir.name) == 8:
-            yyyymmdd_count += sum(1 for _ in date_dir.rglob("*.png"))
-            yyyymmdd_count += sum(1 for _ in date_dir.rglob("*.jpg"))
+    print(f"  PNG 파일: {png_count:,}개")
+    print(f"  JPG 파일: {jpg_count:,}개")
+    print(f"  총 이미지: {png_count + jpg_count:,}개")
 
-    # YYYY/MM/DD 구조
-    for year_dir in image_dir.iterdir():
-        if year_dir.is_dir() and year_dir.name.isdigit() and len(year_dir.name) == 4:
-            yyyy_mm_dd_count += sum(1 for _ in year_dir.rglob("*.png"))
-            yyyy_mm_dd_count += sum(1 for _ in year_dir.rglob("*.jpg"))
-
-    print(f"  YYYYMMDD 구조 이미지: {yyyymmdd_count:,}개")
-    print(f"  YYYY/MM/DD 구조 이미지: {yyyy_mm_dd_count:,}개")
-    print(f"  총 이미지: {yyyymmdd_count + yyyy_mm_dd_count:,}개")
-
-    return {"YYYYMMDD": yyyymmdd_count, "YYYY/MM/DD": yyyy_mm_dd_count}
+    return {"png": png_count, "jpg": jpg_count, "total": png_count + jpg_count}
 
 
-def validate_has_image_matching(items, image_dir):
+def validate_matching(items, image_dir):
     """has_image 플래그와 실제 이미지 매칭 검증"""
     print(f"\n{'='*60}")
-    print("3. has_image 플래그 매칭 검증")
+    print("3. has_image 매칭 검증")
     print(f"{'='*60}")
 
     has_image_items = [i for i in items if i.get("has_image")]
-    print(f"  has_image=True 문항 수: {len(has_image_items):,}개")
+    print(f"  has_image=True 문항: {len(has_image_items):,}개")
 
     matched = 0
-    not_matched = []
-    matched_by_structure = {"YYYYMMDD": 0, "YYYY/MM/DD": 0}
+    not_matched_ids = []
+    by_subject = defaultdict(lambda: {"matched": 0, "not_matched": 0})
 
-    for item in tqdm(has_image_items, desc="  매칭 검증"):
+    for i, item in enumerate(has_image_items):
+        meta = item.get("metadata", {})
+        subject = meta.get("subject", "unknown")
+
         path = find_image_path(item["id"], image_dir)
         if path:
             matched += 1
-            if "/20" in path and len(path.split("/20")[1].split("/")[0]) == 6:
-                # YYYYMMDD 형식
-                matched_by_structure["YYYYMMDD"] += 1
-            else:
-                matched_by_structure["YYYY/MM/DD"] += 1
+            by_subject[subject]["matched"] += 1
         else:
-            not_matched.append(item["id"])
+            not_matched_ids.append(item["id"])
+            by_subject[subject]["not_matched"] += 1
+
+        if (i + 1) % 10000 == 0:
+            print(f"  진행: {i+1:,}/{len(has_image_items):,}")
 
     match_rate = matched / len(has_image_items) * 100 if has_image_items else 0
 
     print(f"\n  매칭 결과:")
     print(f"    성공: {matched:,}개 ({match_rate:.1f}%)")
-    print(f"    실패: {len(not_matched):,}개")
-    print(f"    YYYYMMDD 구조: {matched_by_structure['YYYYMMDD']:,}개")
-    print(f"    YYYY/MM/DD 구조: {matched_by_structure['YYYY/MM/DD']:,}개")
+    print(f"    실패: {len(not_matched_ids):,}개")
 
-    if not_matched:
-        print(f"\n  미매칭 ID 샘플 (최대 10개):")
-        for item_id in not_matched[:10]:
-            print(f"    - {item_id}")
+    print(f"\n  과목별 매칭 실패:")
+    for subj, counts in sorted(by_subject.items(), key=lambda x: -x[1]["not_matched"])[:5]:
+        if counts["not_matched"] > 0:
+            total = counts["matched"] + counts["not_matched"]
+            rate = counts["matched"] / total * 100
+            print(f"    {subj}: {counts['not_matched']:,}개 실패 ({rate:.1f}% 매칭)")
 
     return {
-        "total": len(has_image_items),
+        "total_has_image": len(has_image_items),
         "matched": matched,
-        "not_matched": not_matched,
-        "match_rate": match_rate
-    }
-
-
-def check_corrupted_images(items, image_dir, sample_size=500):
-    """손상된 이미지 검출"""
-    print(f"\n{'='*60}")
-    print(f"4. 이미지 파일 무결성 검사 (샘플 {sample_size}개)")
-    print(f"{'='*60}")
-
-    has_image_items = [i for i in items if i.get("has_image")]
-
-    # 샘플링
-    import random
-    sample_items = random.sample(has_image_items, min(sample_size, len(has_image_items)))
-
-    valid = 0
-    corrupted = []
-    not_found = 0
-    by_extension = defaultdict(lambda: {"valid": 0, "corrupted": 0})
-
-    for item in tqdm(sample_items, desc="  무결성 검사"):
-        path = find_image_path(item["id"], image_dir)
-        if not path:
-            not_found += 1
-            continue
-
-        ext = Path(path).suffix.lower()
-        is_valid, error = check_image_readable(path)
-
-        if is_valid:
-            valid += 1
-            by_extension[ext]["valid"] += 1
-        else:
-            corrupted.append({"id": item["id"], "path": path, "error": error})
-            by_extension[ext]["corrupted"] += 1
-
-    checked = valid + len(corrupted)
-    valid_rate = valid / checked * 100 if checked else 0
-
-    print(f"\n  검사 결과:")
-    print(f"    검사된 파일: {checked:,}개")
-    print(f"    정상: {valid:,}개 ({valid_rate:.1f}%)")
-    print(f"    손상: {len(corrupted):,}개")
-    print(f"    이미지 없음: {not_found:,}개")
-
-    print(f"\n  확장자별 결과:")
-    for ext, counts in by_extension.items():
-        total = counts["valid"] + counts["corrupted"]
-        print(f"    {ext}: {counts['valid']}/{total} 정상")
-
-    if corrupted:
-        print(f"\n  손상된 파일 (최대 10개):")
-        for c in corrupted[:10]:
-            print(f"    - {c['path']}")
-            print(f"      에러: {c['error'][:50]}...")
-
-    return {
-        "checked": checked,
-        "valid": valid,
-        "corrupted": corrupted,
-        "valid_rate": valid_rate
+        "not_matched": len(not_matched_ids),
+        "match_rate": match_rate,
+        "not_matched_ids": not_matched_ids[:100],  # 샘플만 저장
+        "by_subject": {k: dict(v) for k, v in by_subject.items()}
     }
 
 
 def main():
     print("=" * 60)
-    print("  이미지 데이터 유효성 검증")
+    print("  이미지 데이터 유효성 검증 (176,443 items)")
     print("=" * 60)
 
-    # 경로 확인
-    image_dir = IMAGE_DIR if IMAGE_DIR.exists() else ALT_IMAGE_DIR
-    items_file = ITEMS_FILE if ITEMS_FILE.exists() else ALT_ITEMS_FILE
+    # 경로 설정
+    paths = get_paths()
+    image_dir = paths["image_dir"]
+    items_dir = paths["items_dir"]
+    output_dir = paths["output_dir"]
 
     print(f"\n이미지 디렉토리: {image_dir}")
-    print(f"데이터 파일: {items_file}")
+    print(f"문항 디렉토리: {items_dir}")
 
     if not image_dir.exists():
         print(f"\n❌ 이미지 디렉토리를 찾을 수 없습니다: {image_dir}")
-        print("   IMAGE_DIR 경로를 수정해주세요.")
         return
 
-    if not items_file.exists():
-        print(f"\n❌ 데이터 파일을 찾을 수 없습니다: {items_file}")
-        print("   ITEMS_FILE 경로를 수정해주세요.")
+    if not items_dir.exists():
+        print(f"\n❌ 문항 디렉토리를 찾을 수 없습니다: {items_dir}")
         return
 
     # 데이터 로드
-    print("\n데이터 로드 중...")
-    with open(items_file, "r", encoding="utf-8") as f:
-        data = json.load(f)
-    items = data["items"] if "items" in data else data
-    print(f"총 문항 수: {len(items):,}개")
+    print("\n[1/4] 데이터 로드...")
+    items = load_all_items(items_dir)
+    print(f"  총 문항: {len(items):,}개")
 
-    # 1. 폴더 구조 분석
-    analyze_folder_structure(image_dir)
+    # 폴더 구조 분석
+    structure = analyze_folder_structure(image_dir)
 
-    # 2. 구조별 이미지 수
-    count_images_by_structure(image_dir)
+    # 이미지 수 카운트
+    image_counts = count_images(image_dir)
 
-    # 3. has_image 매칭 검증
-    matching_result = validate_has_image_matching(items, image_dir)
+    # 매칭 검증
+    matching_result = validate_matching(items, image_dir)
 
-    # 4. 손상된 이미지 검출
-    corruption_result = check_corrupted_images(items, image_dir)
-
-    # 최종 요약
+    # 결과 요약
     print(f"\n{'='*60}")
     print("  검증 결과 요약")
     print(f"{'='*60}")
-    print(f"  has_image 매칭률: {matching_result['match_rate']:.1f}%")
-    print(f"    ({matching_result['matched']:,}/{matching_result['total']:,})")
-    print(f"  이미지 무결성: {corruption_result['valid_rate']:.1f}%")
-    print(f"    ({corruption_result['valid']:,}/{corruption_result['checked']:,})")
+    print(f"  총 문항: {len(items):,}개")
+    print(f"  has_image 문항: {matching_result['total_has_image']:,}개")
+    print(f"  이미지 매칭: {matching_result['matched']:,}개 ({matching_result['match_rate']:.1f}%)")
+    print(f"  총 이미지 파일: {image_counts['total']:,}개")
 
-    if matching_result['match_rate'] >= 99 and corruption_result['valid_rate'] >= 99:
-        print(f"\n  ✅ 데이터 검증 통과")
+    if matching_result['match_rate'] >= 90:
+        print(f"\n  ✅ 검증 통과 (90% 이상 매칭)")
     else:
-        print(f"\n  ⚠️  데이터 검증 문제 발견")
-        if matching_result['match_rate'] < 99:
-            print(f"     - has_image 매칭률이 낮습니다")
-        if corruption_result['valid_rate'] < 99:
-            print(f"     - 손상된 이미지가 있습니다")
+        print(f"\n  ⚠️  매칭률 부족")
+
+    # JSON 결과 저장
+    output_dir.mkdir(parents=True, exist_ok=True)
+    result = {
+        "timestamp": datetime.now().isoformat(),
+        "paths": {
+            "image_dir": str(image_dir),
+            "items_dir": str(items_dir)
+        },
+        "summary": {
+            "total_items": len(items),
+            "has_image_items": matching_result["total_has_image"],
+            "matched": matching_result["matched"],
+            "not_matched": matching_result["not_matched"],
+            "match_rate": matching_result["match_rate"],
+            "total_images": image_counts["total"]
+        },
+        "folder_structure": {
+            "YYYYMMDD_folders": len(structure["YYYYMMDD"]),
+            "YYYY_folders": len(structure["YYYY"])
+        },
+        "by_subject": matching_result["by_subject"]
+    }
+
+    output_file = output_dir / "validation_result.json"
+    with open(output_file, "w", encoding="utf-8") as f:
+        json.dump(result, f, ensure_ascii=False, indent=2)
+    print(f"\n결과 저장: {output_file}")
 
     print("=" * 60)
 

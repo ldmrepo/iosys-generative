@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 """
-Vast.ai용 Qwen3-VL-Embedding-8B 멀티모달 임베딩 생성
+Qwen3-VL-Embedding-8B 멀티모달 임베딩 생성
+- 18개 파트 파일 로드 지원 (176,443개 문항)
 - 텍스트 + 이미지 처리
 - 체크포인트 지원
+- 로컬/Vast.ai 경로 자동 감지
+- NumPy (.npz) 형식으로 저장 (JSON 대비 ~5배 압축)
 """
 
 import json
+import numpy as np
 import torch
 import torch.nn.functional as F
 import gc
@@ -16,12 +20,47 @@ from datetime import datetime
 
 # Configuration
 MODEL_NAME = "Qwen/Qwen3-VL-Embedding-8B"
-DATA_FILE = "items_full.json"
-IMAGE_DIR = Path("./images")  # 압축 해제된 이미지 폴더
-OUTPUT_FILE = "qwen_vl_embeddings_full_8b_multimodal.json"
-CHECKPOINT_FILE = "checkpoint_8b_mm.json"
+OUTPUT_FILE = "qwen_vl_embeddings_full_8b_multimodal.npz"
+CHECKPOINT_FILE = "checkpoint_8b_mm.npz"
+CHECKPOINT_META_FILE = "checkpoint_8b_mm_meta.json"
 MAX_LENGTH = 4096
 SAVE_INTERVAL = 500
+
+
+def get_paths():
+    """환경에 맞는 경로 반환"""
+    # 로컬 환경
+    local_base = Path("/root/work/mcp/iosys-generative")
+    if local_base.exists():
+        return {
+            "image_dir": local_base / "data/raw",
+            "items_dir": local_base / "data/processed",
+            "output_dir": local_base / "poc/results"
+        }
+
+    # Vast.ai 환경 (홈 디렉토리 기준)
+    home = Path.home()
+    return {
+        "image_dir": home / "data/raw",
+        "items_dir": home / "data/processed",
+        "output_dir": home / "poc/results"
+    }
+
+
+def load_all_items(items_dir):
+    """18개 파트 파일에서 모든 문항 로드"""
+    all_items = []
+    for i in range(1, 19):
+        file_path = items_dir / f"items_part{i:02d}.json"
+        if file_path.exists():
+            with open(file_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                items = data.get("items", data)
+                all_items.extend(items)
+                print(f"  Part {i:02d}: {len(items):,} items")
+        else:
+            print(f"  Part {i:02d}: 파일 없음")
+    return all_items
 
 
 def get_gpu_memory():
@@ -31,9 +70,9 @@ def get_gpu_memory():
     return "N/A"
 
 
-def find_image_path(item_id):
+def find_image_path(item_id, image_dir):
     """문항 ID에 해당하는 이미지 경로 찾기"""
-    if not IMAGE_DIR.exists():
+    if not image_dir.exists():
         return None
 
     def check_item_dir(item_path):
@@ -55,14 +94,14 @@ def find_image_path(item_id):
         return None
 
     # 패턴 1: YYYYMMDD/item_id/ (구형)
-    for date_dir in IMAGE_DIR.iterdir():
+    for date_dir in image_dir.iterdir():
         if date_dir.is_dir() and date_dir.name.isdigit() and len(date_dir.name) == 8:
             result = check_item_dir(date_dir / item_id)
             if result:
                 return result
 
     # 패턴 2: YYYY/MM/DD/item_id/ (신형)
-    for year_dir in IMAGE_DIR.iterdir():
+    for year_dir in image_dir.iterdir():
         if year_dir.is_dir() and year_dir.name.isdigit() and len(year_dir.name) == 4:
             for month_dir in year_dir.iterdir():
                 if month_dir.is_dir():
@@ -170,7 +209,7 @@ def generate_embedding(model, processor, text, image_path=None):
     # Normalize
     embedding = F.normalize(embedding, p=2, dim=-1)
 
-    return embedding[0].cpu().float().numpy().tolist()
+    return embedding[0].cpu().float().numpy()
 
 
 @torch.no_grad()
@@ -206,55 +245,101 @@ def generate_embedding_text_only(model, processor, text):
 
     embedding = F.normalize(embedding, p=2, dim=-1)
 
-    return embedding[0].cpu().float().numpy().tolist()
+    return embedding[0].cpu().float().numpy()
 
 
-def load_checkpoint():
-    """체크포인트 로드"""
-    if Path(CHECKPOINT_FILE).exists():
-        with open(CHECKPOINT_FILE, 'r') as f:
-            return json.load(f)
+def load_checkpoint(output_dir):
+    """체크포인트 로드 (NumPy + JSON 메타데이터)"""
+    checkpoint_file = output_dir / CHECKPOINT_FILE
+    meta_file = output_dir / CHECKPOINT_META_FILE
+
+    if checkpoint_file.exists() and meta_file.exists():
+        # 메타데이터 로드
+        with open(meta_file, 'r') as f:
+            meta = json.load(f)
+
+        # 임베딩 로드
+        data = np.load(checkpoint_file, allow_pickle=True)
+        item_ids = data['item_ids'].tolist()
+        embeddings_array = data['embeddings']
+
+        # dict로 변환
+        embeddings = {item_id: embeddings_array[i] for i, item_id in enumerate(item_ids)}
+
+        return {
+            "embeddings": embeddings,
+            "completed_ids": meta.get("completed_ids", []),
+            "errors": meta.get("errors", []),
+            "image_count": meta.get("image_count", 0)
+        }
+
     return {"embeddings": {}, "completed_ids": [], "errors": [], "image_count": 0}
 
 
-def save_checkpoint(embeddings, completed_ids, errors, image_count):
-    """체크포인트 저장"""
-    checkpoint = {
-        "embeddings": embeddings,
+def save_checkpoint(output_dir, embeddings, completed_ids, errors, image_count):
+    """체크포인트 저장 (NumPy + JSON 메타데이터)"""
+    checkpoint_file = output_dir / CHECKPOINT_FILE
+    meta_file = output_dir / CHECKPOINT_META_FILE
+
+    # 임베딩을 numpy 배열로 변환
+    item_ids = list(embeddings.keys())
+    if item_ids:
+        embeddings_array = np.array([embeddings[item_id] for item_id in item_ids], dtype=np.float32)
+        np.savez_compressed(checkpoint_file, item_ids=np.array(item_ids), embeddings=embeddings_array)
+
+    # 메타데이터 저장 (JSON)
+    meta = {
         "completed_ids": list(completed_ids),
         "errors": errors,
         "image_count": image_count,
         "saved_at": datetime.now().isoformat()
     }
-    with open(CHECKPOINT_FILE, 'w') as f:
-        json.dump(checkpoint, f)
+    with open(meta_file, 'w') as f:
+        json.dump(meta, f)
 
 
 def main():
     start_time = time.time()
 
     print("=" * 70)
-    print("Qwen3-VL-Embedding-8B 멀티모달 임베딩 생성")
+    print("Qwen3-VL-Embedding-8B 멀티모달 임베딩 생성 (176,443 items)")
     print("=" * 70)
 
+    # 경로 설정
+    paths = get_paths()
+    image_dir = paths["image_dir"]
+    items_dir = paths["items_dir"]
+    output_dir = paths["output_dir"]
+
+    print(f"\n이미지 디렉토리: {image_dir}")
+    print(f"문항 디렉토리: {items_dir}")
+    print(f"출력 디렉토리: {output_dir}")
+
+    # 출력 디렉토리 생성
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    output_file = output_dir / OUTPUT_FILE
+
     # 1. 데이터 로드
-    print(f"\n[1/5] 데이터 로드: {DATA_FILE}")
-    with open(DATA_FILE, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-    items = data['items']
+    print(f"\n[1/5] 데이터 로드...")
+    items = load_all_items(items_dir)
     print(f"      총 문항: {len(items):,}개")
 
+    if len(items) == 0:
+        print("❌ 문항을 찾을 수 없습니다.")
+        return
+
     # 2. 이미지 디렉토리 확인
-    print(f"\n[2/5] 이미지 디렉토리 확인: {IMAGE_DIR}")
-    if IMAGE_DIR.exists():
-        img_count = sum(1 for _ in IMAGE_DIR.rglob("*.png")) + sum(1 for _ in IMAGE_DIR.rglob("*.jpg"))
+    print(f"\n[2/5] 이미지 디렉토리 확인: {image_dir}")
+    if image_dir.exists():
+        img_count = sum(1 for _ in image_dir.rglob("*.png")) + sum(1 for _ in image_dir.rglob("*.jpg"))
         print(f"      이미지 파일: {img_count:,}개")
     else:
         print(f"      ⚠️  이미지 디렉토리 없음 - 텍스트 전용 모드")
 
     # 3. 체크포인트 로드
     print("\n[3/5] 체크포인트 확인...")
-    checkpoint = load_checkpoint()
+    checkpoint = load_checkpoint(output_dir)
     embeddings = checkpoint.get("embeddings", {})
     completed_ids = set(checkpoint.get("completed_ids", []))
     errors = checkpoint.get("errors", [])
@@ -289,7 +374,7 @@ def main():
 
         try:
             text = prepare_text(item)
-            image_path = find_image_path(item_id) if item.get("has_image", False) else None
+            image_path = find_image_path(item_id, image_dir) if item.get("has_image", False) else None
 
             if image_path:
                 embedding = generate_embedding(model, processor, text, image_path)
@@ -306,7 +391,7 @@ def main():
 
         # 체크포인트 저장
         if (i + 1) % SAVE_INTERVAL == 0:
-            save_checkpoint(embeddings, completed_ids, errors, image_count)
+            save_checkpoint(output_dir, embeddings, completed_ids, errors, image_count)
             elapsed = time.time() - start_time
             speed = len(completed_ids) / elapsed if elapsed > 0 else 0
             remaining = len(items) - len(completed_ids)
@@ -318,37 +403,48 @@ def main():
             gc.collect()
             torch.cuda.empty_cache()
 
-    # 최종 저장
-    print("\n최종 결과 저장 중...")
+    # 최종 저장 (NumPy .npz 형식)
+    print("\n최종 결과 저장 중 (NumPy .npz 형식)...")
 
     elapsed = time.time() - start_time
 
-    output = {
+    # 임베딩을 numpy 배열로 변환
+    item_ids = list(embeddings.keys())
+    embeddings_array = np.array([embeddings[item_id] for item_id in item_ids], dtype=np.float32)
+
+    # 메타데이터
+    metadata = {
         "model": MODEL_NAME,
         "mode": "multimodal_meanpool",
         "num_items": len(embeddings),
         "embedding_dim": hidden_size,
-        "metadata": {
-            "total": len(items),
-            "completed": len(embeddings),
-            "with_image": image_count,
-            "errors": len(errors),
-            "elapsed_seconds": elapsed,
-            "items_per_second": len(embeddings) / elapsed if elapsed > 0 else 0
-        },
-        "embeddings": embeddings,
-        "errors": errors
+        "total": len(items),
+        "completed": len(embeddings),
+        "with_image": image_count,
+        "errors_count": len(errors),
+        "elapsed_seconds": elapsed,
+        "items_per_second": len(embeddings) / elapsed if elapsed > 0 else 0
     }
 
-    with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
-        json.dump(output, f)
+    # NumPy 압축 저장
+    np.savez_compressed(
+        output_file,
+        item_ids=np.array(item_ids),
+        embeddings=embeddings_array,
+        metadata=np.array([json.dumps(metadata)]),  # 메타데이터는 JSON 문자열로
+        errors=np.array([json.dumps(errors)])  # 에러도 JSON 문자열로
+    )
 
     # 체크포인트 삭제
-    if Path(CHECKPOINT_FILE).exists():
-        Path(CHECKPOINT_FILE).unlink()
+    checkpoint_file = output_dir / CHECKPOINT_FILE
+    meta_file = output_dir / CHECKPOINT_META_FILE
+    if checkpoint_file.exists():
+        checkpoint_file.unlink()
+    if meta_file.exists():
+        meta_file.unlink()
 
-    print(f"\n저장 완료: {OUTPUT_FILE}")
-    print(f"파일 크기: {Path(OUTPUT_FILE).stat().st_size / 1024 / 1024:.1f} MB")
+    print(f"\n저장 완료: {output_file}")
+    print(f"파일 크기: {output_file.stat().st_size / 1024 / 1024:.1f} MB")
 
     # Cleanup
     del model

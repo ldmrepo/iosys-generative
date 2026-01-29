@@ -2,7 +2,7 @@
 
 **문서 ID**: IOSYS-ITEMBANK-AI-001-HANDOVER
 **작성일**: 2026-01-27
-**최종 업데이트**: 2026-01-28
+**최종 업데이트**: 2026-01-29
 **프로젝트**: AI 기반 차세대 문항은행 시스템 - Qwen3-VL-Embedding POC
 
 ---
@@ -770,10 +770,187 @@ except Exception as e:
 - 검증 리포트: `preprocessing/output/validation_report.json`
 - 가이드 문서: `preprocessing/README.md`
 
-#### 다음 단계
-1. 전체 176,443건 임베딩 생성 (로컬 GPU ~3시간 or Vast.ai ~1시간)
-2. pgvector 저장 및 대규모 검색 테스트
-3. 과목별 검색 성능 비교
+### 9.5 Qwen3-VL-Embedding-8B 전체 임베딩 생성 ✅ 완료 (2026-01-29)
+
+#### 배경
+- 176,443건 전체 문항에 대한 멀티모달 임베딩 필요
+- 8B VL 모델은 2B 대비 벤치마크 +4~5% 성능 향상 예상
+- 로컬 RTX 2070 SUPER (8GB)로는 8B 모델 실행 불가
+- Vast.ai RTX 4090 (24GB) 사용
+
+#### 실험 환경
+
+| 항목 | 값 |
+|------|------|
+| 플랫폼 | Vast.ai |
+| GPU | RTX 4090 (24GB) |
+| 위치 | Texas, US |
+| SSH | `ssh -p 1000 root@69.162.73.55` |
+| 시간당 비용 | ~$0.50/hr |
+| 모델 | Qwen/Qwen3-VL-Embedding-8B |
+| Pooling | Mean pooling |
+
+#### 데이터 현황
+
+| 항목 | 값 |
+|------|------|
+| 총 문항 | 176,443개 |
+| has_image=True | 45,368개 |
+| 이미지 매칭 성공 | 41,322개 (91.1%) |
+| 이미지 매칭 실패 | 4,046개 (텍스트 전용 처리) |
+
+#### 실행 결과
+
+| 항목 | 값 |
+|------|------|
+| 총 임베딩 수 | **176,443개** |
+| 임베딩 차원 | **4096** |
+| 이미지 포함 | 41,322개 |
+| 데이터 타입 | float32 |
+| 파일 크기 | **2.5GB** (.npz 압축) |
+| 메모리 크기 | 2.69GB |
+| 소요 시간 | **8시간 55분** (535.4분) |
+| 평균 처리 속도 | 5.49 items/sec |
+| 에러 | 0개 |
+| **총 비용** | **~$4.5** |
+
+#### 출력 파일 정보
+
+```python
+# 파일 로드 예시
+import numpy as np
+
+data = np.load("poc/results/qwen_vl_embeddings_full_8b_multimodal.npz", allow_pickle=True)
+item_ids = data['item_ids']       # 176,443개 item ID
+embeddings = data['embeddings']   # (176,443, 4096) float32
+errors = data['errors']           # 에러 목록
+
+print(f"임베딩 수: {len(item_ids)}")
+print(f"임베딩 차원: {embeddings.shape[1]}")
+print(f"Norm: {np.linalg.norm(embeddings[0]):.4f}")  # 1.0 (정규화됨)
+```
+
+#### 주요 스크립트
+
+| 스크립트 | 용도 |
+|----------|------|
+| `poc/scripts/vastai_8b_vl_multimodal.py` | 8B VL 멀티모달 임베딩 생성 |
+| `poc/scripts/validate_image_data.py` | 이미지 매칭 검증 |
+
+#### 작업 흐름 요약
+
+1. **Phase 1: 로컬 검증** ✅
+   - 이미지 매칭률 검증: 91.1% (41,322/45,368)
+   - 누락 이미지 원인 분석 (과학/사회/수학 일부, 2017년 이전 데이터)
+
+2. **Phase 2: 스크립트 준비** ✅
+   - 18개 파트 파일 로드 지원
+   - NumPy (.npz) 저장 형식 적용
+   - 체크포인트 저장 (500개 단위)
+
+3. **Phase 3: Vast.ai 실행** ✅
+   - RTX 4090 인스턴스 생성
+   - 데이터 업로드 (quizdata.zip ~2.9GB, items_part*.json ~262MB)
+   - 임베딩 생성 실행 (8시간 55분)
+   - 결과 다운로드 (2.5GB)
+
+4. **Phase 4: 검증** ✅
+   - 176,443개 임베딩 확인
+   - NaN/Inf 없음
+   - Norm = 1.0 (정규화 완료)
+
+### 9.6 8B VL 모델 성능 평가 ✅ 완료 (2026-01-29)
+
+#### 문제 발견: AutoModel vs Qwen3VLEmbedder
+
+최초 8B VL 임베딩(9.5)은 **잘못된 방식**으로 생성됨:
+- ❌ 사용: `transformers.AutoModel` + 수동 mean pooling
+- ✅ 권장: `Qwen3VLEmbedder` (HuggingFace 공식 scripts 제공)
+
+#### 검증 실험
+
+1000개 샘플로 올바른 방식(`Qwen3VLEmbedder`) 테스트:
+
+| 항목 | 값 |
+|------|------|
+| 샘플 수 | 1,000개 (테스트 100 + 이미지 300 + 텍스트 600) |
+| 소요 시간 | 80.4초 |
+| 처리 속도 | 12.44 items/sec |
+| 에러 | 0개 |
+
+#### 성능 비교 결과
+
+**Image GT (27개 쿼리)**
+
+| 모델 | Top-5 | MRR |
+|------|-------|-----|
+| 2B Multimodal | **100.0%** | **90.7%** |
+| 2B Text-only | 96.3% | 88.1% |
+| 8B VL (Qwen3VLEmbedder) | 92.6% | 80.3% |
+
+**Hybrid GT (61개 쿼리)**
+
+| 모델 | Top-5 | MRR |
+|------|-------|-----|
+| 2B Text-only | **93.4%** | 49.6% |
+| 2B Multimodal | 83.6% | **53.2%** |
+| 8B VL (Qwen3VLEmbedder) | 70.5% | 44.3% |
+
+#### 원인 분석: 유사도 특성 차이
+
+| 지표 | 8B VL | 2B Multimodal |
+|------|-------|---------------|
+| GT 페어 평균 유사도 | 0.48 | **0.89** |
+| 비관련 아이템 유사도 | 0.23 | 0.59 |
+| **마진 (구분력)** | 0.25 | **0.30** |
+
+- 8B는 전체적으로 **더 낮은 유사도** 점수 부여
+- 관련 문항 간에도 유사도가 낮음 (0.48 vs 0.89)
+- 마진(관련-비관련 차이)이 더 작음 → 순위 정렬에서 불리
+
+#### 결론
+
+| 항목 | 결론 |
+|------|------|
+| 8B VL 성능 | **2B보다 낮음** |
+| 원인 | 모델 특성 차이 (보수적 유사도 산출) |
+| 권장 모델 | **2B Multimodal (기존 유지)** |
+| 8B 재생성 | **불필요** (~$4.5 + 9시간 낭비 방지) |
+
+#### 관련 파일
+
+| 파일 | 설명 |
+|------|------|
+| `poc/results/qwen_vl_embeddings_8b_sample_1000.json` | 1000개 샘플 (Qwen3VLEmbedder) |
+| `poc/scripts/vastai_8b_vl_sample_test.py` | 올바른 방식 테스트 스크립트 |
+| `poc/results/8b_vl_multimodal_evaluation.json` | 평가 결과 |
+
+---
+
+## 10. 향후 작업
+
+### 권장 사항
+
+1. **2B Multimodal 임베딩 유지**
+   - 현재 최고 성능 (Image GT Top-5: 100%, Hybrid GT MRR: 53.2%)
+   - 176,443건 임베딩 재생성 시 2B 모델 사용
+
+2. **pgvector 저장**
+   - 2B 멀티모달 임베딩으로 PostgreSQL 저장
+   - 대규모 검색 성능 테스트
+
+3. **프로덕션 API 개발**
+   - REST API 설계
+   - 배치 임베딩 파이프라인
+
+#### 관련 파일
+
+| 파일 | 위치 |
+|------|------|
+| 8B VL 임베딩 | `poc/results/qwen_vl_embeddings_full_8b_multimodal.npz` |
+| 생성 스크립트 | `poc/scripts/vastai_8b_vl_multimodal.py` |
+| 검증 스크립트 | `poc/scripts/validate_image_data.py` |
+| 작업 TODO | `TODO.md` |
 
 ---
 
@@ -845,3 +1022,16 @@ except Exception as e:
 | | | 역사(8.3%), 사회(8.3%), 국어(6.6%) | |
 | | | - 이미지 포함 45,368건, 18개 파트로 분할 저장 | |
 | | | - preprocessing/README.md 통계 업데이트 | |
+| v2.0.0 | 2026-01-29 | **8B VL 멀티모달 전체 임베딩 생성 완료** | AI TF |
+| | | - Vast.ai RTX 4090으로 176,443건 전체 임베딩 생성 | |
+| | | - 모델: Qwen3-VL-Embedding-8B (멀티모달) | |
+| | | - 임베딩 차원: 4096, 파일 크기: 2.5GB (.npz) | |
+| | | - 이미지 포함: 41,322건 (91.1% 매칭) | |
+| | | - 소요 시간: 8시간 55분, 비용: ~$4.5 | |
+| | | - 결과 파일: qwen_vl_embeddings_full_8b_multimodal.npz | |
+| v2.1.0 | 2026-01-29 | **8B VL 모델 성능 평가 완료** | AI TF |
+| | | - 문제 발견: AutoModel 대신 Qwen3VLEmbedder 사용 필요 | |
+| | | - 1000개 샘플로 올바른 방식 검증 완료 | |
+| | | - **결과: 8B VL < 2B Multimodal (Image GT -7.4%p, Hybrid GT -13.1%p)** | |
+| | | - 원인: 8B 모델의 보수적 유사도 산출 특성 | |
+| | | - **결론: 2B Multimodal 유지 권장, 8B 재생성 불필요** | |
