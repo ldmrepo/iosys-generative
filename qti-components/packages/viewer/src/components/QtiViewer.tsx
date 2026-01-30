@@ -172,17 +172,34 @@ export function QtiViewer({
         </div>
       )}
 
+      {/* Correct Answer (for short answer items with math formulas) */}
+      {showAnswer && itemBody.feedbackBlocks && itemBody.feedbackBlocks.some(fb => fb.identifier === 'correctAnswer') && (
+        <div className="mt-4 p-4 bg-accent-50 border border-accent-200">
+          {itemBody.feedbackBlocks
+            .filter(fb => fb.identifier === 'correctAnswer')
+            .map((feedback, index) => (
+              <div
+                key={index}
+                className="prose prose-sm max-w-none"
+                dangerouslySetInnerHTML={{ __html: feedback.content }}
+              />
+            ))}
+        </div>
+      )}
+
       {/* Explanation */}
-      {showExplanation && itemBody.feedbackBlocks && itemBody.feedbackBlocks.length > 0 && (
+      {showExplanation && itemBody.feedbackBlocks && itemBody.feedbackBlocks.some(fb => fb.identifier === 'explanation') && (
         <div className="mt-6 pt-6 border-t">
           <h3 className="text-lg font-medium text-gray-900 mb-3">해설</h3>
-          {itemBody.feedbackBlocks.map((feedback, index) => (
-            <div
-              key={index}
-              className="prose prose-sm max-w-none"
-              dangerouslySetInnerHTML={{ __html: feedback.content }}
-            />
-          ))}
+          {itemBody.feedbackBlocks
+            .filter(fb => fb.identifier === 'explanation')
+            .map((feedback, index) => (
+              <div
+                key={index}
+                className="prose prose-sm max-w-none"
+                dangerouslySetInnerHTML={{ __html: feedback.content }}
+              />
+            ))}
         </div>
       )}
     </div>

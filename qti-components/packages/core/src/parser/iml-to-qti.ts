@@ -472,7 +472,24 @@ function convertShortAnswerItem(item: ImlShortAnswerItem): AssessmentItem {
     expectedLength: item.maxLength,
   }
 
-  return createBaseItem(item, [interaction])
+  const assessmentItem = createBaseItem(item, [interaction])
+
+  // Add answer content as a feedback block (for showing answer with math formulas)
+  if (item.answerContent && item.answerContent.length > 0) {
+    const answerFeedback: FeedbackBlock = {
+      outcomeIdentifier: 'SCORE',
+      identifier: 'correctAnswer',
+      showHide: 'show',
+      content: `<div class="correct-answer"><strong>정답:</strong> ${blockContentToHtml(item.answerContent)}</div>`,
+    }
+
+    assessmentItem.itemBody.feedbackBlocks = [
+      answerFeedback,
+      ...(assessmentItem.itemBody.feedbackBlocks ?? []),
+    ]
+  }
+
+  return assessmentItem
 }
 
 /**

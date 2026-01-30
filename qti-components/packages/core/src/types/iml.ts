@@ -262,8 +262,10 @@ export interface ImlTrueFalseItem extends ImlItemBase {
 /** 단답형 문항 (31) */
 export interface ImlShortAnswerItem extends ImlItemBase {
   itemType: '31'
-  /** 정답 목록 (동의어 허용) */
+  /** 정답 목록 (동의어 허용) - 텍스트 매칭용 */
   correctAnswers: string[]
+  /** 정답 콘텐츠 (수식 포함) - 표시용 */
+  answerContent?: ImlBlockContent[] | undefined
   /** 대소문자 구분 */
   caseSensitive?: boolean | undefined
   /** 최대 글자 수 */

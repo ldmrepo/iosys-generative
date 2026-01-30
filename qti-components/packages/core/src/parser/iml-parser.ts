@@ -773,8 +773,12 @@ function parseShortAnswerItem(root: Element, itemType: '31'): ImlShortAnswerItem
 
   const correctEl = getChildElement(root, '정답')
   const correctAnswers: string[] = []
+  let answerContent: ImlBlockContent[] | undefined
 
   if (correctEl) {
+    // Parse structured content for display (preserves math formulas)
+    answerContent = parseBlockContent(correctEl)
+
     // Multiple answers can be separated by | or in multiple elements
     const text = getTextContent(correctEl)
     if (text.includes('|')) {
@@ -793,6 +797,7 @@ function parseShortAnswerItem(root: Element, itemType: '31'): ImlShortAnswerItem
     ...common,
     itemType,
     correctAnswers,
+    answerContent,
     caseSensitive: getBooleanAttribute(root, 'caseSensitive'),
     maxLength: getNumberAttribute(root, 'maxLength') || undefined,
   }
