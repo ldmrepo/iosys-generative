@@ -37,9 +37,10 @@ export function ChoiceViewer({
     const isSelected = selectedIds.includes(choiceId)
     const isCorrect = correctAnswers.includes(choiceId)
 
-    if (isSelected && isCorrect) return 'correct'
+    // 정답인 선택지는 번호 박스 배경색으로 표시
+    if (isCorrect) return 'correct'
+    // 사용자가 선택했지만 오답인 경우
     if (isSelected && !isCorrect) return 'incorrect'
-    if (!isSelected && isCorrect && response !== undefined) return 'correct' // Show missed correct
     return 'neutral'
   }
 
@@ -72,12 +73,7 @@ export function ChoiceViewer({
         return (
           <div
             key={choice.identifier}
-            className={`
-              flex items-start gap-2 py-0.5
-              ${isSelected ? 'bg-blue-50/50 rounded px-1.5 -mx-1.5' : ''}
-              ${status === 'correct' ? 'bg-green-50/50 rounded px-1.5 -mx-1.5' : ''}
-              ${status === 'incorrect' ? 'bg-red-50/50 rounded px-1.5 -mx-1.5' : ''}
-            `}
+            className="flex items-start gap-2 py-0.5"
           >
             <ChoiceLabel
               index={index}
@@ -91,11 +87,6 @@ export function ChoiceViewer({
                 className="prose prose-sm max-w-none [&>p]:my-0"
                 dangerouslySetInnerHTML={{ __html: choice.content }}
               />
-              {showAnswer && correctAnswers.includes(choice.identifier) && (
-                <span className="inline-block mt-0.5 text-xs text-qti-correct font-medium">
-                  정답
-                </span>
-              )}
             </div>
           </div>
         )
