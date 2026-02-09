@@ -42,13 +42,12 @@
 
 <!ELEMENT 문항종류 ( HEADER? | 단위문항 | 그룹문항 )>
 <!ELEMENT HEADER ( PAGEINFO? )>
-<!-- HEADER : hml로 내보내기시 문항폭을 지정함 -->
 <!ATTLIST HEADER 
 	mode	CDATA	#IMPLIED
 	width	CDATA	#IMPLIED>
 
 	<!ELEMENT PAGEINFO (#PCDATA)>
-	<!-- iDanCount : 페이지내 단 갯수
+	<-- iDanCount : 페이지내 단 갯수
 	    iDanWidth : 페이지내 단의 폭( mm )
 	    iDanGan   : 단간격( mm )
 	    -->
@@ -212,7 +211,7 @@
 		r 	: reverse        : 1:역상      0:아님          : 디폴트 0
 		bx	: box char       : 1:박스문자, 2:라인문자      : 디폴트 0
 		
-		c 	: color    : 색상( RGB : "ff00ff", "255,0,255", "0xff,0x0,0xff" ) : 디폴트 0 (흑색)
+		c 	: color    : 색깔( RGB : hexa )                : 디폴트 0 (흑색)
 		ric 	: rate of inter char : 자간 비율( -50 ~ 200% ) : 디폴트 0 
 		        : 한글에만 적용됨( han=1 일때만 적용함 )
 			: 현재 문자크기(w.h)에 대한 비율
@@ -258,15 +257,15 @@
 	
 <!-- #if mode == "IML" -->
 	   <!ELEMENT 단락 ( 문자열* | FlowDH*  | 고어* | 문자그림* | 문자메타* | 문자보기* | 수식* | DECO* )*>
-	   <!-- justh : 좌우 정열 정보 : 값 0(A):양끝 맞춤(All:기본생략), 1(L):왼쪽 맞춤, 2(C):가운데 맞춤, 3(R):오른쪽 맞춤, 4(S):균등 분할 맞춤(Split)  -->
+	   <!-- justh : 좌우 정열 정보 : 값 0:양끝 맞춤(기본생략), 1:왼쪽 맞춤, 2:가운데 맞춤, 3:오른쪽 맞춤, 4:균등 분할 맞춤 -->
 	   <!-- justv : 상하 정열 정보 : 값 0:하단, 1:상단 맞춤, 2:중앙 맞춤 -->
 	   <!-- tidt  : Top Indent ( 상단 들여쓰기 : TWIP ) : 첫행만 들여쓰기 -->
 	   <!-- bidt  : Bottom Indent ( 하단 들여쓰기 : TWIP ) : 첫행 제외 둘째행 이하 모두 들여쓰기 -->
 	   <!ATTLIST 단락 
-	   	justh 	CDATA 	#REQUIRED
-	   	justv 	CDATA 	#IMPLIED
-	   	tidt 	CDATA 	#IMPLIED
-	   	bidt 	CDATA 	#IMPLIED>
+	   	justh 	CDATA 	#IMPLIED
+	   	justv 	CDATA 	#REQUIRED
+	   	tidt 	CDATA 	#REQUIRED
+	   	bidt 	CDATA 	#REQUIRED>
 	   
 <!-- #else if mode == "FML" -->
 	   <!ELEMENT 줄긋기 (#PCDATA)>
@@ -334,7 +333,7 @@
 			<!-- w, h : "IML" : 현재 차상위 객체폭에 대한 크기 비율(%) -->
 			<!--        "FML" : 크기 절대값( 단위 : TWIP ) -->	   
 			<!-- did : 답박스의 순서 ID : 정답 내부 번호와 연관됨 -->
-			<!-- just : 좌우 정열 : 1(L):왼쪽 맞춤, 2(C):가운데 맞춤, 3(R):오른쪽 맞춤 -->
+			<!-- just : 좌우 정열 : 1:왼쪽 맞춤, 2:가운데 맞춤, 3:오른쪽 맞춤 -->
 			<!-- iLenEng : 영문 기준 길이 -->
 			<!-- bdkind : 테두리 종류 : 0이 아닌 값일 때 존재함 - 3:원( 답박스를 에워쌈 ) -->
 			<!-- border : 테두리 정보 : bdkind가 없을때( bdkind==0 기본값 ) 의미있음 : 사변의 누적값 : 아래:1, 위:2, 왼쪽:4, 오른쪽:8 : 예) 0:없음, 1: 밑줄만 있음, 15:전체테두리 있음 -->
@@ -374,12 +373,12 @@
 			<!-- *path : 내용과 동일한 이미지 옵V 경로 : 기존버젼 호완용 -->
 		    	<!-- name : 원본파일명(확장자 제외) -->
 		   	<!ATTLIST 문자그림
-			   	path  CDATA	#REQUIRED
-				x    CDATA	#IMPLIED
-				y    CDATA	#IMPLIED
-			   	ow    CDATA	#IMPLIED
-			   	oh    CDATA	#IMPLIED
-			   	name CDATA	#IMPLIED>
+			   	path  CDATA	#IMPLIED
+				x    CDATA	#REQUIRED
+				y    CDATA	#REQUIRED
+			   	ow    CDATA	#REQUIRED
+			   	oh    CDATA	#REQUIRED
+			   	name CDATA	#REQUIRED>
 
 			<!ELEMENT 문자보기 (#PCDATA)>
 			
@@ -414,7 +413,6 @@
 			
 			
 	   <!ELEMENT 그림?( 답박스* )>
-	   <!-- 2020.3.3. 이미지의 크기는 절대 크기로 변경함 : 이전 문서의 폭비율 -->
 	   <!-- 내용 : 옵셋 경로 -->
 	   <!-- [선택] x, y : "IML" : 현재 문항폭에 대한 옵셋 비율(%) -->
 	   <!--               "FML" : 현재 페이지에 대한 옵셋 절대값( 단위 : TWIP ) -->
@@ -425,7 +423,6 @@
 	   	[선택] FillType : "IML" : 1:꽉채우기, 2:"1:1"보기, *3:비율로 채우기(디폴트)
  		-->
 	   <!-- [선택] : colFore : 테두리색 RGB( 흰색:RGB(255,255,255) )이면 생략 -->
-	   <!-- [선택] justh : 좌우정렬 "L":좌정렬, "C":중앙정렬,  "R":우정렬, "A":양끝, 생략시 기존 템플릿  --- 2020.3.3. -->
 	   <!-- name : 원본파일명(확장자 제외) -->
 	   <!-- original : 원본 이미지 파일명( 옵V ) for BOD -->
 	   <!-- preview  : 미리보기 이미지 파일명( 옵V ) for BOD -->
@@ -436,13 +433,12 @@
 	   	h    CDATA	#IMPLIED
 	   	ow   CDATA	#IMPLIED
 	   	oh   CDATA	#IMPLIED
-	   	colFore	  CDATA 	#IMPLIED
-		justh   CDATA	#IMPLIED
-	   	Center    CDATA	#IMPLIED
-	   	FillType  CDATA	#IMPLIED
-	   	name 	  CDATA	#IMPLIED
-	   	original  CDATA	#IMPLIED
-	   	preview   CDATA	#IMPLIED>
+	   	colFore	  CDATA #IMPLIED
+	   	Center    CDATA	#REQUIRED
+	   	FillType  CDATA	#REQUIRED
+	   	name 	  CDATA	#REQUIRED
+	   	original  CDATA	#REQUIRED
+	   	preview   CDATA	#REQUIRED>
 
 	   <!ELEMENT 동영상 (#PCDATA)>
 	   <!-- (멀티미디어)내용 : 옵셋 경로 -->
@@ -551,8 +547,7 @@
 	   <!-- [선택] w, h : "IML" : 현재 문항폭에 대한 비율(%) -->
 	   <!--               "FML" : 크기 절대값( 단위 : TWIP ) -->
 	   <!-- [선택] title : 보기박스 제목 -->
-	   <!-- [선택] titlejust : 보기박스 제목 정열 : 0(L):좌, 1(C):중, 2(R):우정렬 -->
-	   <!-- [선택] justh : 좌우정렬 "L":좌정렬, "C":중앙정렬,  "R":우정렬, "A":양끝정렬, 생략시 기존 템플릿  --- 2020.3.3. -->
+	   <!-- [선택] titlejust : 보기박스 제목 정열 : 0:좌, 1:중, 2:우정렬 -->
 	   <!-- [선택] border : 테두리 정보 : 0:없음, 0아니면 존재 -->
 	   <!-- [선택] borderinfo( Left, Top, Right, Bottom ) : 디폴트(1,1,1,1) 생략
 	    	: 값(선종류) : 0:선이 없다, 1:실선, 2:점선 등 -->
@@ -563,26 +558,20 @@
 	   	w    CDATA	#IMPLIED
 	   	h    CDATA	#IMPLIED
 		title  CDATA   	#IMPLIED
-		titlejust  CDATA	#IMPLIED
-		justh   CDATA	#IMPLIED
-		border  CDATA	#IMPLIED
-	   	borderinfo CDATA	#IMPLIED
+		titlejust  CDATA  #IMPLIED
+		border  CDATA   #IMPLIED
+	   	borderinfo CDATA #IMPLIED
 	   	colbk	CDATA	#IMPLIED>
 	   <!-- 물음 Recursive -->
 	   
 	   <!-- TABLE
 		[선택] : cnt : siCount	셀 수( 가로, 세로 )
 		[선택] : colBWRs( Base Width Rates for Column Cells ) : 셀병합 전 기본 셀들의 폭비율들( 부모 100% 기준, 포멧:"셀폭1;셀폭2;...;셀폭n" )
-	   	[선택] justh : 좌우정렬 "L":좌정렬, "C":중앙정렬,  "R":우정렬, "A":양끝정렬, 생략시 기존 템플릿  --- 2020.3.3.
-	   	[선택] corner : 1:각진모서리, 그외:*라운드	- 2022.4.6.
 		-->
 	   <!ELEMENT TABLE ( TR+ )>
 	   <!ATTLIST TABLE	
-	   	cnt		CDATA	#IMPLIED
-	   	colBWRs	CDATA	#IMPLIED
-		justh   		CDATA	#IMPLIED
-		corner   		CDATA	#IMPLIED
-		>
+	   	cnt			CDATA	#IMPLIED
+	   	colBaseWidthRates	CDATA	#IMPLIED>
 	   
 	   	<!ELEMENT TR ( CELL+ )>
 	   	    <!ELEMENT CELL ( 객체?, 물음+ )>

@@ -1,0 +1,45 @@
+Parse this exam item image and extract structured content with bounding boxes.
+
+## Task
+
+Identify and classify each content block with its location:
+- **text**: Regular text content
+- **math**: Mathematical expressions, equations, formulas (output as LaTeX)
+- **image**: Graphs, diagrams, figures, illustrations (describe what it shows)
+- **table**: Tabular data (output as markdown table)
+
+## Output Format
+
+box_2d: [ymin, xmin, ymax, xmax] normalized 0-1000
+
+```json
+{
+  "item_number": "N",
+  "question": [
+    {"type": "text", "value": "...", "box_2d": [ymin, xmin, ymax, xmax]},
+    {"type": "math", "value": "x^2 + 2x + 1", "box_2d": [ymin, xmin, ymax, xmax]},
+    {"type": "image", "value": "", "description": "graph showing...", "box_2d": [ymin, xmin, ymax, xmax]}
+  ],
+  "choices": [
+    {
+      "label": "①",
+      "content": [{"type": "text", "value": "...", "box_2d": [ymin, xmin, ymax, xmax]}],
+      "box_2d": [ymin, xmin, ymax, xmax]
+    }
+  ],
+  "has_boxed_text": true,
+  "boxed_content": [
+    {"type": "text", "value": "content inside box...", "box_2d": [ymin, xmin, ymax, xmax]}
+  ],
+  "boxed_area": [ymin, xmin, ymax, xmax]
+}
+```
+
+## Rules
+
+1. Preserve the exact order of content blocks as they appear
+2. For math expressions, use LaTeX notation (e.g., \frac{1}{2}, x^2, \sqrt{x})
+3. For images, set value="" and provide description of what it depicts
+4. has_boxed_text=true if there's a bordered box with reference content
+5. Include all choice labels exactly as shown (①②③④⑤ or ㄱㄴㄷㄹㅁ or (A)(B)(C))
+6. box_2d must cover the entire content block area accurately

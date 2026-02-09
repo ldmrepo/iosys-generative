@@ -1,0 +1,496 @@
+{
+  "subject": "수학",
+  "subject_key": "math",
+  "mappings": [
+    {
+      "textbook_id": "tb_math_001",
+      "textbook_path": "수학 > 1학년 > 1학기 > 1. 수와 연산 > 소인수분해 > 03. 최대공약수",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수01-02]",
+          "description": "소인수분해를 이용하여 최대공약수와 최소공배수를 구할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "소인수분해 단원의 최대공약수 소단원은 [9수01-02]의 '소인수분해를 이용하여 최대공약수를 구할 수 있다'와 직접 대응한다."
+        },
+        {
+          "code": "[9수01-01]",
+          "description": "소인수분해의 뜻을 알고, 자연수를 소인수분해 할 수 있다",
+          "confidence": 0.70,
+          "reasoning": "최대공약수를 구하기 위해 소인수분해 개념이 선행되므로 관련성이 있다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_002",
+      "textbook_path": "수학 > 1학년 > 1학기 > 1. 수와 연산 > 정수와 유리수 > 03. 정수와 유리수의 대소 관계",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수01-04]",
+          "description": "정수와 유리수의 대소 관계를 판단할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "정수와 유리수의 대소 관계 소단원은 [9수01-04]와 제목과 내용이 정확히 일치한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_003",
+      "textbook_path": "수학 > 1학년 > 1학기 > 1. 수와 연산 > 정수와 유리수 > 04. 정수와 유리수의 덧셈",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수01-05]",
+          "description": "정수와 유리수의 사칙계산의 원리를 이해하고, 그 계산을 할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "정수와 유리수의 덧셈은 [9수01-05]의 사칙계산 중 덧셈에 해당한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_004",
+      "textbook_path": "수학 > 1학년 > 1학기 > 1. 수와 연산 > 정수와 유리수 > 05. 정수와 유리수의 뺄셈",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수01-05]",
+          "description": "정수와 유리수의 사칙계산의 원리를 이해하고, 그 계산을 할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "정수와 유리수의 뺄셈은 [9수01-05]의 사칙계산 중 뺄셈에 해당한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_005",
+      "textbook_path": "수학 > 1학년 > 1학기 > 수와 연산 > 정수와 유리수",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수01-03]",
+          "description": "다양한 상황을 이용하여 음수의 필요성을 인식하고, 양수와 음수, 정수와 유리수의 개념을 이해한다.",
+          "confidence": 0.95,
+          "reasoning": "정수와 유리수 단원 전체는 정수와 유리수의 개념 이해를 다루는 [9수01-03]과 직접 대응한다."
+        },
+        {
+          "code": "[9수01-04]",
+          "description": "정수와 유리수의 대소 관계를 판단할 수 있다.",
+          "confidence": 0.85,
+          "reasoning": "정수와 유리수 단원에는 대소 관계 내용이 포함되어 있다."
+        },
+        {
+          "code": "[9수01-05]",
+          "description": "정수와 유리수의 사칙계산의 원리를 이해하고, 그 계산을 할 수 있다.",
+          "confidence": 0.85,
+          "reasoning": "정수와 유리수 단원에는 사칙계산 내용이 포함되어 있다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_006",
+      "textbook_path": "수학 > 1학년 > 1학기 > 2. 문자와 식 > 일차방정식 > 02. 일차방정식의 풀이",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수02-04]",
+          "description": "일차방정식을 풀 수 있고, 이를 활용하여 문제를 해결할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "일차방정식의 풀이 소단원은 [9수02-04]의 '일차방정식을 풀 수 있다'와 직접 대응한다."
+        },
+        {
+          "code": "[9수02-03]",
+          "description": "방정식과 그 해의 뜻을 알고, 등식의 성질을 설명할 수 있다.",
+          "confidence": 0.70,
+          "reasoning": "일차방정식을 풀기 위해 방정식의 해와 등식의 성질에 대한 이해가 필요하다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_007",
+      "textbook_path": "수학 > 1학년 > 1학기 > 2. 문자와 식 > 일차방정식 > 05. 일차방정식의 활용(2)",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수02-04]",
+          "description": "일차방정식을 풀 수 있고, 이를 활용하여 문제를 해결할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "일차방정식의 활용 소단원은 [9수02-04]의 '이를 활용하여 문제를 해결할 수 있다' 부분과 직접 대응한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_008",
+      "textbook_path": "수학 > 1학년 > 1학기 > 3. 좌표평면과 그래프 > 정비례와 반비례 > 01. 정비례 관계",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수02-07]",
+          "description": "정비례, 반비례 관계를 이해하고, 그 관계를 표, 식, 그래프로 나타낼 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "정비례 관계 소단원은 [9수02-07]의 '정비례 관계를 이해하고' 부분과 직접 대응한다."
+        },
+        {
+          "code": "[9수02-05]",
+          "description": "순서쌍과 좌표를 이해하고, 그 편리함을 인식할 수 있다.",
+          "confidence": 0.70,
+          "reasoning": "좌표평면과 그래프 대단원에 속하며, 정비례 관계를 그래프로 나타내기 위해 좌표 이해가 필요하다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_009",
+      "textbook_path": "수학 > 1학년 > 2학기 > 4. 기본 도형 > 기본 도형",
+      "is_leaf": false,
+      "mapped_standards": [
+        {
+          "code": "[9수03-01]",
+          "description": "점, 선, 면, 각을 이해하고, 실생활 상황과 연결하여 점, 직선, 평면의 위치 관계를 설명할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "기본 도형 중단원은 점, 선, 면, 각, 위치 관계를 모두 포함하며 [9수03-01]과 직접 대응한다."
+        },
+        {
+          "code": "[9수03-02]",
+          "description": "평행선에서 동위각과 엇각의 성질을 이해하고 설명할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "기본 도형 중단원의 하위 소단원에 동위각과 엇각이 포함되어 있다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_010",
+      "textbook_path": "수학 > 1학년 > 2학기 > 4. 기본 도형 > 기본 도형 > 01. 점, 선, 면",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수03-01]",
+          "description": "점, 선, 면, 각을 이해하고, 실생활 상황과 연결하여 점, 직선, 평면의 위치 관계를 설명할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "점, 선, 면 소단원은 [9수03-01]의 '점, 선, 면을 이해하고' 부분과 직접 대응한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_011",
+      "textbook_path": "수학 > 1학년 > 2학기 > 4. 기본 도형 > 기본 도형 > 02. 각",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수03-01]",
+          "description": "점, 선, 면, 각을 이해하고, 실생활 상황과 연결하여 점, 직선, 평면의 위치 관계를 설명할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "각 소단원은 [9수03-01]의 '각을 이해하고' 부분과 직접 대응한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_012",
+      "textbook_path": "수학 > 1학년 > 2학기 > 4. 기본 도형 > 기본 도형 > 03. 두 직선의 위치 관계",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수03-01]",
+          "description": "점, 선, 면, 각을 이해하고, 실생활 상황과 연결하여 점, 직선, 평면의 위치 관계를 설명할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "두 직선의 위치 관계 소단원은 [9수03-01]의 '점, 직선, 평면의 위치 관계를 설명할 수 있다' 부분과 직접 대응한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_013",
+      "textbook_path": "수학 > 1학년 > 2학기 > 4. 기본 도형 > 기본 도형 > 04. 직선과 평면, 두 평면의 위치 관계",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수03-01]",
+          "description": "점, 선, 면, 각을 이해하고, 실생활 상황과 연결하여 점, 직선, 평면의 위치 관계를 설명할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "직선과 평면, 두 평면의 위치 관계 소단원은 [9수03-01]의 위치 관계 부분과 직접 대응한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_014",
+      "textbook_path": "수학 > 1학년 > 2학기 > 4. 기본 도형 > 기본 도형 > 05. 동위각과 엇각",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수03-02]",
+          "description": "평행선에서 동위각과 엇각의 성질을 이해하고 설명할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "동위각과 엇각 소단원은 [9수03-02]와 제목과 내용이 정확히 일치한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_015",
+      "textbook_path": "수학 > 1학년 > 2학기 > 4. 기본 도형 > 작도와 합동 > 01. 간단한 작도",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수03-03]",
+          "description": "삼각형을 작도하고, 그 과정을 설명할 수 있다.",
+          "confidence": 0.85,
+          "reasoning": "간단한 작도는 삼각형 작도의 기초가 되는 내용으로, [9수03-03]의 작도 과정과 관련된다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_016",
+      "textbook_path": "수학 > 1학년 > 2학기 > 4. 기본 도형 > 작도와 합동 > 02. 삼각형의 작도",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수03-03]",
+          "description": "삼각형을 작도하고, 그 과정을 설명할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "삼각형의 작도 소단원은 [9수03-03]과 제목과 내용이 정확히 일치한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_017",
+      "textbook_path": "수학 > 1학년 > 2학기 > 4. 기본 도형 > 작도와 합동 > 03. 삼각형의 합동",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수03-04]",
+          "description": "삼각형의 합동 조건을 이해하고, 이를 이용하여 두 삼각형이 합동인지 판별할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "삼각형의 합동 소단원은 [9수03-04]의 '삼각형의 합동 조건'과 직접 대응한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_018",
+      "textbook_path": "수학 > 1학년 > 2학기 > 5. 평면도형과 입체도형 > 평면도형의 성질",
+      "is_leaf": false,
+      "mapped_standards": [
+        {
+          "code": "[9수03-05]",
+          "description": "다각형의 성질을 이해하고 설명할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "평면도형의 성질 중단원의 하위에 다각형, 대각선, 내각과 외각 소단원이 포함되어 있다."
+        },
+        {
+          "code": "[9수03-06]",
+          "description": "부채꼴의 중심각과 호의 관계를 이해하고, 이를 이용하여 부채꼴의 호의 길이와 넓이를 구할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "평면도형의 성질 중단원의 하위에 원과 부채꼴, 부채꼴의 호의 길이와 넓이 소단원이 포함되어 있다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_019",
+      "textbook_path": "수학 > 1학년 > 2학기 > 5. 평면도형과 입체도형 > 평면도형의 성질 > 01. 다각형과 대각선",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수03-05]",
+          "description": "다각형의 성질을 이해하고 설명할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "다각형과 대각선 소단원은 [9수03-05]의 '다각형의 성질'과 직접 대응한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_020",
+      "textbook_path": "수학 > 1학년 > 2학기 > 5. 평면도형과 입체도형 > 평면도형의 성질 > 02. 다각형의 내각과 외각",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수03-05]",
+          "description": "다각형의 성질을 이해하고 설명할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "다각형의 내각과 외각은 다각형의 핵심 성질로 [9수03-05]와 직접 대응한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_021",
+      "textbook_path": "수학 > 1학년 > 2학기 > 5. 평면도형과 입체도형 > 평면도형의 성질 > 03. 원과 부채꼴",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수03-06]",
+          "description": "부채꼴의 중심각과 호의 관계를 이해하고, 이를 이용하여 부채꼴의 호의 길이와 넓이를 구할 수 있다.",
+          "confidence": 0.85,
+          "reasoning": "원과 부채꼴 소단원은 부채꼴의 중심각과 호의 관계 개념을 다루며 [9수03-06]의 기초 내용에 해당한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_022",
+      "textbook_path": "수학 > 1학년 > 2학기 > 5. 평면도형과 입체도형 > 평면도형의 성질 > 04. 부채꼴의 호의 길이와 넓이",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수03-06]",
+          "description": "부채꼴의 중심각과 호의 관계를 이해하고, 이를 이용하여 부채꼴의 호의 길이와 넓이를 구할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "부채꼴의 호의 길이와 넓이 소단원은 [9수03-06]과 제목과 내용이 정확히 일치한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_023",
+      "textbook_path": "수학 > 1학년 > 2학기 > 5. 평면도형과 입체도형 > 입체도형의 성질",
+      "is_leaf": false,
+      "mapped_standards": [
+        {
+          "code": "[9수03-07]",
+          "description": "구체적인 모형이나 공학 도구를 이용하여 다면체와 회전체의 성질을 탐구하고, 이를 설명할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "입체도형의 성질 중단원의 하위에 다면체, 정다면체, 회전체 소단원이 포함되어 있다."
+        },
+        {
+          "code": "[9수03-08]",
+          "description": "입체도형의 겉넓이와 부피를 구할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "입체도형의 성질 중단원의 하위에 기둥, 뿔, 구의 겉넓이와 부피 소단원이 포함되어 있다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_024",
+      "textbook_path": "수학 > 1학년 > 2학기 > 5. 평면도형과 입체도형 > 입체도형의 성질 > 01. 다면체",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수03-07]",
+          "description": "구체적인 모형이나 공학 도구를 이용하여 다면체와 회전체의 성질을 탐구하고, 이를 설명할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "다면체 소단원은 [9수03-07]의 '다면체의 성질을 탐구하고' 부분과 직접 대응한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_025",
+      "textbook_path": "수학 > 1학년 > 2학기 > 5. 평면도형과 입체도형 > 입체도형의 성질 > 02. 정다면체",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수03-07]",
+          "description": "구체적인 모형이나 공학 도구를 이용하여 다면체와 회전체의 성질을 탐구하고, 이를 설명할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "정다면체는 다면체의 특수한 유형으로, [9수03-07]의 다면체 성질 탐구에 해당한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_026",
+      "textbook_path": "수학 > 1학년 > 2학기 > 5. 평면도형과 입체도형 > 입체도형의 성질 > 03. 회전체",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수03-07]",
+          "description": "구체적인 모형이나 공학 도구를 이용하여 다면체와 회전체의 성질을 탐구하고, 이를 설명할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "회전체 소단원은 [9수03-07]의 '회전체의 성질을 탐구하고' 부분과 직접 대응한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_027",
+      "textbook_path": "수학 > 1학년 > 2학기 > 5. 평면도형과 입체도형 > 입체도형의 성질 > 04. 기둥의 겉넓이와 부피",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수03-08]",
+          "description": "입체도형의 겉넓이와 부피를 구할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "기둥의 겉넓이와 부피 소단원은 [9수03-08]의 입체도형 겉넓이와 부피 중 기둥에 해당한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_028",
+      "textbook_path": "수학 > 1학년 > 2학기 > 5. 평면도형과 입체도형 > 입체도형의 성질 > 05. 뿔의 겉넓이와 부피",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수03-08]",
+          "description": "입체도형의 겉넓이와 부피를 구할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "뿔의 겉넓이와 부피 소단원은 [9수03-08]의 입체도형 겉넓이와 부피 중 뿔에 해당한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_029",
+      "textbook_path": "수학 > 1학년 > 2학기 > 5. 평면도형과 입체도형 > 입체도형의 성질 > 06. 구의 겉넓이와 부피",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수03-08]",
+          "description": "입체도형의 겉넓이와 부피를 구할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "구의 겉넓이와 부피 소단원은 [9수03-08]의 입체도형 겉넓이와 부피 중 구에 해당한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_030",
+      "textbook_path": "수학 > 1학년 > 2학기 > 6. 자료의 정리와 해석 > 자료의 정리와 해석 > 01. 대푯값",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수04-01]",
+          "description": "중앙값, 최빈값의 뜻을 알고, 자료의 특성에 따라 적절한 대푯값을 선택하여 구할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "대푯값 소단원은 [9수04-01]의 '적절한 대푯값을 선택하여 구할 수 있다'와 직접 대응한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_031",
+      "textbook_path": "수학 > 1학년 > 2학기 > 6. 자료의 정리와 해석 > 자료의 정리와 해석 > 02. 줄기와 잎 그림, 도수분포표",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수04-02]",
+          "description": "자료를 줄기와 잎 그림, 도수분포표, 히스토그램, 도수분포다각형으로 나타내고 해석할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "줄기와 잎 그림, 도수분포표 소단원은 [9수04-02]의 '줄기와 잎 그림, 도수분포표로 나타내고' 부분과 직접 대응한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_032",
+      "textbook_path": "수학 > 1학년 > 2학기 > 6. 자료의 정리와 해석 > 자료의 정리와 해석 > 03. 히스토그램과 도수분포다각형",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수04-02]",
+          "description": "자료를 줄기와 잎 그림, 도수분포표, 히스토그램, 도수분포다각형으로 나타내고 해석할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "히스토그램과 도수분포다각형 소단원은 [9수04-02]의 '히스토그램, 도수분포다각형으로 나타내고' 부분과 직접 대응한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_033",
+      "textbook_path": "수학 > 1학년 > 2학기 > 6. 자료의 정리와 해석 > 자료의 정리와 해석 > 04. 상대도수와 그 그래프",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수04-03]",
+          "description": "상대도수를 구하고, 상대도수의 분포를 표나 그래프로 나타내고 해석할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "상대도수와 그 그래프 소단원은 [9수04-03]과 제목과 내용이 정확히 일치한다."
+        }
+      ]
+    },
+    {
+      "textbook_id": "tb_math_034",
+      "textbook_path": "수학 > 2학년 > 1학기 > 2. 부등식과 방정식 > 일차부등식 > 01. 부등식의 해와 그 성질",
+      "is_leaf": true,
+      "mapped_standards": [
+        {
+          "code": "[9수02-11]",
+          "description": "부등식과 그 해의 뜻을 알고, 부등식의 성질을 설명할 수 있다.",
+          "confidence": 0.95,
+          "reasoning": "부등식의 해와 그 성질 소단원은 [9수02-11]과 제목과 내용이 정확히 일치한다."
+        }
+      ]
+    }
+  ]
+}

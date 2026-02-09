@@ -1,0 +1,47 @@
+Analyze this exam page and detect all passages and items.
+
+## Definitions
+
+**Passage**: Shared reference material for multiple items
+- A block of content (text, table, image, or diagram) that multiple items refer to
+- Typically appears above or beside the items that reference it
+- Often has a header indicating which items use it (e.g., number range in brackets)
+- Items cannot be answered without reading this shared content
+
+**Item**: Individual question requiring an answer
+- Has a unique sequential number identifying it
+- Contains a question or task statement
+- Usually includes answer choices or a space for response
+- May be independent or reference a shared passage
+- Each item's region starts from its number, excluding any passage above it
+
+## Key Distinction
+
+- Passage: "What to read" - shared context for multiple questions
+- Item: "What to answer" - individual question with its own number
+
+## Output Format
+
+box_2d: [ymin, xmin, ymax, xmax] normalized 0-1000
+
+```json
+{
+  "passages": [
+    {
+      "passage_id": "start_num-end_num",
+      "item_range": "start~end",
+      "box_2d": [ymin, xmin, ymax, xmax],
+      "box_2d_list": [[...], [...]]
+    }
+  ],
+  "items": [
+    {
+      "item_number": "N",
+      "box_2d": [ymin, xmin, ymax, xmax],
+      "passage_ref": "passage_id or null"
+    }
+  ]
+}
+```
+
+Note: Use box_2d_list when passage spans multiple separate regions.

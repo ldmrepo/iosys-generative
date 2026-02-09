@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gemini-agentic-vision-poc"
+version = "0.1.0"
+description = "Gemini Agentic Vision 기반 AI 문항 생성 POC"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "google-genai>=1.0.0",
+    "pillow>=10.0.0",
+    "pydantic>=2.0.0",
+    "rich>=13.0.0",
+    "typer>=0.9.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+]
+integration = [
+    "pdf2image>=1.16.0",
+    "pymupdf>=1.24.0",
+    "pandas>=2.0.0",
+]
+
+[project.scripts]
+agentic-vision = "src.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

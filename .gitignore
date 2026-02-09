@@ -6,7 +6,10 @@
 # Data files (large)
 # -------------------------------------------
 data/ai_generated/
+data/sample/
 data/raw/
+data/qti/
+
 *.npz
 *.pkl
 *.npy

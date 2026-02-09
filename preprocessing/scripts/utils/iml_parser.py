@@ -109,12 +109,22 @@ class IMLParser:
 
     def read_file(self, file_path: Path) -> Optional[str]:
         """IML 파일을 읽고 UTF-8로 변환"""
-        encodings = ['euc-kr', 'cp949', 'utf-8']
+        try:
+            with open(file_path, 'rb') as f:
+                raw = f.read()
+        except Exception:
+            return None
+
+        # Detect declared encoding from XML prolog
+        header = raw[:200]
+        if b'encoding="utf-8"' in header or b"encoding='utf-8'" in header:
+            encodings = ['utf-8', 'euc-kr', 'cp949']
+        else:
+            encodings = ['euc-kr', 'cp949', 'utf-8']
 
         for encoding in encodings:
             try:
-                with codecs.open(file_path, 'r', encoding=encoding, errors='replace') as f:
-                    return f.read()
+                return raw.decode(encoding, errors='replace')
             except Exception:
                 continue
         return None
@@ -249,15 +259,15 @@ class IMLParser:
                     parts = [p.strip() for p in answer_text.split(',')]
                     valid_answers = []
                     for p in parts:
-                        # 1-5 범위의 단일 숫자만 선택지 정답으로 인식
-                        if p.isdigit() and 1 <= int(p) <= 5:
+                        # 1-5 범위의 단일 ASCII 숫자만 선택지 정답으로 인식
+                        if p.isascii() and p.isdigit() and 1 <= int(p) <= 5:
                             valid_answers.append(int(p))
                     # 모든 파트가 유효한 선택지 번호인 경우만 복수정답으로 처리
-                    if valid_answers and len(valid_answers) == len([p for p in parts if p.strip().isdigit()]):
+                    if valid_answers and len(valid_answers) == len([p for p in parts if p.strip().isascii() and p.strip().isdigit()]):
                         content.answers = valid_answers
                         content.answer = valid_answers[0]
                 # 단일 정답
-                elif answer_text.isdigit() and 1 <= int(answer_text) <= 5:
+                elif answer_text.isascii() and answer_text.isdigit() and 1 <= int(answer_text) <= 5:
                     content.answer = int(answer_text)
                     content.answers = [int(answer_text)]
 
